@@ -1,0 +1,1021 @@
+Regulator (TF or sigma),Operon,Target,mode,evidence,pmid,Strain,source_db
+agmR,,pqqH,+,"lac-promoter, B-galactosidase assay, RT-PCR",19902179,ATCC,
+algR,,hcnA,-,"mutant, PCR",19270096,PAO1,
+anr,cox,coxA,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cox,coxB,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cox,coIII,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cco2,ccoN2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cco2,ccoO2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cco2,ccoQ2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cco2,ccoP2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+anr,cio,cioA,-,background,19930444,PAO1,
+anr,cio,cioB,-,background,19930444,PAO1,
+bqsR,,rhlA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsR,,rhlB,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsR,,pqsA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsR,,phnA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bexR,,PA1202,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,PA1203,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,PA1204,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,PA1205,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,aprA,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,bexR,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bexR,,PA0572,+,"Microarrays, chip, RT-PCR, lacZ-reporter",20041030,PAO1,
+bqsS,,rhlA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsS,,rhlB,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsS,,pqsA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+bqsS,,phnA,+,"lacZ-reporter, B-galactosidase assay, RT-PCR",19513205,"PA103,PA14,PAO1",
+fhpR,,fhp,+,"lacZ-reporter, B-galactosidase assay",19767835,PAO1,
+fhpR,,fhpR,-,"lacZ-reporter, B-galactosidase assay",19767835,PAO1,
+gacA,,rsmY,+,Chip-chip (chromatin immunoprecipitation),19602144,"PAK,PAO1",
+gacA,,rsmZ,+,Chip-chip,19602144,"PAK,PAO1",
+gacS,,rsmY,+,Chip-chip,19602144,"PAK,PAO1",
+gacS,,rsmZ,+,Chip-chip,19602144,"PAK,PAO1",
+lasR,,hvn,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,kynB,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,kynU,+,"Chip-chip, EMSA, qPCR",19682264,PA14,
+lasR,,PA2588,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,hrlA,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,hrlB,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,PA3326,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,PA5184,+,"Chip-chip, EMSA, qPCR",19682264,PAO1,
+lasR,,tpbA,+,"Transcriptome profiling, RT-PCR",19543378,PA14,
+metR,,metH,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,pvdD,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,pvdH,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,atuF,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,PA4144,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,PA4223,+,"Microarrays, RT-PCR",19592586,PA14,
+metR,,PA0633,-,"Microarrays, RT-PCR",19592586,PA14,
+metR,,PA0848,-,"Microarrays, RT-PCR",19592586,PA14,
+metR,,ntrC,-,"Microarrays, RT-PCR",19592586,PA14,
+mexT,,cbpD,-,"Microarray, PCR",19846594,PAO1,
+mexT,pqs,pqsA,-,"Microarray, PCR",19846594,PAO1,
+mexT,pqs,pqsB,-,"Microarray, PCR",19846594,PAO1,
+mexT,pqs,pqsC,-,"Microarray, PCR",19846594,PAO1,
+mexT,pqs,pqsD,-,"Microarray, PCR",19846594,PAO1,
+mexT,pqs,pqsE,-,"Microarray, PCR",19846594,PAO1,
+mexT,phn,phnA,-,Transcriptome profiling,19846594,PAO1,
+mexT,phn,phnB,-,Transcriptome profiling,19846594,PAO1,
+mexT,,PA1657,-,Transcriptome profiling,19846594,PAO1,
+mexT,,PA1658,-,Transcriptome profiling,19846594,PAO1,
+mexT,,pscE,-,Transcriptome profiling,19846594,PAO1,
+mexT,,PA1744,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA1869,-,Transcriptome profiling,19846594,PAO1,
+mexT,,PA1970,+,Transcriptome profiling,19846594,PAO1,
+mexT,hcn,hcnA,-,Transcriptome profiling,19846594,PAO1,
+mexT,hcn,hcnB,-,Transcriptome profiling,19846594,PAO1,
+mexT,hcn,hcnC,-,Transcriptome profiling,19846594,PAO1,
+mexT,,pvdA,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA2486,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA2759,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA2811-PA2813,PA2811,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA2811-PA2813,PA2812,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA2811-PA2813,PA2813,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA3205,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA3229,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA3326,-,Transcriptome profiling,19846594,PAO1,
+mexT,PA3331-PA3334,PA3331,-,Transcriptome profiling,19846594,PAO1,
+mexT,PA3331-PA3334,PA3332,-,Transcriptome profiling,19846594,PAO1,
+mexT,PA3331-PA3334,fabH2,-,Transcriptome profiling,19846594,PAO1,
+mexT,lld,lldP,-,"Microarray, PCR",19846594,PAO1,
+mexT,lld,lldD,-,"Microarray, PCR",19846594,PAO1,
+mexT,lld,PA4772,-,Transcriptome profiling,19846594,PAO1,
+mexT,,PA4141,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA4354-PA4356,PA4354,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA4354-PA4356,PA4355,+,Transcriptome profiling,19846594,PAO1,
+mexT,PA4354-PA4356,xenB,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA4623,+,Transcriptome profiling,19846594,PAO1,
+mexT,,PA4881,+,"microarray, PCR, EMSA",19846594,PAO1,
+mexT,,rhlA,-,RT-PCR,19683048,PAO1,
+mexT,,lasB,-,RT-PCR,19683048,PAO1,
+mexT,,exsA,-,"RT-PCR, lacZ-reporter, B-galactosidase assay",19683048,PAO1,
+mexZ,,mexX,-,EMSA,19589837,PAO1,
+mexZ,,mexY,-,EMSA,19589837,PAO1,
+mvaT,,cupA,-,"B-galactosidase assay, RT-PCR",19832907,PA14,
+mvaT,,cupB1,-,"B-galactosidase assay, RT-PCR",19832907,PA14,
+mvaT,,cupC1,-,"B-galactosidase assay, RT-PCR",19832907,PA14,
+ospR,,PA2826,-,electrophoretic mobility shift assay (EMSA),19943895,PAO1,
+PA0779,,fhp,+,"lacZ-reporter, B-galactosidase assay",19767835,PAO1,
+PA0779,,fhpR,-,"lacZ-reporter, B-galactosidase assay",19767835,PAO1,
+PA3697,,fhp,+,"lacZ-reporter, B-galactosidase assay",19767835,PAO1,
+PA5471,,mexZ,+,EMSA,19589837,PAO1,
+phoP,,gabD,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,gabT,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA0921,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,oprH,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,phoP,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,phoQ,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,mexQ,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA3649,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4010,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4011,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4453,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4454,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4455,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,ack,-,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA1196,-,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA3309,-,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,PA4918,-,"Microarrays, RT-PCR",16707691,PAO1,
+phoP,,sodB,+,"Microarrays, RT-PCR",16707691,PAO1,
+phoQ,,pmrA,-,"Microarrays, RT-PCR",19246741,PA14,
+phoQ,,arnB,-,"Microarrays, RT-PCR",19246741,PA14,
+phoQ,,algR,-,"Microarrays, RT-PCR",19246741,PA14,
+pilA,,pilA,-,Inmunoblotting analysis of mutants,20008072,PAO1,
+pmrA,,PA0201,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA0202,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,cysT,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,metK,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,mgtE,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA1559,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA1560,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA2359,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA3446,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,feoB,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,feoA,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4773,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4774,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4775,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,pmrA,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,pmrB,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4778,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4781,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4782,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4822,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4823,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4824,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,mgtA,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA4826,+,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,dnr,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,pcoB,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,pcoA,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA3515,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA3516,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA3517,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,PA3518,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,mexG,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,mexH,-,"Microarrays, RT-PCR",16707691,PAO1,
+pmrA,,mexI,-,"Microarrays, RT-PCR",16707691,PAO1,
+pqrR,pqrABC,pqrA,-,RT-PCR,19717597,PA14,
+pqrR,pqrABC,pqrB,-,RT-PCR,19717597,PA14,
+pqrR,pqrABC,pqrC,-,RT-PCR,19717597,PA14,
+pqrR,,pqrR,+,RT-PCR,19717597,PA14,
+rcdB,cupD,cupD1,+,"lacZ-reporter, B-galactosidase assay",19547710,PAO1,
+rcdB,cupD,cupD2,+,"lacZ-reporter, B-galactosidase assay",19547710,PAO1,
+rcdB,cupD,cupD3,+,"lacZ-reporter, B-galactosidase assay",19547710,PAO1,
+rcdB,cupD,cupD4,+,"lacZ-reporter, B-galactosidase assay",19547710,PAO1,
+rcdB,cupD,cupD5,+,"lacZ-reporter, B-galactosidase assay",19547710,PAO1,
+rocA1,,cupB,+,,19547710,PAO1,
+rocA1,,cupC,-,,19547710,PAO1,
+rocR,,cupB,-,,19547710,PAO1,
+rocR,,cupC,.,,19547710,PAO1,
+roxR,cyo,cyoA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cyo,cyoB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cyo,cyoC,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cyo,cyoD,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cyo,cyoE,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cio,cioA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cio,cioB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cox,coxA,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cox,coxB,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco1,ccoN1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco1,ccoO1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco1,ccoQ1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco1,ccoP1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco2,ccoN2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco2,ccoO2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco2,ccoQ2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxR,cco2,ccoP2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cyo,cyoA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cyo,cyoB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cyo,cyoC,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cyo,cyoD,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cyo,cyoE,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cio,cioA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cio,cioB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cox,coxA,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cox,coxB,-,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco1,ccoN1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco1,ccoO1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco1,ccoQ1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco1,ccoP1,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco2,ccoN2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco2,ccoO2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco2,ccoQ2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+roxS,cco2,ccoP2,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+rpoS,cio,cioA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+rpoS,cio,cioB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+rpoS,cox,coxA,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+rpoS,cox,coxB,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+rpoS,cox,colII,+,"Microarray, Gene Chip data analysis",19930444,PAO1,
+tpbA,,tpbA,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelA,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelE,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelB,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelD,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelC,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelG,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,pelF,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,PA4625,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,PA4624,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,PA4139,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+tpbA,,tpbR,-,"Transcriptome profiling, RT-PCR",19543378,PA14,
+vfr,,cbpA,+,EMSA,19801409,PAO1,
+vreI,,tpsA,+,"Microarrays, RT-PCR",19730609,PAO1,
+vreI,,PA0691,+,"Microarrays, RT-PCR",19730609,PAO1,
+vreI,,tpsB,+,"Microarrays, RT-PCR",19730609,PAO1,
+algQ,,lasR,-,,18440972,PAO1,Prodonet
+algQ,,rhlR,-,,18440972,PAO1,Prodonet
+algR,,alg44,+,,18440972,PAO1,Prodonet
+algR,,alg8,+,,18440972,PAO1,Prodonet
+algR,,algA,+,,18440972,PAO1,Prodonet
+algR,,algC,+,,18440972,PAO1,Prodonet
+algR,,algE,+,,18440972,PAO1,Prodonet
+algR,,algF,+,,18440972,PAO1,Prodonet
+algR,,algG,+,,18440972,PAO1,Prodonet
+algR,,algI,+,,18440972,PAO1,Prodonet
+algR,,algJ,+,,18440972,PAO1,Prodonet
+algR,,algK,+,,18440972,PAO1,Prodonet
+algR,,algL,+,,18440972,PAO1,Prodonet
+algR,,algX,+,,18440972,PAO1,Prodonet
+algR,,argB,+,,18440972,PAO1,Prodonet
+algR,,argG,-,,18440972,PAO1,Prodonet
+algR,,braZ,+,,18440972,PAO1,Prodonet
+algR,,gdhA,-,,18440972,PAO1,Prodonet
+algR,,PA0328,+,,18440972,PAO1,Prodonet
+algR,,PA1818,+,,18440972,PAO1,Prodonet
+algR,,PA1819,+,,18440972,PAO1,Prodonet
+algR,,PA3934,+,,18440972,PAO1,Prodonet
+algR,,PA5152,+,,18440972,PAO1,Prodonet
+algR,,PA5153,+,,18440972,PAO1,Prodonet
+algR,,rhlA,-,,18440972,PAO1,Prodonet
+algR,,rhlB,-,,18440972,PAO1,Prodonet
+algR,,rhlI,-,,18440972,PAO1,Prodonet
+algR,,speA,?,,18440972,PAO1,Prodonet
+algR,,sstT,+,,18440972,PAO1,Prodonet
+algU,,alg44,+,,18440972,PAO1,Prodonet
+algU,,alg8,+,,18440972,PAO1,Prodonet
+algU,,algA,+,,18440972,PAO1,Prodonet
+algU,,algE,+,,18440972,PAO1,Prodonet
+algU,,algF,+,,18440972,PAO1,Prodonet
+algU,,algG,+,,18440972,PAO1,Prodonet
+algU,,algI,+,,18440972,PAO1,Prodonet
+algU,,algJ,+,,18440972,PAO1,Prodonet
+algU,,algK,+,,18440972,PAO1,Prodonet
+algU,,algL,+,,18440972,PAO1,Prodonet
+algU,,algX,+,,18440972,PAO1,Prodonet
+algU,,bolA,+,,18440972,PAO1,Prodonet
+algU,,dksA,+,,18440972,PAO1,Prodonet
+algU,,ivy,+,,18440972,PAO1,Prodonet
+algU,,PA0856,+,,18440972,PAO1,Prodonet
+algU,,PA1592,+,,18440972,PAO1,Prodonet
+algU,,PA3262,+,,18440972,PAO1,Prodonet
+algU,,PA3819,+,,18440972,PAO1,Prodonet
+algU,,PA3952,+,,18440972,PAO1,Prodonet
+algU,,PA5291,+,,18440972,PAO1,Prodonet
+algU,,phuR,+,,18440972,PAO1,Prodonet
+algU,,tal,+,,18440972,PAO1,Prodonet
+algZ,,alg44,+,,18440972,PAO1,Prodonet
+algZ,,alg8,+,,18440972,PAO1,Prodonet
+algZ,,algA,+,,18440972,PAO1,Prodonet
+algZ,,algD,+,,18440972,PAO1,Prodonet
+algZ,,algE,+,,18440972,PAO1,Prodonet
+algZ,,algF,+,,18440972,PAO1,Prodonet
+algZ,,algG,+,,18440972,PAO1,Prodonet
+algZ,,algI,+,,18440972,PAO1,Prodonet
+algZ,,algJ,+,,18440972,PAO1,Prodonet
+algZ,,algK,+,,18440972,PAO1,Prodonet
+algZ,,algL,+,,18440972,PAO1,Prodonet
+algZ,,algX,+,,18440972,PAO1,Prodonet
+anr,,aroE,+,,18440972,PAO1,Prodonet
+anr,,dnr,+,,18440972,PAO1,Prodonet
+anr,,hemK,d,,18440972,PAO1,Prodonet
+anr,,moeB,d,,18440972,PAO1,Prodonet
+anr,,murI,d,,18440972,PAO1,Prodonet
+anr,,PA0521,+,,18440972,PAO1,Prodonet
+anr,,PA0522,+,,18440972,PAO1,Prodonet
+anr,,PA0526,?,,18440972,PAO1,Prodonet
+anr,,PA3928,?,,18440972,PAO1,Prodonet
+anr,,prfA,d,,18440972,PAO1,Prodonet
+argR,,aotO,+,,18440972,PAO1,Prodonet
+argR,,astA,+,,18440972,PAO1,Prodonet
+argR,,astB,+,,18440972,PAO1,Prodonet
+argR,,astD,+,,18440972,PAO1,Prodonet
+argR,,astE,+,,18440972,PAO1,Prodonet
+argR,,greA,-,,18440972,PAO1,Prodonet
+argR,,oprD,+,,18440972,PAO1,Prodonet
+argR,,PA4754,-,,18440972,PAO1,Prodonet
+cysB,,alg44,+,,18440972,PAO1,Prodonet
+cysB,,alg8,+,,18440972,PAO1,Prodonet
+cysB,,algA,+,,18440972,PAO1,Prodonet
+cysB,,algE,+,,18440972,PAO1,Prodonet
+cysB,,algF,+,,18440972,PAO1,Prodonet
+cysB,,algG,+,,18440972,PAO1,Prodonet
+cysB,,algI,+,,18440972,PAO1,Prodonet
+cysB,,algJ,+,,18440972,PAO1,Prodonet
+cysB,,algK,+,,18440972,PAO1,Prodonet
+cysB,,algL,+,,18440972,PAO1,Prodonet
+cysB,,algX,+,,18440972,PAO1,Prodonet
+dnr,,aroE,+,,18440972,PAO1,Prodonet
+dnr,,nirC,+,,18440972,PAO1,Prodonet
+dnr,,nirD,+,,18440972,PAO1,Prodonet
+dnr,,nirE,+,,18440972,PAO1,Prodonet
+dnr,,nirF,+,,18440972,PAO1,Prodonet
+dnr,,nirG,+,,18440972,PAO1,Prodonet
+dnr,,nirH,+,,18440972,PAO1,Prodonet
+dnr,,nirJ,+,,18440972,PAO1,Prodonet
+dnr,,nirL,+,,18440972,PAO1,Prodonet
+dnr,,nirM,+,,18440972,PAO1,Prodonet
+dnr,,nirN,+,,18440972,PAO1,Prodonet
+exsA,,exsD,+,,18440972,PAO1,Prodonet
+exsA,,PA3842,+,,18440972,PAO1,Prodonet
+exsA,,PA3843,+,,18440972,PAO1,Prodonet
+exsA,,pscB,+,,18440972,PAO1,Prodonet
+exsA,,pscC,+,,18440972,PAO1,Prodonet
+exsA,,pscD,+,,18440972,PAO1,Prodonet
+exsA,,pscE,+,,18440972,PAO1,Prodonet
+exsA,,pscF,+,,18440972,PAO1,Prodonet
+exsA,,pscG,+,,18440972,PAO1,Prodonet
+exsA,,pscH,+,,18440972,PAO1,Prodonet
+exsA,,pscI,+,,18440972,PAO1,Prodonet
+exsA,,pscJ,+,,18440972,PAO1,Prodonet
+exsA,,pscK,+,,18440972,PAO1,Prodonet
+exsA,,pscL,+,,18440972,PAO1,Prodonet
+fleQ,,PA1442,+,,18440972,PAO1,Prodonet
+fleQ,,pelA,-,,18440972,PAO1,Prodonet
+fleQ,,pelB,-,,18440972,PAO1,Prodonet
+fur,,fagA,-,,18440972,PAO1,Prodonet
+fur,,foxI,-,,18440972,PAO1,Prodonet
+fur,,foxR,-,,18440972,PAO1,Prodonet
+fur,,fptA,+,,18440972,PAO1,Prodonet
+fur,,fptB,+,,18440972,PAO1,Prodonet
+fur,,fpvR,+,,18440972,PAO1,Prodonet
+fur,,hasAp,-,,18440972,PAO1,Prodonet
+fur,,hmuV,-,,18440972,PAO1,Prodonet
+fur,,icmP,+,,18440972,PAO1,Prodonet
+fur,,PA0071,-,,18440972,PAO1,Prodonet
+fur,,PA0072,-,,18440972,PAO1,Prodonet
+fur,,PA0929,-,,18440972,PAO1,Prodonet
+fur,,PA0930,-,,18440972,PAO1,Prodonet
+fur,,PA1300,-,,18440972,PAO1,Prodonet
+fur,,PA1301,-,,18440972,PAO1,Prodonet
+fur,,PA2033,+,,18440972,PAO1,Prodonet
+fur,,PA2034,+,,18440972,PAO1,Prodonet
+fur,,PA2387,-,,18440972,PAO1,Prodonet
+fur,,PA3409,+,,18440972,PAO1,Prodonet
+fur,,PA3530,+,,18440972,PAO1,Prodonet
+fur,,PA3899,-,,18440972,PAO1,Prodonet
+fur,,PA3900,-,,18440972,PAO1,Prodonet
+fur,,PA4467,-,,18440972,PAO1,Prodonet
+fur,,PA4469,-,,18440972,PAO1,Prodonet
+fur,,PA4516,+,,18440972,PAO1,Prodonet
+fur,,PA4570,+,,18440972,PAO1,Prodonet
+fur,,PA4705,-,,18440972,PAO1,Prodonet
+fur,,PA4707,-,,18440972,PAO1,Prodonet
+fur,,PA4709,-,,18440972,PAO1,Prodonet
+fur,,PA4895,+,,18440972,PAO1,Prodonet
+fur,,PA4896,+,,18440972,PAO1,Prodonet
+fur,,PA5216,+,,18440972,PAO1,Prodonet
+fur,,PA5217,+,,18440972,PAO1,Prodonet
+fur,,pchR,-,,18440972,PAO1,Prodonet
+fur,,pigA,+,,18440972,PAO1,Prodonet
+fur,,piuC,+,,18440972,PAO1,Prodonet
+fur,,pvdQ,+,,18440972,PAO1,Prodonet
+fur,,rplA,+,,18440972,PAO1,Prodonet
+fur,,rplJ,+,,18440972,PAO1,Prodonet
+fur,,rplL,+,,18440972,PAO1,Prodonet
+glpR,,glpK1,?,,18440972,PAO1,Prodonet
+ihf,,alg44,+,,18440972,PAO1,Prodonet
+ihf,,alg8,+,,18440972,PAO1,Prodonet
+ihf,,algA,+,,18440972,PAO1,Prodonet
+ihf,,algE,+,,18440972,PAO1,Prodonet
+ihf,,algF,+,,18440972,PAO1,Prodonet
+ihf,,algG,+,,18440972,PAO1,Prodonet
+ihf,,algI,+,,18440972,PAO1,Prodonet
+ihf,,algJ,+,,18440972,PAO1,Prodonet
+ihf,,algK,+,,18440972,PAO1,Prodonet
+ihf,,algL,+,,18440972,PAO1,Prodonet
+ihf,,algX,+,,18440972,PAO1,Prodonet
+ihf,,fleR,+,,18440972,PAO1,Prodonet
+ihf,,fleS,+,,18440972,PAO1,Prodonet
+ihf,,fliD,+,,18440972,PAO1,Prodonet
+ihf,,hemK,+,,18440972,PAO1,Prodonet
+ihf,,moeB,+,,18440972,PAO1,Prodonet
+ihf,,murI,+,,18440972,PAO1,Prodonet
+ihf,,oprE,+,,18440972,PAO1,Prodonet
+ihf,,pfrA,+,,18440972,PAO1,Prodonet
+lasR,,acpP2,+,,18440972,PAO1,Prodonet
+lasR,,aprD,+,,18440972,PAO1,Prodonet
+lasR,,aprE,+,,18440972,PAO1,Prodonet
+lasR,,aprF,+,,18440972,PAO1,Prodonet
+lasR,,aprX,+,,18440972,PAO1,Prodonet
+lasR,,bphO,+,,18440972,PAO1,Prodonet
+lasR,,bphP,+,,18440972,PAO1,Prodonet
+lasR,,clpP2,+,,18440972,PAO1,Prodonet
+lasR,,flp,+,,18440972,PAO1,Prodonet
+lasR,,kinB,+,,18440972,PAO1,Prodonet
+lasR,,lasB,+,,18440972,PAO1,Prodonet
+lasR,,nuh,+,,18440972,PAO1,Prodonet
+lasR,,PA0027,+,,18440972,PAO1,Prodonet
+lasR,,PA0028,+,,18440972,PAO1,Prodonet
+lasR,,PA0122,+,,18440972,PAO1,Prodonet
+lasR,,PA0144,+,,18440972,PAO1,Prodonet
+lasR,,PA0572,+,,18440972,PAO1,Prodonet
+lasR,,PA0805,+,,18440972,PAO1,Prodonet
+lasR,,PA0855,+,,18440972,PAO1,Prodonet
+lasR,,PA1159,+,,18440972,PAO1,Prodonet
+lasR,,PA1419,+,,18440972,PAO1,Prodonet
+lasR,,PA1656,+,,18440972,PAO1,Prodonet
+lasR,,PA1657,+,,18440972,PAO1,Prodonet
+lasR,,PA1658,+,,18440972,PAO1,Prodonet
+lasR,,PA1659,+,,18440972,PAO1,Prodonet
+lasR,,PA2302,+,,18440972,PAO1,Prodonet
+lasR,,PA2303,+,,18440972,PAO1,Prodonet
+lasR,,PA2304,+,,18440972,PAO1,Prodonet
+lasR,,PA2305,+,,18440972,PAO1,Prodonet
+lasR,,PA2591,+,,18440972,PAO1,Prodonet
+lasR,,PA2939,+,,18440972,PAO1,Prodonet
+lasR,,PA3535,+,,18440972,PAO1,Prodonet
+lasR,,PA3904,+,,18440972,PAO1,Prodonet
+lasR,,PA3905,+,,18440972,PAO1,Prodonet
+lasR,,PA3906,+,,18440972,PAO1,Prodonet
+lasR,,PA3907,+,,18440972,PAO1,Prodonet
+lasR,,PA3908,+,,18440972,PAO1,Prodonet
+lasR,,PA4677,+,,18440972,PAO1,Prodonet
+lasR,,PA4778,+,,18440972,PAO1,Prodonet
+lasR,,PA5181,+,,18440972,PAO1,Prodonet
+lasR,,PA5230,+,,18440972,PAO1,Prodonet
+lasR,,PA5231,+,,18440972,PAO1,Prodonet
+lasR,,PA5232,+,,18440972,PAO1,Prodonet
+lasR,,phnC2,+,,18440972,PAO1,Prodonet
+lasR,,phzA1,+,,18440972,PAO1,Prodonet
+lasR,,phzB1,+,,18440972,PAO1,Prodonet
+lasR,,phzC1,+,,18440972,PAO1,Prodonet
+lasR,,phzD1,+,,18440972,PAO1,Prodonet
+lasR,,phzF2,+,,18440972,PAO1,Prodonet
+lasR,,phzG,+,,18440972,PAO1,Prodonet
+lasR,,plcB,+,,18440972,PAO1,Prodonet
+lasR,,pqsA,+,,18440972,PAO1,Prodonet
+lasR,,pqsB,+,,18440972,PAO1,Prodonet
+lasR,,pqsC,+,,18440972,PAO1,Prodonet
+lasR,,pqsD,+,,18440972,PAO1,Prodonet
+lasR,,pqsE,+,,18440972,PAO1,Prodonet
+lasR,,psIA,+,,18440972,PAO1,Prodonet
+lasR,,psIB,+,,18440972,PAO1,Prodonet
+lasR,,psIC,+,,18440972,PAO1,Prodonet
+lasR,,psID,+,,18440972,PAO1,Prodonet
+lasR,,psIE,+,,18440972,PAO1,Prodonet
+lasR,,psIF,+,,18440972,PAO1,Prodonet
+lasR,,psIG,+,,18440972,PAO1,Prodonet
+lasR,,psIH,+,,18440972,PAO1,Prodonet
+lasR,,psII,+,,18440972,PAO1,Prodonet
+lasR,,psIJ,+,,18440972,PAO1,Prodonet
+lasR,,psIK,+,,18440972,PAO1,Prodonet
+lasR,,psIL,+,,18440972,PAO1,Prodonet
+lasR,,pstI,+,,18440972,PAO1,Prodonet
+lasR,,pvdS,+,,18440972,PAO1,Prodonet
+lasR,,rhlG,+,,18440972,PAO1,Prodonet
+lasR,,rhlI,+,,18440972,PAO1,Prodonet
+lasR,,xcpP,+,,18440972,PAO1,Prodonet
+lasR,,xcpQ,+,,18440972,PAO1,Prodonet
+narL,,hemK,d,,18440972,PAO1,Prodonet
+narL,,moeB,d,,18440972,PAO1,Prodonet
+narL,,murI,d,,18440972,PAO1,Prodonet
+narL,,prfA,d,,18440972,PAO1,Prodonet
+psdR,,dppB,-,,18440972,PAO1,Prodonet
+psdR,,dppC,-,,18440972,PAO1,Prodonet
+psdR,,dppD,-,,18440972,PAO1,Prodonet
+psdR,,dppF,-,,18440972,PAO1,Prodonet
+psrA,,etfA,-,,18440972,PAO1,Prodonet
+psrA,,PA3595,?,,18440972,PAO1,Prodonet
+ptxR,,pqsA,-,,18440972,PAO1,Prodonet
+ptxR,,pqsB,-,,18440972,PAO1,Prodonet
+ptxR,,pqsC,-,,18440972,PAO1,Prodonet
+ptxR,,pqsD,-,,18440972,PAO1,Prodonet
+ptxR,,pvcC,+,,18440972,PAO1,Prodonet
+ptxR,,pvcD,+,,18440972,PAO1,Prodonet
+ptxS,,kguD,+,,18440972,PAO1,Prodonet
+ptxS,,kguK,+,,18440972,PAO1,Prodonet
+ptxS,,kguT,+,,18440972,PAO1,Prodonet
+pvdS,,cat,+,,18440972,PAO1,Prodonet
+pvdS,,eta,+,,18440972,PAO1,Prodonet
+pvdS,,fpvA,+,,18440972,PAO1,Prodonet
+pvdS,,grx,+,,18440972,PAO1,Prodonet
+pvdS,,imm2,?,,18440972,PAO1,Prodonet
+pvdS,,macB,+,,18440972,PAO1,Prodonet
+pvdS,,ompQ,+,,18440972,PAO1,Prodonet
+pvdS,,PA0346,+,,18440972,PAO1,Prodonet
+pvdS,,PA0818,+,,18440972,PAO1,Prodonet
+pvdS,,PA1134,+,,18440972,PAO1,Prodonet
+pvdS,,PA2389,+,,18440972,PAO1,Prodonet
+pvdS,,PA2393,+,,18440972,PAO1,Prodonet
+pvdS,,PA2402,+,,18440972,PAO1,Prodonet
+pvdS,,PA2411,+,,18440972,PAO1,Prodonet
+pvdS,,PA2412,+,,18440972,PAO1,Prodonet
+pvdS,,PA2427,+,,18440972,PAO1,Prodonet
+pvdS,,PA2451,+,,18440972,PAO1,Prodonet
+pvdS,,PA2452,+,,18440972,PAO1,Prodonet
+pvdS,,PA2531,+,,18440972,PAO1,Prodonet
+pvdS,,PA3794,?,,18440972,PAO1,Prodonet
+pvdS,,PA4390,?,,18440972,PAO1,Prodonet
+pvdS,,PA4833,+,,18440972,PAO1,Prodonet
+pvdS,,PA5130,+,,18440972,PAO1,Prodonet
+pvdS,,PA5150,+,,18440972,PAO1,Prodonet
+pvdS,,PA5190,?,,18440972,PAO1,Prodonet
+pvdS,,pvcC,+,,18440972,PAO1,Prodonet
+pvdS,,pvcD,+,,18440972,PAO1,Prodonet
+pvdS,,pvdC,+,,18440972,PAO1,Prodonet
+pvdS,,pvdD,+,,18440972,PAO1,Prodonet
+pvdS,,pvdE,+,,18440972,PAO1,Prodonet
+pvdS,,pvdF,+,,18440972,PAO1,Prodonet
+pvdS,,pvdG,+,,18440972,PAO1,Prodonet
+pvdS,,pvdH,+,,18440972,PAO1,Prodonet
+pvdS,,pvdJ,+,,18440972,PAO1,Prodonet
+pvdS,,pvdL,+,,18440972,PAO1,Prodonet
+pvdS,,pvdN,+,,18440972,PAO1,Prodonet
+pvdS,,pys2,?,,18440972,PAO1,Prodonet
+pvdS,,toxR,+,,18440972,PAO1,Prodonet
+rhlR,,acpP2,+,,18440972,PAO1,Prodonet
+rhlR,,lecA,+,,18440972,PAO1,Prodonet
+rhlR,,migA,+,,18440972,PAO1,Prodonet
+rhlR,,phzA1,+,,18440972,PAO1,Prodonet
+rhlR,,phzB1,+,,18440972,PAO1,Prodonet
+rhlR,,phzC1,+,,18440972,PAO1,Prodonet
+rhlR,,phzD1,+,,18440972,PAO1,Prodonet
+rhlR,,phzE1,+,,18440972,PAO1,Prodonet
+rhlR,,phzF2,+,,18440972,PAO1,Prodonet
+rhlR,,phzG,+,,18440972,PAO1,Prodonet
+rhlR,,rhlG,?,,18440972,PAO1,Prodonet
+rpoN,,alg44,+,,18440972,PAO1,Prodonet
+rpoN,,alg8,+,,18440972,PAO1,Prodonet
+rpoN,,algA,+,,18440972,PAO1,Prodonet
+rpoN,,algE,+,,18440972,PAO1,Prodonet
+rpoN,,algF,+,,18440972,PAO1,Prodonet
+rpoN,,algG,+,,18440972,PAO1,Prodonet
+rpoN,,algI,+,,18440972,PAO1,Prodonet
+rpoN,,algJ,+,,18440972,PAO1,Prodonet
+rpoN,,algK,+,,18440972,PAO1,Prodonet
+rpoN,,algL,+,,18440972,PAO1,Prodonet
+rpoN,,algX,+,,18440972,PAO1,Prodonet
+rpoN,,PA1442,+,,18440972,PAO1,Prodonet
+rpoN,,resR,+,,18440972,PAO1,Prodonet
+rpoN,,resS,+,,18440972,PAO1,Prodonet
+rpoS,,bphO,+,,18440972,PAO1,Prodonet
+rpoS,,bphP,+,,18440972,PAO1,Prodonet
+trpI,,trpA,+,,18440972,PAO1,Prodonet
+trpI,,trpB,+,,18440972,PAO1,Prodonet
+vfr,,ptxR,+,,18440972,PAO1,Prodonet
+agmR,,exaA,+,,18974177,PAO1,Prodoric
+agmR,,exaB,+,,18974177,PAO1,Prodoric
+agmR,,exaC,+,,18974177,PAO1,Prodoric
+agmR,,exaD,+,,18974177,PAO1,Prodoric
+agmR,,exaE,+,,18974177,PAO1,Prodoric
+agmR,,pqqA,+,,18974177,PAO1,Prodoric
+agmR,,pqqB,+,,18974177,PAO1,Prodoric
+agmR,,pqqC,+,,18974177,PAO1,Prodoric
+agmR,,pqqD,+,,18974177,PAO1,Prodoric
+agmR,,pqqE,+,,18974177,PAO1,Prodoric
+aguR,,aguA,-,,18974177,PAO1,Prodoric
+aguR,,aguB,-,,18974177,PAO1,Prodoric
+algQ,,rpoD,+,,18974177,PAO1,Prodoric
+algR,,algD,+,,18974177,PAO1,Prodoric
+algR,,algR,+,,18974177,PAO1,Prodoric
+algR,,algZ,-,,18974177,PAO1,Prodoric
+ppyR,,lasB,-,,18974177,PAO1,Prodoric
+algR3,,rhlR,-,,18974177,PAO1,Prodoric
+algR4,,lasR,-,,18974177,PAO1,Prodoric
+algU,,algB,+,,18974177,PAO1,Prodoric
+algU,,algD,+,,18974177,PAO1,Prodoric
+algU,,algR,+,,18974177,PAO1,Prodoric
+algU,,algU,+,,18974177,PAO1,Prodoric
+algU,,algZ,+,,18974177,PAO1,Prodoric
+algU,,asmA6,+,,18974177,PAO1,Prodoric
+algU,,asmB2,+,,18974177,PAO1,Prodoric
+algU,,asmC1,+,,18974177,PAO1,Prodoric
+algU,,asmD2,+,,18974177,PAO1,Prodoric
+algU,,asmD3,+,,18974177,PAO1,Prodoric
+algU,,fleQ,-,,18974177,PAO1,Prodoric
+algU,,lptA,+,,18974177,PAO1,Prodoric
+algU,,lptB,+,,18974177,PAO1,Prodoric
+algU,,mucA,+,,18974177,PAO1,Prodoric
+algU,,mucB,+,,18974177,PAO1,Prodoric
+algU,,oprF,+,,18974177,PAO1,Prodoric
+algU,,osmC,+,,18974177,PAO1,Prodoric
+algU,,rpoH,+,,18974177,PAO1,Prodoric
+algU,,slyB,+,,18974177,PAO1,Prodoric
+algW,,algD,+,,18974177,PAO1,Prodoric
+algW,,algU,+,,18974177,PAO1,Prodoric
+algZ,,algZ,-,,18974177,PAO1,Prodoric
+algZ,,fleQ,-,,18974177,PAO1,Prodoric
+ampR,,ampC,+,,18974177,PAO1,Prodoric
+ampR,,lasA,-,,18974177,PAO1,Prodoric
+ampR,,lasB,+,,18974177,PAO1,Prodoric
+ampR,,lasI,-,,18974177,PAO1,Prodoric
+ampR,,lasR,-,,18974177,PAO1,Prodoric
+ampR,,poxB,-,,18974177,PAO1,Prodoric
+ampR,,rhlR,+,,18974177,PAO1,Prodoric
+anr,,anr,+,,18974177,PAO1,Prodoric
+anr,,arcA,+,,18974177,PAO1,Prodoric
+anr,,arcB,+,,18974177,PAO1,Prodoric
+anr,,arcC,+,,18974177,PAO1,Prodoric
+anr,,arcD,+,,18974177,PAO1,Prodoric
+anr,,azu,+,,18974177,PAO1,Prodoric
+anr,,hcnA,+,,18974177,PAO1,Prodoric
+anr,,hcnB,+,,18974177,PAO1,Prodoric
+anr,,hcnC,+,,18974177,PAO1,Prodoric
+anr,,hemA,+,,18974177,PAO1,Prodoric
+anr,,hemF,+,,18974177,PAO1,Prodoric
+anr,,hemN,+,,18974177,PAO1,Prodoric
+anr,,narG,+,,18974177,PAO1,Prodoric
+anr,,narH,+,,18974177,PAO1,Prodoric
+anr,,narI,+,,18974177,PAO1,Prodoric
+anr,,narJ,+,,18974177,PAO1,Prodoric
+anr,,narK1,+,,18974177,PAO1,Prodoric
+anr,,narK2,+,,18974177,PAO1,Prodoric
+anr,,narL,+,,18974177,PAO1,Prodoric
+anr,,narX,+,,18974177,PAO1,Prodoric
+anr,,nirQ,+,,18974177,PAO1,Prodoric
+anr,,nirS,+,,18974177,PAO1,Prodoric
+anr,,norB,+,,18974177,PAO1,Prodoric
+anr,,norC,+,,18974177,PAO1,Prodoric
+anr,,oprE,+,,18974177,PAO1,Prodoric
+anr,,PA4352,+,,18974177,PAO1,Prodoric
+argR,,adcA,+,,18974177,PAO1,Prodoric
+argR,,adcB,+,,18974177,PAO1,Prodoric
+argR,,aotJ,+,,18974177,PAO1,Prodoric
+argR,,aotM,+,,18974177,PAO1,Prodoric
+argR,,aotP,+,,18974177,PAO1,Prodoric
+argR,,aotQ,+,,18974177,PAO1,Prodoric
+argR,,arcA,+,,18974177,PAO1,Prodoric
+argR,,arcB,+,,18974177,PAO1,Prodoric
+argR,,arcC,+,,18974177,PAO1,Prodoric
+argR,,arcD,+,,18974177,PAO1,Prodoric
+argR,,argF,-,,18974177,PAO1,Prodoric
+argR,,argG,-,,18974177,PAO1,Prodoric
+argR,,argR,+,,18974177,PAO1,Prodoric
+argR,,aruB,+,,18974177,PAO1,Prodoric
+argR,,aruC,+,,18974177,PAO1,Prodoric
+argR,,aruD,+,,18974177,PAO1,Prodoric
+argR,,aruE,+,,18974177,PAO1,Prodoric
+argR,,aruF,+,,18974177,PAO1,Prodoric
+argR,,aruG,+,,18974177,PAO1,Prodoric
+argR,,braZ,+,,18974177,PAO1,Prodoric
+argR,,carA,-,,18974177,PAO1,Prodoric
+argR,,carB,-,,18974177,PAO1,Prodoric
+argR,,gdhA,-,,18974177,PAO1,Prodoric
+argR,,gdhB,+,,18974177,PAO1,Prodoric
+argR,,gltB,-,,18974177,PAO1,Prodoric
+argR,,gltD,-,,18974177,PAO1,Prodoric
+argR,,PA0328,+,,18974177,PAO1,Prodoric
+argR,,PA0891,+,,18974177,PAO1,Prodoric
+argR,,PA0900,+,,18974177,PAO1,Prodoric
+argR,,PA2042,+,,18974177,PAO1,Prodoric
+argR,,PA3538,-,,18974177,PAO1,Prodoric
+argR,,PA3934,+,,18974177,PAO1,Prodoric
+argR,,PA4757,-,,18974177,PAO1,Prodoric
+argR,,PA5152,+,,18974177,PAO1,Prodoric
+argR,,PA5153,+,,18974177,PAO1,Prodoric
+argR,,PA5154,+,,18974177,PAO1,Prodoric
+argR,,PA5155,+,,18974177,PAO1,Prodoric
+cbrB,,aotJ,+,,18974177,PAO1,Prodoric
+cbrB,,aotM,+,,18974177,PAO1,Prodoric
+cbrB,,aotP,+,,18974177,PAO1,Prodoric
+cbrB,,aotQ,+,,18974177,PAO1,Prodoric
+cbrB,,cbrB,+,,18974177,PAO1,Prodoric
+cbrB,,spuA,+,,18974177,PAO1,Prodoric
+cbrB,,spuB,+,,18974177,PAO1,Prodoric
+cbrB,,spuC,+,,18974177,PAO1,Prodoric
+cbrB,,spuD,+,,18974177,PAO1,Prodoric
+cbrB,,spuE,+,,18974177,PAO1,Prodoric
+cbrB,,spuF,+,,18974177,PAO1,Prodoric
+cbrB,,spuG,+,,18974177,PAO1,Prodoric
+cbrB,,spuH,+,,18974177,PAO1,Prodoric
+cbrB,,spuI,+,,18974177,PAO1,Prodoric
+cysB,,algD,+,,18974177,PAO1,Prodoric
+cysB,,astA,+,,18974177,PAO1,Prodoric
+cysB,,astB,+,,18974177,PAO1,Prodoric
+cysB,,astR,+,,18974177,PAO1,Prodoric
+cysB,,atsC,+,,18974177,PAO1,Prodoric
+cysB,,cysB,-,,18974177,PAO1,Prodoric
+cysB,,msuC,+,,18974177,PAO1,Prodoric
+cysB,,msuD,+,,18974177,PAO1,Prodoric
+cysB,,msuE,+,,18974177,PAO1,Prodoric
+dnr,,anr,+,,18974177,PAO1,Prodoric
+dnr,,dnr,+,,18974177,PAO1,Prodoric
+dnr,,hemA,+,,18974177,PAO1,Prodoric
+dnr,,hemF,+,,18974177,PAO1,Prodoric
+dnr,,hemN,+,,18974177,PAO1,Prodoric
+dnr,,narG,+,,18974177,PAO1,Prodoric
+dnr,,narH,+,,18974177,PAO1,Prodoric
+dnr,,narI,+,,18974177,PAO1,Prodoric
+dnr,,narJ,+,,18974177,PAO1,Prodoric
+dnr,,nark1,+,,18974177,PAO1,Prodoric
+dnr,,nark2,+,,18974177,PAO1,Prodoric
+dnr,,narL,+,,18974177,PAO1,Prodoric
+dnr,,narX,+,,18974177,PAO1,Prodoric
+dnr,,nirQ,+,,18974177,PAO1,Prodoric
+dnr,,nirS,+,,18974177,PAO1,Prodoric
+dnr,,norB,+,,18974177,PAO1,Prodoric
+dnr,,norC,+,,18974177,PAO1,Prodoric
+dnr,,nosD,+,,18974177,PAO1,Prodoric
+dnr,,nosF,+,,18974177,PAO1,Prodoric
+dnr,,nosL,+,,18974177,PAO1,Prodoric
+dnr,,nosR,+,,18974177,PAO1,Prodoric
+dnr,,nosY,+,,18974177,PAO1,Prodoric
+dnr,,nosZ,+,,18974177,PAO1,Prodoric
+exsA,,exoS,+,,18974177,PAO1,Prodoric
+exsA,,exsA,+,,18974177,PAO1,Prodoric
+exsA,,exsB,+,,18974177,PAO1,Prodoric
+exsA,,exsC,+,,18974177,PAO1,Prodoric
+exsA,,exsE,+,,18974177,PAO1,Prodoric
+exsD,,exsA,-,,18974177,PAO1,Prodoric
+fleQ,,fleR,+,,18974177,PAO1,Prodoric
+fleQ,,fleS,+,,18974177,PAO1,Prodoric
+fleQ,,flhA,+,,18974177,PAO1,Prodoric
+fleQ,,flhB,+,,18974177,PAO1,Prodoric
+fleQ,,fliD,+,,18974177,PAO1,Prodoric
+fleQ,,fliE,+,,18974177,PAO1,Prodoric
+fleQ,,fliF,+,,18974177,PAO1,Prodoric
+fleQ,,fliG,+,,18974177,PAO1,Prodoric
+fleQ,,fliH,+,,18974177,PAO1,Prodoric
+fleQ,,fliI,+,,18974177,PAO1,Prodoric
+fleQ,,fliJ,+,,18974177,PAO1,Prodoric
+fleQ,,fliL,+,,18974177,PAO1,Prodoric
+fleQ,,fliM,+,,18974177,PAO1,Prodoric
+fleQ,,fliN,+,,18974177,PAO1,Prodoric
+fleQ,,fliO,+,,18974177,PAO1,Prodoric
+fleQ,,fliP,+,,18974177,PAO1,Prodoric
+fleQ,,fliQ,+,,18974177,PAO1,Prodoric
+fleQ,,fliR,+,,18974177,PAO1,Prodoric
+fleQ,,fliS,+,,18974177,PAO1,Prodoric
+fleQ,,fur,-,,18974177,PAO1,Prodoric
+flgM,,fliA,-,,18974177,PAO1,Prodoric
+flgM,,fliC,-,,18974177,PAO1,Prodoric
+fliA,,flgM,+,,18974177,PAO1,Prodoric
+fliA,,flgN,+,,18974177,PAO1,Prodoric
+fliA,,fliC,+,,18974177,PAO1,Prodoric
+fliA,,fliL,+,,18974177,PAO1,Prodoric
+fpvI,,fpvA,+,,18974177,PAO1,Prodoric
+fpvR,,fpvI,-,,18974177,PAO1,Prodoric
+fpvR,,pvdS,-,,18974177,PAO1,Prodoric
+fur,,fumC,-,,18974177,PAO1,Prodoric
+fur,,gbuR,-,,18974177,PAO1,Prodoric
+fur,,hasA,+,,18974177,PAO1,Prodoric
+fur,,hasR,+,,18974177,PAO1,Prodoric
+fur,,oprL,-,,18974177,PAO1,Prodoric
+fur,,orf1,-,,18974177,PAO1,Prodoric
+fur,,orf2,-,,18974177,PAO1,Prodoric
+fur,,pchA,-,,18974177,PAO1,Prodoric
+fur,,pchB,-,,18974177,PAO1,Prodoric
+fur,,pchC,-,,18974177,PAO1,Prodoric
+fur,,pchD,-,,18974177,PAO1,Prodoric
+fur,,pchE,-,,18974177,PAO1,Prodoric
+fur,,pchF,-,,18974177,PAO1,Prodoric
+fur,,pfeR,-,,18974177,PAO1,Prodoric
+fur,,phuR ,+,,18974177,PAO1,Prodoric
+fur,,phuS,+,,18974177,PAO1,Prodoric
+fur,,phuT,+,,18974177,PAO1,Prodoric
+fur,,phuU,+,,18974177,PAO1,Prodoric
+fur,,phuV,+,,18974177,PAO1,Prodoric
+fur,,phuW,+,,18974177,PAO1,Prodoric
+fur,,pvdS,-,,18974177,PAO1,Prodoric
+fur,,regA,-,,18974177,PAO1,Prodoric
+fur,,sodA,-,,18974177,PAO1,Prodoric
+fur,,tolA,-,,18974177,PAO1,Prodoric
+fur,,tolB,-,,18974177,PAO1,Prodoric
+fur,,tolQ,-,,18974177,PAO1,Prodoric
+fur,,tolR,-,,18974177,PAO1,Prodoric
+fur,,toxA,-,,18974177,PAO1,Prodoric
+gacA,,hcnA,+,,18974177,PAO1,Prodoric
+gacA,,hcnB,+,,18974177,PAO1,Prodoric
+gacA,,hcnC,+,,18974177,PAO1,Prodoric
+gacA,,lasR,+,,18974177,PAO1,Prodoric
+gbuR,,gbuA,d,,18974177,PAO1,Prodoric
+gbuR,,glpR,+,,18974177,PAO1,Prodoric
+glpR,,agmR,+,,18974177,PAO1,Prodoric
+glpR,,glpD,-,,18974177,PAO1,Prodoric
+glpR,,glpF,-,,18974177,PAO1,Prodoric
+glpR,,glpT,-,,18974177,PAO1,Prodoric
+glpR,,himA,-,,18974177,PAO1,Prodoric
+gpuR,,gpuA,+,,18974177,PAO1,Prodoric
+gpuR,,gpuP,+,,18974177,PAO1,Prodoric
+gpuR,,gpuR,+,,18974177,PAO1,Prodoric
+hu,,ptxS,+,,18974177,PAO1,Prodoric
+ihf,,algB,+,,18974177,PAO1,Prodoric
+ihf,,algD,+,,18974177,PAO1,Prodoric
+ihf,,fumC,+,,18974177,PAO1,Prodoric
+ihf,,hemA,+,,18974177,PAO1,Prodoric
+ihf,,lasR,+,,18974177,PAO1,Prodoric
+ihf,,narG,+,,18974177,PAO1,Prodoric
+ihf,,narH,+,,18974177,PAO1,Prodoric
+ihf,,narI,+,,18974177,PAO1,Prodoric
+ihf,,narJ,+,,18974177,PAO1,Prodoric
+ihf,,nark1,+,,18974177,PAO1,Prodoric
+ihf,,nark2,+,,18974177,PAO1,Prodoric
+lasR,,acpP,+,,18974177,PAO1,Prodoric
+lasR,,hcnA,+,,18974177,PAO1,Prodoric
+lasR,,hcnB,+,,18974177,PAO1,Prodoric
+lasR,,hcnC,+,,18974177,PAO1,Prodoric
+lasR,,lasI,+,,18974177,PAO1,Prodoric
+lasR,,mexR,+,,18974177,PAO1,Prodoric
+lasR,,mvfR,+,,18974177,PAO1,Prodoric
+lasR,,phzC2,+,,18974177,PAO1,Prodoric
+lasR,,pqsH,+,,18974177,PAO1,Prodoric
+lasR,,qsc102,+,,18974177,PAO1,Prodoric
+lasR,,rhlR,+,,18974177,PAO1,Prodoric
+lasR,,rsaL,+,,18974177,PAO1,Prodoric
+mexR,,mexA,-,,18974177,PAO1,Prodoric
+mexR,,mexB,-,,18974177,PAO1,Prodoric
+mexR,,mexT,-,,18974177,PAO1,Prodoric
+mexR,,nalC,-,,18974177,PAO1,Prodoric
+mexR,,oprM,-,,18974177,PAO1,Prodoric
+mexT,,mexE,+,,18974177,PAO1,Prodoric
+mexT,,mexF,+,,18974177,PAO1,Prodoric
+mexT,,mexT,+,,18974177,PAO1,Prodoric
+mexT,,oprD,-,,18974177,PAO1,Prodoric
+mexT,,oprN,+,,18974177,PAO1,Prodoric
+mexT,,qrh,+,,18974177,PAO1,Prodoric
+mexT,,rhlI,+,,18974177,PAO1,Prodoric
+mucA,,algU,-,,18974177,PAO1,Prodoric
+mucB,,algU,-,,18974177,PAO1,Prodoric
+mucC,,algU,-,,18974177,PAO1,Prodoric
+mucD,,algU,-,,18974177,PAO1,Prodoric
+mvfR,,mvfR,-,,18974177,PAO1,Prodoric
+mvfR,,phnA,+,,18974177,PAO1,Prodoric
+mvfR,,phnB,+,,18974177,PAO1,Prodoric
+mvfR,,pqsA,+,,18974177,PAO1,Prodoric
+mvfR,,pqsB,+,,18974177,PAO1,Prodoric
+mvfR,,pqsC,+,,18974177,PAO1,Prodoric
+mvfR,,pqsD,+,,18974177,PAO1,Prodoric
+mvfR,,pqsE,+,,18974177,PAO1,Prodoric
+mvfR,,rhlI,+,,18974177,PAO1,Prodoric
+mvtA,,ptxS,+,,18974177,PAO1,Prodoric
+nalC,,mexA,-,,18974177,PAO1,Prodoric
+nalC,,mexB,-,,18974177,PAO1,Prodoric
+nalC,,oprM,-,,18974177,PAO1,Prodoric
+narL,,hemA,d,,18974177,PAO1,Prodoric
+narL,,narG,+,,18974177,PAO1,Prodoric
+narL,,narH,+,,18974177,PAO1,Prodoric
+narL,,narI,+,,18974177,PAO1,Prodoric
+narL,,narJ,+,,18974177,PAO1,Prodoric
+narL,,nark1,+,,18974177,PAO1,Prodoric
+narL,,nark2,+,,18974177,PAO1,Prodoric
+narL,,nirQ,+,,18974177,PAO1,Prodoric
+nfxB,,nfxB,-,,18974177,PAO1,Prodoric
+pchR,,fptA,+,,18974177,PAO1,Prodoric
+pchR,,pchA,+,,18974177,PAO1,Prodoric
+pchR,,pchB,+,,18974177,PAO1,Prodoric
+pchR,,pchC,+,,18974177,PAO1,Prodoric
+pchR,,pchD,+,,18974177,PAO1,Prodoric
+pchR,,pchE,+,,18974177,PAO1,Prodoric
+pchR,,pchF,+,,18974177,PAO1,Prodoric
+pchR,,pchR,-,,18974177,PAO1,Prodoric
+pfeR,,pfeA,+,,18974177,PAO1,Prodoric
+phhR,,phhA,+,,18974177,PAO1,Prodoric
+phhR,,phhB,+,,18974177,PAO1,Prodoric
+phhR,,phhC,+,,18974177,PAO1,Prodoric
+phhR,,phhR,-,,18974177,PAO1,Prodoric
+phoP,,tpbA,+,,18974177,PAO1,Prodoric
+pilR,,pilA,+,,18974177,PAO1,Prodoric
+pilR,,pilR,+,,18974177,PAO1,Prodoric
+pilR,,pilS,+,,18974177,PAO1,Prodoric
+pprB,,rpoS,+,,18974177,PAO1,Prodoric
+pprB,,vqsR,+,,18974177,PAO1,Prodoric
+psdR,,dppA,-,,18974177,PAO1,Prodoric
+psrA,,etfB,-,,18974177,PAO1,Prodoric
+psrA,,exoS,+,,18974177,PAO1,Prodoric
+psrA,,exsA,+,,18974177,PAO1,Prodoric
+psrA,,exsB,+,,18974177,PAO1,Prodoric
+psrA,,exsC,+,,18974177,PAO1,Prodoric
+psrA,,exsE,+,,18974177,PAO1,Prodoric
+psrA,,fadB,+,,18974177,PAO1,Prodoric
+psrA,,mmsR,+,,18974177,PAO1,Prodoric
+psrA,,PA0506,-,,18974177,PAO1,Prodoric
+psrA,,PA2953,-,,18974177,PAO1,Prodoric
+psrA,,psrA,-,,18974177,PAO1,Prodoric
+psrA,,rpoS,+,,18974177,PAO1,Prodoric
+ptxR,,ptxS,+,,18974177,PAO1,Prodoric
+ptxR,,pvcA,+,,18974177,PAO1,Prodoric
+ptxR,,pvcB,+,,18974177,PAO1,Prodoric
+ptxR,,pve,+,,18974177,PAO1,Prodoric
+ptxR,,rhlI,-,,18974177,PAO1,Prodoric
+ptxR,,toxA,+,,18974177,PAO1,Prodoric
+ptxS,,kguE,+,,18974177,PAO1,Prodoric
+ptxS,,ptxR,-,,18974177,PAO1,Prodoric
+ptxS,,ptxS,-,,18974177,PAO1,Prodoric
+pvdS,,prpL,+,,18974177,PAO1,Prodoric
+pvdS,,ptxR,+,,18974177,PAO1,Prodoric
+pvdS,,pvcA,+,,18974177,PAO1,Prodoric
+pvdS,,pvcB,+,,18974177,PAO1,Prodoric
+pvdS,,pvdA,+,,18974177,PAO1,Prodoric
+pvdS,,regA,+,,18974177,PAO1,Prodoric
+pvdS,,regB,+,,18974177,PAO1,Prodoric
+pvdS,,toxA,+,,18974177,PAO1,Prodoric
+qscR,,rsaL,-,,18974177,PAO1,Prodoric
+rhlR,,acpP,+,,18974177,PAO1,Prodoric
+rhlR,,exoS,-,,18974177,PAO1,Prodoric
+rhlR,,hcnA,+,,18974177,PAO1,Prodoric
+rhlR,,hcnB,+,,18974177,PAO1,Prodoric
+rhlR,,hcnC,+,,18974177,PAO1,Prodoric
+rhlR,,mvfR,-,,18974177,PAO1,Prodoric
+rhlR,,phzC2,+,,18974177,PAO1,Prodoric
+rhlR,,pqsA,-,,18974177,PAO1,Prodoric
+rhlR,,pqsB,-,,18974177,PAO1,Prodoric
+rhlR,,pqsC,-,,18974177,PAO1,Prodoric
+rhlR,,pqsD,-,,18974177,PAO1,Prodoric
+rhlR,,pqsE,-,,18974177,PAO1,Prodoric
+rhlR,,rhlA,+,,18974177,PAO1,Prodoric
+rhlR,,rhlB,-,,18974177,PAO1,Prodoric
+rhlR,,rhlI,+,,18974177,PAO1,Prodoric
+rhlR,,rhlR,-,,18974177,PAO1,Prodoric
+rhlR,,rpoS,-,,18974177,PAO1,Prodoric
+roxR,,roxR,+,,18974177,PAO1,Prodoric
+rpoD,,aotJ,+,,18974177,PAO1,Prodoric
+rpoD,,fleQ,+,,18974177,PAO1,Prodoric
+rpoD,,ptxR,+,,18974177,PAO1,Prodoric
+rpoN,,algB,?,,18974177,PAO1,Prodoric
+rpoN,,algD,d,,18974177,PAO1,Prodoric
+rpoN,,fhp,+,,18974177,PAO1,Prodoric
+rpoN,,fhpR,+,,18974177,PAO1,Prodoric
+rpoN,,figA,+,,18974177,PAO1,Prodoric
+rpoN,,fleN,+,,18974177,PAO1,Prodoric
+rpoN,,fleR,+,,18974177,PAO1,Prodoric
+rpoN,,fleS,+,,18974177,PAO1,Prodoric
+rpoN,,flgB,+,,18974177,PAO1,Prodoric
+rpoN,,flgC,+,,18974177,PAO1,Prodoric
+rpoN,,flgD,+,,18974177,PAO1,Prodoric
+rpoN,,flgE,+,,18974177,PAO1,Prodoric
+rpoN,,flgF,+,,18974177,PAO1,Prodoric
+rpoN,,flgG,+,,18974177,PAO1,Prodoric
+rpoN,,flgH,+,,18974177,PAO1,Prodoric
+rpoN,,flgI,+,,18974177,PAO1,Prodoric
+rpoN,,flgJ,+,,18974177,PAO1,Prodoric
+rpoN,,flgK,+,,18974177,PAO1,Prodoric
+rpoN,,flgL,+,,18974177,PAO1,Prodoric
+rpoN,,flhA,+,,18974177,PAO1,Prodoric
+rpoN,,flhB,+,,18974177,PAO1,Prodoric
+rpoN,,flhF,+,,18974177,PAO1,Prodoric
+rpoN,,fliD,+,,18974177,PAO1,Prodoric
+rpoN,,fliE,+,,18974177,PAO1,Prodoric
+rpoN,,fliF,+,,18974177,PAO1,Prodoric
+rpoN,,fliG,+,,18974177,PAO1,Prodoric
+rpoN,,fliH,+,,18974177,PAO1,Prodoric
+rpoN,,fliI,+,,18974177,PAO1,Prodoric
+rpoN,,fliJ,+,,18974177,PAO1,Prodoric
+rpoN,,fliK,+,,18974177,PAO1,Prodoric
+rpoN,,fliL,+,,18974177,PAO1,Prodoric
+rpoN,,fliM,+,,18974177,PAO1,Prodoric
+rpoN,,fliN,+,,18974177,PAO1,Prodoric
+rpoN,,fliO,+,,18974177,PAO1,Prodoric
+rpoN,,fliP,+,,18974177,PAO1,Prodoric
+rpoN,,fliQ,+,,18974177,PAO1,Prodoric
+rpoN,,fliR,+,,18974177,PAO1,Prodoric
+rpoN,,fliS,+,,18974177,PAO1,Prodoric
+rpoN,,oprE,+,,18974177,PAO1,Prodoric
+rpoN,,orfB,+,,18974177,PAO1,Prodoric
+rpoN,,orfC,+,,18974177,PAO1,Prodoric
+rpoN,,orfD,+,,18974177,PAO1,Prodoric
+rpoN,,orfE,+,,18974177,PAO1,Prodoric
+rpoN,,orfF,+,,18974177,PAO1,Prodoric
+rpoN,,orfG,+,,18974177,PAO1,Prodoric
+rpoN,,orfH,+,,18974177,PAO1,Prodoric
+rpoN,,orfI,+,,18974177,PAO1,Prodoric
+rpoN,,orfJ,+,,18974177,PAO1,Prodoric
+rpoN,,orfK,+,,18974177,PAO1,Prodoric
+rpoN,,orfL,+,,18974177,PAO1,Prodoric
+rpoN,,orfM,+,,18974177,PAO1,Prodoric
+rpoN,,orfN,+,,18974177,PAO1,Prodoric
+rpoN,,phaG,+,,18974177,PAO1,Prodoric
+rpoN,,pilA,+,,18974177,PAO1,Prodoric
+rpoN,,proC,+,,18974177,PAO1,Prodoric
+rpoN,,rhlI,-,,18974177,PAO1,Prodoric
+rpoN,,rhlR,+,,18974177,PAO1,Prodoric
+rpoN,,sadB,-,,18974177,PAO1,Prodoric
+rpoN,,vioA,+,,18974177,PAO1,Prodoric
+rpoS,,azu,+,,18974177,PAO1,Prodoric
+rpoS,,exsA,+,,18974177,PAO1,Prodoric
+rpoS,,exsB,+,,18974177,PAO1,Prodoric
+rpoS,,exsC,+,,18974177,PAO1,Prodoric
+rpoS,,exsE,+,,18974177,PAO1,Prodoric
+rpoS,,rhlI,-,,18974177,PAO1,Prodoric
+rsaL,,lasI,-,,18974177,PAO1,Prodoric
+toxR,,oprL,+,,18974177,PAO1,Prodoric
+toxR,,orf1,+,,18974177,PAO1,Prodoric
+toxR,,orf2,+,,18974177,PAO1,Prodoric
+toxR,,tolA,+,,18974177,PAO1,Prodoric
+toxR,,tolB,+,,18974177,PAO1,Prodoric
+toxR,,tolQ,+,,18974177,PAO1,Prodoric
+toxR,,tolR,+,,18974177,PAO1,Prodoric
+toxR,,toxA,-,,18974177,PAO1,Prodoric
+tpbA,,cupC,+,,18974177,PAO1,Prodoric
+trpI,,trpI,-,,18974177,PAO1,Prodoric
+vfr,,fleQ,-,,18974177,PAO1,Prodoric
+vfr,,lasR,+,,18974177,PAO1,Prodoric
+vfr,,regA,+,,18974177,PAO1,Prodoric
+vfr,,rhlR,+,,18974177,PAO1,Prodoric
+vfr,,toxA,+,,18974177,PAO1,Prodoric
+vfr,,vfr,+,,18974177,PAO1,Prodoric
+vqsM,,pprB,+,,18974177,PAO1,Prodoric
+vqsM,,rpoS,+,,18974177,PAO1,Prodoric
+vqsM,,vqsR,+,,18974177,PAO1,Prodoric
+vqsR,,pprB,-,,18974177,PAO1,Prodoric

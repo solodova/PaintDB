@@ -1,0 +1,191 @@
+"short_name","full_name","type","participant_number","idinteraction","participant_gene","locus_tag","name","experimental_type","pmid"
+"amiC :: amiR","AmiC  directly interacts with  AmiR","direct interaction",0,3678,6835,"PA3364","amiC","x-ray crystallography",10508151
+"amiC :: amiR","AmiC  directly interacts with  AmiR","direct interaction",1,3678,6833,"PA3363","amiR","x-ray crystallography",10508151
+"ftsZ :: PA3008","FtsZ  directly interacts with  PA3008","direct interaction",0,9048,8949,"PA4407","ftsZ","x-ray crystallography",12808143
+"ftsZ :: PA3008","FtsZ  directly interacts with  PA3008","direct interaction",1,9048,6097,"PA3008","","x-ray crystallography",12808143
+"qscR :: qscR","Physical interaction involving QscR and QscR","physical interaction",0,16993,3855,"PA1898","qscR","fluorescent resonance energy transfer",12657055
+"qscR :: qscR","Physical interaction involving QscR and QscR","physical interaction",1,16993,3855,"PA1898","qscR","fluorescent resonance energy transfer",12657055
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",0,16994,3465,"PA1709","popD","circular dichroism",14517235
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",1,16994,3461,"PA1707","pcrH","circular dichroism",14517235
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",0,16995,3465,"PA1709","popD","mass spectrometry studies of complexes",14517235
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",1,16995,3461,"PA1707","pcrH","mass spectrometry studies of complexes",14517235
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",0,16996,3465,"PA1709","popD","molecular sieving",14517235
+"popD :: pcrH","Physical interaction involving PopD and PcrH","physical interaction",1,16996,3461,"PA1707","pcrH","molecular sieving",14517235
+"mexF :: mexE","Physical interaction involving MexF and MexE","physical interaction",0,16997,5045,"PA2494","mexF","genetic interference",12410825
+"mexF :: mexE","Physical interaction involving MexF and MexE","physical interaction",1,16997,5043,"PA2493","mexE","genetic interference",12410825
+"mexF :: mexE","Physical interaction involving MexF and MexE","physical interaction",0,16998,5045,"PA2494","mexF","enzymatic study",12410825
+"mexF :: mexE","Physical interaction involving MexF and MexE","physical interaction",1,16998,5043,"PA2493","mexE","enzymatic study",12410825
+"qscR :: rhlR","Physical interaction involving QscR and RhlR","physical interaction",0,16999,3855,"PA1898","qscR","fluorescent resonance energy transfer",12657055
+"qscR :: rhlR","Physical interaction involving QscR and RhlR","physical interaction",1,16999,7063,"PA3477","rhlR","fluorescent resonance energy transfer",12657055
+"mexA :: mexB","Physical interaction involving MexA and MexB","physical interaction",0,17000,853,"PA0425","mexA","cross-linking study",15126457
+"mexA :: mexB","Physical interaction involving MexA and MexB","physical interaction",1,17000,855,"PA0426","mexB","cross-linking study",15126457
+"mexA :: mexB","Physical interaction involving MexA and MexB","physical interaction",0,17001,853,"PA0425","mexA","genetic interference",16189126
+"mexA :: mexB","Physical interaction involving MexA and MexB","physical interaction",1,17001,855,"PA0426","mexB","genetic interference",16189126
+"nrdA :: nrdB","Physical interaction involving NrdA and NrdB","physical interaction",0,17002,2355,"PA1156","nrdA","molecular sieving",16829681
+"nrdA :: nrdB","Physical interaction involving NrdA and NrdB","physical interaction",1,17002,2353,"PA1155","nrdB","molecular sieving",16829681
+"amiR :: amiC","Physical interaction involving AmiR and AmiC","physical interaction",0,17003,6833,"PA3363","amiR","molecular sieving",10893220
+"amiR :: amiC","Physical interaction involving AmiR and AmiC","physical interaction",1,17003,6835,"PA3364","amiC","molecular sieving",10893220
+"amiR :: amiC","Physical interaction involving AmiR and AmiC","physical interaction",0,17004,6833,"PA3363","amiR","molecular sieving",8253087
+"amiR :: amiC","Physical interaction involving AmiR and AmiC","physical interaction",1,17004,6835,"PA3364","amiC","molecular sieving",8253087
+"mucA :: algU","Physical interaction involving MucA and AlgU","physical interaction",0,17005,1547,"PA0763","mucA","two hybrid",10792719
+"mucA :: algU","Physical interaction involving MucA and AlgU","physical interaction",1,17005,1545,"PA0762","algU","two hybrid",10792719
+"mucA :: algU","Physical interaction involving MucA and AlgU","physical interaction",0,17006,1547,"PA0763","mucA","cosedimentation",8759865
+"mucA :: algU","Physical interaction involving MucA and AlgU","physical interaction",1,17006,1545,"PA0762","algU","cosedimentation",8759865
+"popD :: popB","Physical interaction involving PopD and PopB","physical interaction",0,17007,3465,"PA1709","popD","coimmunoprecipitation",15271936
+"popD :: popB","Physical interaction involving PopD and PopB","physical interaction",1,17007,3463,"PA1708","popB","coimmunoprecipitation",15271936
+"popD :: popB","Physical interaction involving PopD and PopB","physical interaction",0,17008,3465,"PA1709","popD","genetic interference",15271936
+"popD :: popB","Physical interaction involving PopD and PopB","physical interaction",1,17008,3463,"PA1708","popB","genetic interference",15271936
+"xcpY :: xcpZ","Physical interaction involving XcpY and XcpZ","physical interaction",0,17009,6281,"PA3096","xcpY","copurification",16168578
+"xcpY :: xcpZ","Physical interaction involving XcpY and XcpZ","physical interaction",1,17009,6279,"PA3095","xcpZ","copurification",16168578
+"xcpY :: xcpZ","Physical interaction involving XcpY and XcpZ","physical interaction",0,17010,6281,"PA3096","xcpY","genetic interference",9884230
+"xcpY :: xcpZ","Physical interaction involving XcpY and XcpZ","physical interaction",1,17010,6279,"PA3095","xcpZ","genetic interference",9884230
+"plcR :: plcH","Physical interaction involving PlcR and PlcH","physical interaction",0,17011,1713,"PA0843","plcR","affinity chromatography technology",12410824
+"plcR :: plcH","Physical interaction involving PlcR and PlcH","physical interaction",1,17011,1715,"PA0844","plcH","affinity chromatography technology",12410824
+"plcR :: plcH","Physical interaction involving PlcR and PlcH","physical interaction",0,17012,1713,"PA0843","plcR","far western blotting",12410824
+"plcR :: plcH","Physical interaction involving PlcR and PlcH","physical interaction",1,17012,1715,"PA0844","plcH","far western blotting",12410824
+"ftsZ :: PA3008","Physical interaction involving FtsZ and PA3008","physical interaction",1,17013,6097,"PA3008","","x-ray crystallography",12808143
+"pcrH :: popB","Physical interaction involving PcrH and PopB","physical interaction",0,17014,3461,"PA1707","pcrH","circular dichroism",14517235
+"pcrH :: popB","Physical interaction involving PcrH and PopB","physical interaction",1,17014,3463,"PA1708","popB","circular dichroism",14517235
+"pcrH :: popB","Physical interaction involving PcrH and PopB","physical interaction",0,17015,3461,"PA1707","pcrH","molecular sieving",14517235
+"pcrH :: popB","Physical interaction involving PcrH and PopB","physical interaction",1,17015,3463,"PA1708","popB","molecular sieving",14517235
+"pcrV :: pcrG","Physical interaction involving PcrV and PcrG","physical interaction",0,17016,3459,"PA1706","pcrV","mass spectrometry studies of complexes",14565848
+"pcrV :: pcrG","Physical interaction involving PcrV and PcrG","physical interaction",1,17016,3457,"PA1705","pcrG","mass spectrometry studies of complexes",14565848
+"pcrV :: pcrG","Physical interaction involving PcrV and PcrG","physical interaction",0,17017,3459,"PA1706","pcrV","surface plasmon resonance",14565848
+"pcrV :: pcrG","Physical interaction involving PcrV and PcrG","physical interaction",1,17017,3457,"PA1705","pcrG","surface plasmon resonance",14565848
+"exsC :: exsE","Physical interaction involving ExsC and ExsE","physical interaction",0,17018,3467,"PA1710","exsC","affinity chromatography technology",15911752
+"exsC :: exsE","Physical interaction involving ExsC and ExsE","physical interaction",1,17018,3469,"PA1711","exsE","affinity chromatography technology",15911752
+"exsC :: exsE","Physical interaction involving ExsC and ExsE","physical interaction",0,17019,3467,"PA1710","exsC","two hybrid",15911752
+"exsC :: exsE","Physical interaction involving ExsC and ExsE","physical interaction",1,17019,3469,"PA1711","exsE","two hybrid",15911752
+"mucA :: mucB","Physical interaction involving MucA and MucB","physical interaction",0,17020,1547,"PA0763","mucA","two hybrid",10792719
+"mucA :: mucB","Physical interaction involving MucA and MucB","physical interaction",1,17020,1549,"PA0764","mucB","two hybrid",10792719
+"fleN :: fleQ","Physical interaction involving FleN and FleQ","physical interaction",0,17021,2953,"PA1454","fleN","two hybrid",11673434
+"fleN :: fleQ","Physical interaction involving FleN and FleQ","physical interaction",1,17021,2237,"PA1097","fleQ","two hybrid",11673434
+"exsD :: exsA","Physical interaction involving ExsD and ExsA","physical interaction",0,17022,3475,"PA1714","exsD","two hybrid",12421316
+"exsD :: exsA","Physical interaction involving ExsD and ExsA","physical interaction",1,17022,3473,"PA1713","exsA","two hybrid",12421316
+"exsD :: exsC","Physical interaction involving ExsD and ExsC","physical interaction",0,17023,3475,"PA1714","exsD","two hybrid",15225323
+"exsD :: exsC","Physical interaction involving ExsD and ExsC","physical interaction",1,17023,3467,"PA1710","exsC","two hybrid",15225323
+"ftsZ :: PA5227","Physical interaction involving FtsZ and PA5227","physical interaction",0,17024,8949,"PA4407","ftsZ","electron microscopy",15288790
+"ftsZ :: PA5227","Physical interaction involving FtsZ and PA5227","physical interaction",1,17024,10643,"PA5227","","electron microscopy",15288790
+"xcpP :: xcpQ","Physical interaction involving XcpP and XcpQ","physical interaction",0,17025,6297,"PA3104","xcpP","genetic interference",15936176
+"xcpP :: xcpQ","Physical interaction involving XcpP and XcpQ","physical interaction",1,17025,6299,"PA3105","xcpQ","genetic interference",15936176
+"xcpT :: xcpX","Physical interaction involving XcpT and XcpX","physical interaction",0,17026,6291,"PA3101","xcpT","cross-linking study",16012171
+"xcpT :: xcpX","Physical interaction involving XcpT and XcpX","physical interaction",1,17026,6283,"PA3097","xcpX","cross-linking study",16012171
+"xcpT :: pilA","Physical interaction involving XcpT and PilA","physical interaction",0,17027,6291,"PA3101","xcpT","cross-linking study",9282737
+"xcpT :: pilA","Physical interaction involving XcpT and PilA","physical interaction",1,17027,9191,"PA4525","pilA","cross-linking study",9282737
+"ftsZ :: PA3008","Physical interaction involving FtsZ and PA3008","physical interaction",1,17548,6097,"PA3008","","x-ray crystallography",12808143
+"bphO :: bphP","BphO  directly interacts with  BphP","direct interaction",0,17694,8345,"PA4116","bphO","molecular sieving",15310749
+"bphO :: bphP","BphO  directly interacts with  BphP","direct interaction",1,17694,8347,"PA4117","bphP","molecular sieving",15310749
+"bphO :: bphP","BphO  directly interacts with  BphP","direct interaction",0,17695,8345,"PA4116","bphO","classical fluorescence spectroscopy",15310749
+"bphO :: bphP","BphO  directly interacts with  BphP","direct interaction",1,17695,8347,"PA4117","bphP","classical fluorescence spectroscopy",15310749
+"pmpR :: mvfR","PmpR  directly interacts with  MvfR","direct interaction",0,17696,1965,"PA0964","pmpR","electrophoretic mobility shift assay",18641136
+"pmpR :: mvfR","PmpR  directly interacts with  MvfR","direct interaction",1,17696,2045,"PA1003","mvfR","electrophoretic mobility shift assay",18641136
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",0,17697,851,"PA0424","mexR","x-ray crystallography",18812515
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",1,17697,7549,"PA3719","","x-ray crystallography",18812515
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",0,17698,851,"PA0424","mexR","lex-a dimerization assay",17545281
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",1,17698,7549,"PA3719","","lex-a dimerization assay",17545281
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",0,17699,851,"PA0424","mexR","isothermal titration calorimetry",17545281
+"mexR :: PA3719","MexR  directly interacts with  PA3719","direct interaction",1,17699,7549,"PA3719","","isothermal titration calorimetry",17545281
+"amiC :: PA3719","AmiC  directly interacts with  PA3719","direct interaction",0,17700,6835,"PA3364","amiC","x-ray crystallography",10508151
+"amiC :: PA3719","AmiC  directly interacts with  PA3719","direct interaction",1,17700,7549,"PA3719","","x-ray crystallography",10508151
+"PA2387 :: PA2388","PA2387  directly interacts with  PA2388","direct interaction",0,17701,4833,"PA2387","","protein complementation assay",16077110
+"PA2387 :: PA2388","PA2387  directly interacts with  PA2388","direct interaction",1,17701,4835,"PA2388","","protein complementation assay",16077110
+"pvdS :: PA2388","PvdS  directly interacts with  PA2388","direct interaction",0,17702,4909,"PA2426","pvdS","protein complementation assay",16077110
+"pvdS :: PA2388","PvdS  directly interacts with  PA2388","direct interaction",1,17702,4835,"PA2388","","protein complementation assay",16077110
+"PA1607 :: PA1607","PA1607  directly interacts with  PA1607","direct interaction",0,17703,3261,"PA1607","","x-ray crystallography",17322537
+"PA1607 :: PA1607","PA1607  directly interacts with  PA1607","direct interaction",1,17703,3261,"PA1607","","x-ray crystallography",17322537
+"algQ :: rpoD","AlgQ  directly interacts with  RpoD","direct interaction",0,17704,10699,"PA5255","algQ","two hybrid",11591686
+"algQ :: rpoD","AlgQ  directly interacts with  RpoD","direct interaction",1,17704,1161,"PA0576","rpoD","two hybrid",11591686
+"PA4872 :: PA4872","PA4872  directly interacts with  PA4872","direct interaction",0,17705,9923,"PA4872","","x-ray crystallography",18081320
+"PA4872 :: PA4872","PA4872  directly interacts with  PA4872","direct interaction",1,17705,9923,"PA4872","","x-ray crystallography",18081320
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",0,17706,3467,"PA1710","exsC","molecular sieving",16980486
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",1,17706,3475,"PA1714","exsD","molecular sieving",16980486
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",0,17707,3467,"PA1710","exsC","lex-a dimerization assay",16980486
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",1,17707,3475,"PA1714","exsD","lex-a dimerization assay",16980486
+"pprA :: pprA","Interaction between PprA and PprA","phosphorylation reaction",0,17708,8721,"PA4293","pprA","protein kinase assay",12499175
+"pprA :: pprA","Interaction between PprA and PprA","phosphorylation reaction",1,17708,8721,"PA4293","pprA","protein kinase assay",12499175
+"pprA :: pprB","Interaction between PprA and PprB","phosphorylation reaction",0,17709,8721,"PA4293","pprA","protein kinase assay",12499175
+"pprA :: pprB","Interaction between PprA and PprB","phosphorylation reaction",1,17709,8727,"PA4296","pprB","protein kinase assay",12499175
+"exsD :: exsA","ExsD  directly interacts with  ExsA","direct interaction",0,17710,3475,"PA1714","exsD","lex-a dimerization assay",12421316
+"exsD :: exsA","ExsD  directly interacts with  ExsA","direct interaction",1,17710,3473,"PA1713","exsA","lex-a dimerization assay",12421316
+"exsE :: exsC","ExsE  directly interacts with  ExsC","direct interaction",0,17711,3469,"PA1711","exsE","lex-a dimerization assay",15985546
+"exsE :: exsC","ExsE  directly interacts with  ExsC","direct interaction",1,17711,3467,"PA1710","exsC","lex-a dimerization assay",15985546
+"exsC :: exsC","ExsC  directly interacts with  ExsC","direct interaction",0,17712,3467,"PA1710","exsC","molecular sieving",16980486
+"exsC :: exsC","ExsC  directly interacts with  ExsC","direct interaction",1,17712,3467,"PA1710","exsC","molecular sieving",16980486
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",0,17713,3467,"PA1710","exsC","isothermal titration calorimetry",16980486
+"exsC :: exsD","ExsC  directly interacts with  ExsD","direct interaction",1,17713,3475,"PA1714","exsD","isothermal titration calorimetry",16980486
+"exsD :: exsD","ExsD  directly interacts with  ExsD","direct interaction",0,17714,3475,"PA1714","exsD","molecular sieving",16980486
+"exsD :: exsD","ExsD  directly interacts with  ExsD","direct interaction",1,17714,3475,"PA1714","exsD","molecular sieving",16980486
+"retS :: gacS","RetS  directly interacts with  GacS","direct interaction",0,17715,9891,"PA4856","retS","isothermal titration calorimetry",19171785
+"retS :: gacS","RetS  directly interacts with  GacS","direct interaction",1,17715,1893,"PA0928","gacS","isothermal titration calorimetry",19171785
+"gacS :: gacA","Interaction between GacS and GacA","phosphotransfer reaction",0,17716,1893,"PA0928","gacS","phosphotransfer assay",19171785
+"gacS :: gacA","Interaction between GacS and GacA","phosphotransfer reaction",1,17716,5235,"PA2586","gacA","phosphotransfer assay",19171785
+"gacS :: gacS","Interaction between GacS and GacS","phosphorylation reaction",0,17717,1893,"PA0928","gacS","in-gel kinase assay",19171785
+"gacS :: gacS","Interaction between GacS and GacS","phosphorylation reaction",1,17717,1893,"PA0928","gacS","in-gel kinase assay",19171785
+"xcpX :: xcpT","XcpX  directly interacts with  XcpT","direct interaction",0,17718,6283,"PA3097","xcpX","cross-linking study",16012171
+"xcpX :: xcpT","XcpX  directly interacts with  XcpT","direct interaction",1,17718,6291,"PA3101","xcpT","cross-linking study",16012171
+"PA5484 :: algB","Interaction between PA5484 and AlgB","phosphotransfer reaction",0,17719,11167,"PA5484","","phosphotransfer assay",9218420
+"PA5484 :: algB","Interaction between PA5484 and AlgB","phosphotransfer reaction",1,17719,11165,"PA5483","algB","phosphotransfer assay",9218420
+"PA5484 :: PA5484","Interaction between PA5484 and PA5484","phosphorylation reaction",0,17720,11167,"PA5484","","in-gel kinase assay",9218420
+"PA5484 :: PA5484","Interaction between PA5484 and PA5484","phosphorylation reaction",1,17720,11167,"PA5484","","in-gel kinase assay",9218420
+"PA1611 :: PA3345","Interaction between PA1611 and PA3345","phosphotransfer reaction",0,17721,3269,"PA1611","","phosphotransfer assay",18256026
+"PA1611 :: PA3345","Interaction between PA1611 and PA3345","phosphotransfer reaction",1,17721,6797,"PA3345","","phosphotransfer assay",18256026
+"PA1976 :: PA3345","Interaction between PA1976 and PA3345","phosphotransfer reaction",0,17722,4011,"PA1976","","phosphotransfer assay",18256026
+"PA1976 :: PA3345","Interaction between PA1976 and PA3345","phosphotransfer reaction",1,17722,6797,"PA3345","","phosphotransfer assay",18256026
+"PA2824 :: PA3345","Interaction between PA2824 and PA3345","phosphotransfer reaction",0,17723,5723,"PA2824","","phosphotransfer assay",18256026
+"PA2824 :: PA3345","Interaction between PA2824 and PA3345","phosphotransfer reaction",1,17723,6797,"PA3345","","phosphotransfer assay",18256026
+"PA3345 :: retS","Interaction between PA3345 and RetS","phosphorylation reaction",0,17724,6797,"PA3345","","phosphotransfer assay",18256026
+"PA3345 :: retS","Interaction between PA3345 and RetS","phosphorylation reaction",1,17724,9891,"PA4856","retS","phosphotransfer assay",18256026
+"PA3345 :: PA3346","Interaction between PA3345 and PA3346","phosphotransfer reaction",0,17725,6797,"PA3345","","phosphotransfer assay",16182517
+"PA3345 :: PA3346","Interaction between PA3345 and PA3346","phosphotransfer reaction",1,17725,6799,"PA3346","","phosphotransfer assay",16182517
+"PA1611 :: PA3345","Interaction between PA1611 and PA3345","phosphotransfer reaction",0,17726,3269,"PA1611","","phosphotransfer assay",16182517
+"PA1611 :: PA3345","Interaction between PA1611 and PA3345","phosphotransfer reaction",1,17726,6797,"PA3345","","phosphotransfer assay",16182517
+"PA1611 :: PA1611","Interaction between PA1611 and PA1611","phosphorylation reaction",0,17727,3269,"PA1611","","in-gel kinase assay",16182517
+"PA1611 :: PA1611","Interaction between PA1611 and PA1611","phosphorylation reaction",1,17727,3269,"PA1611","","in-gel kinase assay",16182517
+"PA3346 :: PA3347","Dephosphorylation reaction involving PA3346 and PA3347","dephosphorylation reaction",0,17728,6799,"PA3346","","in gel phosphatase assay",18256026
+"PA3346 :: PA3347","Dephosphorylation reaction involving PA3346 and PA3347","dephosphorylation reaction",1,17728,6801,"PA3347","","in gel phosphatase assay",18256026
+" two-compo :: rocR"," two-compo  directly interacts with  RocR","direct interaction",0,17729,8005,"PA3946"," two-compo","protein complementation assay",15659157
+" two-compo :: rocR"," two-compo  directly interacts with  RocR","direct interaction",1,17729,8007,"PA3947","rocR","protein complementation assay",15659157
+" two-compo :: rocA1"," two-compo  directly interacts with  RocA1","direct interaction",0,17730,8005,"PA3946"," two-compo","protein complementation assay",15659157
+" two-compo :: rocA1"," two-compo  directly interacts with  RocA1","direct interaction",1,17730,8009,"PA3948","rocA1","protein complementation assay",15659157
+"betB :: betB","BetB  directly interacts with  BetB","direct interaction",0,17731,10945,"PA5373","betB","x-ray crystallography",19013472
+"betB :: betB","BetB  directly interacts with  BetB","direct interaction",1,17731,10945,"PA5373","betB","x-ray crystallography",19013472
+"PA0075 :: PA0081","Dephosphorylation reaction involving PA0075 and PA0081","dephosphorylation reaction",0,17732,149,"PA0075","","in gel phosphatase assay",17558395
+"PA0075 :: PA0081","Dephosphorylation reaction involving PA0075 and PA0081","dephosphorylation reaction",1,17732,161,"PA0081","","in gel phosphatase assay",17558395
+"ppkA :: PA0081","Interaction between PpkA and PA0081","phosphorylation reaction",0,17733,147,"PA0074","ppkA","in-gel kinase assay",17558395
+"ppkA :: PA0081","Interaction between PpkA and PA0081","phosphorylation reaction",1,17733,161,"PA0081","","in-gel kinase assay",17558395
+"xcpT :: pilA","XcpT  directly interacts with  PilA","direct interaction",0,17734,6291,"PA3101","xcpT","protein cross-linking with a bifunctional reagent",9282737
+"xcpT :: pilA","XcpT  directly interacts with  PilA","direct interaction",1,17734,9191,"PA4525","pilA","protein cross-linking with a bifunctional reagent",9282737
+"xcpT :: pilA","XcpT  directly interacts with  PilA","direct interaction",0,17735,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"xcpT :: pilA","XcpT  directly interacts with  PilA","direct interaction",1,17735,9191,"PA4525","pilA","affinity chromatography technology",9282737
+"xcpT :: xcpU","XcpT  directly interacts with  XcpU","direct interaction",0,17736,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"xcpT :: xcpU","XcpT  directly interacts with  XcpU","direct interaction",1,17736,6289,"PA3100","xcpU","affinity chromatography technology",9282737
+"xcpT :: xcpV","XcpT  directly interacts with  XcpV","direct interaction",0,17737,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"xcpT :: xcpV","XcpT  directly interacts with  XcpV","direct interaction",1,17737,6287,"PA3099","xcpV","affinity chromatography technology",9282737
+"xcpT :: xcpW","XcpT  directly interacts with  XcpW","direct interaction",0,17738,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"xcpT :: xcpW","XcpT  directly interacts with  XcpW","direct interaction",1,17738,6285,"PA3098","xcpW","affinity chromatography technology",9282737
+"xcpT :: xcpT","XcpT  directly interacts with  XcpT","direct interaction",0,17739,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"xcpT :: xcpT","XcpT  directly interacts with  XcpT","direct interaction",1,17739,6291,"PA3101","xcpT","affinity chromatography technology",9282737
+"PA3842  :: exoS","PA3842   directly interacts with  ExoS","direct interaction",0,17740,7797,"PA3842","","affinity chromatography technology",18548848
+"PA3842  :: exoS","PA3842   directly interacts with  ExoS","direct interaction",1,17740,7795,"PA3841","exoS","affinity chromatography technology",18548848
+"PA3842  :: exoT","PA3842   directly interacts with  ExoT","direct interaction",0,17741,7797,"PA3842","","affinity chromatography technology",18548848
+"PA3842  :: exoT","PA3842   directly interacts with  ExoT","direct interaction",1,17741,87,"PA0044","exoT","affinity chromatography technology",18548848
+"popN :: PA1699","PopN  directly interacts with  PA1699","direct interaction",0,17742,3443,"PA1698","popN","protein complementation assay",17237176
+"popN :: PA1699","PopN  directly interacts with  PA1699","direct interaction",1,17742,3445,"PA1699","","protein complementation assay",17237176
+"PA1701 :: PA1702","PA1701  directly interacts with  PA1702","direct interaction",0,17743,3449,"PA1701","","protein complementation assay",17237176
+"PA1701 :: PA1702","PA1701  directly interacts with  PA1702","direct interaction",1,17743,3451,"PA1702","","protein complementation assay",17237176
+"PA1699 :: PA1702","PA1699  directly interacts with  PA1702","direct interaction",0,17744,3445,"PA1699","","protein complementation assay",17237176
+"PA1699 :: PA1702","PA1699  directly interacts with  PA1702","direct interaction",1,17744,3451,"PA1702","","protein complementation assay",17237176
+"popN :: PA1699","PopN  directly interacts with  PA1699","direct interaction",0,17745,3443,"PA1698","popN","pull down",17237176
+"popN :: PA1699","PopN  directly interacts with  PA1699","direct interaction",1,17745,3445,"PA1699","","pull down",17237176
+"PA1701 :: PA1702","PA1701  directly interacts with  PA1702","direct interaction",0,17746,3449,"PA1701","","pull down",17237176
+"PA1701 :: PA1702","PA1701  directly interacts with  PA1702","direct interaction",1,17746,3451,"PA1702","","pull down",17237176
+"PA1699 :: PA1702","PA1699  directly interacts with  PA1702","direct interaction",0,17747,3445,"PA1699","","pull down",17237176
+"PA1699 :: PA1702","PA1699  directly interacts with  PA1702","direct interaction",1,17747,3451,"PA1702","","pull down",17237176
+"pcrH :: popB","PcrH  directly interacts with  PopB","direct interaction",0,17748,3461,"PA1707","pcrH","far western blotting",12654846
+"pcrH :: popB","PcrH  directly interacts with  PopB","direct interaction",1,17748,3463,"PA1708","popB","far western blotting",12654846
+"pcrH :: popD","PcrH  directly interacts with  PopD","direct interaction",0,17749,3461,"PA1707","pcrH","far western blotting",12654846
+"pcrH :: popD","PcrH  directly interacts with  PopD","direct interaction",1,17749,3465,"PA1709","popD","far western blotting",12654846
+"pcrG :: pcrV","PcrG  directly interacts with  PcrV","direct interaction",0,17750,3457,"PA1705","pcrG","far western blotting",12654846
+"pcrG :: pcrV","PcrG  directly interacts with  PcrV","direct interaction",1,17750,3459,"PA1706","pcrV","far western blotting",12654846
+"popB :: popD","PopB  directly interacts with  PopD","direct interaction",0,17751,3463,"PA1708","popB","coimmunoprecipitation",15271936
+"popB :: popD","PopB  directly interacts with  PopD","direct interaction",1,17751,3465,"PA1709","popD","coimmunoprecipitation",15271936
