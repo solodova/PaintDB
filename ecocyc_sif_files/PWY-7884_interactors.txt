@@ -1,0 +1,18 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"an N-acyl-(S-diacylglyceryl)-L-cysteinyl-[lipoprotein]","SmallMoleculeReference",NA,"EcoCyc:a-mature-triacylated-lipoprotein",NA
+"a 1-lyso-phospholipid","SmallMoleculeReference",NA,"EcoCyc:1-Lyso-phospholipids",NA
+"D-glycerol 3-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:57685;ChemSpider:5408879;EcoCyc:SN-GLYCEROL-1-PHOSPHATE;KEGG LIGAND:C00623;PubChem-compound:7048685",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"1-phosphatidylglycerol","SmallMoleculeReference",NA,"ChEBI:CHEBI:64716;EcoCyc:L-1-PHOSPHATIDYL-GLYCEROL;IAF1260:pg120;IAF1260:pg140;IAF1260:pg141;IAF1260:pg181;KEGG LIGAND:C00344",NA
+"P0AEH1","ProteinReference","RseP","Database of Interacting Proteins:DIP-48061N;EcoCyc:EG12436-MONOMER;EcoliWiki:b0176;MODBASE:P0AEH1;NCBI Reference Sequences Database:NP_414718;Pride:P0AEH1;Protein Model Portal:P0AEH1;Protein Ontology:PRO_000023880;SWISS-MODEL:P0AEH1;UniProt:P0AEH1","InterPro:IPR001478;InterPro:IPR004387;InterPro:IPR008915;Pfam:PF00595;Pfam:PF02163;Prosite:PS00142;Prosite:PS50106;Protein Data Bank:2ZPL;Protein Data Bank:2ZPM;Protein Data Bank:3ID1;Protein Data Bank:3ID2;Protein Data Bank:3ID3;Protein Data Bank:3ID4;Smart:SM00228"
+"a [prolipoprotein]-L-cysteine","SmallMoleculeReference",NA,"EcoCyc:Prolipoprotein-Cysteines",NA
+"P00804","ProteinReference","LspA","Database of Interacting Proteins:DIP-10129N;EcoCyc:EG10548-MONOMER;EcoliWiki:b0027;NCBI Reference Sequences Database:NP_414568;Pride:P00804;Protein Model Portal:P00804;Protein Ontology:PRO_000023127;SWISS-MODEL:P00804;UniProt:P00804","InterPro:IPR001872;Panther:PTHR33695:SF2;Pfam:PF01252;Prints:PR00781;Prosite:PS00855"
+"a lipoprotein signal peptide","SmallMoleculeReference",NA,"EcoCyc:Lipoprotein-signal-peptide",NA
+"P08395","ProteinReference","SppA","EcoCyc:EG10968-MONOMER;EcoO157Cyc:SPPA-MONOMER;EcoliWiki:b1766;MODBASE:P08395;NCBI Reference Sequences Database:NP_416280;Pride:P08395;Protein Model Portal:P08395;Protein Ontology:PRO_000023978;SWISS-MODEL:P08395;UniProt:P08395","InterPro:IPR002142;InterPro:IPR004634;InterPro:IPR004635;InterPro:IPR029045;InterPro:IPR033854;Pfam:PF01343;Protein Data Bank:3BEZ;Protein Data Bank:3BF0"
+"a [prolipoprotein]-S-diacylglyceryl-L-cysteine","SmallMoleculeReference",NA,"EcoCyc:MONOMER0-4342",NA
+"a phosphoglyceride","SmallMoleculeReference",NA,"ChEBI:CHEBI:37739;EcoCyc:Phosphoglycerides",NA
+"globomycin","SmallMoleculeReference",NA,"EcoCyc:GLOBOMYCIN;PubChem-compound:656470",NA
+"P23930","ProteinReference","Lnt","Database of Interacting Proteins:DIP-10111N;EcoCyc:EG10168-MONOMER;EcoliWiki:b0657;MODBASE:P23930;Mint:MINT-1238661;NCBI Reference Sequences Database:NP_415190;Pride:P23930;Protein Model Portal:P23930;Protein Ontology:PRO_000023102;UniProt:P23930","InterPro:IPR003010;InterPro:IPR004563;Pfam:PF00795;Prosite:PS50263"
+"an (S-diacylglyceryl)-L-cysteinyl-[apolipoprotein]","SmallMoleculeReference",NA,"EcoCyc:Diacylglycerol-Prolipoproteins",NA
+"P60955","ProteinReference","Lgt","EcoCyc:EG12128-MONOMER;EcoliWiki:b2828;NCBI Reference Sequences Database:NP_417305;Pride:P60955;Protein Model Portal:P60955;Protein Ontology:PRO_000023088;SWISS-MODEL:P60955;UniProt:P60955","InterPro:IPR001640;Panther:PTHR30589;Pfam:PF01790;Prosite:PS01311;Protein Data Bank:5AZB;Protein Data Bank:5AZC"

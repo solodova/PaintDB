@@ -1,0 +1,12 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"S2-","SmallMoleculeReference",NA,"ChEBI:CHEBI:15138;ChemSpider:27079;EcoCyc:CPD-7046;HMDB:HMDB00598;PubChem-compound:29109;UMBBD Compound:c0569",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"P60716","ProteinReference","LipA","Database of Interacting Proteins:DIP-48008N;EcoCyc:EG11306-MONOMER;EcoliWiki:b0628;MODBASE:P60716;Mint:MINT-1310776;NCBI Reference Sequences Database:NP_415161;Pride:P60716;Protein Model Portal:P60716;Protein Ontology:PRO_000023092;SWISS-MODEL:P60716;UniProt:P60716","InterPro:IPR003698;InterPro:IPR006638;InterPro:IPR007197;InterPro:IPR013785;InterPro:IPR031691;Panther:PTHR10949;Pfam:PF04055;Pfam:PF16881;Smart:SM00729"
+"Fe++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29033;ChemSpider:25394;EcoCyc:FE+2;HMDB:HMDB00692;IAF1260:fe2;KEGG LIGAND:C14818;MetaboLights:MTBLC29033;PubChem-compound:27284",NA
+"CH3Ado","SmallMoleculeReference",NA,"ChEBI:CHEBI:17319;ChemSpider:388325;EcoCyc:CH33ADO;HMDB:HMDB01983;IAF1260:dad_5;KEGG LIGAND:C05198;MetaboLights:MTBLC17319;PubChem-compound:439182;RefMet:5'-Deoxyadenosine",NA
+"P60720","ProteinReference","LipB","EcoCyc:EG11591-MONOMER;EcoliWiki:b0630;NCBI Reference Sequences Database:NP_415163;Pride:P60720;Protein Model Portal:P60720;Protein Ontology:PRO_000023093;SWISS-MODEL:P60720;UniProt:P60720","InterPro:IPR000544;InterPro:IPR004143;InterPro:IPR020605;Panther:PTHR10993:SF0;Pfam:PF03099;Prosite:PS01313;Prosite:PS51733"
+"a [lipoyl-carrier protein] N6-dihydrolipoyl-L-lysine","SmallMoleculeReference",NA,"EcoCyc:Dihydro-Lipoyl-Proteins",NA
+"a [lipoyl-carrier protein] N6-octanoyl-L-lysine","SmallMoleculeReference",NA,"EcoCyc:Octanoylated-domains",NA
+"a [lipoyl-carrier protein]-L-lysine","SmallMoleculeReference",NA,"EcoCyc:Lipoyl-Protein-L-Lysine",NA
+"met","SmallMoleculeReference","met","CAS:63-68-3;ChEBI:CHEBI:57844;EcoCyc:MET;HMDB:HMDB00696;IAF1260:met__L;KEGG LIGAND:C00073;MetaboLights:MTBLC57844;PubChem-compound:6992087;RefMet:Methionine",NA
+"SAM","SmallMoleculeReference","SAM","CAS:29908-03-0;ChEBI:CHEBI:59789;EcoCyc:S-ADENOSYLMETHIONINE;HMDB:HMDB01185;IAF1260:amet;KEGG LIGAND:C00019;MetaboLights:MTBLC59789;PubChem-compound:24762165;RefMet:S-adenosyl-L-methioninate",NA

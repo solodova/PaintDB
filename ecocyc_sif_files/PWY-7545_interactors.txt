@@ -1,0 +1,31 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"BTS","SmallMoleculeReference",NA,"CAS:127-17-3;ChEBI:CHEBI:15361;ChemSpider:96901;EcoCyc:PYRUVATE;HMDB:HMDB00243;IAF1260:pyr;KEGG LIGAND:C00022;KNApSAcK:C00001200;MetaboLights:MTBLC15361;PubChem-compound:107735;RefMet:Pyruvic acid;UMBBD Compound:c0159",NA
+"butanedione","SmallMoleculeReference",NA,"CAS:431-03-8;ChEBI:CHEBI:16583;ChemSpider:630;EcoCyc:DIACETYL;HMDB:HMDB03407;KEGG LIGAND:C00741;PubChem-compound:650;RefMet:Diacetyl",NA
+"a gramicidin","SmallMoleculeReference",NA,"EcoCyc:Gramicidins",NA
+"monomethylacetylphosphonate","SmallMoleculeReference",NA,"EcoCyc:METHYL-ACETYLPHOSPHONATE;PubChem-compound:656481",NA
+"P0ABK2","ProteinReference","CydB","EcoCyc:CYDB-MONOMER;EcoO157Cyc:CYDB-MONOMER;EcoliWiki:b0734;NCBI Reference Sequences Database:NP_415262;Pride:P0ABK2;Protein Model Portal:P0ABK2;Protein Ontology:PRO_000022362;UniProt:P0ABK2","InterPro:IPR003317;Panther:PTHR43141;Pfam:PF02322"
+"acetate","SmallMoleculeReference",NA,"CAS:64-19-7;CAS:71-50-1;ChEBI:CHEBI:30089;ChemSpider:170;DrugBank:DB03166;EcoCyc:ACET;HMDB:HMDB00042;IAF1260:ac;KEGG LIGAND:C00033;MetaboLights:MTBLC30089;PubChem-compound:175;RefMet:Acetic acid",NA
+"phosphonoacetaldehyde","SmallMoleculeReference",NA,"ChEBI:CHEBI:58383;EcoCyc:CPD-551;KEGG LIGAND:C03167;PubChem-compound:25245167",NA
+"LCFA","SmallMoleculeReference",NA,"ChEBI:CHEBI:15904;EcoCyc:Long-Chain-Fatty-Acids;KEGG LIGAND:C00638",NA
+"P26459","ProteinReference","AppC","Database of Interacting Proteins:DIP-9119N;EcoCyc:APPC-MONOMER;EcoO157Cyc:APPC-MONOMER;EcoliWiki:b0978;NCBI Reference Sequences Database:NP_415497;Pride:P26459;Protein Model Portal:P26459;Protein Ontology:PRO_000022111;UniProt:P26459","InterPro:IPR002585;Panther:PTHR30365;Pfam:PF01654"
+"UQ","SmallMoleculeReference","UQ","ChEBI:CHEBI:16389;EcoCyc:Ubiquinones",NA
+"piericidin A","SmallMoleculeReference",NA,"ChEBI:CHEBI:138511;ChemSpider:4942360;EcoCyc:CPD0-1233;PubChem-compound:6437838",NA
+"P26458","ProteinReference","AppB","EcoCyc:APPB-MONOMER;EcoO157Cyc:APPB-MONOMER;EcoliWiki:b0979;NCBI Reference Sequences Database:NP_415498;Pride:P26458;Protein Model Portal:P26458;Protein Ontology:PRO_000022110;UniProt:P26458","InterPro:IPR003317;Panther:PTHR43141;Pfam:PF02322"
+"maleic acid N-ethylimide","SmallMoleculeReference",NA,"ChEBI:CHEBI:44485;ChemSpider:4209;DrugBank:DB02967;EcoCyc:N-ETHYLMALEIMIDE;KEGG LIGAND:C02441;PubChem-compound:4362;RefMet:N-ethylmaleimide",NA
+"carbon dioxide","SmallMoleculeReference",NA,"CAS:124-38-9;ChEBI:CHEBI:16526;ChemSpider:274;EcoCyc:CARBON-DIOXIDE;HMDB:HMDB01967;IAF1260:co2;KEGG LIGAND:C00011;MetaboLights:MTBLC16526;PubChem-compound:280;UMBBD Compound:c0131",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"hydroxylamine","SmallMoleculeReference",NA,"CAS:7803-49-8;ChEBI:CHEBI:15429;ChemSpider:766;EcoCyc:HYDROXYLAMINE;HMDB:HMDB03338;KEGG LIGAND:C00192;MetaboLights:MTBLC15429;PubChem-compound:787;RefMet:Hydroxylamine",NA
+"P56100","ProteinReference","CydX","EcoCyc:MONOMER0-2663;EcoliWiki:b4515;NCBI Reference Sequences Database:YP_588444;Pride:P56100;Protein Model Portal:P56100;SWISS-MODEL:P56100;UniProt:P56100","InterPro:IPR011724;InterPro:IPR012994;Pfam:PF08173"
+"O2","SmallMoleculeReference","O2","CAS:7782-44-7;ChEBI:CHEBI:15379;ChemSpider:952;EcoCyc:OXYGEN-MOLECULE;HMDB:HMDB01377;IAF1260:o2;KEGG LIGAND:C00007;MetaboLights:MTBLC15379;PubChem-compound:977",NA
+"UQH2","SmallMoleculeReference","UQH2","CAS:56275-39-9;ChEBI:CHEBI:17976;EcoCyc:Ubiquinols;KEGG LIGAND:C00390",NA
+"a phospholipid","SmallMoleculeReference",NA,"ChEBI:CHEBI:16247;EcoCyc:Phospholipids;KEGG LIGAND:C00865",NA
+"hydroxyquinoline N oxide","SmallMoleculeReference",NA,"EcoCyc:CPD0-1633;PubChem-compound:14312",NA
+"kalium cyanid","SmallMoleculeReference",NA,"ChEBI:CHEBI:33191;ChemSpider:8681;EcoCyc:CPD-7082;PubChem-compound:9032",NA
+"benzoylformaldehyde","SmallMoleculeReference",NA,"ChEBI:CHEBI:88868;ChemSpider:13470;EcoCyc:PHENYLGLYOXAL;PubChem-compound:14090",NA
+"palmitate","SmallMoleculeReference",NA,"CAS:57-10-3;ChEBI:CHEBI:7896;ChemSpider:440215;EcoCyc:PALMITATE;HMDB:HMDB00220;IAF1260:hdca;KEGG LIGAND:C00249;MetaboLights:MTBLC7896;PubChem-compound:504166;RefMet:Palmitic acid;Wikipedia:Palmitic_acid",NA
+"trinitride (1-)","SmallMoleculeReference",NA,"CAS:26628-22-8;ChEBI:CHEBI:29449;ChemSpider:22937;EcoCyc:CPD-2841;PubChem-compound:24530",NA
+"P0ABJ9","ProteinReference","CydA","Database of Interacting Proteins:DIP-36181N;EcoCyc:CYDA-MONOMER;EcoO157Cyc:CYDA-MONOMER;EcoliWiki:b0733;NCBI Reference Sequences Database:NP_415261;Pride:P0ABJ9;Protein Model Portal:P0ABJ9;Protein Ontology:PRO_000022361;UniProt:P0ABJ9","InterPro:IPR002585;Panther:PTHR30365;Pfam:PF01654"
+"MMTS","SmallMoleculeReference",NA,"ChEBI:CHEBI:74357;ChemSpider:17065;EcoCyc:METHYLMETHANETHIOSULFONATE;HMDB:HMDB31832;MetaboLights:MTBLC74357;PubChem-compound:18064",NA
+"P07003","ProteinReference","PoxB","Database of Interacting Proteins:DIP-36216N;EcoCyc:PYRUVOXID-MONOMER;EcoliWiki:b0871;MODBASE:P07003;NCBI Reference Sequences Database:NP_415392;Pride:P07003;Protein Model Portal:P07003;Protein Ontology:PRO_000023575;SWISS-MODEL:P07003;UniProt:P07003","InterPro:IPR000399;InterPro:IPR011766;InterPro:IPR012000;InterPro:IPR012001;InterPro:IPR029035;InterPro:IPR029061;Pfam:PF00205;Pfam:PF02775;Pfam:PF02776;Prosite:PS00187;Protein Data Bank:3EY9;Protein Data Bank:3EYA"

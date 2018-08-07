@@ -1,0 +1,39 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"Zn(II)","SmallMoleculeReference",NA,"CAS:7440-66-6;ChEBI:CHEBI:29105;ChemSpider:29723;EcoCyc:ZN+2;HMDB:HMDB01303;IAF1260:zn2;KEGG LIGAND:C00038;MetaboLights:MTBLC29105;PubChem-compound:32051",NA
+"glutarate","SmallMoleculeReference",NA,"ChEBI:CHEBI:30921;ChemSpider:3618533;EcoCyc:GLUTARATE;HMDB:HMDB00661;KEGG LIGAND:C00489;PubChem-compound:4418048;RefMet:Glutaric acid",NA
+"adipic acid","SmallMoleculeReference",NA,"CAS:124-04-9;ChEBI:CHEBI:17128;ChemSpider:173250;EcoCyc:ADIPATE;HMDB:HMDB00448;KEGG LIGAND:C06104;PubChem-compound:200164;RefMet:Adipic acid",NA
+"F","SmallMoleculeReference",NA,"EcoCyc:F",NA
+"Cl","SmallMoleculeReference",NA,"EcoCyc:CL",NA
+"succinate","SmallMoleculeReference",NA,"CAS:110-15-6;ChEBI:CHEBI:30031;ChemSpider:140973;EcoCyc:SUC;HMDB:HMDB00254;IAF1260:succ;KEGG LIGAND:C00042;KNApSAcK:C00001205;MetaboLights:MTBLC30031;PubChem-compound:160419;RefMet:Succinic acid",NA
+"2-thiomalic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:38712;ChemSpider:4509083;EcoCyc:CPD0-1262;PubChem-compound:5352130",NA
+"4-bromoisophthalate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1269;PubChem-compound:25202947",NA
+"3,4-DHBA","SmallMoleculeReference",NA,"ChEBI:CHEBI:36241;ChemSpider:3353991;DrugBank:DB03946;EcoCyc:3-4-DIHYDROXYBENZOATE;HMDB:HMDB01856;KEGG LIGAND:C00230;KNApSAcK:C00002668;PubChem-compound:54675866;RefMet:Protocatechuic acid",NA
+"1-amino-1,3-cyclohexanedicarboxylic acid","SmallMoleculeReference",NA,"EcoCyc:CPD0-1276;PubChem-compound:46926178",NA
+"trans-glutaconic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:36460;ChemSpider:5306454;EcoCyc:GLUTACONATE;HMDB:HMDB00620;KEGG LIGAND:C02214;PubChem-compound:6932338;RefMet:Glutaconic acid",NA
+"3,4,5-trihydroxybenzoic acid","SmallMoleculeReference",NA,"CAS:149-91-7;ChEBI:CHEBI:16918;ChemSpider:3790309;EcoCyc:CPD-183;HMDB:HMDB05807;KEGG LIGAND:C01424;PubChem-compound:54675821;RefMet:Gallic acid;UMBBD Compound:c0006",NA
+"propanedioic acid","SmallMoleculeReference",NA,"CAS:141-82-2;ChEBI:CHEBI:15792;ChemSpider:8731;DrugBank:DB02201;EcoCyc:MALONATE;HMDB:HMDB00691;KEGG LIGAND:C00383;PubChem-compound:9084;RefMet:Malonic acid",NA
+"P69908","ProteinReference","GadA","Database of Interacting Proteins:DIP-36201N;EcoCyc:GLUTDECARBOXA-MONOMER;EcoliWiki:b3517;MODBASE:P69908;Mint:MINT-1224142;NCBI Reference Sequences Database:NP_417974;Pride:P69908;Protein Model Portal:P69908;Protein Ontology:PRO_000022741;SWISS-MODEL:P69908;UniProt:P69908","InterPro:IPR002129;InterPro:IPR010107;InterPro:IPR015421;InterPro:IPR015422;InterPro:IPR015424;InterPro:IPR021115;Panther:PTHR43321;Pfam:PF00282;Prosite:PS00392;Protein Data Bank:1XEY"
+"cis-butenedioic acid","SmallMoleculeReference",NA,"CAS:110-16-7;ChEBI:CHEBI:30780;ChemSpider:4450430;EcoCyc:MALEATE;HMDB:HMDB00176;KEGG LIGAND:C01384;PubChem-compound:5288227;RefMet:Maleic acid",NA
+"4,5-dihydroxyisophthalate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1263;PubChem-compound:54746222",NA
+"3-mercaptopropionate","SmallMoleculeReference",NA,"ChEBI:CHEBI:86386;ChemSpider:5414346;EcoCyc:CPD-7673;HMDB:HMDB41604;PubChem-compound:7057961",NA
+"gamma;-amino-n-butyric acid","SmallMoleculeReference",NA,"CAS:56-12-2;ChEBI:CHEBI:59888;EcoCyc:4-AMINO-BUTYRATE;HMDB:HMDB00112;IAF1260:4abut;KEGG LIGAND:C00334;MetaboLights:MTBLC59888;PubChem-compound:6992099;RefMet:Gamma-Aminobutyric acid",NA
+"nonanedioic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:78208;ChemSpider:3028648;DrugBank:DB00548;EcoCyc:CPD0-1265;HMDB:HMDB00784;LIPID MAPS:LMFA01170054;MetaboLights:MTBLC48131;PubChem-compound:3801344;RefMet:Azelaic acid",NA
+"carbon dioxide","SmallMoleculeReference",NA,"CAS:124-38-9;ChEBI:CHEBI:16526;ChemSpider:274;EcoCyc:CARBON-DIOXIDE;HMDB:HMDB01967;IAF1260:co2;KEGG LIGAND:C00011;MetaboLights:MTBLC16526;PubChem-compound:280;UMBBD Compound:c0131",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"fumaric acid","SmallMoleculeReference",NA,"CAS:110-17-8;ChEBI:CHEBI:29806;ChemSpider:4573886;DrugBank:DB01677;EcoCyc:FUM;HMDB:HMDB00134;IAF1260:fum;KEGG LIGAND:C00122;KNApSAcK:C00001183;MetaboLights:MTBLC29806;PubChem-compound:5460307;RefMet:Fumaric acid",NA
+"chelidamic acid","SmallMoleculeReference",NA,"ChemSpider:4417567;EcoCyc:CPD0-1271;PubChem-compound:5250420",NA
+"Cadmium","SmallMoleculeReference",NA,"ChEBI:CHEBI:48775;ChemSpider:28935;EcoCyc:CD+2;HMDB:HMDB03638;IAF1260:cd2;KEGG LIGAND:C01413;PubChem-compound:31193",NA
+"ethanedioic acid","SmallMoleculeReference",NA,"CAS:144-62-7;ChEBI:CHEBI:30623;ChemSpider:64235;DrugBank:DB02737;EcoCyc:OXALATE;HMDB:HMDB02329;KEGG LIGAND:C00209;MetaboLights:MTBLC30623;PubChem-compound:71081;RefMet:Oxalic acid",NA
+"chelidonate","SmallMoleculeReference",NA,"ChemSpider:3866589;EcoCyc:CPD0-1272;PubChem-compound:4678324;RefMet:Chelidonic acid",NA
+"Hg++","SmallMoleculeReference",NA,"ChEBI:CHEBI:16793;ChemSpider:24800;EcoCyc:HG+2;HMDB:HMDB03625;IAF1260:hg2;KEGG LIGAND:C00703;PubChem-compound:26623",NA
+"2-butynedioic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:15357;ChemSpider:3429763;EcoCyc:CPD-1831;KEGG LIGAND:C03248;PubChem-compound:4220380;RefMet:Acetylenedicarboxylate",NA
+"pimelic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:36165;ChemSpider:4411088;EcoCyc:CPD-205;HMDB:HMDB00857;KEGG LIGAND:C02656;PubChem-compound:5242388;RefMet:Pimelic acid",NA
+"1,2-benzenedicarboxylic acid","SmallMoleculeReference",NA,"CAS:88-99-3;ChEBI:CHEBI:17563;ChemSpider:158278;EcoCyc:PHTHALATE;HMDB:HMDB02107;KEGG LIGAND:C01606;NCI Open DB:5348;PubChem-compound:181977;RefMet:Phthalic acid",NA
+"Br","SmallMoleculeReference",NA,"EcoCyc:BR",NA
+"m-benzene-1,3-dicarboxylic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:30803;ChemSpider:4574434;EcoCyc:CPD0-1267;PubChem-compound:5461079",NA
+"glu","SmallMoleculeReference","glu","CAS:56-86-0;ChEBI:CHEBI:29985;ChemSpider:4573882;EcoCyc:GLT;HMDB:HMDB00148;IAF1260:glu__L;KEGG LIGAND:C00025;KNApSAcK:C00001358;MetaboLights:MTBLC29985;PubChem-compound:5460299;RefMet:Glutamic acid",NA
+"Cu++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29036;ChemSpider:25221;EcoCyc:CU+2;HMDB:HMDB00657;IAF1260:cu2;PubChem-compound:27099",NA
+"3,5-dihydroxybenzoate","SmallMoleculeReference",NA,"ChEBI:CHEBI:39912;ChemSpider:5323179;EcoCyc:CPD0-1274;HMDB:HMDB13677;MetaboLights:MTBLC39912;PubChem-compound:54706645;RefMet:3,5-dihydroxybenzoic acid",NA
+"octanedioic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:76282;ChemSpider:4416574;EcoCyc:CPD0-1264;HMDB:HMDB00893;KEGG LIGAND:C08278;PubChem-compound:5249080;RefMet:Suberic acid",NA
+"terephthalate","SmallMoleculeReference",NA,"ChEBI:CHEBI:30043;ChemSpider:135932;EcoCyc:TEREPHTHALATE;HMDB:HMDB02428;KEGG LIGAND:C06337;PubChem-compound:154269;RefMet:Terephthalic acid",NA
+"P69910","ProteinReference","GadB","Database of Interacting Proteins:DIP-36202N;EcoCyc:GLUTDECARBOXB-MONOMER;EcoliWiki:b1493;MODBASE:P69910;Mint:MINT-1256225;NCBI Reference Sequences Database:NP_416010;Pride:P69910;Protein Model Portal:P69910;Protein Ontology:PRO_000022742;SWISS-MODEL:P69910;UniProt:P69910","InterPro:IPR002129;InterPro:IPR010107;InterPro:IPR015421;InterPro:IPR015422;InterPro:IPR015424;InterPro:IPR021115;Panther:PTHR43321;Pfam:PF00282;Prosite:PS00392;Protein Data Bank:1PMM;Protein Data Bank:1PMO;Protein Data Bank:2DGK;Protein Data Bank:2DGL;Protein Data Bank:2DGM;Protein Data Bank:3FZ6;Protein Data Bank:3FZ7;Protein Data Bank:3FZ8"

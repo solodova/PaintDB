@@ -1,0 +1,12 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"UDPG","SmallMoleculeReference",NA,"ChEBI:CHEBI:58885;ChemSpider:10239191;EcoCyc:CPD-12575;IAF1260:udpg;KEGG LIGAND:C00029;PubChem-compound:16667346",NA
+"p-(bromoacetamido)phenyl uridyl pyrophosphate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1326;PubChem-compound:131841601",NA
+"UDP-6-deoxy-alpha;-D-galactose","SmallMoleculeReference",NA,"EcoCyc:CPD0-1898;PubChem-compound:90658337",NA
+"P1-uridyl-P2-methyl diphosphate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1325;PubChem-compound:25202179",NA
+"8-anilinonaphthalenesulfonate","SmallMoleculeReference",NA,"ChEBI:CHEBI:156539;ChemSpider:1266042;EcoCyc:CPD-13245;PubChem-compound:1549065;Wikipedia:8-Anilinonaphthalene-1-sulfonate",NA
+"UDP-alpha;-D-galactopyranose","SmallMoleculeReference",NA,"CAS:2956-16-3;ChEBI:CHEBI:66914;ChemSpider:17069;EcoCyc:CPD-14553;HMDB:HMDB00302;IAF1260:udpgal;KEGG LIGAND:C00052;MetaboLights:MTBLC66914;PubChem-compound:9549262",NA
+"uridine-5'-diphosphate chloroacetol","SmallMoleculeReference",NA,"EcoCyc:CPD0-1315;PubChem-compound:25202383",NA
+"P1-uridyl-P2-phenyl diphosphate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1324;PubChem-compound:25203283",NA
+"P09147","ProteinReference","GalE","Database of Interacting Proteins:DIP-9728N;EcoCyc:UDPGLUCEPIM-MONOMER;EcoliWiki:b0759;MODBASE:P09147;NCBI Reference Sequences Database:NP_415280;Pride:P09147;Protein Model Portal:P09147;SWISS-MODEL:P09147;UniProt:P09147","InterPro:IPR005886;InterPro:IPR016040;Panther:PTHR10366:SF39;Pfam:PF16363;Protein Data Bank:1A9Y;Protein Data Bank:1A9Z;Protein Data Bank:1KVQ;Protein Data Bank:1KVR;Protein Data Bank:1KVS;Protein Data Bank:1KVT;Protein Data Bank:1KVU;Protein Data Bank:1LRJ;Protein Data Bank:1LRK;Protein Data Bank:1LRL;Protein Data Bank:1NAH;Protein Data Bank:1NAI;Protein Data Bank:1UDA;Protein Data Bank:1UDB;Protein Data Bank:1UDC;Protein Data Bank:1XEL;Protein Data Bank:2UDP;Protein Data Bank:5GY7"
+"UMP","SmallMoleculeReference","UMP","CAS:58-97-9;ChEBI:CHEBI:57865;ChemSpider:1399139;EcoCyc:UMP;HMDB:HMDB00288;IAF1260:ump;KEGG LIGAND:C00105;MetaboLights:MTBLC57865;PubChem-compound:1778309;RefMet:UMP",NA
+"uridine-5'-diphosphate bromoacetol","SmallMoleculeReference",NA,"EcoCyc:CPD0-1314;PubChem-compound:25203077",NA

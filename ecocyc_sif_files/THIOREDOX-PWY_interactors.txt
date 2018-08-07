@@ -1,0 +1,11 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"NADPH","SmallMoleculeReference",NA,"CAS:2646-71-1;ChEBI:CHEBI:57783;ChemSpider:10239199;EcoCyc:NADPH;HMDB:HMDB00221;IAF1260:nadph;KEGG LIGAND:C00005;MetaboLights:MTBLC57783;PubChem-compound:15983949;RefMet:NADPH",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"A","SmallMoleculeReference","A","ChEBI:CHEBI:15339;EcoCyc:Acceptor;KEGG LIGAND:C00028",NA
+"arsenous anhydride","SmallMoleculeReference",NA,"ChEBI:CHEBI:29242;ChemSpider:5256769;EcoCyc:CPD-763;HMDB:HMDB11620;IAF1260:aso3;KEGG LIGAND:C06697;PubChem-compound:6857431",NA
+"NADP-ox","SmallMoleculeReference",NA,"CAS:53-59-8;ChEBI:CHEBI:58349;ChemSpider:10239198;EcoCyc:NADP;HMDB:HMDB00217;IAF1260:nadp;KEGG LIGAND:C00006;MetaboLights:MTBLC58349;PubChem-compound:15938972;RefMet:NADP+",NA
+"hydrogen cyanide","SmallMoleculeReference",NA,"CAS:74-90-8;ChEBI:CHEBI:18407;ChemSpider:748;EcoCyc:HCN;HMDB:HMDB60292;IAF1260:cyan;KEGG LIGAND:C01326;MetaboLights:MTBLC18407;PubChem-compound:768",NA
+"cadmium dichloride","SmallMoleculeReference",NA,"ChEBI:CHEBI:35456;ChemSpider:23035;EcoCyc:CPD0-1355;KEGG LIGAND:C15233;PubChem-compound:24947",NA
+"P0A9P4","ProteinReference","TrxB","Database of Interacting Proteins:DIP-6168N;EcoCyc:THIOREDOXIN-REDUCT-NADPH-MONOMER;EcoliWiki:b0888;MODBASE:P0A9P4;NCBI Reference Sequences Database:NP_415408;Pride:P0A9P4;Protein Model Portal:P0A9P4;Protein Ontology:PRO_000024130;SWISS-MODEL:P0A9P4;UniProt:P0A9P4","InterPro:IPR000103;InterPro:IPR005982;InterPro:IPR008255;InterPro:IPR023753;Pfam:PF07992;Prints:PR00469;Prosite:PS00573;Protein Data Bank:1CL0;Protein Data Bank:1F6M;Protein Data Bank:1TDE;Protein Data Bank:1TDF;Protein Data Bank:1TRB"
+"p-mercuribenzoate","SmallMoleculeReference",NA,"ChEBI:CHEBI:20435;ChemSpider:4574164;EcoCyc:CPD-7388;KEGG LIGAND:C00985;PubChem-compound:5460680",NA
+"A(H2)","SmallMoleculeReference","A(H2)","ChEBI:CHEBI:17499;EcoCyc:Donor-H2;KEGG LIGAND:C00030",NA

@@ -1,0 +1,14 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"maleic acid N-ethylimide","SmallMoleculeReference",NA,"ChEBI:CHEBI:44485;ChemSpider:4209;DrugBank:DB02967;EcoCyc:N-ETHYLMALEIMIDE;KEGG LIGAND:C02441;PubChem-compound:4362;RefMet:N-ethylmaleimide",NA
+"(S)-3-hydroxy-14:1-Delta;5-CoA","SmallMoleculeReference",NA,"ChEBI:CHEBI:87705;EcoCyc:CPD0-1163;PubChem-compound:91828294",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"2-trans,5-cis-tetradecenoyl-CoA","SmallMoleculeReference",NA,"ChEBI:CHEBI:87701;EcoCyc:CPD0-1162;PubChem-compound:25244134",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"3-trans,5-cis-tetradecadi-3,5-enoate","SmallMoleculeReference",NA,"ChEBI:CHEBI:71590;EcoCyc:CPD0-1159;PubChem-compound:25245804",NA
+"P77399","ProteinReference","FadJ","Database of Interacting Proteins:DIP-11990N;EcoCyc:G7212-MONOMER;EcoliWiki:b2341;MODBASE:P77399;NCBI Reference Sequences Database:NP_416843;Pride:P77399;Protein Model Portal:P77399;SWISS-MODEL:P77399;UniProt:P77399","InterPro:IPR001753;InterPro:IPR006108;InterPro:IPR006176;InterPro:IPR006180;InterPro:IPR008927;InterPro:IPR012802;InterPro:IPR013328;InterPro:IPR016040;InterPro:IPR029045;Pfam:PF00378;Pfam:PF00725;Pfam:PF02737;Prosite:PS00067"
+"tris-HCl","SmallMoleculeReference",NA,"EcoCyc:TRIS-HYDROCHLORIDE;PubChem-compound:93573",NA
+"P77712","ProteinReference","FadM","EcoCyc:G6244-MONOMER;EcoliWiki:b0443;MODBASE:P77712;NCBI Reference Sequences Database:NP_414977;Pride:P77712;Protein Model Portal:P77712;Protein Ontology:PRO_000024050;SWISS-MODEL:P77712;UniProt:P77712","InterPro:IPR006684;InterPro:IPR029069;Pfam:PF13279;Protein Data Bank:1NJK"
+"monoiodoacetamide","SmallMoleculeReference",NA,"ChEBI:CHEBI:103838;ChemSpider:3596;EcoCyc:IODOACETAMIDE;PubChem-compound:3727",NA
+"CoA","SmallMoleculeReference",NA,"CAS:85-61-0;ChEBI:CHEBI:57287;EcoCyc:CO-A;HMDB:HMDB01423;IAF1260:coa;KEGG LIGAND:C00010;KNApSAcK:C00007258;MetaboLights:MTBLC57287;PubChem-compound:25113190;RefMet:Coenzyme A;Wikipedia:Coenzyme_a",NA
+"(3E,5Z)-tetradeca-3,5-dienoyl-CoA","SmallMoleculeReference",NA,"ChEBI:CHEBI:71586;EcoCyc:CPD0-1158;PubChem-compound:25245147",NA
+"P21177","ProteinReference","FadB","Database of Interacting Proteins:DIP-9560N;EcoCyc:FADB-MONOMER;EcoliWiki:b3846;MODBASE:P21177;NCBI Reference Sequences Database:NP_418288;Pride:P21177;Protein Model Portal:P21177;SWISS-MODEL:P21177;Swiss-Model:P21177;UniProt:P21177","InterPro:IPR001753;InterPro:IPR006108;InterPro:IPR006176;InterPro:IPR006180;InterPro:IPR008927;InterPro:IPR012799;InterPro:IPR013328;InterPro:IPR016040;InterPro:IPR018376;InterPro:IPR029045;Pfam:PF00378;Pfam:PF00725;Pfam:PF02737;Prosite:PS00067;Prosite:PS00166"

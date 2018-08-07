@@ -1,0 +1,14 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"a phosphatidylethenolamine","SmallMoleculeReference",NA,"ChEBI:CHEBI:16038;EcoCyc:L-1-PHOSPHATIDYL-ETHANOLAMINE;IAF1260:pe141;IAF1260:pe181;KEGG LIGAND:C00350",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"ser","SmallMoleculeReference","ser","CAS:56-45-1;ChEBI:CHEBI:33384;EcoCyc:SER;HMDB:HMDB00187;IAF1260:ser__L;KEGG LIGAND:C00065;MetaboLights:MTBLC33384;PubChem-compound:6857581;RefMet:Serine",NA
+"carbon dioxide","SmallMoleculeReference",NA,"CAS:124-38-9;ChEBI:CHEBI:16526;ChemSpider:274;EcoCyc:CARBON-DIOXIDE;HMDB:HMDB01967;IAF1260:co2;KEGG LIGAND:C00011;MetaboLights:MTBLC16526;PubChem-compound:280;UMBBD Compound:c0131",NA
+"cyanoborohydride","SmallMoleculeReference",NA,"ChemSpider:4892542;EcoCyc:CPD0-1399;PubChem-compound:6338343",NA
+"hydroxylamine","SmallMoleculeReference",NA,"CAS:7803-49-8;ChEBI:CHEBI:15429;ChemSpider:766;EcoCyc:HYDROXYLAMINE;HMDB:HMDB03338;KEGG LIGAND:C00192;MetaboLights:MTBLC15429;PubChem-compound:787;RefMet:Hydroxylamine",NA
+"hydrazine","SmallMoleculeReference",NA,"ChEBI:CHEBI:15571;ChemSpider:8960;EcoCyc:HYDRAZINE;HMDB:HMDB12973;KEGG LIGAND:C05361;PubChem-compound:9321",NA
+"a CDP-diacylglycerol","SmallMoleculeReference",NA,"EcoCyc:CDPDIACYLGLYCEROL;IAF1260:cdpdddecg;IAF1260:cdpdhdec9eg;IAF1260:cdpdhdecg;IAF1260:cdpdodec11eg;IAF1260:cdpdodecg;IAF1260:cdpdtdec7eg;IAF1260:cdpdtdecg;KEGG LIGAND:C00269",NA
+"cytidylate","SmallMoleculeReference",NA,"CAS:63-37-6;ChEBI:CHEBI:60377;ChemSpider:5414497;EcoCyc:CMP;HMDB:HMDB00095;IAF1260:cmp;KEGG LIGAND:C00055;MetaboLights:MTBLC60377;PubChem-compound:7058165;RefMet:CMP",NA
+"phosphatidyl-serine","SmallMoleculeReference",NA,"ChEBI:CHEBI:11750;EcoCyc:L-1-PHOSPHATIDYL-SERINE;IAF1260:ps120;IAF1260:ps140;IAF1260:ps141;IAF1260:ps161;IAF1260:ps181;KEGG LIGAND:C02737",NA
+"P23830","ProteinReference","PssA","Database of Interacting Proteins:DIP-10593N;EcoCyc:PHOSPHASERSYN-MONOMER;EcoliWiki:b2585;MODBASE:P23830;Mint:MINT-1218158;NCBI Reference Sequences Database:NP_417080;Pride:P23830;Protein Model Portal:P23830;Protein Ontology:PRO_000023620;SWISS-MODEL:P23830;UniProt:P23830","InterPro:IPR001736;InterPro:IPR016270;InterPro:IPR025202;Panther:PTHR12586;Pfam:PF13091;Prosite:PS50035;Smart:SM00155"
+"borohydride","SmallMoleculeReference",NA,"ChEBI:CHEBI:30157;ChemSpider:10608156;EcoCyc:BOROHYDRIDE;PubChem-compound:28123",NA
+"P0A8K1","ProteinReference",NA,"EcoCyc:PSD-MONOMER;EcoliWiki:b4160;NCBI Reference Sequences Database:NP_418584;Pride:P0A8K1;Protein Model Portal:P0A8K1;UniProt:P0A8K1","InterPro:IPR003817;InterPro:IPR033177;InterPro:IPR033178;Panther:PTHR10067;Pfam:PF02666"

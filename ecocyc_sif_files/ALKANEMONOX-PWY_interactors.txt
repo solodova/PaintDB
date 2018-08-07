@@ -1,0 +1,13 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"P80645","ProteinReference","SsuD","Database of Interacting Proteins:DIP-10928N;EcoCyc:MONOMER-162;EcoliWiki:b0935;MODBASE:P80645;NCBI Reference Sequences Database:NP_415455;Pride:P80645;Protein Model Portal:P80645;Protein Ontology:PRO_000023996;SWISS-MODEL:P80645;UniProt:P80645","InterPro:IPR011251;InterPro:IPR019911;Pfam:PF00296;Protein Data Bank:1M41;Protein Data Bank:1NQK"
+"an alkanesulfonate","SmallMoleculeReference",NA,"ChEBI:CHEBI:13429;ChEBI:CHEBI:22318;EcoCyc:Alkanesulfonates;KEGG LIGAND:C15521;PubChem SID:17396513",NA
+"NADPH","SmallMoleculeReference",NA,"CAS:2646-71-1;ChEBI:CHEBI:57783;ChemSpider:10239199;EcoCyc:NADPH;HMDB:HMDB00221;IAF1260:nadph;KEGG LIGAND:C00005;MetaboLights:MTBLC57783;PubChem-compound:15983949;RefMet:NADPH",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"P80644","ProteinReference","SsuE","Database of Interacting Proteins:DIP-10929N;EcoCyc:MONOMER0-146;EcoliWiki:b0937;MODBASE:P80644;NCBI Reference Sequences Database:NP_415457;Pride:P80644;Protein Model Portal:P80644;Protein Ontology:PRO_000023997;SWISS-MODEL:P80644;UniProt:P80644","InterPro:IPR005025;InterPro:IPR020048;InterPro:IPR029039;Pfam:PF03358;Protein Data Bank:4PTY;Protein Data Bank:4PTZ;Protein Data Bank:4PU0"
+"flavin mononucleotide","SmallMoleculeReference",NA,"CAS:146-17-8;ChEBI:CHEBI:58210;EcoCyc:FMN;HMDB:HMDB01520;IAF1260:fmn;KEGG LIGAND:C00061;MetaboLights:MTBLC58210;PubChem-compound:44229199;Wikipedia:Flavin_mononucleotide",NA
+"NADP-ox","SmallMoleculeReference",NA,"CAS:53-59-8;ChEBI:CHEBI:58349;ChemSpider:10239198;EcoCyc:NADP;HMDB:HMDB00217;IAF1260:nadp;KEGG LIGAND:C00006;MetaboLights:MTBLC58349;PubChem-compound:15938972;RefMet:NADP+",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"FMNH2","SmallMoleculeReference",NA,"CAS:5666-16-0;ChEBI:CHEBI:57618;EcoCyc:FMNH2;HMDB:HMDB01142;IAF1260:fmnh2;KEGG LIGAND:C01847;PubChem-compound:44229161;RefMet:FMNH",NA
+"O2","SmallMoleculeReference","O2","CAS:7782-44-7;ChEBI:CHEBI:15379;ChemSpider:952;EcoCyc:OXYGEN-MOLECULE;HMDB:HMDB01377;IAF1260:o2;KEGG LIGAND:C00007;MetaboLights:MTBLC15379;PubChem-compound:977",NA
+"SO3-2","SmallMoleculeReference",NA,"CAS:14265-45-3;ChEBI:CHEBI:17359;ChemSpider:1068;EcoCyc:SO3;HMDB:HMDB00240;IAF1260:so3;PubChem-compound:1099",NA
+"aldehyde","SmallMoleculeReference",NA,"ChEBI:CHEBI:17478;EcoCyc:Aldehydes;KEGG LIGAND:C00071;Wikipedia:Aldehyde",NA

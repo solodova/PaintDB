@@ -1,0 +1,24 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"P21170","ProteinReference","SpeA","Database of Interacting Proteins:DIP-10905N;EcoCyc:ARGDECARBOXBIO-MONOMER;EcoliWiki:b2938;MODBASE:P21170;NCBI Reference Sequences Database:NP_417413;Pride:P21170;Protein Model Portal:P21170;Protein Ontology:PRO_000023971;SWISS-MODEL:P21170;UniProt:P21170","InterPro:IPR000183;InterPro:IPR002985;InterPro:IPR009006;InterPro:IPR022644;InterPro:IPR022653;InterPro:IPR022657;InterPro:IPR029066;Panther:PTHR43295;Pfam:PF02784;Prints:PR01179;Prints:PR01180;Prosite:PS00878;Prosite:PS00879;Protein Data Bank:3NZQ"
+"L-ornithine","SmallMoleculeReference",NA,"ChEBI:CHEBI:46911;ChemSpider:5360242;EcoCyc:L-ORNITHINE;HMDB:HMDB00214;IAF1260:orn;KEGG LIGAND:C00077;MetaboLights:MTBLC46911;PubChem-compound:6992088;RefMet:Ornithine",NA
+"spermidine","SmallMoleculeReference",NA,"CAS:124-20-9;ChEBI:CHEBI:57834;ChemSpider:5360248;EcoCyc:SPERMIDINE;HMDB:HMDB01257;IAF1260:spmd;KEGG LIGAND:C00315;MetaboLights:MTBLC57834;PubChem-compound:6992097;RefMet:Spermidine",NA
+"AA","SmallMoleculeReference",NA,"EcoCyc:CPD0-1659;PubChem-compound:19773255",NA
+"carbon dioxide","SmallMoleculeReference",NA,"CAS:124-38-9;ChEBI:CHEBI:16526;ChemSpider:274;EcoCyc:CARBON-DIOXIDE;HMDB:HMDB01967;IAF1260:co2;KEGG LIGAND:C00011;MetaboLights:MTBLC16526;PubChem-compound:280;UMBBD Compound:c0131",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"alpha;-monofluoromethylarginine","SmallMoleculeReference",NA,"ChemSpider:14415709;EcoCyc:CPD0-1662;PubChem-compound:19773260",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"ethylenediaminetetraacetate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64755;EcoCyc:EDTA;HMDB:HMDB15109;KEGG LIGAND:C00284;PubChem-compound:5246202;RefMet:Edetic Acid",NA
+"lys","SmallMoleculeReference","lys","CAS:56-87-1;ChEBI:CHEBI:32551;ChemSpider:5747;EcoCyc:LYS;HMDB:HMDB00182;IAF1260:33655;IAF1260:lys__L;KEGG LIGAND:C00047;MetaboLights:MTBLC32551;PubChem-compound:5460926;RefMet:Lysine",NA
+"agmatine","SmallMoleculeReference",NA,"CAS:306-60-5;ChEBI:CHEBI:58145;ChemSpider:4422891;EcoCyc:AGMATHINE;HMDB:HMDB01432;IAF1260:agm;KEGG LIGAND:C00179;MetaboLights:MTBLC58145;PubChem-compound:5257176;RefMet:Agmatine",NA
+"DFMA","SmallMoleculeReference",NA,"EcoCyc:CPD0-1663;PubChem-compound:44123509",NA
+"diaminobutane","SmallMoleculeReference",NA,"CAS:110-60-1;ChEBI:CHEBI:326268;ChemSpider:2695170;EcoCyc:PUTRESCINE;HMDB:HMDB01414;IAF1260:ptrc;KEGG LIGAND:C00134;MetaboLights:MTBLC326268;PubChem-compound:3452892;RefMet:Putrescine",NA
+"bromisovalum","SmallMoleculeReference",NA,"CAS:57-13-6;ChEBI:CHEBI:16199;ChemSpider:1143;DrugBank:DB03904;EcoCyc:UREA;HMDB:HMDB00294;KEGG LIGAND:C00086;MetaboLights:MTBLC16199;PubChem-compound:1176;RefMet:Urea",NA
+"alpha; -ethynylagmatine","SmallMoleculeReference",NA,"EcoCyc:CPD0-1660;PubChem-compound:19773253",NA
+"(E)-alpha;-monofluoromethyldehydroarginine","SmallMoleculeReference",NA,"ChemSpider:4943693;EcoCyc:CPD0-1664;PubChem-compound:122706516",NA
+"egtazic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:30741;ChemSpider:4574437;EcoCyc:EGTA;PubChem-compound:5461084",NA
+"a ureido compound","SmallMoleculeReference",NA,"EcoCyc:Ureido-Compounds",NA
+"alpha;-monofluoromethylagmatine","SmallMoleculeReference",NA,"ChemSpider:114698;EcoCyc:CPD0-1661;PubChem-compound:129523",NA
+"arg","SmallMoleculeReference","arg","CAS:74-79-3;ChEBI:CHEBI:32682;ChemSpider:1266045;EcoCyc:ARG;HMDB:HMDB00517;IAF1260:arg__L;KEGG LIGAND:C00062;MetaboLights:MTBLC32682;PubChem-compound:1549073;RefMet:Arginine",NA
+"P28629","ProteinReference","AdiA","Database of Interacting Proteins:DIP-2903N;EcoCyc:ARGDECARBOXDEG-MONOMER;EcoliWiki:b4117;MODBASE:P28629;Mint:MINT-1241522;NCBI Reference Sequences Database:NP_418541;Pride:P28629;Protein Model Portal:P28629;Protein Ontology:PRO_000022058;SWISS-MODEL:P28629;UniProt:P28629","InterPro:IPR000310;InterPro:IPR005308;InterPro:IPR008286;InterPro:IPR011193;InterPro:IPR015421;InterPro:IPR015422;InterPro:IPR015424;Pfam:PF01276;Pfam:PF03709;Pfam:PF03711;Prosite:PS00703;Protein Data Bank:2VYC"
+"P60651","ProteinReference","SpeB","Database of Interacting Proteins:DIP-10906N;EcoCyc:AGMATIN-MONOMER;EcoliWiki:b2937;MODBASE:P60651;NCBI Reference Sequences Database:NP_417412;Pride:P60651;Protein Model Portal:P60651;Protein Ontology:PRO_000023972;SWISS-MODEL:P60651;Swiss-Model:P60651;UniProt:P60651","InterPro:IPR005925;InterPro:IPR006035;InterPro:IPR020855;InterPro:IPR023694;Panther:PTHR11358;Pfam:PF00491;Prosite:PS01053;Prosite:PS51409"
+"a guanido compound","SmallMoleculeReference",NA,"EcoCyc:Guanido-Compounds",NA

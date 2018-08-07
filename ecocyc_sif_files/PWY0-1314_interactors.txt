@@ -1,0 +1,9 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"P0AEW9","ProteinReference","FruK","EcoCyc:1-PFK-MONOMER;EcoliWiki:b2168;MODBASE:P0AEW9;NCBI Reference Sequences Database:NP_416673;Pride:P0AEW9;Protein Model Portal:P0AEW9;Protein Ontology:PRO_000022701;SWISS-MODEL:P0AEW9;UniProt:P0AEW9","InterPro:IPR002173;InterPro:IPR011611;InterPro:IPR017583;InterPro:IPR022463;InterPro:IPR023314;InterPro:IPR029056;Pfam:PF00294;Prosite:PS00583;Prosite:PS00584"
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"beta;-D-fructofuranose-1-P","SmallMoleculeReference",NA,"CAS:15978-08-2;ChEBI:CHEBI:138881;EcoCyc:FRU1P;IAF1260:f1p;PubChem-compound:25244216",NA
+"adenosine-5-diphosphate","SmallMoleculeReference",NA,"CAS:58-64-0;ChEBI:CHEBI:456216;ChemSpider:5414423;EcoCyc:ADP;HMDB:HMDB01341;IAF1260:adp;KEGG LIGAND:C00008;MetaboLights:MTBLC456216;PubChem-compound:7058055;RefMet:ADP",NA
+"PMSF","SmallMoleculeReference",NA,"ChEBI:CHEBI:8102;ChemSpider:4620;EcoCyc:CPD-5541;KEGG LIGAND:C06747;PubChem-compound:4784",NA
+"FBP","SmallMoleculeReference",NA,"CAS:488-69-7;ChEBI:CHEBI:32966;ChemSpider:4574223;EcoCyc:FRUCTOSE-16-DIPHOSPHATE;HMDB:HMDB01058;IAF1260:fdp;KEGG LIGAND:C00354;PubChem-compound:5460765;Wikipedia:Fructose_1,6-bisphosphate",NA
+"potassium chloride","SmallMoleculeReference",NA,"ChEBI:CHEBI:32588;ChemSpider:4707;DrugBank:DB00761;EcoCyc:KCL;KEGG LIGAND:D02060;PubChem-compound:4873",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA

@@ -1,0 +1,9 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"acetate","SmallMoleculeReference",NA,"CAS:64-19-7;CAS:71-50-1;ChEBI:CHEBI:30089;ChemSpider:170;DrugBank:DB03166;EcoCyc:ACET;HMDB:HMDB00042;IAF1260:ac;KEGG LIGAND:C00033;MetaboLights:MTBLC30089;PubChem-compound:175;RefMet:Acetic acid",NA
+"P17411","ProteinReference","ChbF","Database of Interacting Proteins:DIP-9267N;EcoCyc:EG10144-MONOMER;EcoliWiki:b1734;MODBASE:P17411;NCBI Reference Sequences Database:NP_416248;Pride:P17411;Protein Model Portal:P17411;Protein Ontology:PRO_000022275;SWISS-MODEL:P17411;Swiss-Model:P17411;UniProt:P17411","CAZy:GH4;InterPro:IPR001088;InterPro:IPR015955;InterPro:IPR016040;InterPro:IPR019802;InterPro:IPR022616;Panther:PTHR32092;Pfam:PF02056;Pfam:PF11975;Prints:PR00732;Prosite:PS01324"
+"N-acetyl-D-glucosamine 6-phosphate","SmallMoleculeReference",NA,"CAS:102029-88-9;ChEBI:CHEBI:57513;EcoCyc:N-ACETYL-D-GLUCOSAMINE-6-P;HMDB:HMDB02817;IAF1260:34733;IAF1260:acgam6p;KEGG LIGAND:C00357;PubChem-compound:25243963",NA
+"P37794","ProteinReference","ChbG","EcoCyc:EG12198-MONOMER;EcoliWiki:b1733;NCBI Reference Sequences Database:NP_416247;Pride:P37794;Protein Model Portal:P37794;SWISS-MODEL:P37794;UniProt:P37794","InterPro:IPR006879;InterPro:IPR011330;InterPro:IPR022948;Pfam:PF04794"
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"2-amino-2-deoxyglucose","SmallMoleculeReference",NA,"CAS:3416-24-8;ChEBI:CHEBI:407165;EcoCyc:GLUCOSAMINE;HMDB:HMDB01514;IAF1260:34633;KEGG LIGAND:C00329;PubChem-compound:739",NA
+"diacetylchitobiose 6-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64883;EcoCyc:DIACETYLCHITOBIOSE-6-PHOSPHATE;PubChem-compound:46926222",NA
+"N-monoacetylchitobiose 6'-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:71315;EcoCyc:CPD0-2501;PubChem-compound:70680272",NA

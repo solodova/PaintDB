@@ -1,0 +1,8 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"carbon dioxide","SmallMoleculeReference",NA,"CAS:124-38-9;ChEBI:CHEBI:16526;ChemSpider:274;EcoCyc:CARBON-DIOXIDE;HMDB:HMDB01967;IAF1260:co2;KEGG LIGAND:C00011;MetaboLights:MTBLC16526;PubChem-compound:280;UMBBD Compound:c0131",NA
+"2-demethylmenaquinol-8","SmallMoleculeReference",NA,"ChEBI:CHEBI:61873;EcoCyc:CPD-12115;IAF1260:2dmmql8;PubChem-compound:45479277",NA
+"1,4-dihydroxy-2-naphthoate","SmallMoleculeReference",NA,"ChEBI:CHEBI:11173;ChemSpider:5324583;EcoCyc:DIHYDROXYNAPHTHOATE;IAF1260:dhna;KEGG LIGAND:C03657;PubChem-compound:54706667",NA
+"octaprenyl diphosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:57711;EcoCyc:OCTAPRENYL-DIPHOSPHATE;HMDB:HMDB01094;IAF1260:octdp;KEGG LIGAND:C04146;PubChem-compound:25245331",NA
+"P32166","ProteinReference","MenA","EcoCyc:DMK-MONOMER;EcoliWiki:b3930;NCBI Reference Sequences Database:NP_418365;Pride:P32166;Protein Model Portal:P32166;Protein Ontology:PRO_000023200;UniProt:P32166","InterPro:IPR000537;InterPro:IPR004657;InterPro:IPR026046;Pfam:PF01040"

@@ -1,0 +1,28 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"D-lactose","SmallMoleculeReference",NA,"EcoCyc:CPD-15972;IAF1260:lcts",NA
+"2-aminoethanol","SmallMoleculeReference",NA,"CAS:141-43-5;ChEBI:CHEBI:57603;ChemSpider:392552;EcoCyc:ETHANOL-AMINE;HMDB:HMDB00149;IAF1260:etha;KEGG LIGAND:C00189;MetaboLights:MTBLC57603;PubChem-compound:444693;RefMet:Ethanolamine",NA
+"ethanediamine","SmallMoleculeReference",NA,"CAS:333-18-6;EcoCyc:CPD-3682;PubChem-compound:5063660",NA
+"2-aminoethanethiol","SmallMoleculeReference",NA,"CAS:60-23-1;ChEBI:CHEBI:58029;ChemSpider:3027297;EcoCyc:CPD-239;HMDB:HMDB02991;KEGG LIGAND:C01678;MetaboLights:MTBLC58029;PubChem-compound:3799953;RefMet:Cysteamine",NA
+"phenylethyl beta;-D-thiogalactoside","SmallMoleculeReference",NA,"EcoCyc:CPD-18165;PubChem-compound:102515495",NA
+"beta;-D-galactopyranosyl trimethylammonium bromide","SmallMoleculeReference",NA,"ChemSpider:166658;EcoCyc:CPD0-1304;PubChem-compound:191965",NA
+"a heavy metal ion","SmallMoleculeReference",NA,"EcoCyc:Heavy-Metal-Ions",NA
+"D-galactosylamine","SmallMoleculeReference",NA,"EcoCyc:D-GALACTOSYLAMINE;PubChem-compound:25203178",NA
+"conduritol C cis-epoxide","SmallMoleculeReference",NA,"EcoCyc:CPD0-1305;PubChem-compound:25203880",NA
+"5-amino-5-deoxy-D-galactopyranoside","SmallMoleculeReference",NA,"ChemSpider:2537579;EcoCyc:5-AMINO-5-DEOXY-D-GALACTOPYRANOSIDE;PubChem-compound:90657911",NA
+"2-aminogalactopyranose","SmallMoleculeReference",NA,"EcoCyc:CPD0-1299;PubChem-compound:25796532",NA
+"2-deoxy-2-fluoro-beta;-D-galactose","SmallMoleculeReference",NA,"ChEBI:CHEBI:49145;ChemSpider:5528419;DrugBank:DB02228;EcoCyc:CPD0-1297;PubChem-compound:7191874",NA
+"(1/2,5,6)-2-(3-azibutylthio)-5,6-epoxy-3-cyclohexen-1-ol","SmallMoleculeReference",NA,"EcoCyc:CPD0-1294;PubChem-compound:14859132",NA
+"1-deoxygalactonojirimycin","SmallMoleculeReference",NA,"ChemSpider:10213566;EcoCyc:15-DIDEOXY-15-IMINO-D-GALACTITOL;PubChem-compound:21592101",NA
+"o-nitrophenol beta;-thiogalactoside","SmallMoleculeReference",NA,"EcoCyc:CPD0-1303;PubChem-compound:90659024",NA
+"P00722","ProteinReference","LacZ","Database of Interacting Proteins:DIP-10081N;EcoCyc:BETAGALACTOSID-MONOMER;EcoliWiki:b0344;MODBASE:P00722;NCBI Reference Sequences Database:NP_414878;Pride:P00722;Protein Model Portal:P00722;SWISS-MODEL:P00722;UniProt:P00722","CAZy:GH2;InterPro:IPR004199;InterPro:IPR006101;InterPro:IPR006102;InterPro:IPR006103;InterPro:IPR006104;InterPro:IPR008979;InterPro:IPR011013;InterPro:IPR013783;InterPro:IPR014718;InterPro:IPR017853;InterPro:IPR023230;InterPro:IPR023232;InterPro:IPR023933;InterPro:IPR032312;Panther:PTHR10066:SF75;Pfam:PF00703;Pfam:PF02836;Pfam:PF02837;Pfam:PF02929;Pfam:PF16353;Prints:PR00132;Prosite:PS00608;Prosite:PS00719;Protein Data Bank:1DP0;Protein Data Bank:1F4A;Protein Data Bank:1F4H;Protein Data Bank:1HN1;Protein Data Bank:1JYN;Protein Data Bank:1JYV;Protein Data Bank:1JYW;Protein Data Bank:1JYX;Protein Data Bank:1JZ2;Protein Data Bank:1JZ3;Protein Data Bank:1JZ4;Protein Data Bank:1JZ5;Protein Data Bank:1JZ6;Protein Data Bank:1JZ7;Protein Data Bank:1JZ8;Protein Data Bank:1PX3;Protein Data Bank:1PX4;Protein Data Bank:3CZJ;Protein Data Bank:3DYM;Protein Data Bank:3DYO;Protein Data Bank:3DYP;Protein Data Bank:3E1F;Protein Data Bank:3I3B;Protein Data Bank:3I3D;Protein Data Bank:3I3E;Protein Data Bank:3IAP;Protein Data Bank:3IAQ;Protein Data Bank:3J7H;Protein Data Bank:3MUY;Protein Data Bank:3MUZ;Protein Data Bank:3MV0;Protein Data Bank:3MV1;Protein Data Bank:3SEP;Protein Data Bank:3T08;Protein Data Bank:3T09;Protein Data Bank:3T0A;Protein Data Bank:3T0B;Protein Data Bank:3T0D;Protein Data Bank:3T2O;Protein Data Bank:3T2P;Protein Data Bank:3T2Q;Protein Data Bank:3VD3;Protein Data Bank:3VD4;Protein Data Bank:3VD5;Protein Data Bank:3VD7;Protein Data Bank:3VD9;Protein Data Bank:3VDA;Protein Data Bank:3VDB;Protein Data Bank:3VDC;Protein Data Bank:4CKD;Protein Data Bank:4DUV;Protein Data Bank:4DUW;Protein Data Bank:4DUX;Protein Data Bank:4TTG;Protein Data Bank:4V40;Protein Data Bank:4V41;Protein Data Bank:4V44;Protein Data Bank:4V45;Protein Data Bank:5A1A;Smart:SM01038"
+"1-ethyl-3-(3-dimethylaminopropyl)-carbodiimide","SmallMoleculeReference",NA,"ChemSpider:3579928;EcoCyc:CPD0-1296;PubChem-compound:4377771",NA
+"beta;-D-galactose","SmallMoleculeReference",NA,"CAS:7296-64-2;ChEBI:CHEBI:27667;ChemSpider:388476;EcoCyc:GALACTOSE;HMDB:HMDB03449;IAF1260:gal;IAF1260:gal-bD;KEGG LIGAND:C00962;PubChem-compound:439353",NA
+"ethylcarbinol","SmallMoleculeReference",NA,"CAS:71-23-8;ChEBI:CHEBI:28831;ChemSpider:1004;DrugBank:DB03175;EcoCyc:PROPANOL;HMDB:HMDB00820;KEGG LIGAND:C05979;PubChem-compound:1031",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"D-galactal","SmallMoleculeReference",NA,"ChEBI:CHEBI:63139;ChemSpider:2016479;EcoCyc:CPD0-1300;PubChem-compound:2734735",NA
+"D-glucopyranose","SmallMoleculeReference",NA,"ChEBI:CHEBI:4167;EcoCyc:Glucopyranose",NA
+"beta;-mercaptoethanol","SmallMoleculeReference",NA,"ChEBI:CHEBI:41218;ChemSpider:1512;DrugBank:DB03345;EcoCyc:2-MERCAPTOETHANOL;KEGG LIGAND:C00928;PubChem-compound:1567",NA
+"a chelator","SmallMoleculeReference",NA,"EcoCyc:Chelators",NA
+"RHg+","SmallMoleculeReference",NA,"EcoCyc:RHg;KEGG LIGAND:C01343",NA
+"beta;-D-galactopyranoside, 1-methylethyl","SmallMoleculeReference",NA,"ChemSpider:2338562;EcoCyc:CPD0-1293;PubChem-compound:3080835",NA
+"phenyl-1-thio-beta;-D-galactopyranoside","SmallMoleculeReference",NA,"ChemSpider:278147;EcoCyc:CPD0-1302;PubChem-compound:314404",NA

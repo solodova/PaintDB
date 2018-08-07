@@ -1,0 +1,15 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"alpha;-Kdo-(2->4)-alpha;-Kdo-(2->6)-lipid IVA","SmallMoleculeReference",NA,"ChEBI:CHEBI:60365;EcoCyc:KDO2-LIPID-IVA;IAF1260:kdo2lipid4;KEGG LIGAND:C06025;PubChem-compound:91820576",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"Re endotoxin","SmallMoleculeReference",NA,"ChEBI:CHEBI:58540;EcoCyc:KDO2-LIPID-A;IAF1260:lipa;KEGG LIGAND:C06026;PubChem-compound:91820278",NA
+"[2-N,3-O-bis(3-hydroxytetradecanoyl)-beta;-D-glucosaminyl]-(1 -> 6)-[2-N,3-O-bis(3-hydroxytetradecanoyl)-alpha;-D-glucosaminyl phosphate]","SmallMoleculeReference",NA,"ChEBI:CHEBI:58466;EcoCyc:BISOHMYR-GLC;IAF1260:lipidAds;KEGG LIGAND:C04932;PubChem-compound:25244866",NA
+"P0AC75","ProteinReference","WaaA","Database of Interacting Proteins:DIP-48036N;EcoCyc:KDOTRANS-MONOMER;EcoliWiki:b3633;MODBASE:P0AC75;Mint:MINT-1234738;NCBI Reference Sequences Database:NP_418090;Pride:P0AC75;Protein Model Portal:P0AC75;Protein Ontology:PRO_000024214;SWISS-MODEL:P0AC75;UniProt:P0AC75","InterPro:IPR001296;InterPro:IPR007507;Pfam:PF00534;Pfam:PF04413"
+"tetraacyldisaccharide 4-phosphate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1280;PubChem-compound:25201094",NA
+"CMP-Kdo","SmallMoleculeReference","CMP-Kdo","ChEBI:CHEBI:59825;EcoCyc:CMP-KDO;IAF1260:ckdo;KEGG LIGAND:C04121;PubChem-compound:46878557",NA
+"polymyxin B1","SmallMoleculeReference",NA,"ChEBI:CHEBI:8309;EcoCyc:CPD0-1277;MetaboLights:MTBLC8309;PubChem-compound:52940214",NA
+"R. sphaeroides lipid A","SmallMoleculeReference",NA,"EcoCyc:CPD0-1284;PubChem-compound:25244503",NA
+"cytidylate","SmallMoleculeReference",NA,"CAS:63-37-6;ChEBI:CHEBI:60377;ChemSpider:5414497;EcoCyc:CMP;HMDB:HMDB00095;IAF1260:cmp;KEGG LIGAND:C00055;MetaboLights:MTBLC60377;PubChem-compound:7058165;RefMet:CMP",NA
+"alpha;-Kdo-(2rarr;6)-lipid IVA","SmallMoleculeReference",NA,"ChEBI:CHEBI:60364;EcoCyc:KDO-LIPID-IVA;IAF1260:kdolipid4;KEGG LIGAND:C06024;PubChem-compound:91820572",NA
+"lipid IVA","SmallMoleculeReference",NA,"ChEBI:CHEBI:58603;ChemSpider:8504584;EcoCyc:LIPID-IV-A;IAF1260:lipidA;KEGG LIGAND:C04919;PubChem-compound:10329123",NA
+"synthetic E. coli lipid A","SmallMoleculeReference",NA,"ChEBI:CHEBI:134257;EcoCyc:CPD0-1283;PubChem-compound:25200834",NA
+"lipid IVB","SmallMoleculeReference",NA,"ChEBI:CHEBI:87049;EcoCyc:CPD0-1281;PubChem-compound:91820496",NA

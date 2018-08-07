@@ -1,0 +1,14 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"tripolyphosphate","SmallMoleculeReference",NA,"CAS:14127-68-5;ChEBI:CHEBI:18036;ChemSpider:2683694;EcoCyc:P3I;HMDB:HMDB03379;IAF1260:pppi;KEGG LIGAND:C00536;MetaboLights:MTBLC18036;PubChem-compound:3440921",NA
+"guanosine-triphosphate","SmallMoleculeReference",NA,"CAS:86-01-1;ChEBI:CHEBI:37565;ChemSpider:5414499;EcoCyc:GTP;HMDB:HMDB01273;IAF1260:gtp;KEGG LIGAND:C00044;MetaboLights:MTBLC37565;PubChem-compound:7058167;RefMet:GTP",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"AdoCbi","SmallMoleculeReference",NA,"ChEBI:CHEBI:2480;EcoCyc:ADENOSYLCOBINAMIDE;HMDB:HMDB06903;IAF1260:adocbi;KEGG LIGAND:C06508;PubChem-compound:91819767",NA
+"adenosyl-cobinamide phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:58502;EcoCyc:ADENOSYLCOBINAMIDE-P;HMDB:HMDB12184;IAF1260:adocbip;KEGG LIGAND:C06509;PubChem-compound:70678575",NA
+"P0AE76","ProteinReference","CobU","EcoCyc:COBU-MONOMER;EcoliWiki:b1993;MODBASE:P0AE76;NCBI Reference Sequences Database:NP_416497;Pride:P0AE76;Protein Model Portal:P0AE76;Protein Ontology:PRO_000022315;SWISS-MODEL:P0AE76;Swiss-Model:P0AE76;UniProt:P0AE76","InterPro:IPR003203;InterPro:IPR027417;Pfam:PF02283"
+"adenosine-5-diphosphate","SmallMoleculeReference",NA,"CAS:58-64-0;ChEBI:CHEBI:456216;ChemSpider:5414423;EcoCyc:ADP;HMDB:HMDB01341;IAF1260:adp;KEGG LIGAND:C00008;MetaboLights:MTBLC456216;PubChem-compound:7058055;RefMet:ADP",NA
+"cob(II)inamide","SmallMoleculeReference",NA,"EcoCyc:CPD-20903",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"[corrinoid adenosyltranferase]-cob(I)inamide","SmallMoleculeReference",NA,"EcoCyc:CPD-20907",NA
+"Adenosine-GDP-cobinamide","SmallMoleculeReference",NA,"ChEBI:CHEBI:60487;EcoCyc:ADENOSYLCOBINAMIDE-GDP;HMDB:HMDB12185;IAF1260:agdpcbi;KEGG LIGAND:C06510;PubChem-compound:70678596",NA
+"[corrinoid adenosyltranferase]-cob(II)inamide","SmallMoleculeReference",NA,"EcoCyc:CPD-20906",NA

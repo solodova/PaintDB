@@ -1,0 +1,6 @@
+"PARTICIPANT_A","INTERACTION_TYPE","PARTICIPANT_B","INTERACTION_DATA_SOURCE","INTERACTION_PUBMED_ID","PATHWAY_NAMES"
+"5-phospho-D-arabinonohydroxamate","chemical-affects","P00946",NA,"21058398;4862193;5335965","null"
+"D-mannopyranose-6-P","used-to-produce","F6P",NA,NA,"null"
+"D-mannopyranose-6-P","consumption-controlled-by","P00946",NA,"4862193;5335965","null"
+"F6P","used-to-produce","D-mannopyranose-6-P",NA,NA,"null"
+"P00946","controls-production-of","F6P",NA,"4862193;5335965","null"

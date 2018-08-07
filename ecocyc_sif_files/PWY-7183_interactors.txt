@@ -1,0 +1,10 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"guanosine-triphosphate","SmallMoleculeReference",NA,"CAS:86-01-1;ChEBI:CHEBI:37565;ChemSpider:5414499;EcoCyc:GTP;HMDB:HMDB01273;IAF1260:gtp;KEGG LIGAND:C00044;MetaboLights:MTBLC37565;PubChem-compound:7058167;RefMet:GTP",NA
+"5-fluorouracil","SmallMoleculeReference",NA,"ChEBI:CHEBI:46345;ChemSpider:3268;DrugBank:DB00544;EcoCyc:CPD0-1327;HMDB:HMDB14684;KEGG LIGAND:C07649;PubChem-compound:3385;RefMet:Fluorouracil",NA
+"guanosine 3'-diphosphate 5'-diphosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:77828;ChemSpider:13082026;DrugBank:DB04022;EcoCyc:GUANOSINE-5DP-3DP;HMDB:HMDB59638;IAF1260:ppgpp;KEGG LIGAND:C01228;PubChem-compound:15938967",NA
+"U","SmallMoleculeReference",NA,"CAS:66-22-8;ChEBI:CHEBI:17568;ChemSpider:1141;DrugBank:DB03419;EcoCyc:URACIL;HMDB:HMDB00300;IAF1260:ura;KEGG LIGAND:C00106;MetaboLights:MTBLC17568;PubChem-compound:1174;RefMet:Uracil",NA
+"PRPP","SmallMoleculeReference","PRPP","CAS:13270-65-0;ChEBI:CHEBI:58017;ChemSpider:20171339;EcoCyc:PRPP;HMDB:HMDB00280;IAF1260:prpp;KEGG LIGAND:C00119;MetaboLights:MTBLC58017;PubChem-compound:20848918;RefMet:Phosphoribosyl pyrophosphate",NA
+"P0A8F0","ProteinReference","Upp","Database of Interacting Proteins:DIP-36228N;EcoCyc:URACIL-PRIBOSYLTRANS-MONOMER;EcoliWiki:b2498;MODBASE:P0A8F0;NCBI Reference Sequences Database:NP_416993;Pride:P0A8F0;Protein Model Portal:P0A8F0;SWISS-MODEL:P0A8F0;Swiss-Model:P0A8F0;UniProt:P0A8F0","InterPro:IPR000836;InterPro:IPR005765;InterPro:IPR029057;InterPro:IPR034332;Panther:PTHR10285:SF104;Pfam:PF14681;Protein Data Bank:2EHJ"
+"a uridine nucleotide","SmallMoleculeReference",NA,"EcoCyc:Uridine-Nucleotides",NA
+"UMP","SmallMoleculeReference","UMP","CAS:58-97-9;ChEBI:CHEBI:57865;ChemSpider:1399139;EcoCyc:UMP;HMDB:HMDB00288;IAF1260:ump;KEGG LIGAND:C00105;MetaboLights:MTBLC57865;PubChem-compound:1778309;RefMet:UMP",NA

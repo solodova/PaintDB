@@ -1,0 +1,19 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"NADPH","SmallMoleculeReference",NA,"CAS:2646-71-1;ChEBI:CHEBI:57783;ChemSpider:10239199;EcoCyc:NADPH;HMDB:HMDB00221;IAF1260:nadph;KEGG LIGAND:C00005;MetaboLights:MTBLC57783;PubChem-compound:15983949;RefMet:NADPH",NA
+"P76113","ProteinReference","CurA","Database of Interacting Proteins:DIP-12748N;EcoCyc:G6760-MONOMER;EcoliWiki:b1449;MODBASE:P76113;NCBI Reference Sequences Database:NP_415966;Pride:P76113;Protein Model Portal:P76113;SWISS-MODEL:P76113;UniProt:P76113","InterPro:IPR011032;InterPro:IPR013149;InterPro:IPR016040;InterPro:IPR020843;Panther:PTHR11695;Pfam:PF00107;Smart:SM00829"
+"maleic acid N-ethylimide","SmallMoleculeReference",NA,"ChEBI:CHEBI:44485;ChemSpider:4209;DrugBank:DB02967;EcoCyc:N-ETHYLMALEIMIDE;KEGG LIGAND:C02441;PubChem-compound:4362;RefMet:N-ethylmaleimide",NA
+"tetrahydrocurcumin","SmallMoleculeReference",NA,"ChEBI:CHEBI:67263;ChemSpider:10070015;EcoCyc:CPD-13315;HMDB:HMDB05789;MetaboLights:MTBLC67263;PubChem-compound:11895692",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"Cadmium","SmallMoleculeReference",NA,"ChEBI:CHEBI:48775;ChemSpider:28935;EcoCyc:CD+2;HMDB:HMDB03638;IAF1260:cd2;KEGG LIGAND:C01413;PubChem-compound:31193",NA
+"Ag+","SmallMoleculeReference",NA,"CAS:14701-21-4;ChEBI:CHEBI:49468;ChemSpider:94565;EcoCyc:AG+;HMDB:HMDB02659;IAF1260:ag;PubChem-compound:104755",NA
+"NADP-ox","SmallMoleculeReference",NA,"CAS:53-59-8;ChEBI:CHEBI:58349;ChemSpider:10239198;EcoCyc:NADP;HMDB:HMDB00217;IAF1260:nadp;KEGG LIGAND:C00006;MetaboLights:MTBLC58349;PubChem-compound:15938972;RefMet:NADP+",NA
+"Hg++","SmallMoleculeReference",NA,"ChEBI:CHEBI:16793;ChemSpider:24800;EcoCyc:HG+2;HMDB:HMDB03625;IAF1260:hg2;KEGG LIGAND:C00703;PubChem-compound:26623",NA
+"diferuloylmethane","SmallMoleculeReference",NA,"ChEBI:CHEBI:3962;ChemSpider:4445080;EcoCyc:CPD-6602;HMDB:HMDB02269;KEGG LIGAND:C10443;MetaboLights:MTBLC3962;PubChem-compound:5281767",NA
+"5-(3-carboxy-4-nitro-phenyl)disulfanyl-2-nitro-benzoic acid","SmallMoleculeReference",NA,"ChemSpider:5367523;EcoCyc:DITHIO-NITROBENZOATE;PubChem-compound:7000011",NA
+"Cu++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29036;ChemSpider:25221;EcoCyc:CU+2;HMDB:HMDB00657;IAF1260:cu2;PubChem-compound:27099",NA
+"(4-carboxyphenyl)-chloro-mercury","SmallMoleculeReference",NA,"ChEBI:CHEBI:28420;ChemSpider:10606363;EcoCyc:CPD-29;KEGG LIGAND:C03444;PubChem-compound:21226146",NA
+"Fe++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29033;ChemSpider:25394;EcoCyc:FE+2;HMDB:HMDB00692;IAF1260:fe2;KEGG LIGAND:C14818;MetaboLights:MTBLC29033;PubChem-compound:27284",NA
+"monoiodoacetate","SmallMoleculeReference",NA,"ChemSpider:452795;EcoCyc:IODOACETATE;PubChem-compound:519093",NA
+"PMSF","SmallMoleculeReference",NA,"ChEBI:CHEBI:8102;ChemSpider:4620;EcoCyc:CPD-5541;KEGG LIGAND:C06747;PubChem-compound:4784",NA
+"diisopropyl fluorophosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:17941;ChemSpider:5723;DrugBank:DB00677;EcoCyc:DIISOPROPYL-FLUOROPHOSPHATE;HMDB:HMDB14815;KEGG LIGAND:C00202;PubChem-compound:5936;RefMet:Isoflurophate",NA
+"dihydrocurcumin","SmallMoleculeReference",NA,"ChEBI:CHEBI:67262;ChemSpider:4522656;EcoCyc:CPD-13314;MetaboLights:MTBLC67262;PubChem-compound:5372374",NA

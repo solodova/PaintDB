@@ -1,0 +1,7 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"L-leucyl-L-lysyl-[protein]","SmallMoleculeReference",NA,"EcoCyc:L-leucyl-L-lysyl-Protein",NA
+"an N-terminal arginyl-[protein]","SmallMoleculeReference",NA,"EcoCyc:Protein-N-terminal-L-Arginine",NA
+"an N-terminal L-lysyl-[protein]","SmallMoleculeReference",NA,"EcoCyc:Protein-N-terminal-L-Lysine",NA
+"a [protein] N-terminal L-leucyl-L-arginine","SmallMoleculeReference",NA,"EcoCyc:L-leucyl-L-arginyl-Protein",NA
+"P0A8P1","ProteinReference","Aat","Database of Interacting Proteins:DIP-48235N;EcoCyc:EG11112-MONOMER;EcoliWiki:b0885;NCBI Reference Sequences Database:NP_415405;Pride:P0A8P1;Protein Model Portal:P0A8P1;Protein Ontology:PRO_000022026;SWISS-MODEL:P0A8P1;UniProt:P0A8P1","InterPro:IPR004616;InterPro:IPR016181;Panther:PTHR30098;Pfam:PF03588;Protein Data Bank:2CXA;Protein Data Bank:2DPS;Protein Data Bank:2DPT;Protein Data Bank:2Z3K;Protein Data Bank:2Z3L;Protein Data Bank:2Z3M;Protein Data Bank:2Z3N;Protein Data Bank:2Z3O;Protein Data Bank:2Z3P"

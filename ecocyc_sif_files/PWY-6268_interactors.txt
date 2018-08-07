@@ -1,0 +1,11 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"tripolyphosphate","SmallMoleculeReference",NA,"CAS:14127-68-5;ChEBI:CHEBI:18036;ChemSpider:2683694;EcoCyc:P3I;HMDB:HMDB03379;IAF1260:pppi;KEGG LIGAND:C00536;MetaboLights:MTBLC18036;PubChem-compound:3440921",NA
+"cobamide coenzyme","SmallMoleculeReference",NA,"CAS:13870-90-1;ChEBI:CHEBI:18408;EcoCyc:ADENOSYLCOBALAMIN;HMDB:HMDB02086;IAF1260:adocbl;KEGG LIGAND:C00194;MetaboLights:MTBLC18408;PubChem-compound:91820207",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"B12r","SmallMoleculeReference",NA,"CAS:14463-33-3;ChEBI:CHEBI:16304;EcoCyc:CPD-1829;HMDB:HMDB06316;KEGG LIGAND:C00541;MetaboLights:MTBLC16304;PubChem-compound:25245838",NA
+"P0A9H5","ProteinReference","BtuR","EcoCyc:COBALADENOSYLTRANS-MONOMER;EcoliWiki:b1270;MODBASE:P0A9H5;NCBI Reference Sequences Database:NP_415786;Pride:P0A9H5;Protein Model Portal:P0A9H5;Protein Ontology:PRO_000022239;SWISS-MODEL:P0A9H5;Swiss-Model:P0A9H5;UniProt:P0A9H5","InterPro:IPR003724;InterPro:IPR025826;InterPro:IPR027417;Panther:PTHR30069:SF15;Pfam:PF02572;Pfam:PF12557"
+"cobalamin","SmallMoleculeReference",NA,"CAS:18534-66-2;ChEBI:CHEBI:15982;ChemSpider:4573816;EcoCyc:COB-I-ALAMIN;HMDB:HMDB03429;IAF1260:cbl1;KEGG LIGAND:C00853;MetaboLights:MTBLC15982;PubChem-compound:5460183",NA
+"cob(II)alamin-[corrinoid adenosyltranferase]","SmallMoleculeReference",NA,"EcoCyc:CPD-20904",NA
+"cob(I)alamin-[corrinoid adenosyltranferase]","SmallMoleculeReference",NA,"EcoCyc:CPD-20905",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"adenosylcob(III)alamin-[corrinoid adenosyltranferase]","SmallMoleculeReference",NA,"EcoCyc:B12-Corrinoid-Adenosyltranferase",NA

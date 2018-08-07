@@ -1,0 +1,16 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"alcohol","SmallMoleculeReference",NA,"ChEBI:CHEBI:30879;EcoCyc:Alcohols;KEGG LIGAND:C00069",NA
+"o-phenanthroline","SmallMoleculeReference",NA,"ChEBI:CHEBI:44975;ChemSpider:1278;DrugBank:DB02365;EcoCyc:O-PHENANTHROLINE;KEGG LIGAND:C00604;PubChem-compound:1318",NA
+"an acceptor beta;-D-glucuronoside","SmallMoleculeReference",NA,"ChEBI:CHEBI:15341;EcoCyc:Beta-D-Glucuronides;KEGG LIGAND:C03033",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"ethylenediaminetetraacetate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64755;EcoCyc:EDTA;HMDB:HMDB15109;KEGG LIGAND:C00284;PubChem-compound:5246202;RefMet:Edetic Acid",NA
+"P0A8G3","ProteinReference","UxaC","EcoCyc:UXAC-MONOMER;EcoliWiki:b3092;MODBASE:P0A8G3;NCBI Reference Sequences Database:NP_417563;Pride:P0A8G3;Protein Model Portal:P0A8G3;Protein Ontology:PRO_000024205;SWISS-MODEL:P0A8G3;UniProt:P0A8G3","InterPro:IPR003766;InterPro:IPR032466;Pfam:PF02614"
+"P05804","ProteinReference","UidA","Database of Interacting Proteins:DIP-11086N;EcoCyc:BETA-GLUCURONID-MONOMER;EcoliWiki:b1617;MODBASE:P05804;NCBI Reference Sequences Database:NP_416134;Pride:P05804;Protein Model Portal:P05804;SWISS-MODEL:P05804;UniProt:P05804","CAZy:GH2;InterPro:IPR006101;InterPro:IPR006102;InterPro:IPR006103;InterPro:IPR006104;InterPro:IPR008979;InterPro:IPR013783;InterPro:IPR017853;InterPro:IPR023230;InterPro:IPR023232;Pfam:PF00703;Pfam:PF02836;Pfam:PF02837;Prints:PR00132;Prosite:PS00608;Prosite:PS00719;Protein Data Bank:3K46;Protein Data Bank:3K4A;Protein Data Bank:3K4D;Protein Data Bank:3LPF;Protein Data Bank:3LPG;Protein Data Bank:4JHZ;Protein Data Bank:5CZK"
+"aldehydo-D-glucuronate","SmallMoleculeReference",NA,"ChEBI:CHEBI:47953;EcoCyc:CPD-15530;PubChem-compound:5460126",NA
+"Cu++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29036;ChemSpider:25221;EcoCyc:CU+2;HMDB:HMDB00657;IAF1260:cu2;PubChem-compound:27099",NA
+"(4-carboxyphenyl)-chloro-mercury","SmallMoleculeReference",NA,"ChEBI:CHEBI:28420;ChemSpider:10606363;EcoCyc:CPD-29;KEGG LIGAND:C03444;PubChem-compound:21226146",NA
+"beta;-mercaptoethanol","SmallMoleculeReference",NA,"ChEBI:CHEBI:41218;ChemSpider:1512;DrugBank:DB03345;EcoCyc:2-MERCAPTOETHANOL;KEGG LIGAND:C00928;PubChem-compound:1567",NA
+"cyanide salts","SmallMoleculeReference",NA,"ChEBI:CHEBI:33192;ChemSpider:8587;EcoCyc:CPD0-1610;KEGG LIGAND:C18673;PubChem-compound:8929",NA
+"D-fructuronate","SmallMoleculeReference",NA,"ChEBI:CHEBI:4126;EcoCyc:FRUCTURONATE;IAF1260:36345;IAF1260:fruur;KEGG LIGAND:C00905;PubChem-compound:439343",NA
+"D-glucopyranuronate","SmallMoleculeReference",NA,"ChEBI:CHEBI:47952;EcoCyc:D-Glucopyranuronate",NA
+"cys","SmallMoleculeReference","cys","CAS:4371-52-2;CAS:52-90-4;ChEBI:CHEBI:35235;EcoCyc:CYS;HMDB:HMDB00574;IAF1260:cys__L;KEGG LIGAND:C00097;KNApSAcK:C00001351;MetaboLights:MTBLC35235;PubChem-compound:6419722;RefMet:Cysteine",NA

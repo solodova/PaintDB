@@ -1,0 +1,5 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"F6P","SmallMoleculeReference","F6P","CAS:643-13-0;ChEBI:CHEBI:57634;ChemSpider:10239172;EcoCyc:FRUCTOSE-6P;IAF1260:f6p;PubChem-compound:21604863",NA
+"D-mannopyranose-6-P","SmallMoleculeReference",NA,"ChEBI:CHEBI:48066;EcoCyc:CPD-15979",NA
+"P00946","ProteinReference","ManA","Database of Interacting Proteins:DIP-10153N;EcoCyc:MANNPISOM-MONOMER;EcoliWiki:b1613;MODBASE:P00946;Mint:MINT-1241491;NCBI Reference Sequences Database:NP_416130;Pride:P00946;Protein Model Portal:P00946;SWISS-MODEL:P00946;UniProt:P00946","InterPro:IPR001250;InterPro:IPR011051;InterPro:IPR014710;InterPro:IPR016305;InterPro:IPR018050;Panther:PTHR10309;Pfam:PF01238;Prints:PR00714;Prosite:PS00965;Prosite:PS00966"
+"5-phospho-D-arabinonohydroxamate","SmallMoleculeReference",NA,"EcoCyc:CPD-15157;PubChem-compound:10400331",NA

@@ -1,0 +1,12 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"S-adenosyl-S-carboxymethyl-L-homocystein","SmallMoleculeReference",NA,"ChEBI:CHEBI:134278;EcoCyc:CPD-15403;PubChem-compound:90659115",NA
+"2-oxo-3-phenylpropanoate","SmallMoleculeReference",NA,"CAS:156-06-9;ChEBI:CHEBI:18005;ChemSpider:3784710;EcoCyc:PHENYL-PYRUVATE;HMDB:HMDB00205;IAF1260:phpyr;KEGG LIGAND:C00166;MetaboLights:MTBLC18005;PubChem-compound:4592697;RefMet:Phenylpyruvic acid",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"a 5-(carboxymethoxy)uridine34 in tRNA","SmallMoleculeReference",NA,"EcoCyc:5-oxyacetylU34-tRNA",NA
+"prephenate","SmallMoleculeReference",NA,"CAS:126-49-8;ChEBI:CHEBI:29934;ChemSpider:4573884;EcoCyc:PREPHENATE;HMDB:HMDB12283;IAF1260:pphn;KEGG LIGAND:C00254;PubChem-compound:5460303",NA
+"SAH","SmallMoleculeReference","SAH","CAS:979-92-0;ChEBI:CHEBI:57856;EcoCyc:ADENOSYL-HOMO-CYS;HMDB:HMDB00939;IAF1260:ahcys;KEGG LIGAND:C00021;MetaboLights:MTBLC57856;PubChem-compound:25246222;RefMet:S-Adenosylhomocysteine",NA
+"SAM","SmallMoleculeReference","SAM","CAS:29908-03-0;ChEBI:CHEBI:59789;EcoCyc:S-ADENOSYLMETHIONINE;HMDB:HMDB01185;IAF1260:amet;KEGG LIGAND:C00019;MetaboLights:MTBLC59789;PubChem-compound:24762165;RefMet:S-adenosyl-L-methioninate",NA
+"P76290","ProteinReference","CmoA","EcoCyc:G7020-MONOMER;EcoliWiki:b1870;MODBASE:P76290;Mint:MINT-7290797;NCBI Reference Sequences Database:NP_416384;Pride:P76290;Protein Model Portal:P76290;Protein Ontology:PRO_000022302;SWISS-MODEL:P76290;Swiss-Model:P76290;UniProt:P76290","InterPro:IPR005271;InterPro:IPR029063;Panther:PTHR43861:SF1;Pfam:PF13649;Protein Data Bank:4GEK;Protein Data Bank:4IWN"
+"a 5-hydroxyuridine34 in tRNA","SmallMoleculeReference",NA,"EcoCyc:5-HYDROXYU34-TRNA",NA
+"P76291","ProteinReference","CmoB","EcoCyc:G7021-MONOMER;EcoliWiki:b1871;MODBASE:P76291;NCBI Reference Sequences Database:NP_416385;Pride:P76291;Protein Model Portal:P76291;Protein Ontology:PRO_000022303;SWISS-MODEL:P76291;UniProt:P76291","InterPro:IPR010017;InterPro:IPR027555;InterPro:IPR029063;Panther:PTHR10108:SF1036;Pfam:PF08003;Protein Data Bank:4QNU;Protein Data Bank:4QNV;Protein Data Bank:4QNX"

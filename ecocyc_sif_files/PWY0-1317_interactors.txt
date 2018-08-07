@@ -1,0 +1,17 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"BTS","SmallMoleculeReference",NA,"CAS:127-17-3;ChEBI:CHEBI:15361;ChemSpider:96901;EcoCyc:PYRUVATE;HMDB:HMDB00243;IAF1260:pyr;KEGG LIGAND:C00022;KNApSAcK:C00001200;MetaboLights:MTBLC15361;PubChem-compound:107735;RefMet:Pyruvic acid;UMBBD Compound:c0159",NA
+"DPN-ox","SmallMoleculeReference",NA,"CAS:53-84-9;ChEBI:CHEBI:57540;ChemSpider:10239196;EcoCyc:NAD;HMDB:HMDB00902;IAF1260:nad;KEGG LIGAND:C00003;MetaboLights:MTBLC57540;PubChem-compound:15938971;RefMet:NAD+",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"a sulfhydryl group","SmallMoleculeReference",NA,"ChEBI:CHEBI:29917;EcoCyc:Sulfhydryl-Groups",NA
+"2-hydroxy-3-butynoic acid ethyl ester","SmallMoleculeReference",NA,"EcoCyc:CPD0-1604;PubChem-compound:44123461",NA
+"lactald","SmallMoleculeReference",NA,"CAS:598-35-6;ChEBI:CHEBI:18041;ChemSpider:388368;DrugBank:DB03776;EcoCyc:LACTALD;HMDB:HMDB03052;IAF1260:lald__L;KEGG LIGAND:C00424;MetaboLights:MTBLC18041;PubChem-compound:439231;RefMet:Lactaldehyde",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"a phospholipid","SmallMoleculeReference",NA,"ChEBI:CHEBI:16247;EcoCyc:Phospholipids;KEGG LIGAND:C00865",NA
+"an electron-transfer quinone","SmallMoleculeReference",NA,"EcoCyc:ETR-Quinones",NA
+"P33232","ProteinReference","LldD","Database of Interacting Proteins:DIP-10108N;EcoCyc:L-LACTDEHYDROGFMN-MONOMER;EcoliWiki:b3605;MODBASE:P33232;Mint:MINT-6478320;NCBI Reference Sequences Database:NP_418062;Pride:P33232;Protein Model Portal:P33232;Protein Ontology:PRO_000023100;SWISS-MODEL:P33232;UniProt:P33232","InterPro:IPR000262;InterPro:IPR008259;InterPro:IPR012133;InterPro:IPR013785;InterPro:IPR020920;Pfam:PF01070;Prosite:PS00557;Prosite:PS51349"
+"nicotinamide adenine dinucleotide reduced","SmallMoleculeReference",NA,"CAS:58-68-4;ChEBI:CHEBI:57945;ChemSpider:10239197;EcoCyc:NADH;HMDB:HMDB01487;IAF1260:nadh;KEGG LIGAND:C00004;MetaboLights:MTBLC57945;PubChem-compound:21604869;RefMet:NADH",NA
+"Cu++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29036;ChemSpider:25221;EcoCyc:CU+2;HMDB:HMDB00657;IAF1260:cu2;PubChem-compound:27099",NA
+"monoiodoacetate","SmallMoleculeReference",NA,"ChemSpider:452795;EcoCyc:IODOACETATE;PubChem-compound:519093",NA
+"L(+)-lactate","SmallMoleculeReference",NA,"CAS:79-33-4;ChEBI:CHEBI:16651;ChemSpider:4573803;EcoCyc:L-LACTATE;HMDB:HMDB00190;IAF1260:lac__L;KEGG LIGAND:C00186;MetaboLights:MTBLC16651;PubChem-compound:5460161;RefMet:Lactic acid",NA
+"an electron-transfer quinol","SmallMoleculeReference",NA,"EcoCyc:ETR-Quinols",NA
+"P25553","ProteinReference","AldA","Database of Interacting Proteins:DIP-9081N;EcoCyc:LACTALDDEHYDROG-MONOMER;EcoliWiki:b1415;MODBASE:P25553;Mint:MINT-1313045;NCBI Reference Sequences Database:NP_415933;Pride:P25553;Protein Model Portal:P25553;Protein Ontology:PRO_000022075;SWISS-MODEL:P25553;UniProt:P25553","InterPro:IPR015590;InterPro:IPR016160;InterPro:IPR016161;InterPro:IPR016162;InterPro:IPR029510;Pfam:PF00171;Prosite:PS00070;Prosite:PS00687;Protein Data Bank:2HG2;Protein Data Bank:2ILU;Protein Data Bank:2IMP;Protein Data Bank:2OPX"

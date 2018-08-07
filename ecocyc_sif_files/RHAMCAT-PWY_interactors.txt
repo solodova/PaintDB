@@ -1,0 +1,25 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"beta;-L-rhamnopyranose","SmallMoleculeReference",NA,"ChEBI:CHEBI:27586;ChemSpider:388792;EcoCyc:CPD0-1112;KEGG LIGAND:C02338;MetaboLights:MTBLC27586;PubChem-compound:439730",NA
+"o-phenanthroline","SmallMoleculeReference",NA,"ChEBI:CHEBI:44975;ChemSpider:1278;DrugBank:DB02365;EcoCyc:O-PHENANTHROLINE;KEGG LIGAND:C00604;PubChem-compound:1318",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"L-rhamnulofuranose","SmallMoleculeReference",NA,"EcoCyc:CPD-16567",NA
+"lactald","SmallMoleculeReference",NA,"CAS:598-35-6;ChEBI:CHEBI:18041;ChemSpider:388368;DrugBank:DB03776;EcoCyc:LACTALD;HMDB:HMDB03052;IAF1260:lald__L;KEGG LIGAND:C00424;MetaboLights:MTBLC18041;PubChem-compound:439231;RefMet:Lactaldehyde",NA
+"lithium ion","SmallMoleculeReference",NA,"ChEBI:CHEBI:49713;ChemSpider:26502;DrugBank:DB01356;EcoCyc:LI+;HMDB:HMDB05949;PubChem-compound:28486",NA
+"ethylenediaminetetraacetate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64755;EcoCyc:EDTA;HMDB:HMDB15109;KEGG LIGAND:C00284;PubChem-compound:5246202;RefMet:Edetic Acid",NA
+"Hg++","SmallMoleculeReference",NA,"ChEBI:CHEBI:16793;ChemSpider:24800;EcoCyc:HG+2;HMDB:HMDB03625;IAF1260:hg2;KEGG LIGAND:C00703;PubChem-compound:26623",NA
+"adenosine-5-diphosphate","SmallMoleculeReference",NA,"CAS:58-64-0;ChEBI:CHEBI:456216;ChemSpider:5414423;EcoCyc:ADP;HMDB:HMDB01341;IAF1260:adp;KEGG LIGAND:C00008;MetaboLights:MTBLC456216;PubChem-compound:7058055;RefMet:ADP",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"P32156","ProteinReference","RhaM","EcoCyc:EG11865-MONOMER;EcoliWiki:b3901;NCBI Reference Sequences Database:NP_418337;Pride:P32156;Protein Model Portal:P32156;Protein Ontology:PRO_000023736;SWISS-MODEL:P32156;UniProt:P32156","InterPro:IPR008000;InterPro:IPR011008;InterPro:IPR013448;Pfam:PF05336;Protein Data Bank:1X8D"
+"p-mercuribenzoate","SmallMoleculeReference",NA,"ChEBI:CHEBI:20435;ChemSpider:4574164;EcoCyc:CPD-7388;KEGG LIGAND:C00985;PubChem-compound:5460680",NA
+"P32169","ProteinReference","RhaD","EcoCyc:RHAMNULPALDOL-MONOMER;EcoliWiki:B3902;MODBASE:P32169;NCBI Reference Sequences Database:NP_418338;Pride:P32169;Protein Model Portal:P32169;Protein Ontology:PRO_000023735;SWISS-MODEL:P32169;UniProt:P32169","InterPro:IPR001303;InterPro:IPR013447;Pfam:PF00596;Protein Data Bank:1GT7;Protein Data Bank:1OJR;Protein Data Bank:2UYU;Protein Data Bank:2UYV;Protein Data Bank:2V29;Protein Data Bank:2V2A;Protein Data Bank:2V2B;Protein Data Bank:2V9E;Protein Data Bank:2V9F;Protein Data Bank:2V9G;Protein Data Bank:2V9I;Protein Data Bank:2V9L;Protein Data Bank:2V9M;Protein Data Bank:2V9N;Protein Data Bank:2V9O;Smart:SM01007"
+"DHAP","SmallMoleculeReference","DHAP","CAS:57-04-5;ChEBI:CHEBI:57642;ChemSpider:3833110;EcoCyc:DIHYDROXY-ACETONE-PHOSPHATE;HMDB:HMDB01473;IAF1260:dhap;KEGG LIGAND:C00111;MetaboLights:MTBLC57642;PubChem-compound:4643300;RefMet:Dihydroxyacetone phosphate",NA
+"isodulcit","SmallMoleculeReference",NA,"ChEBI:CHEBI:27907;ChemSpider:388776;EcoCyc:RHAMNOSE;KEGG LIGAND:C02476;MetaboLights:MTBLC27907;PubChem-compound:439710",NA
+"L-rhamnitol","SmallMoleculeReference",NA,"ChEBI:CHEBI:45530;ChemSpider:392801;EcoCyc:CPD0-1114;PubChem-compound:445052",NA
+"2,2'-bipyridyl","SmallMoleculeReference",NA,"ChEBI:CHEBI:30351;ChemSpider:13867714;EcoCyc:CPD-8819;PubChem-compound:1474",NA
+"keto-L-rhamnulose","SmallMoleculeReference",NA,"EcoCyc:CPD-16566",NA
+"L-rhamnulose-1-P","SmallMoleculeReference",NA,"CAS:444-09-7;ChEBI:CHEBI:58313;ChemSpider:4573665;EcoCyc:RHAMNULOSE-1P;IAF1260:rml1p;KEGG LIGAND:C01131;PubChem-compound:90658215",NA
+"(4-carboxyphenyl)-chloro-mercury","SmallMoleculeReference",NA,"ChEBI:CHEBI:28420;ChemSpider:10606363;EcoCyc:CPD-29;KEGG LIGAND:C03444;PubChem-compound:21226146",NA
+"P32170","ProteinReference","RhaA","Database of Interacting Proteins:DIP-10690N;Database of Protein Disorder:DP00429;EcoCyc:RHAMNISOM-MONOMER;EcoliWiki:b3903;MODBASE:P32170;NCBI Reference Sequences Database:YP_026276;Pride:P32170;Protein Model Portal:P32170;Protein Ontology:PRO_000023733;SWISS-MODEL:P32170;UniProt:P32170","InterPro:IPR009308;InterPro:IPR013022;Pfam:PF06134;Protein Data Bank:1D8W;Protein Data Bank:1DE5;Protein Data Bank:1DE6"
+"P32171","ProteinReference","RhaB","EcoCyc:RHAMNULOKIN-MONOMER;EcoliWiki:b3904;MODBASE:P32171;NCBI Reference Sequences Database:NP_418340;Pride:P32171;Protein Model Portal:P32171;Protein Ontology:PRO_000023734;SWISS-MODEL:P32171;UniProt:P32171","InterPro:IPR013449;InterPro:IPR018484;InterPro:IPR018485;Pfam:PF00370;Pfam:PF02782;Protein Data Bank:2CGJ;Protein Data Bank:2CGK;Protein Data Bank:2CGL"
+"L-rhamnitol 1-phosphate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1286;PubChem-compound:46926291",NA
+"8-hydroxyquinoline-5-sulfonic acid","SmallMoleculeReference",NA,"ChemSpider:4425604;EcoCyc:CPD0-1288;PubChem-compound:5260546",NA

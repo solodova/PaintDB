@@ -1,0 +1,16 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"6-(alpha;-D-galactosido)-D-glucose","SmallMoleculeReference",NA,"CAS:585-99-9;ChEBI:CHEBI:61827;ChemSpider:10974;EcoCyc:MELIBIOSE;HMDB:HMDB00048;IAF1260:melib;KEGG LIGAND:C05402;PubChem-compound:11458",NA
+"Ni++","SmallMoleculeReference",NA,"ChEBI:CHEBI:49786;ChemSpider:909;EcoCyc:NI+2;HMDB:HMDB02457;IAF1260:ni2;KEGG LIGAND:C19609;PubChem-compound:934",NA
+"Zn(II)","SmallMoleculeReference",NA,"CAS:7440-66-6;ChEBI:CHEBI:29105;ChemSpider:29723;EcoCyc:ZN+2;HMDB:HMDB01303;IAF1260:zn2;KEGG LIGAND:C00038;MetaboLights:MTBLC29105;PubChem-compound:32051",NA
+"Cadmium","SmallMoleculeReference",NA,"ChEBI:CHEBI:48775;ChemSpider:28935;EcoCyc:CD+2;HMDB:HMDB03638;IAF1260:cd2;KEGG LIGAND:C01413;PubChem-compound:31193",NA
+"DPN-ox","SmallMoleculeReference",NA,"CAS:53-84-9;ChEBI:CHEBI:57540;ChemSpider:10239196;EcoCyc:NAD;HMDB:HMDB00902;IAF1260:nad;KEGG LIGAND:C00003;MetaboLights:MTBLC57540;PubChem-compound:15938971;RefMet:NAD+",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"D-galactopyranose","SmallMoleculeReference",NA,"ChEBI:CHEBI:4139;EcoCyc:D-galactopyranose",NA
+"PHMB","SmallMoleculeReference",NA,"ChemSpider:15605527;EcoCyc:PHMB;PubChem-compound:3647458",NA
+"5-amino-5-deoxy-D-galactopyranoside","SmallMoleculeReference",NA,"ChemSpider:2537579;EcoCyc:5-AMINO-5-DEOXY-D-GALACTOPYRANOSIDE;PubChem-compound:90657911",NA
+"D-glucopyranose","SmallMoleculeReference",NA,"ChEBI:CHEBI:4167;EcoCyc:Glucopyranose",NA
+"tin (II) ion","SmallMoleculeReference",NA,"ChEBI:CHEBI:30475;ChemSpider:94662;EcoCyc:CPD-1490;PubChem-compound:104883",NA
+"beta;-mercaptoethanol","SmallMoleculeReference",NA,"ChEBI:CHEBI:41218;ChemSpider:1512;DrugBank:DB03345;EcoCyc:2-MERCAPTOETHANOL;KEGG LIGAND:C00928;PubChem-compound:1567",NA
+"1-deoxygalactonojirimycin","SmallMoleculeReference",NA,"ChemSpider:10213566;EcoCyc:15-DIDEOXY-15-IMINO-D-GALACTITOL;PubChem-compound:21592101",NA
+"a thiol","SmallMoleculeReference",NA,"ChEBI:CHEBI:29256;EcoCyc:Thiols;KEGG LIGAND:C00145",NA
+"P06720","ProteinReference","MelA","Database of Interacting Proteins:DIP-10179N;EcoCyc:ALPHAGALACTOSID-MONOMER;EcoliWiki:b4119;MODBASE:P06720;NCBI Reference Sequences Database:NP_418543;Pride:P06720;Protein Model Portal:P06720;Protein Ontology:PRO_000023197;SWISS-MODEL:P06720;UniProt:P06720","CAZy:GH4;InterPro:IPR001088;InterPro:IPR015955;InterPro:IPR016040;InterPro:IPR019802;InterPro:IPR022616;Panther:PTHR32092;Pfam:PF02056;Pfam:PF11975;Prints:PR00732;Prosite:PS01324"

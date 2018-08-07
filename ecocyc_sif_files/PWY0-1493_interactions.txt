@@ -1,0 +1,6 @@
+"PARTICIPANT_A","INTERACTION_TYPE","PARTICIPANT_B","INTERACTION_DATA_SOURCE","INTERACTION_PUBMED_ID","PATHWAY_NAMES"
+"P0DMC5","neighbor-of","P39838",NA,NA,"null"
+"P0DMC7","in-complex-with","P0DMC9",NA,"10702265;12864862;16000739;1943696;1999391;2404948;8576059;9882673",NA
+"P0DMC7","neighbor-of","P0DMC9",NA,NA,"null"
+"P0DMC7","neighbor-of","P39838",NA,NA,"null"
+"adenosine-5'-triphosphate","used-to-produce","adenosine-5-diphosphate",NA,NA,"null"

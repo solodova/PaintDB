@@ -1,0 +1,26 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"Zn(II)","SmallMoleculeReference",NA,"CAS:7440-66-6;ChEBI:CHEBI:29105;ChemSpider:29723;EcoCyc:ZN+2;HMDB:HMDB01303;IAF1260:zn2;KEGG LIGAND:C00038;MetaboLights:MTBLC29105;PubChem-compound:32051",NA
+"DPN-ox","SmallMoleculeReference",NA,"CAS:53-84-9;ChEBI:CHEBI:57540;ChemSpider:10239196;EcoCyc:NAD;HMDB:HMDB00902;IAF1260:nad;KEGG LIGAND:C00003;MetaboLights:MTBLC57540;PubChem-compound:15938971;RefMet:NAD+",NA
+"A","SmallMoleculeReference","A","ChEBI:CHEBI:15339;EcoCyc:Acceptor;KEGG LIGAND:C00028",NA
+"D-(+)-glyceraldehyde","SmallMoleculeReference",NA,"CAS:367-47-5;CAS:453-17-8;ChEBI:CHEBI:17378;ChemSpider:19353178;DrugBank:DB02536;EcoCyc:GLYCERALD;IAF1260:glyald;KEGG LIGAND:C00577;MetaboLights:MTBLC17378;PubChem-compound:79014;RefMet:Glyceraldehyde",NA
+"potassium","SmallMoleculeReference",NA,"ChEBI:CHEBI:29103;ChemSpider:791;EcoCyc:K+;HMDB:HMDB00586;IAF1260:k;KEGG LIGAND:C00238;MetaboLights:MTBLC29103;PubChem-compound:813",NA
+"trimethylacetaldehyde","SmallMoleculeReference",NA,"ChemSpider:11910;EcoCyc:CPD0-1678;PubChem-compound:12417",NA
+"tetramethylazanium","SmallMoleculeReference",NA,"CAS:51-92-3;ChEBI:CHEBI:46020;ChemSpider:6140;DrugBank:DB03095;EcoCyc:CPD-7679;KEGG LIGAND:C20292;PubChem-compound:6380",NA
+"choline","SmallMoleculeReference",NA,"CAS:123-41-1;CAS:62-49-7;ChEBI:CHEBI:15354;ChemSpider:299;DrugBank:DB00122;EcoCyc:CHOLINE;HMDB:HMDB00097;IAF1260:chol;KEGG LIGAND:C00114;MetaboLights:MTBLC15354;PubChem-compound:305;RefMet:Choline;Wikipedia:Choline",NA
+"N-monomethylethanolamine","SmallMoleculeReference",NA,"ChemSpider:5362336;EcoCyc:CPD-5601;PubChem-compound:6994314",NA
+"acetic aldehyde","SmallMoleculeReference",NA,"CAS:75-07-0;ChEBI:CHEBI:15343;ChemSpider:172;EcoCyc:ACETALD;HMDB:HMDB00990;IAF1260:acald;KEGG LIGAND:C00084;MetaboLights:MTBLC15343;PubChem-compound:177;RefMet:Acetaldehyde;UMBBD Compound:c0160",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"betaine aldehyde","SmallMoleculeReference",NA,"CAS:7418-61-3;ChEBI:CHEBI:15710;ChemSpider:244;DrugBank:DB04401;EcoCyc:BETAINE_ALDEHYDE;HMDB:HMDB01252;IAF1260:betald;KEGG LIGAND:C00576;MetaboLights:MTBLC15710;PubChem-compound:249;RefMet:Betaine aldehyde",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"Hg++","SmallMoleculeReference",NA,"ChEBI:CHEBI:16793;ChemSpider:24800;EcoCyc:HG+2;HMDB:HMDB03625;IAF1260:hg2;KEGG LIGAND:C00703;PubChem-compound:26623",NA
+"butyrylcholine","SmallMoleculeReference",NA,"ChEBI:CHEBI:327449;ChemSpider:16312;EcoCyc:CPD0-1675;HMDB:HMDB13223;PubChem-compound:17233",NA
+"P17445","ProteinReference","BetB","Database of Interacting Proteins:DIP-9208N;EcoCyc:BADH-MONOMER;EcoliWiki:b0312;MODBASE:P17445;NCBI Reference Sequences Database:NP_414846;Pride:P17445;Protein Model Portal:P17445;Protein Ontology:PRO_000022208;SWISS-MODEL:P17445;Swiss-Model:P17445;UniProt:P17445","InterPro:IPR011264;InterPro:IPR015590;InterPro:IPR016160;InterPro:IPR016161;InterPro:IPR016162;InterPro:IPR029510;Panther:PTHR11699:SF246;Pfam:PF00171;Prosite:PS00070;Prosite:PS00687"
+"phenylethanal","SmallMoleculeReference",NA,"CAS:122-78-1;ChEBI:CHEBI:16424;ChemSpider:13876539;DrugBank:DB02178;EcoCyc:PHENYLACETALDEHYDE;HMDB:HMDB06236;IAF1260:pacald;KEGG LIGAND:C00601;MetaboLights:MTBLC16424;PubChem-compound:998;RefMet:Phenylacetaldehyde",NA
+"P17444","ProteinReference","BetA","EcoCyc:CHD-MONOMER;EcoliWiki:b0311;MODBASE:P17444;NCBI Reference Sequences Database:NP_414845;Pride:P17444;Protein Model Portal:P17444;Protein Ontology:PRO_000022207;SWISS-MODEL:P17444;UniProt:P17444","InterPro:IPR000172;InterPro:IPR007867;InterPro:IPR011533;InterPro:IPR012132;InterPro:IPR023753;Panther:PTHR11552:SF159;Pfam:PF00732;Pfam:PF05199;Prosite:PS00623;Prosite:PS00624"
+"nicotinamide adenine dinucleotide reduced","SmallMoleculeReference",NA,"CAS:58-68-4;ChEBI:CHEBI:57945;ChemSpider:10239197;EcoCyc:NADH;HMDB:HMDB01487;IAF1260:nadh;KEGG LIGAND:C00004;MetaboLights:MTBLC57945;PubChem-compound:21604869;RefMet:NADH",NA
+"(4-carboxyphenyl)-chloro-mercury","SmallMoleculeReference",NA,"ChEBI:CHEBI:28420;ChemSpider:10606363;EcoCyc:CPD-29;KEGG LIGAND:C03444;PubChem-compound:21226146",NA
+"trimethylammonioacetate","SmallMoleculeReference",NA,"CAS:107-43-7;ChEBI:CHEBI:17750;ChemSpider:242;EcoCyc:BETAINE;HMDB:HMDB00043;IAF1260:glyb;KEGG LIGAND:C00719;MetaboLights:MTBLC17750;PubChem-compound:247;RefMet:Betaine",NA
+"benzaldehyde","SmallMoleculeReference",NA,"CAS:100-52-7;ChEBI:CHEBI:17169;ChemSpider:235;EcoCyc:BENZALDEHYDE;HMDB:HMDB06115;KEGG LIGAND:C00261;MetaboLights:MTBLC17169;PubChem-compound:240;RefMet:Benzaldehyde",NA
+"isopentaldehyde","SmallMoleculeReference",NA,"ChEBI:CHEBI:16638;ChemSpider:11065;EcoCyc:CPD-7031;HMDB:HMDB06478;KEGG LIGAND:C07329;PubChem-compound:11552",NA
+"N-dimethylethanolamine","SmallMoleculeReference",NA,"EcoCyc:CPD-5602;PubChem-compound:5249138;RefMet:Dimethylethanolamine",NA
+"A(H2)","SmallMoleculeReference","A(H2)","ChEBI:CHEBI:17499;EcoCyc:Donor-H2;KEGG LIGAND:C00030",NA

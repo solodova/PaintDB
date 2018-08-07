@@ -1,0 +1,28 @@
+"PARTICIPANT_A","INTERACTION_TYPE","PARTICIPANT_B","INTERACTION_DATA_SOURCE","INTERACTION_PUBMED_ID","PATHWAY_NAMES"
+"alpha; -ethynylagmatine","chemical-affects","P21170",NA,"3297044;4571773",NA
+"alpha;-monofluoromethylagmatine","chemical-affects","P21170",NA,"3297044;4571773",NA
+"alpha;-monofluoromethylarginine","chemical-affects","P21170",NA,"3297044;4571773",NA
+"(E)-alpha;-monofluoromethyldehydroarginine","chemical-affects","P21170",NA,"3297044;4571773",NA
+"AA","chemical-affects","P21170",NA,"3297044;4571773",NA
+"DFMA","chemical-affects","P21170",NA,"3297044;4571773",NA
+"L-ornithine","chemical-affects","P28629",NA,"4870599","null"
+"P21170","neighbor-of","P28629",NA,NA,"null"
+"P21170","controls-production-of","agmatine",NA,"4571773","null"
+"P21170","controls-production-of","carbon dioxide",NA,"4571773","null"
+"P28629","controls-production-of","agmatine",NA,"4870599","null"
+"P28629","controls-production-of","carbon dioxide",NA,"4870599","null"
+"a guanido compound","chemical-affects","P28629",NA,"4870599","null"
+"a ureido compound","chemical-affects","P28629",NA,"4870599","null"
+"arg","consumption-controlled-by","P21170",NA,"4571773","null"
+"arg","consumption-controlled-by","P28629",NA,"4870599","null"
+"arg","used-to-produce","agmatine",NA,NA,"null"
+"arg","used-to-produce","carbon dioxide",NA,NA,"null"
+"arg","reacts-with","hydrogen ion",NA,NA,"null"
+"diaminobutane","chemical-affects","P21170",NA,"4571773",NA
+"hydrogen ion","consumption-controlled-by","P21170",NA,"4571773","null"
+"hydrogen ion","consumption-controlled-by","P28629",NA,"4870599","null"
+"hydrogen ion","used-to-produce","agmatine",NA,NA,"null"
+"hydrogen ion","used-to-produce","carbon dioxide",NA,NA,"null"
+"lys","chemical-affects","P28629",NA,"4870599","null"
+"spermidine","chemical-affects","P21170",NA,"4571773",NA
+"spermidine","chemical-affects","P28629",NA,"4870599","null"

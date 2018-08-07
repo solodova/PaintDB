@@ -1,0 +1,44 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"BTS","SmallMoleculeReference",NA,"CAS:127-17-3;ChEBI:CHEBI:15361;ChemSpider:96901;EcoCyc:PYRUVATE;HMDB:HMDB00243;IAF1260:pyr;KEGG LIGAND:C00022;KNApSAcK:C00001200;MetaboLights:MTBLC15361;PubChem-compound:107735;RefMet:Pyruvic acid;UMBBD Compound:c0159",NA
+"4-deoxy-D-glucarate","SmallMoleculeReference",NA,"ChemSpider:4450365;EcoCyc:CPD0-1612;PubChem-compound:5288136",NA
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"D-saccharate","SmallMoleculeReference",NA,"CAS:87-73-0;ChEBI:CHEBI:30612;ChemSpider:4450583;EcoCyc:D-GLUCARATE;HMDB:HMDB29881;IAF1260:glcr;KEGG LIGAND:C00818;MetaboLights:MTBLC30612;PubChem-compound:5288393;RefMet:Glucaric acid",NA
+"P0ABQ2","ProteinReference","GarR","Database of Interacting Proteins:DIP-9742N;EcoCyc:TSA-REDUCT-MONOMER;EcoliWiki:b3125;MODBASE:P0ABQ2;NCBI Reference Sequences Database:NP_417594;Pride:P0ABQ2;Protein Model Portal:P0ABQ2;SWISS-MODEL:P0ABQ2;Swiss-Model:P0ABQ2;UniProt:P0ABQ2","InterPro:IPR002204;InterPro:IPR006115;InterPro:IPR006398;InterPro:IPR008927;InterPro:IPR013328;InterPro:IPR015815;InterPro:IPR016040;InterPro:IPR029154;Panther:PTHR22981;Pfam:PF03446;Pfam:PF14833;Prosite:PS00895"
+"xylarohydroxamate","SmallMoleculeReference",NA,"ChemSpider:4451527;EcoCyc:CPD0-1613;PubChem-compound:5289593",NA
+"ethylenediaminetetraacetate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64755;EcoCyc:EDTA;HMDB:HMDB15109;KEGG LIGAND:C00284;PubChem-compound:5246202;RefMet:Edetic Acid",NA
+"adenosine-5-diphosphate","SmallMoleculeReference",NA,"CAS:58-64-0;ChEBI:CHEBI:456216;ChemSpider:5414423;EcoCyc:ADP;HMDB:HMDB01341;IAF1260:adp;KEGG LIGAND:C00008;MetaboLights:MTBLC456216;PubChem-compound:7058055;RefMet:ADP",NA
+"P0AES2","ProteinReference","GudD","EcoCyc:GLUCARDEHYDRA-MONOMER;EcoliWiki:b2787;MODBASE:P0AES2;NCBI Reference Sequences Database:NP_417267;Pride:P0AES2;Protein Model Portal:P0AES2;Protein Ontology:PRO_000022853;SWISS-MODEL:P0AES2;Swiss-Model:P0AES2;UniProt:P0AES2","InterPro:IPR013342;InterPro:IPR017653;InterPro:IPR029017;InterPro:IPR029065;InterPro:IPR034390;InterPro:IPR034598;Panther:PTHR13794;Pfam:PF13378;Protein Data Bank:1EC7;Protein Data Bank:1EC8;Protein Data Bank:1EC9;Protein Data Bank:1ECQ;Protein Data Bank:1JCT;Protein Data Bank:1JDF;Protein Data Bank:3PWG;Protein Data Bank:3PWI;Protein Data Bank:4GYP;Smart:SM00922"
+"F","SmallMoleculeReference",NA,"ChEBI:CHEBI:17051;ChemSpider:26214;EcoCyc:F-;HMDB:HMDB00662;KEGG LIGAND:C00742;PubChem-compound:28179",NA
+"ketodeoxyheptonate","SmallMoleculeReference",NA,"EcoCyc:CPD0-1506;PubChem-compound:54758593",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"a pentaric acid","SmallMoleculeReference",NA,"EcoCyc:Pentaric-Acids",NA
+"acetate","SmallMoleculeReference",NA,"CAS:64-19-7;CAS:71-50-1;ChEBI:CHEBI:30089;ChemSpider:170;DrugBank:DB03166;EcoCyc:ACET;HMDB:HMDB00042;IAF1260:ac;KEGG LIGAND:C00033;MetaboLights:MTBLC30089;PubChem-compound:175;RefMet:Acetic acid",NA
+"galactaric acid","SmallMoleculeReference",NA,"CAS:526-99-8;ChEBI:CHEBI:16537;ChemSpider:4573600;EcoCyc:D-GALACTARATE;IAF1260:galct__D;KEGG LIGAND:C00879;PubChem-compound:5459845",NA
+"D-Glycerate 2-phosphate","SmallMoleculeReference",NA,"CAS:2553-59-5;ChEBI:CHEBI:58289;EcoCyc:2-PG;HMDB:HMDB03391;IAF1260:2pg;KEGG LIGAND:C00631;MetaboLights:MTBLC58289;PubChem-compound:40467846;RefMet:2-Phosphoglyceric acid",NA
+"a hexonic acid","SmallMoleculeReference",NA,"EcoCyc:Hexonic-Acids",NA
+"2-dehydro-D-gluconate","SmallMoleculeReference",NA,"ChEBI:CHEBI:16808;ChemSpider:5256721;EcoCyc:CPD-377;IAF1260:2dhglcn;IAF1260:2dhguln;KEGG LIGAND:C06473;PubChem-compound:6857381",NA
+"L-tartaric acid","SmallMoleculeReference",NA,"CAS:87-69-4;ChEBI:CHEBI:30924;ChemSpider:106644;EcoCyc:TARTRATE;HMDB:HMDB00956;IAF1260:tartr__L;KEGG LIGAND:C00898;PubChem-compound:119400;RefMet:Tartaric acid",NA
+"Kdo","SmallMoleculeReference","Kdo","ChEBI:CHEBI:85986;ChemSpider:4573934;EcoCyc:KDO;IAF1260:kdo;KEGG LIGAND:C01187;PubChem-compound:21681234",NA
+"P23522","ProteinReference","GarL","Database of Interacting Proteins:DIP-9740N;EcoCyc:KDGALDOL-MONOMER;EcoliWiki:b3126;MODBASE:P23522;NCBI Reference Sequences Database:NP_417595;Pride:P23522;Protein Model Portal:P23522;Protein Ontology:PRO_000022752;SWISS-MODEL:P23522;UniProt:P23522","InterPro:IPR005000;InterPro:IPR015813;InterPro:IPR017648;Pfam:PF03328;Protein Data Bank:1DXE;Protein Data Bank:1DXF"
+"P23524","ProteinReference","GarK","Database of Interacting Proteins:DIP-28063N;EcoCyc:GKI-MONOMER;EcoliWiki:b3124;MODBASE:P23524;NCBI Reference Sequences Database:NP_417593;Pride:P23524;Protein Model Portal:P23524;Protein Ontology:PRO_000022751;SWISS-MODEL:P23524;UniProt:P23524","InterPro:IPR004381;InterPro:IPR018193;Panther:PTHR21599;Pfam:PF02595"
+"Co++","SmallMoleculeReference",NA,"CAS:22541-53-3;ChEBI:CHEBI:48828;ChemSpider:94546;EcoCyc:CO+2;HMDB:HMDB00608;IAF1260:cobalt2;KEGG LIGAND:C00175;PubChem-compound:104729",NA
+"a hexuronate","SmallMoleculeReference",NA,"ChEBI:CHEBI:24592;EcoCyc:Hexuronates",NA
+"hydroxymalonaldehydic acid","SmallMoleculeReference",NA,"CAS:2480-77-5;ChEBI:CHEBI:57978;EcoCyc:TARTRONATE-S-ALD;HMDB:HMDB06938;IAF1260:2h3oppan;KEGG LIGAND:C01146;PubChem-compound:22134427;RefMet:Tartronate semialdehyde",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"KDGP","SmallMoleculeReference","KDGP","CAS:27244-54-8;ChEBI:CHEBI:57569;EcoCyc:2-KETO-3-DEOXY-6-P-GLUCONATE;HMDB:HMDB01376;IAF1260:2ddg6p;KEGG LIGAND:C04442;PubChem-compound:44229082",NA
+"Br-","SmallMoleculeReference",NA,"ChEBI:CHEBI:15858;ChemSpider:254;EcoCyc:BR-;HMDB:HMDB02500;KEGG LIGAND:C01324;PubChem-compound:259",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"P77364","ProteinReference","GlxK","EcoCyc:GLY3KIN-MONOMER;EcoliWiki:b0514;MODBASE:P77364;NCBI Reference Sequences Database:NP_415047;Pride:P77364;Protein Model Portal:P77364;Protein Ontology:PRO_000022815;SWISS-MODEL:P77364;UniProt:P77364","InterPro:IPR004381;InterPro:IPR018193;Panther:PTHR21599;Pfam:PF02595"
+"a tetrarate","SmallMoleculeReference",NA,"EcoCyc:Tetraric-Acids",NA
+"a hexaric acid","SmallMoleculeReference",NA,"EcoCyc:Hexaric-Acids",NA
+"D-idaric acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:21040;ChemSpider:5256903;EcoCyc:CPD0-1092;PubChem-compound:6857567",NA
+"a xylarate","SmallMoleculeReference",NA,"EcoCyc:Xylarates",NA
+"Mn2+","SmallMoleculeReference",NA,"CAS:16397-91-4;CAS:7439-96-5;ChEBI:CHEBI:29035;ChemSpider:25916;EcoCyc:MN+2;HMDB:HMDB01333;IAF1260:mn2;KEGG LIGAND:C19610;PubChem-compound:27854",NA
+"NO3","SmallMoleculeReference",NA,"CAS:14797-55-8;ChEBI:CHEBI:17632;ChemSpider:918;EcoCyc:NITRATE;HMDB:HMDB02878;IAF1260:no3;KEGG LIGAND:C00244;PubChem-compound:943;Wikipedia:Nitrate",NA
+"3-deoxy-2-keto-L-threo-hexarate","SmallMoleculeReference",NA,"ChEBI:CHEBI:42819;ChemSpider:4450631;DrugBank:DB03237;EcoCyc:5-KETO-4-DEOXY-D-GLUCARATE;IAF1260:5dh4dglc;KEGG LIGAND:C00679;PubChem-compound:5288442",NA
+"chloride ion","SmallMoleculeReference",NA,"ChEBI:CHEBI:17996;ChemSpider:306;EcoCyc:CL-;HMDB:HMDB00492;IAF1260:cl;KEGG LIGAND:C00698;MetaboLights:MTBLC17996;PubChem-compound:312;UMBBD Compound:c0884",NA
+"hydrogen cyanide","SmallMoleculeReference",NA,"CAS:74-90-8;ChEBI:CHEBI:18407;ChemSpider:748;EcoCyc:HCN;HMDB:HMDB60292;IAF1260:cyan;KEGG LIGAND:C01326;MetaboLights:MTBLC18407;PubChem-compound:768",NA
+"p-chloromercuriphenyl sulphonate","SmallMoleculeReference",NA,"ChEBI:CHEBI:33207;ChemSpider:4574181;EcoCyc:CPD-5401;PubChem-compound:5460705",NA
+"beta;-NAD(P)+","SmallMoleculeReference",NA,"ChEBI:CHEBI:13390;EcoCyc:NAD-P-OR-NOP",NA
+"NAD(P)H","SmallMoleculeReference",NA,"ChEBI:CHEBI:13392;EcoCyc:NADH-P-OR-NOP",NA
+"glycerate","SmallMoleculeReference",NA,"CAS:473-81-4;CAS:6000-40-4;ChEBI:CHEBI:16659;ChemSpider:4573914;EcoCyc:GLYCERATE;HMDB:HMDB00139;IAF1260:glyc__R;KEGG LIGAND:C00258;MetaboLights:MTBLC16659;PubChem-compound:5460358;RefMet:Glyceric acid",NA

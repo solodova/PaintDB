@@ -1,0 +1,7 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"alpha;-Kdo-(2->4)-alpha;-Kdo-(2->6)-lipid IVA","SmallMoleculeReference",NA,"ChEBI:CHEBI:60365;EcoCyc:KDO2-LIPID-IVA;IAF1260:kdo2lipid4;KEGG LIGAND:C06025;PubChem-compound:91820576",NA
+"(Kdo)2-(lauroyl)-lipid IVA","SmallMoleculeReference",NA,"ChEBI:CHEBI:61524;EcoCyc:KDO2-LAUROYL-LIPID-IVA;IAF1260:kdo2lipid4L;KEGG LIGAND:C06251;PubChem-compound:91819851",NA
+"Re endotoxin","SmallMoleculeReference",NA,"ChEBI:CHEBI:58540;EcoCyc:KDO2-LIPID-A;IAF1260:lipa;KEGG LIGAND:C06026;PubChem-compound:91820278",NA
+"lauroyl coenzyme A","SmallMoleculeReference",NA,"CAS:6244-92-4;ChEBI:CHEBI:57375;EcoCyc:LAUROYLCOA-CPD;HMDB:HMDB03571;IAF1260:ddcacoa;KEGG LIGAND:C01832;MetaboLights:MTBLC57375;PubChem-compound:25113193;RefMet:Lauroyl-CoA",NA
+"P24205","ProteinReference","LpxM","Database of Interacting Proteins:DIP-10262N;EcoCyc:MYRISTOYLACYLTRAN-MONOMER;EcoliWiki:b1855;Mint:MINT-1309336;NCBI Reference Sequences Database:NP_416369;Pride:P24205;Protein Model Portal:P24205;Protein Ontology:PRO_000023295;SWISS-MODEL:P24205;UniProt:P24205","InterPro:IPR004960;InterPro:IPR011921;Pfam:PF03279"
+"P0ACV0","ProteinReference","LpxL","EcoCyc:LAUROYLACYLTRAN-MONOMER;EcoliWiki:b1054;MODBASE:P0ACV0;NCBI Reference Sequences Database:NP_415572;Pride:P0ACV0;Protein Model Portal:P0ACV0;Protein Ontology:PRO_000022938;SWISS-MODEL:P0ACV0;UniProt:P0ACV0","InterPro:IPR004960;InterPro:IPR011920;Pfam:PF03279"

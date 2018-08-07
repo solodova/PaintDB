@@ -1,0 +1,11 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"adenosine-monophosphate","SmallMoleculeReference",NA,"CAS:61-19-8;ChEBI:CHEBI:456215;ChemSpider:10239183;EcoCyc:AMP;HMDB:HMDB00045;IAF1260:amp;KEGG LIGAND:C00020;MetaboLights:MTBLC456215;NCI Open DB:20264;PubChem-compound:15938965;RefMet:AMP",NA
+"PO43-","SmallMoleculeReference",NA,"CAS:14265-44-2;ChEBI:CHEBI:43474;EcoCyc:Pi;HMDB:HMDB00973;IAF1260:pi;KEGG LIGAND:C00009;KNApSAcK:C00007408;MetaboLights:MTBLC43474;PubChem-compound:3681305;RefMet:Phosphoric acid",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"Mg+2","SmallMoleculeReference",NA,"ChEBI:CHEBI:18420;ChemSpider:865;DrugBank:DB01378;EcoCyc:MG+2;HMDB:HMDB00547;IAF1260:mg2;KEGG LIGAND:C00305;PubChem-compound:888",NA
+"ribose-5P","SmallMoleculeReference",NA,"CAS:4300-28-1;ChEBI:CHEBI:78346;EcoCyc:RIBOSE-5P;HMDB:HMDB01548;IAF1260:42420;KEGG LIGAND:C00117;PubChem-compound:24794349",NA
+"PRPP","SmallMoleculeReference","PRPP","CAS:13270-65-0;ChEBI:CHEBI:58017;ChemSpider:20171339;EcoCyc:PRPP;HMDB:HMDB00280;IAF1260:prpp;KEGG LIGAND:C00119;MetaboLights:MTBLC58017;PubChem-compound:20848918;RefMet:Phosphoribosyl pyrophosphate",NA
+"Ca++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29108;ChemSpider:266;EcoCyc:CA+2;HMDB:HMDB00464;IAF1260:ca2;KEGG LIGAND:C00076;MetaboLights:MTBLC29108;PubChem-compound:271",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"P0A717","ProteinReference","Prs","Database of Interacting Proteins:DIP-35839N;EcoCyc:PRPPSYN-MONOMER;EcoliWiki:b1207;Mint:MINT-1221689;NCBI Reference Sequences Database:NP_415725;Pride:P0A717;Protein Model Portal:P0A717;Protein Ontology:PRO_000023611;SWISS-MODEL:P0A717;Swiss-Model:P0A717;UniProt:P0A717","InterPro:IPR000836;InterPro:IPR000842;InterPro:IPR005946;InterPro:IPR029057;InterPro:IPR029099;Pfam:PF13793;Pfam:PF14572;Prosite:PS00114;Protein Data Bank:4S2U"
+"MgADP","SmallMoleculeReference",NA,"ChEBI:CHEBI:87194;EcoCyc:CPD0-1651;PubChem-compound:30103",NA

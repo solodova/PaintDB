@@ -1,0 +1,6 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"an [L-cysteine desulfurase] L-cysteine persulfide","SmallMoleculeReference",NA,"EcoCyc:L-Cysteine-Desulfurase-persulfide",NA
+"ala","SmallMoleculeReference","ala","CAS:56-41-7;ChEBI:CHEBI:57972;EcoCyc:L-ALPHA-ALANINE;HMDB:HMDB00161;IAF1260:ala__L;KEGG LIGAND:C00041;MetaboLights:MTBLC57972;PubChem-compound:7311724;RefMet:Alanine",NA
+"an [L-cysteine desulfurase]-L-cysteine","SmallMoleculeReference",NA,"EcoCyc:Cysteine-Desulfurase-L-cysteine",NA
+"cys","SmallMoleculeReference","cys","CAS:4371-52-2;CAS:52-90-4;ChEBI:CHEBI:35235;EcoCyc:CYS;HMDB:HMDB00574;IAF1260:cys__L;KEGG LIGAND:C00097;KNApSAcK:C00001351;MetaboLights:MTBLC35235;PubChem-compound:6419722;RefMet:Cysteine",NA
+"P0A6B7","ProteinReference","IscS","Database of Interacting Proteins:DIP-29109N;EcoCyc:G7325-MONOMER;EcoliWiki:b2530;MODBASE:P0A6B7;Mint:MINT-236550;NCBI Reference Sequences Database:YP_026169;Pride:P0A6B7;Protein Model Portal:P0A6B7;SWISS-MODEL:P0A6B7;UniProt:P0A6B7","InterPro:IPR000192;InterPro:IPR010240;InterPro:IPR015421;InterPro:IPR015422;InterPro:IPR015424;InterPro:IPR016454;InterPro:IPR020578;Panther:PTHR11601:SF51;Pfam:PF00266;Prosite:PS00595;Protein Data Bank:1P3W"

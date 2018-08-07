@@ -1,0 +1,9 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"PO43-","SmallMoleculeReference",NA,"CAS:14265-44-2;ChEBI:CHEBI:43474;EcoCyc:Pi;HMDB:HMDB00973;IAF1260:pi;KEGG LIGAND:C00009;KNApSAcK:C00007408;MetaboLights:MTBLC43474;PubChem-compound:3681305;RefMet:Phosphoric acid",NA
+"adenosine-monophosphate","SmallMoleculeReference",NA,"CAS:61-19-8;ChEBI:CHEBI:456215;ChemSpider:10239183;EcoCyc:AMP;HMDB:HMDB00045;IAF1260:amp;KEGG LIGAND:C00020;MetaboLights:MTBLC456215;NCI Open DB:20264;PubChem-compound:15938965;RefMet:AMP",NA
+"A","SmallMoleculeReference",NA,"CAS:73-24-5;ChEBI:CHEBI:16708;ChemSpider:185;DrugBank:DB00173;EcoCyc:ADENINE;HMDB:HMDB00034;IAF1260:ade;KEGG LIGAND:C00147;MetaboLights:MTBLC16708;PubChem-compound:190;RefMet:Adenine",NA
+"P0AE12","ProteinReference","Amn","EcoCyc:AMP-NUCLEOSID-MONOMER;EcoliWiki:b1982;MODBASE:P0AE12;NCBI Reference Sequences Database:NP_416489;Pride:P0AE12;Protein Model Portal:P0AE12;Protein Ontology:PRO_000022094;SWISS-MODEL:P0AE12;Swiss-Model:P0AE12;UniProt:P0AE12","InterPro:IPR000845;InterPro:IPR011271;InterPro:IPR018953;Panther:PTHR43691:SF9;Pfam:PF01048;Pfam:PF10423;Protein Data Bank:1T8R;Protein Data Bank:1T8S;Protein Data Bank:1T8W;Protein Data Bank:1T8Y"
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"D-ribofuranose 5-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:52742;EcoCyc:CPD-15317",NA
+"MgATP2-","SmallMoleculeReference",NA,"ChEBI:CHEBI:30617;EcoCyc:CPD0-1634;PubChem-compound:44123563",NA
+"formycin 5'-PO4","SmallMoleculeReference",NA,"EcoCyc:CPD0-1635;PubChem-compound:46173200",NA

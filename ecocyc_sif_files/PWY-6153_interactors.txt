@@ -1,0 +1,23 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"P0AF12","ProteinReference","Mtn","Database of Interacting Proteins:DIP-10270N;EcoCyc:EG11090-MONOMER;EcoliWiki:b0159;MODBASE:P0AF12;NCBI Reference Sequences Database:NP_414701;Pride:P0AF12;Protein Model Portal:P0AF12;Protein Ontology:PRO_000023306;SWISS-MODEL:P0AF12;Swiss-Model:P0AF12;UniProt:P0AF12","InterPro:IPR000845;InterPro:IPR010049;Panther:PTHR21234;Pfam:PF01048;Protein Data Bank:1JYS;Protein Data Bank:1NC1;Protein Data Bank:1NC3;Protein Data Bank:1Y6Q;Protein Data Bank:1Y6R;Protein Data Bank:1Z5N;Protein Data Bank:1Z5O;Protein Data Bank:1Z5P;Protein Data Bank:3O4V;Protein Data Bank:4WKC;Protein Data Bank:4YML"
+"homocysteine","SmallMoleculeReference",NA,"CAS:454-28-4;CAS:6027-13-0;ChEBI:CHEBI:58199;EcoCyc:HOMO-CYS;HMDB:HMDB00742;IAF1260:hcys__L;KEGG LIGAND:C00155;MetaboLights:MTBLC58199;PubChem-compound:6971015;RefMet:Homocysteine",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"A","SmallMoleculeReference",NA,"CAS:73-24-5;ChEBI:CHEBI:16708;ChemSpider:185;DrugBank:DB00173;EcoCyc:ADENINE;HMDB:HMDB00034;IAF1260:ade;KEGG LIGAND:C00147;MetaboLights:MTBLC16708;PubChem-compound:190;RefMet:Adenine",NA
+"5'-ethylthioadenosine","SmallMoleculeReference",NA,"ChEBI:CHEBI:74046;ChemSpider:8216693;DrugBank:DB07052;EcoCyc:5-ETHYLTHIOADENOSINE;MetaboLights:MTBLC74046;PubChem-compound:10041129",NA
+"5'-methylthiotubercidin","SmallMoleculeReference",NA,"ChEBI:CHEBI:665251;ChemSpider:163705;DrugBank:DB02933;EcoCyc:5-METHYLTHIOTUBERCIDIN;PubChem-compound:188350",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"ribose-5-S-homocysteine","SmallMoleculeReference",NA,"CAS:37558-16-0;ChEBI:CHEBI:17575;EcoCyc:CPD-564;IAF1260:rhcys;KEGG LIGAND:C03539;PubChem-compound:25245776",NA
+"S-tubercidinylhomocysteine","SmallMoleculeReference",NA,"EcoCyc:S-TUBERCIDINYLHOMOCYSTEINE;PubChem-compound:25201524",NA
+"5'-Mtf","SmallMoleculeReference",NA,"ChemSpider:9954056;EcoCyc:5-METHYLTHIOFORMYCIN;PubChem-compound:11779374",NA
+"a methylated methyl donor","SmallMoleculeReference",NA,"EcoCyc:Methylated-methyl-acceptors",NA
+"(R)-DHMF","SmallMoleculeReference",NA,"ChEBI:CHEBI:71316;EcoCyc:CPD-10773;PubChem-compound:44123557",NA
+"5'-chloroformycin","SmallMoleculeReference",NA,"EcoCyc:5-CHLOROFORMYCIN;PubChem-compound:15096371",NA
+"formycin A","SmallMoleculeReference",NA,"EcoCyc:FORMYCIN-A;PubChem-compound:25244905",NA
+"autoinducer 2 (salmonella)","SmallMoleculeReference",NA,"ChEBI:CHEBI:44800;ChemSpider:395434;EcoCyc:CPD-10774;KEGG LIGAND:C21382;PubChem-compound:448719",NA
+"a demethylated methyl acceptor","SmallMoleculeReference",NA,"EcoCyc:Demethylated-methyl-acceptors",NA
+"AI-2","SmallMoleculeReference","AI-2","ChEBI:CHEBI:29484;EcoCyc:DIHYDROXYPENTANEDIONE;IAF1260:dhptd;KEGG LIGAND:C11838;PubChem-compound:11170991",NA
+"S-formycinylhomocysteine","SmallMoleculeReference",NA,"ChemSpider:20032895;EcoCyc:S-FORMYCINYLHOMOCYSTEINE;PubChem-compound:13872444",NA
+"5'-n-propylthioadenosine","SmallMoleculeReference",NA,"ChEBI:CHEBI:663476;EcoCyc:5-N-PROPYLTHIOADENOSINE;PubChem-compound:25202364",NA
+"SAH","SmallMoleculeReference","SAH","CAS:979-92-0;ChEBI:CHEBI:57856;EcoCyc:ADENOSYL-HOMO-CYS;HMDB:HMDB00939;IAF1260:ahcys;KEGG LIGAND:C00021;MetaboLights:MTBLC57856;PubChem-compound:25246222;RefMet:S-Adenosylhomocysteine",NA
+"P45578","ProteinReference","LuxS","Database of Interacting Proteins:DIP-10131N;EcoCyc:EG12712-MONOMER;EcoliWiki:b2687;MODBASE:P45578;NCBI Reference Sequences Database:NP_417172;Pride:P45578;Protein Model Portal:P45578;Protein Ontology:PRO_000023136;SWISS-MODEL:P45578;Swiss-Model:P45578;UniProt:P45578","InterPro:IPR003815;InterPro:IPR011249;Pfam:PF02664;Prints:PR01487;ProDom; a protein domain database:PD013172"
+"SAM","SmallMoleculeReference","SAM","CAS:29908-03-0;ChEBI:CHEBI:59789;EcoCyc:S-ADENOSYLMETHIONINE;HMDB:HMDB01185;IAF1260:amet;KEGG LIGAND:C00019;MetaboLights:MTBLC59789;PubChem-compound:24762165;RefMet:S-adenosyl-L-methioninate",NA

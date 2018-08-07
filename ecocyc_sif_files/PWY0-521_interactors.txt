@@ -1,0 +1,17 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"Ni++","SmallMoleculeReference",NA,"ChEBI:CHEBI:49786;ChemSpider:909;EcoCyc:NI+2;HMDB:HMDB02457;IAF1260:ni2;KEGG LIGAND:C19609;PubChem-compound:934",NA
+"Zn(II)","SmallMoleculeReference",NA,"CAS:7440-66-6;ChEBI:CHEBI:29105;ChemSpider:29723;EcoCyc:ZN+2;HMDB:HMDB01303;IAF1260:zn2;KEGG LIGAND:C00038;MetaboLights:MTBLC29105;PubChem-compound:32051",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"P0AC00","ProteinReference","FrlB","EcoCyc:G7723-MONOMER;EcoliWiki:b3371;MODBASE:P0AC00;NCBI Reference Sequences Database:NP_417830;Pride:P0AC00;Protein Model Portal:P0AC00;Protein Ontology:PRO_000022691;SWISS-MODEL:P0AC00;UniProt:P0AC00","InterPro:IPR001347;InterPro:IPR035490;Pfam:PF01380;Prosite:PS51464"
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"ethylenediaminetetraacetate","SmallMoleculeReference",NA,"ChEBI:CHEBI:64755;EcoCyc:EDTA;HMDB:HMDB15109;KEGG LIGAND:C00284;PubChem-compound:5246202;RefMet:Edetic Acid",NA
+"adenosine-5-diphosphate","SmallMoleculeReference",NA,"CAS:58-64-0;ChEBI:CHEBI:456216;ChemSpider:5414423;EcoCyc:ADP;HMDB:HMDB01341;IAF1260:adp;KEGG LIGAND:C00008;MetaboLights:MTBLC456216;PubChem-compound:7058055;RefMet:ADP",NA
+"lys","SmallMoleculeReference","lys","CAS:56-87-1;ChEBI:CHEBI:32551;ChemSpider:5747;EcoCyc:LYS;HMDB:HMDB00182;IAF1260:33655;IAF1260:lys__L;KEGG LIGAND:C00047;MetaboLights:MTBLC32551;PubChem-compound:5460926;RefMet:Lysine",NA
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"N6-(D-psicosyl)-L-lysine","SmallMoleculeReference",NA,"ChEBI:CHEBI:61403;EcoCyc:PSICOSELYSINE;IAF1260:psclys;PubChem-compound:49859644",NA
+"fructoselysine","SmallMoleculeReference",NA,"ChEBI:CHEBI:61393;EcoCyc:FRUCTOSELYSINE;IAF1260:frulys;KEGG LIGAND:C16488;PubChem-compound:49859675",NA
+"beta;-D-glucose 6-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:58247;ChemSpider:10239176;EcoCyc:GLC-6-P;HMDB:HMDB03498;IAF1260:g6p;KEGG LIGAND:C01172;PubChem-compound:21604865",NA
+"egtazic acid","SmallMoleculeReference",NA,"ChEBI:CHEBI:30741;ChemSpider:4574437;EcoCyc:EGTA;PubChem-compound:5461084",NA
+"fructoselysine 6-phosphate","SmallMoleculeReference",NA,"ChEBI:CHEBI:61392;EcoCyc:FRUCTOSELYSINE-6-PHOSPHATE;IAF1260:frulysp;KEGG LIGAND:C16489;PubChem-compound:50909832",NA
+"P45541","ProteinReference","FrlC","EcoCyc:G7724-MONOMER;EcoliWiki:b4474;MODBASE:P45541;NCBI Reference Sequences Database:YP_026213;Pride:P45541;Protein Model Portal:P45541;SWISS-MODEL:P45541;UniProt:P45541","EcoO157Cyc:Z4733-MONOMER;InterPro:IPR013022;Pfam:PF01261"
+"P45543","ProteinReference","FrlD","Database of Interacting Proteins:DIP-12326N;EcoCyc:G7726-MONOMER;EcoliWiki:b3374;MODBASE:P45543;NCBI Reference Sequences Database:NP_417833;Pride:P45543;Protein Model Portal:P45543;Protein Ontology:PRO_000022692;SWISS-MODEL:P45543;UniProt:P45543","InterPro:IPR002173;InterPro:IPR011611;InterPro:IPR029056;Pfam:PF00294;Prosite:PS00583;Prosite:PS00584"

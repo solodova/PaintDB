@@ -1,0 +1,16 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"NADPH","SmallMoleculeReference",NA,"CAS:2646-71-1;ChEBI:CHEBI:57783;ChemSpider:10239199;EcoCyc:NADPH;HMDB:HMDB00221;IAF1260:nadph;KEGG LIGAND:C00005;MetaboLights:MTBLC57783;PubChem-compound:15983949;RefMet:NADPH",NA
+"guanosine diphosphate fucose","SmallMoleculeReference",NA,"CAS:15839-70-0;EcoCyc:GUANOSINE_DIPHOSPHATE_FUCOSE;HMDB:HMDB01095;IAF1260:gdpfuc;KEGG LIGAND:C00325",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"NADP-ox","SmallMoleculeReference",NA,"CAS:53-59-8;ChEBI:CHEBI:58349;ChemSpider:10239198;EcoCyc:NADP;HMDB:HMDB00217;IAF1260:nadp;KEGG LIGAND:C00006;MetaboLights:MTBLC58349;PubChem-compound:15938972;RefMet:NADP+",NA
+"GDP-beta;-L-fucose","SmallMoleculeReference",NA,"ChEBI:CHEBI:57273;EcoCyc:CPD-13118;PubChem-compound:25244478",NA
+"H2O","SmallMoleculeReference",NA,"CAS:7732-18-5;ChEBI:CHEBI:15377;ChemSpider:937;EcoCyc:WATER;HMDB:HMDB02111;IAF1260:h2o;KEGG LIGAND:C00001;MetaboLights:MTBLC15377;PubChem-compound:962",NA
+"P0AC88","ProteinReference","Gmd","Database of Interacting Proteins:DIP-48216N;EcoCyc:GDPMANDEHYDRA-MONOMER;EcoliWiki:b2053;MODBASE:P0AC88;NCBI Reference Sequences Database:NP_416557;Pride:P0AC88;Protein Model Portal:P0AC88;Protein Ontology:PRO_000022819;SWISS-MODEL:P0AC88;UniProt:P0AC88","InterPro:IPR006368;InterPro:IPR016040;Pfam:PF16363;Protein Data Bank:1DB3"
+"GDP-glucose","SmallMoleculeReference",NA,"ChEBI:CHEBI:62230;EcoCyc:GDP-D-GLUCOSE;HMDB:HMDB03351;KEGG LIGAND:C00394;PubChem-compound:52921606;RefMet:GDP-glucose",NA
+"P32055","ProteinReference","Fcl","EcoCyc:FCL-MONOMER;EcoliWiki:b2052;MODBASE:P32055;NCBI Reference Sequences Database:NP_416556;Pride:P32055;Protein Model Portal:P32055;SWISS-MODEL:P32055;UniProt:P32055","InterPro:IPR001509;InterPro:IPR016040;InterPro:IPR028614;Pfam:PF01370;Protein Data Bank:1BSV;Protein Data Bank:1BWS;Protein Data Bank:1E6U;Protein Data Bank:1E7Q;Protein Data Bank:1E7R;Protein Data Bank:1E7S;Protein Data Bank:1FXS;Protein Data Bank:1GFS"
+"Ca++","SmallMoleculeReference",NA,"ChEBI:CHEBI:29108;ChemSpider:266;EcoCyc:CA+2;HMDB:HMDB00464;IAF1260:ca2;KEGG LIGAND:C00076;MetaboLights:MTBLC29108;PubChem-compound:271",NA
+"guanosine pyrophosphate mannose","SmallMoleculeReference",NA,"CAS:18441-12-8;CAS:3123-67-9;ChEBI:CHEBI:57527;EcoCyc:GDP-MANNOSE;HMDB:HMDB01163;IAF1260:gdpmann;KEGG LIGAND:C00096;MetaboLights:MTBLC57527;PubChem-compound:46878389",NA
+"GDP-4-keto-6-deoxy-alpha;-D-mannose","SmallMoleculeReference",NA,"ChEBI:CHEBI:57964;EcoCyc:GDP-4-DEHYDRO-6-DEOXY-D-MANNOSE;HMDB:HMDB01346;IAF1260:gdpddman;KEGG LIGAND:C01222;MetaboLights:MTBLC57964;PubChem-compound:25243979",NA
+"GDP","SmallMoleculeReference",NA,"CAS:146-91-8;ChEBI:CHEBI:58189;ChemSpider:10239187;EcoCyc:GDP;HMDB:HMDB01201;IAF1260:gdp;KEGG LIGAND:C00035;MetaboLights:MTBLC58189;PubChem-compound:21604868;RefMet:GDP",NA
+"Mg+2","SmallMoleculeReference",NA,"ChEBI:CHEBI:18420;ChemSpider:865;DrugBank:DB01378;EcoCyc:MG+2;HMDB:HMDB00547;IAF1260:mg2;KEGG LIGAND:C00305;PubChem-compound:888",NA
+"p-chloromercuriphenyl sulphonate","SmallMoleculeReference",NA,"ChEBI:CHEBI:33207;ChemSpider:4574181;EcoCyc:CPD-5401;PubChem-compound:5460705",NA

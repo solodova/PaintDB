@@ -1,0 +1,11 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"lipoyl-AMP","SmallMoleculeReference",NA,"ChEBI:CHEBI:83091;EcoCyc:LIPOYL-AMP;HMDB:HMDB59635;KEGG LIGAND:C16238;PubChem-compound:25245420",NA
+"adenosine-monophosphate","SmallMoleculeReference",NA,"CAS:61-19-8;ChEBI:CHEBI:456215;ChemSpider:10239183;EcoCyc:AMP;HMDB:HMDB00045;IAF1260:amp;KEGG LIGAND:C00020;MetaboLights:MTBLC456215;NCI Open DB:20264;PubChem-compound:15938965;RefMet:AMP",NA
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"protein N6-(lipoyl)lysine","SmallMoleculeReference",NA,"EcoCyc:Lipoyl-Protein-N6-lipoyllysine",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"lipol-AMP","SmallMoleculeReference",NA,"EcoCyc:LIPOL-AMP;PubChem-compound:91820359",NA
+"alpha;-liponic acid","SmallMoleculeReference",NA,"CAS:62-46-4;ChEBI:CHEBI:83088;ChemSpider:841;EcoCyc:LIPOIC-ACID;HMDB:HMDB01451;KEGG LIGAND:C16241;MetaboLights:MTBLC30313;PubChem-compound:1549144;RefMet:Lipoic acid",NA
+"P32099","ProteinReference","LplA","Database of Interacting Proteins:DIP-10119N;EcoCyc:EG11796-MONOMER;EcoliWiki:b4386;Mint:MINT-1288545;NCBI Reference Sequences Database:NP_418803;Pride:P32099;Protein Model Portal:P32099;Protein Ontology:PRO_000023110;SWISS-MODEL:P32099;UniProt:P32099","InterPro:IPR004143;InterPro:IPR004562;InterPro:IPR019491;InterPro:IPR023741;Panther:PTHR12561;Panther:PTHR12561:SF14;Pfam:PF03099;Pfam:PF10437;Prosite:PS51733;Protein Data Bank:1X2G;Protein Data Bank:1X2H;Protein Data Bank:3A7A;Protein Data Bank:3A7R;Protein Data Bank:4TVW;Protein Data Bank:4TVY"
+"adenosine-5'-triphosphate","SmallMoleculeReference",NA,"CAS:56-65-5;ChEBI:CHEBI:30616;ChemSpider:4574455;EcoCyc:ATP;HMDB:HMDB00538;IAF1260:atp;KEGG LIGAND:C00002;MetaboLights:MTBLC30616;PubChem-compound:5461108;RefMet:ATP",NA
+"a [lipoyl-carrier protein]-L-lysine","SmallMoleculeReference",NA,"EcoCyc:Lipoyl-Protein-L-Lysine",NA

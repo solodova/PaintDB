@@ -1,0 +1,7 @@
+"PARTICIPANT","PARTICIPANT_TYPE","PARTICIPANT_NAME","UNIFICATION_XREF","RELATIONSHIP_XREF"
+"MoCo (dioxyo)","SmallMoleculeReference",NA,"ChEBI:CHEBI:71302;EcoCyc:CPD-8123;PubChem-compound:70680283",NA
+"PP","SmallMoleculeReference",NA,"CAS:2466-09-3;ChEBI:CHEBI:29888;ChemSpider:996;DrugBank:DB04160;EcoCyc:PPI;HMDB:HMDB00250;IAF1260:ppi;KEGG LIGAND:C00013;MetaboLights:MTBLC33019;PubChem-compound:1023",NA
+"hydrogen ion","SmallMoleculeReference",NA,"CAS:12408-02-5;ChEBI:CHEBI:15378;ChemSpider:1010;EcoCyc:PROTON;HMDB:HMDB59597;IAF1260:h;KEGG LIGAND:C00080;PubChem-compound:1038",NA
+"MoO2(OH)Dtpp-mCDP","SmallMoleculeReference",NA,"ChEBI:CHEBI:71308;EcoCyc:CPD0-1882;PubChem-compound:46173482",NA
+"cytidine-triphosphate","SmallMoleculeReference",NA,"CAS:65-47-4;ChEBI:CHEBI:37563;ChemSpider:5414498;EcoCyc:CTP;HMDB:HMDB00082;IAF1260:ctp;KEGG LIGAND:C00063;MetaboLights:MTBLC37563;PubChem-compound:7058166;RefMet:CTP",NA
+"Q46810","ProteinReference","MocA","EcoCyc:G7496-MONOMER;EcoliWiki:b2877;MODBASE:Q46810;NCBI Reference Sequences Database:NP_417353;Pride:Q46810;Protein Model Portal:Q46810;SWISS-MODEL:Q46810;UniProt:Q46810","InterPro:IPR017696;InterPro:IPR025877;InterPro:IPR029044;Pfam:PF12804"
