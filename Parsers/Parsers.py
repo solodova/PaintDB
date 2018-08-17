@@ -14,6 +14,7 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+    #newest
     # dictionary of all compounds in KEGG (kegg_id:[name, pubchem])
     kegg_compounds = {}
     # dictionary of all compounds in ECOCYC (name: [EcoCyc, PubChem, CAS, ChEBI, KEGG])
