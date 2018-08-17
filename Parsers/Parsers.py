@@ -166,7 +166,7 @@ if __name__ == '__main__':
             session.commit()
 
         # get all uniprot ids and gene names for E. coli orthologs
-        with open('Ecoli_IDs.csv') as csvfile:
+        with open('IDs.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if (row['Gene names'] != ''):
@@ -176,20 +176,20 @@ if __name__ == '__main__':
                         ortholog.ortholog_name = row['Gene name']
                     session.commit()
 
-    getGeneInfo('pseudomonas_db_info_PAO1.csv', 'PAO1')
-    getGeneInfo('pseudomonas_db_info_PA14.csv', 'PA14')
+    getGeneInfo('PAO1_Data/Gene_Info/pseudomonas_db_info.csv', 'PAO1')
+    getGeneInfo('PA14_Data/Gene_Info/pseudomonas_db_info.csv', 'PA14')
 
-    getXrefs('pseudomonas_db_xrefs_PAO1.csv', 'PAO1')
-    getXrefs('pseudomonas_db_xrefs_PA14.csv', 'PA14')
+    getXrefs('PAO1_Data/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1')
+    getXrefs('PA14_Data/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14')
 
-    #getLocalizations('pseudomonas_db_localizations_PAO1.csv')
-    #getLocalizations('pseudomonas_db_localizations_PA14.csv')
+    #getLocalizations('PAO1_Data/Gene_Info/pseudomonas_db_localizations.csv')
+    #getLocalizations('PA14_Data/Gene_Info/pseudomonas_db_localizations.csv')
 
-    #getOntology('pseudomonas_db_GO_PAO1.csv')
-    #getOntology('pseudomonas_db_GO_PA14.csv')
+    #getOntology('PAO1_Data/Gene_Info/pseudomonas_db_GO.csv')
+    #getOntology('PA14_Data/Gene_Info/pseudomonas_db_GO.csv')
 
-    #orthologs_ecoli('orthologs_PAO1-Ecoli.csv', 'PAO1')
-    #orthologs_ecoli('orthologs_PA14-Ecoli.csv', 'PA14')
+    #orthologs_ecoli('Orthologs/PAO1-Ecoli.csv', 'PAO1')
+    #orthologs_ecoli('Orthologs/PA14-Ecoli.csv', 'PA14')
 
     def parse_IMEx(file, strain, taxid):
         all_ref =[]
@@ -667,7 +667,7 @@ if __name__ == '__main__':
 
 
     def parse_pseudomonas():
-        with open('PAO1_GeoffWinsor.csv') as csvfile:
+        with open('PAO1_Data/GeoffWinsor.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 interactors = []
@@ -695,7 +695,7 @@ if __name__ == '__main__':
             session.commit()
             print(session.query(Interaction).count())
 
-        # with open('PAO1_STRING.txt') as csvfile:
+        # with open('PAO1_Data/STRING.txt') as csvfile:
         #     fieldnames = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection',
         #                   'publication', 'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier',
         #                   'confidence']
@@ -742,7 +742,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
 
-        with open('PAO1_Interactome_predicted.csv') as csvfile:
+        with open('PAO1_Data/Interactome_predicted.csv') as csvfile:
             reader = csv.DictReader(csvfile)
 
             for row in reader:
@@ -771,7 +771,7 @@ if __name__ == '__main__':
             session.commit()
             print(session.query(Interaction).count())
 
-        with open('xlinkdb-ouput_PAO1.txt') as csvfile:
+        with open('PAO1_Data/xlinkdb.txt') as csvfile:
             reader = csv.DictReader(csvfile, delimiter='\t')
             for row in reader:
                 interactors = []
@@ -801,7 +801,7 @@ if __name__ == '__main__':
             session.commit()
             print(session.query(Interaction).count())
 
-        with open('PSICQUIC_Paeruginosa_PAO1_ADIPInteractomes.txt') as csvfile:
+        with open('PAO1_Data/PSICQUIC/ADIPInteractomes.txt') as csvfile:
             reader = csv.DictReader(csvfile, delimiter='\t')
             for row in reader:
                 interactors = []
@@ -858,7 +858,7 @@ if __name__ == '__main__':
             session.commit()
             print(session.query(Interaction).count())
 
-        with open('PSICQUIC_Paeruginosa_PAO1_MPIDB.txt') as csvfile:
+        with open('PAO1_Data/PSICQUIC/MPIDB.txt') as csvfile:
             reader = csv.DictReader(csvfile, delimiter='\t')
             for row in reader:
                 interactors = []
@@ -968,21 +968,21 @@ if __name__ == '__main__':
             session.commit()
             print(session.query(InteractionReference).count())
 
-    parse_IMEx('PSICQUIC_Paeruginosa_PAO1_IMEx.txt', 'PAO1', 'taxid:208964(pseae)')
-    parse_IMEx('PSICQUIC_Paeruginosa_PA14_IMEx.txt', 'PA14', 'taxid:208963(pseab)')
+    parse_IMEx('PAO1_Data/PSICQUIC/IMEx.txt', 'PAO1', 'taxid:208964(pseae)')
+    parse_IMEx('PA14_Data/PSICQUIC/IMEx.txt', 'PA14', 'taxid:208963(pseab)')
 
-    parse_iRefIndex('PSICQUIC_Paeruginosa_PAO1_iRefIndex.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)')
-    parse_iRefIndex('PSICQUIC_Paeruginosa_PA14_iRefIndex.txt', 'PA14', 'taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)')
+    parse_iRefIndex('PAO1_Data/PSICQUIC/iRefIndex.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)')
+    parse_iRefIndex('PA14_Data/PSICQUIC/iRefIndex.txt', 'PA14', 'taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)')
 
-    parse_mentha('PSICQUIC_Paeruginosa_PAO1_mentha.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)')
-    parse_mentha('PSICQUIC_Paeruginosa_PA14_mentha.txt', 'PA14', 'taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)')
+    parse_mentha('PAO1_Data/PSICQUIC/mentha.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)')
+    parse_mentha('PA14_Data/PSICQUIC/mentha.txt', 'PA14', 'taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)')
 
-    parse_MINT('PSICQUIC_Paeruginosa_PAO1_MINT.txt', 'PAO1', 'taxid:208964(pseae)')
-    parse_MINT('PSICQUIC_Paeruginosa_PA14_MINT.txt', 'PA14', 'taxid:208963(pseab)')
+    parse_MINT('PAO1_Data/PSICQUIC/MINT.txt', 'PAO1', 'taxid:208964(pseae)')
+    parse_MINT('PA14_Data/PSICQUIC/MINT.txt', 'PA14', 'taxid:208963(pseab)')
 
-    parse_IntAct('PSICQUIC_Paeruginosa_PAO1_IntAct.txt', 'PAO1', 'taxid:208964(pseae)')
-    parse_IntAct('PA14_IntAct.txt', 'PA14', 'taxid:208963(pseab)')
-    parse_IntAct('PAO1_IntAct.txt', 'PAO1', 'taxid:208964(pseae)')
+    parse_IntAct('PAO1_Data/PSICQUIC/IntAct.txt', 'PAO1', 'taxid:208964(pseae)')
+    parse_IntAct('PA14_Data/IntAct.txt', 'PA14', 'taxid:208963(pseab)')
+    parse_IntAct('PAO1_Data/IntAct.txt', 'PAO1', 'taxid:208964(pseae)')
 
     parse_kegg('pae', 'PAO1')
     parse_kegg('pau', 'PA14')
@@ -991,7 +991,7 @@ if __name__ == '__main__':
 
     def parse_pseudomonas_orthologs():
         inparalogs = {}
-        with open('orthologs_PAO1-PA14.csv') as csvfile:
+        with open('Orthologs/PAO1-PA14.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if (row['Strain 1 Inparalogs (Locus Tag/Name)'] != ''):
@@ -1022,7 +1022,7 @@ if __name__ == '__main__':
                         else:
                             inparalogs[row['Locus Tag (Strain 1)']] = [trimmed_inparalog]
 
-        with open('orthologs_PAO1-PA14.csv') as csvfile:
+        with open('Orthologs/PAO1-PA14.csv') as csvfile:
             reader2 = csv.DictReader(csvfile)
             for row in reader2:
                 if (row['Locus Tag (Strain 1)']) in inparalogs.keys():
@@ -1148,11 +1148,11 @@ if __name__ == '__main__':
                 session.commit()
                 print(session.query(Interaction).count())
 
-        #parse_Ecoli_IntAct('PSICQUIC_Ecoli_IntAct.txt')
+        #parse_Ecoli_IntAct('Ecoli_Data/PSICQUIC/IntAct.txt')
 
-        #parse_Ecoli_IntAct('Ecoli_IntAct.txt')
+        #parse_Ecoli_IntAct('Ecoli_Data/IntAct.txt')
 
-        # with open('PSICQUIC_Ecoli_UniProt.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/UniProt.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         interactors = []
@@ -1203,7 +1203,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
         #
-        # with open('PSICQUIC_Ecoli_EBI-GOA-nonIntAct.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/EBI-GOA-nonIntAct.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         interactors = []
@@ -1254,7 +1254,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
         #
-        # with open('PSICQUIC_Ecoli_IMEx.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/IMEx.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         if (row['#ID(s) interactor A'] == '-') | (row['ID(s) interactor B'] == '-'): continue
@@ -1307,7 +1307,7 @@ if __name__ == '__main__':
         #     print(session.query(Interaction).count())
         # #
 
-        # with open('PSICQUIC_Ecoli_iRefIndex.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/iRefIndex.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         if (row['#ID(s) interactor A'] == '-') | (row['ID(s) interactor B'] == '-'): continue
@@ -1375,7 +1375,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
         #
-        # with open('PSICQUIC_Ecoli_mentha.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/mentha.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     string = []
         #     for row in reader:
@@ -1424,7 +1424,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
         #
-        # with open('PSICQUIC_Ecoli_MINT.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/MINT.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         if (row['#ID(s) interactor A'] == '-') | (row['ID(s) interactor B'] == '-'):
@@ -1478,7 +1478,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
 
-        # with open('PSICQUIC_Ecoli_MPIDB.txt') as csvfile:
+        # with open('Ecoli_Data/PSICQUIC/MPIDB.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         if (row['#ID(s) interactor A'] == '-') | (row['ID(s) interactor B'] == '-'): continue
@@ -1531,7 +1531,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
         #
-        # with open('Ecoli_DIP.txt') as csvfile:
+        # with open('Ecoli_Data/DIP.txt') as csvfile:
         #     reader = csv.DictReader(csvfile, delimiter='\t')
         #     for row in reader:
         #         interactors = []
@@ -1618,7 +1618,7 @@ if __name__ == '__main__':
         #     session.commit()
         #     print(session.query(Interaction).count())
 
-        # with open('Ecoli_RegulonDB.csv') as csvfile:
+        # with open('Ecoli_Data/RegulonDB.csv') as csvfile:
         #     reader = csv.DictReader(csvfile)
         #     for row in reader:
         #         interactors = []
