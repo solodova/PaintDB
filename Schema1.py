@@ -32,6 +32,7 @@ class Interactor(Base):
     }
 
     interactions = relationship("Interaction", secondary=interaction_participant, backref="interactors")
+    xrefs = relationship("InteractorXrefs", backref = 'interactor')
 
 
 class Metabolite(Interactor):
@@ -41,7 +42,7 @@ class Metabolite(Interactor):
         'polymorphic_identity': 'metabolite',
     }
 
-    #KEGG, then EcoCyc code
+    #KEGG, then EcoCyc code, then pubchem, then chebi
     id = Column(String, ForeignKey('interactor.id'), primary_key=True)
     KEGG = Column(String)
     PubChem = Column(String)
@@ -68,17 +69,16 @@ class Protein(Interactor):
 
     localizations = relationship("Localization", backref="protein")
     references = relationship("Reference", secondary=protein_reference, backref="proteins")
-    xrefs = relationship("ProteinXref", backref="protein")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
     ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
 
 
-class ProteinXref(Base):
-    __tablename__ = 'protein_xref'
+class InteractorXref(Base):
+    __tablename__ = 'interactor_xref'
 
     accession = Column(String, primary_key=True)
-    protein_id = Column(String, ForeignKey("protein.id"), primary_key=True)
-    data_source = Column(String)
+    interactor_id = Column(String, ForeignKey("interactor.id"), primary_key=True)
+    source = Column(String)
 
 
 class Reference(Base):

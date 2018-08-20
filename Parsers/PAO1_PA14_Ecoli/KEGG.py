@@ -1,4 +1,37 @@
-def parse_kegg(org_id, strain):
+from Bio.KEGG.REST import kegg_list, kegg_get, kegg_conv
+from Bio.KEGG.KGML.KGML_parser import read
+from Schema1 import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionXref
+
+kegg_compounds = {}
+
+def parse_pseudomonas_KEGG(session):
+    parse_KEGG('pae', 'PAO1', session)
+    parse_KEGG('pau', 'PA14', session)
+
+def parse_Ecoli_KEGG(session):
+    parse_KEGG('eco', 'PAO1', session)
+    parse_KEGG('eco', 'PA14', session)
+
+def find_type_KEGG(attrib):
+    return {
+        'ECrel': 'enzyme-enzyme relation',
+        'PPrel': 'protein-protein interaction',
+        'GErel': 'gene expression interaction',
+        'PCrel': 'protein-compound interaction',
+    }[attrib]
+
+# make sure to run this before calling parse_?_KEGG()
+def get_KEGG_compounds():
+    # fill in compounds dictionary (kegg_id: [name, pubchem])
+    for compound in kegg_list(database='compound'):
+        kegg_compounds[compound[4:10]] = {}
+        kegg_compounds[compound[4:10]]["name"] = compound.split('\t')[1].split(';')[0]
+    for cpd_id in kegg_conv('pubchem', 'compound').read().split('cpd:'):
+        if cpd_id != '':
+            kegg_compounds[cpd_id[:6]]["PubChem"] = cpd_id.split('pubchem:')[1][:-1]
+
+
+def parse_KEGG(org_id, strain, session):
     # get pathways for organism specified by org_id
     pathways = kegg_list(database='pathway', org=org_id).read().split('path:')
     path_names, path_ids = [], []
@@ -37,14 +70,14 @@ def parse_kegg(org_id, strain):
                 for id in entries[num].split(' '):
                     if (id == ''): continue
                     # if interactor is not protein or compound, continue
-                    if (id.split(':')[0] != org_id) & (id.split(':')[1] not in compounds): continue
+                    if (id.split(':')[0] != org_id) & (id.split(':')[1] not in kegg_compounds): continue
 
                     # check if interactor (protein or metabolite) already exists
                     if (session.query(Interactor).filter(Interactor.id == id.split(':')[1]).first() is not None):
                         interactors[num].append(
                             session.query(Interactor).filter(Interactor.id == id.split(':')[1]).one())
                     # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
-                    elif (id.split(':')[1] in compounds):
+                    elif (id.split(':')[1] in kegg_compounds):
                         # if it is a valid compound, create new metabolite
                         new_metabolites[num].append(id.split(':')[1])
                     # if parsing E. coli path, add all orthologs to interactor list
@@ -65,20 +98,25 @@ def parse_kegg(org_id, strain):
                 for interactor2 in new_metabolites[1]:
                     if (interactor1.type != 'metabolite'):
                         new_metabolite = Metabolite(id=interactor2, type='metabolite',
-                                                name=compounds[interactor2][0],
-                                                pubchem_id=compounds[interactor2][1], kegg_id=interactor2)
+                                                    name=kegg_compounds[interactor2]["name"],
+                                                    PubChem=kegg_compounds[interactor2]["PubChem"],
+                                                    KEGG=interactor2)
                         session.add(new_metabolite), session.commit()
                         interactor_pairs.append([interactor1, new_metabolite])
 
             for interactor1 in interactors[1]:
                 for interactor2 in new_metabolites[0]:
                     if (interactor1.type != 'metabolite'):
-                        new_metabolite = Metabolite(id=interactor2, type='metabolite',
-                                                name=compounds[interactor2][0],
-                                                pubchem_id=compounds[interactor2][1], kegg_id=interactor2)
-                        session.add(new_metabolite), session.commit()
-                        interactor_pairs.append([interactor1, new_metabolite])
+                        new_metabolite = session.query(Metabolite).filter(Metabolite.id == interactor2).first()
+                        if (new_metabolite is None):
+                            new_metabolite = Metabolite(id=interactor2, type='metabolite',
+                                                    name=kegg_compounds[interactor2]["name"],
+                                                    PubChem=kegg_compounds[interactor2]["PubChem"],
+                                                    KEGG=interactor2)
+                            session.add(new_metabolite), session.commit()
+                        interactor_pairs.append([new_metabolite, interactor1])
 
+            # where should this be (include interactions_sif where 1 of primary interactors_sif has no ortholog?)
             if (len(interactor_pairs) == 0): continue
 
             # get all intermediates in reaction of type compound
@@ -90,14 +128,14 @@ def parse_kegg(org_id, strain):
                     if (int(compound_node_id) not in compound_ids): continue
                     # if compound id is valid, either add existing matching metabolite or create new one and add
                     compound_id = compound_ids[int(compound_node_id)]
-                    metabolite = session.query(Metabolite).filter(Metabolite.kegg_id == compound_id).first()
-                    if metabolite == None:
-                        metabolite = Metabolite(kegg_id=compound_id, pubchem_id=compounds[compound_id][1],
-                                                name=compounds[compound_id][0], type='metabolite', id=compound_id)
-                        session.add(metabolite)
-                        session.commit()
+                    metabolite = session.query(Metabolite).filter(Metabolite.KEGG == compound_id).first()
+                    if metabolite is None:
+                        metabolite = Metabolite(KEGG=compound_id, name=kegg_compounds[compound_id]["name"],
+                                                PubChem=kegg_compounds[compound_id]["PubChem"],
+                                                type='metabolite', id=compound_id)
+                        session.add(metabolite), session.commit()
                     else:
-                        metabolite = session.query(Metabolite).filter(Metabolite.kegg_id == compound_id).one()
+                        metabolite = session.query(Metabolite).filter(Metabolite.KEGG == compound_id).one()
                     intermeds.append(metabolite)
 
             # add protein - intermediate interactor pairs
@@ -128,7 +166,7 @@ def parse_kegg(org_id, strain):
                         (Interaction.homogenous == homogenous)).one()
                     if org_id == 'eco':
                         if (interaction.ortholog_derived == None):
-                            interaction.ortholog_derived = 'from E. coli'
+                            interaction.ortholog_derived = 'confirmed from E. coli'
                         else:
                             if ('from E.coli' not in interaction.ortholog_derived):
                                 interaction.ortholog_derived += ', confirmed from E.coli'

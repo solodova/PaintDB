@@ -6,9 +6,9 @@ from flask import (
 
 from UI.db import get_db
 
-bp = Blueprint('search', __name__, url_prefix='/auth')
+bp = Blueprint('search', __name__, url_prefix='/search')
 
-@bp.route('/upload', methods=('GET', 'POST'))
+@bp.route('/upload', methods=('POST'))
 def register():
     if request.method == 'POST':
         username = request.form['username']

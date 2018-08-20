@@ -1,0 +1,167 @@
+#ID(s) interactor A
+{'BindingDB_monomerID': 1411, 'chebi': 79}
+{'chebi': 'not present in all entries'}
+
+ID(s) interactor B
+{'BindingDB_polymerID': 1411, 'uniprotkb': 1}
+{'uniprotkb': 'not present in all entries'}
+
+Alt. ID(s) interactor A
+{'pubchem': 1411, 'chembl': 1036}
+{'chembl': 'not present in all entries'}
+
+Alt. ID(s) interactor B
+{'uniprotkb': 1, '-': 1410}
+{'-': 'not present in all entries', 'uniprotkb': 'not present in all entries'}
+
+Alias(es) interactor A
+{'unknown': 1396, 'psi-mi': 4001}
+{'unknown': 'not present in all entries'}
+
+Alias(es) interactor B
+{'psi-mi': 4256}
+{}
+
+Interaction detection method(s)
+{'psi-mi': 1411}
+{}
+
+Publication 1st author(s)
+{'Mochalkin et al (2009)': 14, 'Ciulli et al (2006)': 13, 'Teng et al (2016)': 1, 'Luo et al (2003)': 44, 'Evdokimov et al (2007)': 14, 'Lever et al (1986)': 44, 'Skibo et al (1982)': 32, 'Boughton et al (2008)': 8, 'Smith et al (2003)': 3, 'Long et al (2008)': 4, 'Evans et al (2008)': 2, 'Gutierrez et al (2007)': 8, 'Xu et al (2007)': 4, 'Humljan et al (2008)': 37, 'Chandran et al (2001)': 5, 'Schiffmann et al (2006)': 41, 'Ramsden et al (2009)': 9, 'Wendeler et al (2008)': 2, 'Summa et al (2004)': 4, 'Holmgren et al (2013)': 14, 'Klein et al (2010)': 28, 'Gutierrez et al (2009)': 1, 'Nelson et al (1993)': 30, 'Taha et al (2016)': 20, 'Hrast et al (2014)': 36, 'Marmorstein et al (1987)': 23, 'Soriano et al (2008)': 3, 'Miran et al (1991)': 5, 'Widlanski et al (1989)': 2, 'Meneely et al (2014)': 8, 'Kasprzak et al (1988)': 1, 'Anderson et al (1988)': 1, 'Morris et al (2013)': 8, 'Basarab et al (2014)': 77, 'Ariyakumaran et al (2015)': 5, 'Shahzad et al (2015)': 11, 'Wallace et al (2015)': 10, 'Wolf et al (2015)': 2, 'Matarlo et al (2015)': 11, 'Van Dyke et al (2016)': 4, 'De Jersey et al (2015)': 2, 'Pang et al (2016)': 14, '-': 58, 'Landau et al (2007)': 1, 'Javaid et al (2015)': 7, 'Vo-Quang et al (1986)': 3, 'Simcic et al (2014)': 1, 'Yang et al (2005)': 5, 'Bachelier et al (2006)': 8, 'Masini et al (2014)': 3, 'Goodreid et al (2014)': 2, 'Itzhak et al (1981)': 1, 'Montchamp et al (1992)': 2, 'Dennis et al (2014)': 12, 'Perdih et al (2014)': 15, 'Richter et al (1996)': 4, 'Mihalyi et al (2014)': 2, 'Yule et al (2014)': 3, 'Duprez et al (2015)': 21, 'Hu et al (1999)': 2, 'Bello et al (2000)': 2, 'Dini et al (2001)': 14, 'Yin et al (2015)': 27, 'Apfel et al (2001)': 16, 'Thorarensen et al (2001)': 20, 'Jarvest et al (2003)': 60, 'Thomas et al (2003)': 2, 'Kim et al (2006)': 44, 'Hotoda et al (2003)': 2, 'Li et al (2003)': 40, 'Beaulieu et al (2003)': 12, 'Beaulieu et al (2004)': 12, 'Shen et al (2006)': 3, 'Doundoulakis et al (2004)': 5, 'Luo et al (2005)': 18, 'Cui et al (2005)': 69, 'Turner et al (2005)': 1, 'Rush et al (2005)': 1, 'Wells et al (2007)': 1, 'Kutterer et al (2005)': 55, 'Schwardt et al (2011)': 30, 'Gavalda et al (2005)': 6, 'Kim et al (2005)': 4, 'Berlicki et al (2005)': 6, 'Huang et al (2005)': 38, 'Huang et al (2007)': 2, 'Strancar et al (2005)': 3, 'Dubaele et al (2006)': 4, 'Fr&#246;hlich et al (2011)': 2, 'Kamath et al (2006)': 1, 'Callahan et al (2006)': 3, 'Kim et al (2011)': 8, 'Gilbert et al (2006)': 34, 'Ziebart et al (2010)': 18, 'Desroy et al (2009)': 6, 'Corey et al (1993)': 7, 'Knowles et al (1993)': 10, 'Miller et al (1993)': 13, 'Anderle et al (2008)': 33, 'Hou et al (2011)': 1, 'Brument et al (2014)': 1, 'Walker et al (2011)': 3, 'Wong et al (1984)': 16, 'Scholz et al (2013)': 3}
+{'Ciulli et al (2006)': 'not present in all entries', 'Teng et al (2016)': 'not present in all entries', 'Luo et al (2003)': 'not present in all entries', 'Evdokimov et al (2007)': 'not present in all entries', 'Lever et al (1986)': 'not present in all entries', 'Skibo et al (1982)': 'not present in all entries', 'Boughton et al (2008)': 'not present in all entries', 'Smith et al (2003)': 'not present in all entries', 'Long et al (2008)': 'not present in all entries', 'Evans et al (2008)': 'not present in all entries', 'Gutierrez et al (2007)': 'not present in all entries', 'Xu et al (2007)': 'not present in all entries', 'Humljan et al (2008)': 'not present in all entries', 'Chandran et al (2001)': 'not present in all entries', 'Schiffmann et al (2006)': 'not present in all entries', 'Ramsden et al (2009)': 'not present in all entries', 'Wendeler et al (2008)': 'not present in all entries', 'Summa et al (2004)': 'not present in all entries', 'Holmgren et al (2013)': 'not present in all entries', 'Klein et al (2010)': 'not present in all entries', 'Gutierrez et al (2009)': 'not present in all entries', 'Nelson et al (1993)': 'not present in all entries', 'Taha et al (2016)': 'not present in all entries', 'Hrast et al (2014)': 'not present in all entries', 'Marmorstein et al (1987)': 'not present in all entries', 'Soriano et al (2008)': 'not present in all entries', 'Miran et al (1991)': 'not present in all entries', 'Widlanski et al (1989)': 'not present in all entries', 'Meneely et al (2014)': 'not present in all entries', 'Kasprzak et al (1988)': 'not present in all entries', 'Anderson et al (1988)': 'not present in all entries', 'Morris et al (2013)': 'not present in all entries', 'Basarab et al (2014)': 'not present in all entries', 'Ariyakumaran et al (2015)': 'not present in all entries', 'Shahzad et al (2015)': 'not present in all entries', 'Wallace et al (2015)': 'not present in all entries', 'Wolf et al (2015)': 'not present in all entries', 'Matarlo et al (2015)': 'not present in all entries', 'Van Dyke et al (2016)': 'not present in all entries', 'De Jersey et al (2015)': 'not present in all entries', 'Pang et al (2016)': 'not present in all entries', '-': 'not present in all entries', 'Landau et al (2007)': 'not present in all entries', 'Javaid et al (2015)': 'not present in all entries', 'Vo-Quang et al (1986)': 'not present in all entries', 'Simcic et al (2014)': 'not present in all entries', 'Yang et al (2005)': 'not present in all entries', 'Bachelier et al (2006)': 'not present in all entries', 'Masini et al (2014)': 'not present in all entries', 'Goodreid et al (2014)': 'not present in all entries', 'Itzhak et al (1981)': 'not present in all entries', 'Montchamp et al (1992)': 'not present in all entries', 'Dennis et al (2014)': 'not present in all entries', 'Perdih et al (2014)': 'not present in all entries', 'Richter et al (1996)': 'not present in all entries', 'Mihalyi et al (2014)': 'not present in all entries', 'Yule et al (2014)': 'not present in all entries', 'Duprez et al (2015)': 'not present in all entries', 'Hu et al (1999)': 'not present in all entries', 'Bello et al (2000)': 'not present in all entries', 'Dini et al (2001)': 'not present in all entries', 'Yin et al (2015)': 'not present in all entries', 'Apfel et al (2001)': 'not present in all entries', 'Thorarensen et al (2001)': 'not present in all entries', 'Jarvest et al (2003)': 'not present in all entries', 'Thomas et al (2003)': 'not present in all entries', 'Kim et al (2006)': 'not present in all entries', 'Hotoda et al (2003)': 'not present in all entries', 'Li et al (2003)': 'not present in all entries', 'Beaulieu et al (2003)': 'not present in all entries', 'Beaulieu et al (2004)': 'not present in all entries', 'Shen et al (2006)': 'not present in all entries', 'Doundoulakis et al (2004)': 'not present in all entries', 'Luo et al (2005)': 'not present in all entries', 'Cui et al (2005)': 'not present in all entries', 'Turner et al (2005)': 'not present in all entries', 'Rush et al (2005)': 'not present in all entries', 'Wells et al (2007)': 'not present in all entries', 'Kutterer et al (2005)': 'not present in all entries', 'Schwardt et al (2011)': 'not present in all entries', 'Gavalda et al (2005)': 'not present in all entries', 'Kim et al (2005)': 'not present in all entries', 'Berlicki et al (2005)': 'not present in all entries', 'Huang et al (2005)': 'not present in all entries', 'Huang et al (2007)': 'not present in all entries', 'Strancar et al (2005)': 'not present in all entries', 'Dubaele et al (2006)': 'not present in all entries', 'Fr&#246;hlich et al (2011)': 'not present in all entries', 'Kamath et al (2006)': 'not present in all entries', 'Callahan et al (2006)': 'not present in all entries', 'Kim et al (2011)': 'not present in all entries', 'Gilbert et al (2006)': 'not present in all entries', 'Ziebart et al (2010)': 'not present in all entries', 'Desroy et al (2009)': 'not present in all entries', 'Corey et al (1993)': 'not present in all entries', 'Knowles et al (1993)': 'not present in all entries', 'Miller et al (1993)': 'not present in all entries', 'Anderle et al (2008)': 'not present in all entries', 'Hou et al (2011)': 'not present in all entries', 'Brument et al (2014)': 'not present in all entries', 'Walker et al (2011)': 'not present in all entries', 'Wong et al (1984)': 'not present in all entries', 'Scholz et al (2013)': 'not present in all entries', 'Mochalkin et al (2009)': 'not present in all entries'}
+
+Publication Identifier(s)
+{'pubmed': 1228, 'patent': 93, '-': 90}
+{'patent': 'not present in all entries', '-': 'not present in all entries', 'pubmed': 'not present in all entries'}
+
+Taxid interactor A
+{'-': 1411}
+{}
+
+Taxid interactor B
+{'taxid': 1411}
+{}
+
+Interaction type(s)
+{'psi-mi': 1411}
+{}
+
+Source database(s)
+{'psi-mi': 1411}
+{}
+
+Interaction identifier(s)
+{'bindingdb': 1411}
+{}
+
+Confidence value(s)
+{'-': 1411}
+{}
+
+Expansion method(s)
+{'-': 1411}
+{}
+
+Biological role(s) interactor A
+{'-': 1411}
+{}
+
+Biological role(s) interactor B
+{'-': 1411}
+{}
+
+Experimental role(s) interactor A
+{'-': 1411}
+{}
+
+Experimental role(s) interactor B
+{'-': 1411}
+{}
+
+Type(s) interactor A
+{'psi-mi': 1411}
+{}
+
+Type(s) interactor B
+{'psi-mi': 1411}
+{}
+
+Xref(s) interactor A
+{}
+{}
+
+Xref(s) interactor B
+{}
+{}
+
+Interaction Xref(s)
+{}
+{}
+
+Annotation(s) interactor A
+{}
+{}
+
+Annotation(s) interactor B
+{}
+{}
+
+Interaction annotation(s)
+{}
+{}
+
+Host organism(s)
+{}
+{}
+
+Interaction parameter(s)
+{}
+{}
+
+Creation date
+{}
+{}
+
+Update date
+{}
+{}
+
+Checksum(s) interactor A
+{}
+{}
+
+Checksum(s) interactor B
+{}
+{}
+
+Interaction Checksum(s)
+{}
+{}
+
+Negative
+{}
+{}
+
+Feature(s) interactor A
+{}
+{}
+
+Feature(s) interactor B
+{}
+{}
+
+Stoichiometry(s) interactor A
+{}
+{}
+
+Stoichiometry(s) interactor B
+{}
+{}
+
+Identification method participant A
+{}
+{}
+
+Identification method participant B
+{}
+{}
