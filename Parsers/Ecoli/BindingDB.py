@@ -22,7 +22,7 @@ def parse_Ecoli_BindingDB(session):
 
             interactor_A = None
 
-            # if interactor A has ChEBI id, search for matching metabolite
+            # if interactor A has ChEBI id, query for matching metabolite
             if ChEBI_A is not None:
                 interactor_A = session.query(Metabolite).filter(Metabolite.ChEBI == ChEBI_A).first()
 

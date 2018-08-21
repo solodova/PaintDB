@@ -1,7 +1,7 @@
 if __name__ == '__main__':
 
     from Schema1 import Base
-    from sqlalchemy import create_engine, or_
+    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
     engine = create_engine('sqlite:///:memory:', echo=True)
@@ -19,7 +19,7 @@ if __name__ == '__main__':
             '0407': 'direct interaction',
         }[psi_code]
 
-    from Data.file_desc import parse
+    from File_Descriptions.file_desc import parse
 
     parse()
 

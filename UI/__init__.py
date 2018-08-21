@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for
 
 def create_app(test_config=None):
 
@@ -25,12 +25,22 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
+    @app.route('/')
+    def PaIntDB():
+        return redirect(url_for('home'))
+
     @app.route('/home')
-    def hello():
-        return render_template('base.html')
+    def home():
+        return render_template('home.html')
+
+    from . import info
+    app.register_blueprint(info.bp)
+
+    from . import query
+    app.register_blueprint(query.bp)
 
     # is blueprint needed for anything?
-    # from . import search
-    # app.register_blueprint(search.bp)
+    # from . import query
+    # app.register_blueprint(query.bp)
 
     return app

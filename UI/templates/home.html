@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PaIntDB</title>
+</head>
+<body>
+<h1>PaIntDB (<i><b>P</b>seudomonas <b>a</b>eruginosa</i> <b>Int</b>eraction <b>D</b>ata<b>b</b>ase)</h1>
+<nav>
+    <ul>
+        <li><a href = " {{url_for('home') }}">Home</a></li>
+        <li><a href = " {{url_for('info.data_sources') }}">Data Sources</a></li>
+        <li><a href = " {{url_for('query.query') }}">Query</a></li>
+    </ul>
+</nav>
+
+<h2><u>Overview</u></h2>
+PaIntDB contains information on protein interactions found in <i>Pseudomonas aeruginosa</i>.
+    <ul>
+        <li>Strains currently supported are PAO1 and PA14.</li>
+        <li>Protein interactions are defined as:
+            <ul type="square">
+                <li>protein-protein,</li>
+                <li>protein-metabolite, or</li>
+                <li>transcription factor-binding site.</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
