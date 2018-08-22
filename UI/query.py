@@ -1,135 +1,92 @@
-import functools, os
+import functools, os, glob
 from flask import (
     Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.utils import secure_filename
 from flask import current_app as app
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
-protein_file_name, metabolite_file_name = '', ''
-
 
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @bp.route('upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
+        # if no files were added before submit, flash error
         if ('proteinFile' not in request.files) & ('metaboliteFile' not in request.files):
             flash('Error: No files selected.')
             return redirect(request.url)
+
         protein_file, metabolite_file, metabolite_id = None, None, ''
-        if ('metaboliteFile' in request.files):
+        file_error = ''
+        # if a metabolite file was included but no id was selected, flash error
+        if 'metaboliteFile' in request.files:
             if 'metabolite_id' not in request.form:
                 flash('Error: No ID type selected for metabolite interactor file.')
                 return redirect(request.url)
             metabolite_file = request.files['metaboliteFile']
             metabolite_id = request.form['metabolite_id']
-        if ('proteinFile' in request.files):
-            protein_file = request.files['proteinFile']
-
-
-        if (protein_file and not allowed_file(protein_file.filename)) or \
-                (metabolite_file and not allowed_file(metabolite_file.filename)):
-            if not allowed_file(protein_file.filename):
-                flash('Error: File type for ' + protein_file.filename + ' is invalid')
-            if not allowed_file(metabolite_file.filename):
-                flash('Error: File type for ' + metabolite_file.filename + ' is invalid')
-            redirect(request.url)
-
-
-        if metabolite_file:
             if metabolite_file.filename == '':
-                flash('Error: No file selected.')
+                flash('Error: No files selected.')
                 return redirect(request.url)
-        if protein_file:
+            if not allowed_file(metabolite_file.filename):
+                file_error += metabolite_file.filename + ' '
+
+        if 'proteinFile' in request.files:
+            protein_file = request.files['proteinFile']
             if protein_file.filename == '':
-                flash('Error: No file selected.')
+                flash('Error: No files selected.')
                 return redirect(request.url)
+            if not allowed_file(protein_file.filename):
+                file_error += protein_file.filename + ' '
+
+        if len(file_error) != 0:
+            flash('Error: Incompatible file type for: ' + file_error)
+            return redirect(request.url)
 
         if metabolite_file is not None:
-            filename = secure_filename(metabolite_file)
-            metabolite_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            mfile = secure_filename(('metabolites.' + metabolite_file.filename.rsplit('.', 1)[1].lower()))
+            metabolite_file.save(os.path.join(app.config['UPLOAD_FOLDER'], mfile))
             flash(metabolite_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         if protein_file is not None:
-            filename = secure_filename(protein_file)
-            protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            pfile = secure_filename(('proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()))
+            protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], pfile))
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
-
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        # if file.filename == '':
-        #     flash('Error: No file selected.')
-        #     return redirect(request.url)
-        # if not allowed_file(file.filename):
-        #     flash('Error: File type not supported. Please upload a txt, csv, or tsv file.')
-        #     return redirect(request.url)
-        # if file:
-        #     filename = secure_filename(file.filename)
-        #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        #     protein_input = filename
-        #     flash(file.filename + ' was successfully uploaded! Click below to move on to the next step.')
-        #     return redirect(request.url)
+        return redirect(url_for('query.uploaded'))
     return render_template('query/upload.html')
 
-@bp.route('upload/protein', methods=['GET', 'POST'])
-def upload_protein():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('Error: No file selected.')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if file.filename == '':
-            flash('Error: No file selected.')
-            return redirect(request.url)
-        if not allowed_file(file.filename):
-            flash('Error: File type not supported. Please upload a txt, csv, or tsv file.')
-            return redirect(request.url)
-        if file:
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            protein_input = filename
-            flash(file.filename + ' was successfully uploaded! Click below to move on to the next step.')
-            return redirect(request.url)
-    return render_template('query/uploadProtein.html')
-
-@bp.route('upload/metabolite', methods=['GET', 'POST'])
-def upload_metabolite():
-    if request.method == 'POST':
-        if 'metabolite_ids' not in request.form:
-            flash('No ID type selected')
-            return redirect(request.url)
-        if 'file' not in request.files:
-            flash('No selected file')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if not allowed_file(file.filename):
-            flash('File type not supported. Please upload a txt, csv, or tsv file.')
-            return redirect(request.url)
-        if file:
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            metabolite_input = filename
-            flash(file.filename + ' was successfully uploaded! The ID type selected was: ' + \
-                  request.form['metabolite_ids'] + '. Click below to move on to the next step.')
-            return redirect(request.url)
-    else:
-        return render_template('query/uploadMetabolite.html')
+@bp.route('uploaded', methods=['GET', 'POST'])
+def uploaded():
+    if request.method =='POST':
+        for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
+            for file in files:
+                filename = os.path.splitext(file)[0]
+                if (filename == 'proteins') | (filename == 'metabolites'):
+                    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file))
+        return redirect(url_for('query.upload'))
+    return render_template('query/uploaded.html')
 
 @bp.route('filter', methods=['GET', 'POST'])
 def filter():
     if request.method == 'POST':
-        'hello'
+        filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
+                   'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
+        for filter in filters.keys():
+            if filter in request.form:
+                filters[filter] = request.form.getlist(filter)
+
+        engine = create_engine('sqlite:///:memory:', echo=True)
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        for strain in filters['strain']:
+            session.query(Interaction).filter(Interaction.strain == strain)
+        return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')
 
 
