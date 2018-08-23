@@ -4,8 +4,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from UI.__init__ import Session
 from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
@@ -76,13 +75,22 @@ def filter():
     if request.method == 'POST':
         filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
                    'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
+
         for filter in filters.keys():
             if filter in request.form:
                 filters[filter] = request.form.getlist(filter)
 
-        engine = create_engine('sqlite:///:memory:', echo=True)
-        Session = sessionmaker(bind=engine)
+        for filter in filters:
+            if 'None' in filter:
+                filter=['None']
+            elif 'All' in filter:
+                filter=['All']
+
         session = Session()
+        interactions = []
+        for strain in filters['strain']:
+            if strain == 'None':
+                'nothing'
 
         for strain in filters['strain']:
             session.query(Interaction).filter(Interaction.strain == strain)

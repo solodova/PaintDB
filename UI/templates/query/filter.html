@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PaIntDB - Query</title>
+</head>
+<body>
+<h1>PaIntDB (<i><b>P</b>seudomonas <b>a</b>eruginosa</i> <b>Int</b>eraction <b>D</b>ata<b>b</b>ase)</h1>
+<nav>
+    <ul>
+        <li><a href = " {{url_for('home') }}">Home</a></li>
+        <li><a href = " {{url_for('info.data_sources') }}">Data Sources</a></li>
+        <li><a href = " {{url_for('query.upload') }}">Query</a></li>
+    </ul>
+</nav>
+<h2><u>Query - Select Filters</u></h2>
+<p>
+    Go through each section below to select appropriate filters. Multiple options can be selected for each filter (you
+    may have to press CTRL while selecting multiple items). The default for each filter is 'All', so skip
+    to the next step to browse all interactions in PaIntDB.
+</p>
+<form method="post" enctype="multipart/form-data">
+    <h4>Interactor strain(s)</h4>
+    <select name="strain" id="strain" multiple size="3" required>
+        <option value="All" selected>All</option>
+        <option value="PAO1">PAO1</option>
+        <option value="PA14">PA14</option>
+    </select>
+    <h4>Interaction Type(s)</h4>
+    <select name="interaction_type" id="interaction_type" multiple required>
+        <option value="All" selected>All</option>
+        <option value="prot">protein-protein</option>
+        <option value="protmet">protein-metabolite</option>
+        <option value="tfbs">transcription factor-binding site</option>
+    </select>
+    <h4>Ortholog Mapping</h4>
+    <p>Note that ortholog mapping will be done based on what data sources are selected for the corresponding
+    ortholog species/strain in the next section.</p>
+    <select name="ortholog_mapping" id="ortholog_mapping" multiple required>
+        <option value="All" selected>All</option>
+        <option value="PAO1/PA14">PAO1/PA14</option>
+        <option value="PAO1/Ecoli">PAO1/Ecoli</option>
+        <option value="PA14/Ecoli">PA14/Ecoli</option>
+    </select>
+    <h4>Data Sources</h4>
+    <label for="Ecoli_sources" >E. coli K12 substr. MG1655</label><br>
+    <select name="Ecoli_sources" id="Ecoli_sources" size="6" multiple required>
+        <option value="All" selected>All</option>
+        <option value="None">None</option>
+        <option value="EcoCyc">EcoCyc</option>
+        <option value="KEGG">KEGG</option>
+        <option value="BindingDB">BindingDB</option>
+        <option value="ChEMBL">ChEMBL</option>
+        <option value="DIP">DIP</option>
+        <option value="EBI-GOA-nonIntAct">EBI-GOA-nonIntAct</option>
+        <option value="IMEx">IMEx</option>
+        <option value="IntAct">IntAct</option>
+        <option value="iRefIndex">iRefIndex</option>
+        <option value="mentha">mentha</option>
+        <option value="MINT">MINT</option>
+        <option value="MPIDB">MPIDB</option>
+        <option value="RegulonDB">RegulonDB</option>
+        <option value="UniProt">UniProt</option>
+    </select><br><br>
+    <label for="PAO1_sources">PAO1</label><br>
+    <select name="PAO1_sources" id="PAO1_sources" size="6" multiple required>
+        <option value="All" selected>All</option>
+        <option value="None">None</option>
+        <option value="KEGG">KEGG</option>
+        <option value="IMEx">IMEx</option>
+        <option value="iRefIndex">iRefIndex</option>
+        <option value="mentha">mentha</option>
+        <option value="MINT">MINT</option>
+        <option value="MPIDB">MPIDB</option>
+        <option value="IntAct">IntAct</option>
+        <option value="ADIPInteractomes">ADIP Interactomes</option>
+        <option value="STRING">STRING</option>
+        <option value="xlinkDB">xlinkDB*</option>
+        <option value="regulatory network">Regulatory Network*</option>
+        <option value="predicted interactome">Predicted Interactome*</option>
+        <option value="Geoff">Geoff Winsor and Raymond Lo*</option>
+    </select><br><br>
+    <label for="PA14_sources">PA14</label><br>
+    <select name="PA14_sources" id="PA14_sources" size="7" multiple required>
+        <option value="All" selected>All</option>
+        <option value="None">None</option>
+        <option value="KEGG">KEGG</option>
+        <option value="IMEx">IMEx</option>
+        <option value="iRefIndex">iRefIndex</option>
+        <option value="mentha">mentha</option>
+        <option value="MINT">MINT</option>
+        <option value="regulatory network">Regulatory Network*</option>
+    </select>
+    <h4>Interaction Verification</h4>
+    <select name="verification" id="verification" size="3" multiple required>
+        <option value="All" selected>All</option>
+        <option value="experimental">Experimental</option>
+        <option value="predicted">Predicted</option>
+    </select><br><br>
+    <input type=submit value="Apply Filters">
+</form>
+</body>
+</html>

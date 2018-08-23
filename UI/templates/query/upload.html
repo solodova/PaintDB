@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PaIntDB - Query</title>
+</head>
+<body>
+<h1>PaIntDB (<i><b>P</b>seudomonas <b>a</b>eruginosa</i> <b>Int</b>eraction <b>D</b>ata<b>b</b>ase)</h1>
+<nav>
+    <ul>
+        <li><a href = " {{url_for('home') }}">Home</a></li>
+        <li><a href = " {{url_for('info.data_sources') }}">Data Sources</a></li>
+        <li><a href = " {{url_for('query.upload') }}">Query</a></li>
+    </ul>
+</nav>
+<h2><u>Query - Upload Interactor Files</u></h2>
+<p>If you wish to query PaIntDB for interactions involving your interactors of interest, upload a txt, csv, or tsv
+    file containing your interactors by clicking below (metabolites and protein interactors must be uploaded in
+    separate files). If you wish to simply browse PaIntDB, skip this step.</p>
+File specifications:
+<ul>
+    <li>Protein/gene and metabolite interactors should be uploaded in separate files.</li>
+    <li>For proteins/genes, use locus tag or UniProtKB ID.</li>
+    <li>For metabolites, use KEGG, ChEBI, EcoCyc, PubChem, or CAS ID to identify interactors. (Note that
+        not all metabolites in the database have each of these IDs, so you should use ID types in
+        the order of KEGG, ChEBI, EcoCyc, PubChem, CAS. Querying with more widely used IDs will
+        increase the chance that your metabolites will be found in the database).</li>
+    <ul>
+        <li>For metabolites, please select the type of ID being used before continuing</li>
+    </ul>
+</ul>
+<form method="POST" enctype="multipart/form-data">
+    <label for="proteinFile">Protein/Gene Interactor File</label>
+    <input type="file" name="proteinFile" id="proteinFile">
+    <br><br>
+    <label for="metaboliteFile">Metabolite Interactor File</label>
+    <input type="file" name="metaboliteFile" id="metaboliteFile">
+    <select name="metabolite_id">
+        <option value="None" selected disabled>Select metabolite ID type</option>
+        <option value="PubChem">PubChem</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Upload All Files">
+</form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<br><br><br>
+<button><a href="{{url_for('query.filter')}}">Next Step: Select Filters</a></button>
+</body>
+</html>

@@ -5,6 +5,7 @@ def parse():
     all_num_occurrences = {}
     all_presence = {}
     sample_entry = {}
+    num_elems = {}
 
     input_prefix = 'Data/'
     output_prefix = 'File_Descriptions/'
@@ -19,7 +20,7 @@ def parse():
                   'PAO1/PSICQUIC/MPIDB.txt', 'PAO1/IntAct.txt']
 
     #for file in file_names:
-    file = file_names[24]
+    file = file_names[0]
     input_file = input_prefix+file
     with open(input_file) as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
@@ -27,6 +28,7 @@ def parse():
 
 
     for col in cols:
+        num_elems[col] = {}
         with open(input_file) as csvfile:
             reader = csv.DictReader(csvfile, delimiter='\t')
             num_occurrences = {}
@@ -34,6 +36,16 @@ def parse():
 
                 if row[col] is None: continue
                 fields = row[col].split('|')
+
+                num_elem = 0
+                for field in fields:
+                    if field != '':
+                        num_elem += 1
+
+                if num_elem not in num_elems[col]:
+                    num_elems[col][num_elem] = 1
+                else:
+                    num_elems[col][num_elem] += 1
 
                 for id in fields:
                     if (len(id.split(':')) == 1) & (id != '-'):
@@ -80,6 +92,7 @@ def parse():
         else:
             new_file.write('sample entries: None\n')
         new_file.write(str(all_num_occurrences[col])+'\n')
-        new_file.write(all_presence[col] + '\n\n')
+        new_file.write(all_presence[col] + '\n')
+        new_file.write('num elements in column: ' + str(num_elems[col]) + '\n\n')
 
     new_file.close()

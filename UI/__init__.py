@@ -1,6 +1,12 @@
 import os
 from flask import Flask
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request, flash
+from werkzeug.utils import secure_filename
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('sqlite:///:memory:', echo=True)
+Session = sessionmaker(bind=engine)
 
 def create_app(test_config=None):
 
@@ -9,6 +15,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        UPLOAD_FOLDER= 'UI\\user_upload',
     )
 
     if test_config is None:
@@ -24,13 +31,23 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+
+    def removeFiles():
+        for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
+            for file in files:
+                filename = os.path.splitext(file)[0]
+                if (filename == 'proteins') | (filename == 'metabolites'):
+                    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file))
+
+
     # a simple page that says hello
     @app.route('/')
     def PaIntDB():
         return redirect(url_for('home'))
 
-    @app.route('/home')
+    @app.route('/home', methods = ['GET', 'POST'])
     def home():
+        removeFiles()
         return render_template('home.html')
 
     from . import info

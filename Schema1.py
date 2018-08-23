@@ -19,10 +19,13 @@ interaction_participant = Table('interaction_participant', Base.metadata,
 class Interactor(Base):
     __tablename__ = 'interactor'
 
-    # locus id (protein)
-    # uniprotkb id (protein complex)
-    # kegg id (metabolite
+    # protein: locus id (eg. PA0001)
+    # protein complex: uniprotkb id (eg. Q9HT76)
+    # metabolite: kegg id (eg. )
     id = Column(String, primary_key=True)
+    # protein: eg. "", pyrE
+    # protein complex: None
+    # metabolite:
     name = Column(String)
     type = Column(String)
 
@@ -38,30 +41,38 @@ class Interactor(Base):
 class Metabolite(Interactor):
     __tablename__ = 'metabolite'
 
+    #KEGG, then EcoCyc code, then pubchem, then chebi
+    id = Column(String, ForeignKey('interactor.id'), primary_key=True)
+    # eg.
+    kegg = Column(String)
+    # eg.
+    pubchem = Column(String)
+    # eg.
+    cas = Column(String)
+    # eg.
+    chebi = Column(String)
+    # eg.
+    ecocyc = Column(String)
+
     __mapper_args__ = {
         'polymorphic_identity': 'metabolite',
     }
-
-    #KEGG, then EcoCyc code, then pubchem, then chebi
-    id = Column(String, ForeignKey('interactor.id'), primary_key=True)
-    KEGG = Column(String)
-    PubChem = Column(String)
-    CAS = Column(String)
-    ChEBI = Column(String)
-    EcoCyc = Column(String)
 
 
 class Protein(Interactor):
     __tablename__ = 'protein'
 
-    # locus id (monomeric protein) or uniprotkb id (protein complex)
+    # locus id (eg. PA0001)
     id = Column(String, ForeignKey('interactor.id'), primary_key=True)
-    # description of protein product for monomeric, 'protein complex' otherwise
-    description = Column(String)
-    is_TF = Column(String)
-    accession = Column(String)
-    uniprotkb = Column(String)
     strain = Column(String)
+    # monomeric protein: product name (eg. orotate phosphoribosyltransferase, hypothetical protein)
+    product_name = Column(String)
+    # eg. NP_254184.1
+    ncbi_acc = Column(String)
+    # eg. Q9HT76
+    uniprotkb = Column(String)
+    # remains None until determined
+    is_tf = Column(String)
 
     __mapper_args__ = {
         'polymorphic_identity': 'protein',
@@ -73,11 +84,32 @@ class Protein(Interactor):
     ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
 
 
+class ProteinComplex(Interactor):
+    __tablename__ = 'protein_complex'
+
+    # uniprotkb id (eg. Q9HT76)
+    id = Column(String, ForeignKey('interactor.id'), primary_key = True)
+    strain = Column(String)
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'protein complex',
+    }
+
 class InteractorXref(Base):
+    # note that some PAO1 proteins will have multiple xrefs from the same source
     __tablename__ = 'interactor_xref'
 
-    accession = Column(String, primary_key=True)
     interactor_id = Column(String, ForeignKey("interactor.id"), primary_key=True)
+    # proteins:
+    #   - RefSeq Accession: NP_254184.1
+    #   - UniProtKB Accession: Q9HT76
+    #   - UniProtKB ID: Q9HT76_PSEAE
+    #   - GI Number: 15600690
+    #   - Uniparc: UPI00000C6038
+    #   - UniRef100 ID: UniRef100_Q9HT76
+    #   - UniRef90 ID: UniRef90_A6VEX4
+    #   - UniRef50 ID: UniRef50_U2E6Q5
+    accession = Column(String, primary_key=True)
     source = Column(String)
 
 
@@ -85,9 +117,9 @@ class Reference(Base):
     __tablename__ = 'reference'
 
     pmid = Column(String, primary_key=True)
-    publication_date = Column(String)
-    author_last_name = Column(String)
-    publication_ref = Column(String)
+    pub_date = Column(String)
+    author_ln = Column(String)
+    full_ref = Column(String)
 
 
 class GeneOntology(Base):
@@ -96,12 +128,17 @@ class GeneOntology(Base):
     # automatically generated
     id = Column(Integer, primary_key=True, autoincrement=True)
     gene_id = Column(String, ForeignKey('protein.id'))
-    # GO accession
+    # GO accession (eg. GO:0005524)
     accession = Column(String)
+    # eg. ATP binding
     go_term = Column(String)
+    # eg. ISM
     evidence_code = Column(String)
+    # eg. ECO:0000259
     eco_code = Column(String)
+    # eg. match to InterPro signature evidence used in automatic assertion
     eco_term = Column(String)
+    # eg PMID:24451626
     pmid = Column(String)
 
 
@@ -109,10 +146,12 @@ class Localization(Base):
     __tablename__ = 'localization'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
+    # eg. PA0001
     protein_id = Column(String, ForeignKey('protein.id'))
+    # eg. Cytoplasmic
     localization = Column(String)
+    # eg. Class 3
     confidence = Column(String)
-    pmid = Column(String)
 
 
 class OrthologPseudomonas(Base):
@@ -141,11 +180,13 @@ class Interaction(Base):
     __tablename__ = 'interaction'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    type = Column(String)
     strain = Column(String)
+    # remains None unless definitively determined
     is_experimental = Column(Integer)
+    # remains None unless confirmation from ortholog or derived from ortholog
     ortholog_derived = Column(String)
     comment = Column(String)
+    # whether the two interactors are the same (0 or 1)
     homogenous = Column(Integer)
 
     xrefs = relationship("InteractionXref", backref="interaction")
@@ -168,8 +209,8 @@ class InteractionReference(Base):
     confidence_score = Column(String)
     interactor_a = Column(String)
     interactor_b = Column(String)
-    interactor_a_id = Column(String)
-    interactor_b_id = Column(String)
+    interactor_a_orth = Column(String)
+    interactor_b_orth = Column(String)
     experimental_role_a = Column(String)
     experimental_role_b = Column(String)
     source_db = Column(String)
