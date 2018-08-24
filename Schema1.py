@@ -55,7 +55,7 @@ class Metabolite(Interactor):
     ecocyc = Column(String)
 
     __mapper_args__ = {
-        'polymorphic_identity': 'metabolite',
+        'polymorphic_identity': 'm',
     }
 
 
@@ -75,7 +75,7 @@ class Protein(Interactor):
     is_tf = Column(String)
 
     __mapper_args__ = {
-        'polymorphic_identity': 'protein',
+        'polymorphic_identity': 'p',
     }
 
     localizations = relationship("Localization", backref="protein")
@@ -92,7 +92,7 @@ class ProteinComplex(Interactor):
     strain = Column(String)
 
     __mapper_args__ = {
-        'polymorphic_identity': 'protein complex',
+        'polymorphic_identity': 'pc',
     }
 
 class InteractorXref(Base):
@@ -185,7 +185,7 @@ class Interaction(Base):
     is_experimental = Column(Integer)
     # remains None unless confirmation from ortholog or derived from ortholog
     ortholog_derived = Column(String)
-    comment = Column(String)
+    type = Column(String)
     # whether the two interactors are the same (0 or 1)
     homogenous = Column(Integer)
 
@@ -197,31 +197,38 @@ class InteractionReference(Base):
     __tablename__ = 'interaction_reference'
     id = Column(Integer, primary_key=True, autoincrement=True)
     interaction_id = Column(Integer, ForeignKey('interaction.id'))
-    pmid = Column(String)
 
-    publication_date = Column(String)
-    author_last_name = Column(String)
-    publication_ref = Column(String)
+    # PSI MI term (except Geoff)
     detection_method = Column(String)
+    author_ln = Column(String)
+    pub_date = Column(String)
+    pmid = Column(String)
+    # remains None if '-', otherwise psimi OR just 'predicted'
     interaction_type = Column(String)
-    interaction_full_name=Column(String)
+    source_db = Column(String)
+    # when there is additional comment about the interaction (eg. more detailed description)
+    comment=Column(String)
     # includes type of confidence score, usually preceding confidence value with type/source:value
-    confidence_score = Column(String)
+    confidence = Column(String)
     interactor_a = Column(String)
     interactor_b = Column(String)
     interactor_a_orth = Column(String)
     interactor_b_orth = Column(String)
-    experimental_role_a = Column(String)
-    experimental_role_b = Column(String)
-    source_db = Column(String)
+
 
 
 class InteractionXref(Base):
     __tablename__ = 'interaction_xref'
 
-    accession = Column(String)
+    accession = Column(String, primary_key=True)
     interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
-    data_source = Column(String, primary_key=True)
+    data_source = Column(String)
+
+class InteractionSource(Base):
+    __tablename__ ='interaction_source'
+
+    interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
+    data_source=Column(Integer, ForeignKey('interaction.id'), primary_key=True)
 
 
 

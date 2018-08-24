@@ -25,7 +25,7 @@ def getGeneInfo(file, strain, session):
             # skip first three rows since they don't contain interactor info
             if (row['Feature Type'] == 'CDS') & (row_num >= 3):
                 # trim trailing " character from locus tag
-                protein = Protein(id=row['Locus Tag'][:-1], name=row['Name'], type='protein', strain=strain,
+                protein = Protein(id=row['Locus Tag'][:-1], name=row['Name'], type='p', strain=strain,
                                   product_name=row['Product Name'], ncbi_acc=row['NCBI Accession'])
                 session.add(protein)
             row_num += 1
@@ -62,7 +62,7 @@ def getXrefs(file, strain, session):
                         # if two interactors have the same uniprotkb id, they are part of a protein complex together
                         # create a new interactor with id being the uniprotkb id, and 'protein complex' as product name
                         if (num_interactors == 2):
-                            interactor = ProteinComplex(id=row[type], strain=strain, type='protein complex')
+                            interactor = ProteinComplex(id=row[type], strain=strain, type='pc')
                             session.add(interactor)
                 session.commit()
 

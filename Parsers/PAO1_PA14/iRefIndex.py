@@ -1,5 +1,6 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, ProteinXref
+from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
+from Parsers.Parser import is_experimental_psimi
 
 def parse_iRefIndex(session):
     parse_iRefIndex('PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)', session)
@@ -14,54 +15,51 @@ def parse_iRefIndex(file, strain, taxid, session):
             if ((row['Taxid interactor A'].split('|')[0] != taxid) |
                     (row['Taxid interactor B'].split('|')[0] != taxid)): continue
 
-            if (row['#ID(s) interactor A'].split(':')[0] == 'uniprotkb'):
-                if (session.query(Interactor).filter(
-                        Interactor.id == row['#ID(s) interactor A'].split(':')[1]).first() != None):
-                    interactors.append(session.query(Interactor).filter(
-                        Interactor.id == row['#ID(s) interactor A'].split(':')[1]).one())
-                else:
-                    if (session.query(Protein).filter(
-                            Protein.uniprotkb == row['#ID(s) interactor A'].split(':')[1]).first() != None):
-                        interactors.append(session.query(Protein).filter(
-                            Protein.uniprotkb == row['#ID(s) interactor A'].split(':')[1]).one())
-            elif (row['#ID(s) interactor A'].split(':')[0] == 'refseq'):
-                if (session.query(ProteinXref).filter(ProteinXref.accession ==
-                                                      row['#ID(s) interactor A'].split(':')[1]).first() != None):
-                    interactors.append(session.query(ProteinXref).filter(ProteinXref.accession ==
-                                                                         row['#ID(s) interactor A'].split(
-                                                                             ':')[1]).one().protein)
-            if (row['ID(s) interactor B'].split(':')[0] == 'uniprotkb'):
-                if (session.query(Interactor).filter(
-                        Interactor.id == row['ID(s) interactor B'].split(':')[1]).first() != None):
-                    interactors.append(session.query(Interactor).filter(
-                        Interactor.id == row['ID(s) interactor B'].split(':')[1]).one())
-                elif (session.query(Protein).filter(
-                        Protein.uniprotkb == row['ID(s) interactor B'].split(':')[1]).first() != None):
-                    interactors.append(session.query(Protein).filter(
-                        Protein.uniprotkb == row['ID(s) interactor B'].split(':')[1]).one())
-            elif (row['ID(s) interactor B'].split(':')[0] == 'refseq'):
-                if (session.query(ProteinXref).filter(ProteinXref.accession ==
-                                                      row['ID(s) interactor B'].split(':')[1]).first() != None):
-                    interactors.append(session.query(ProteinXref).filter(ProteinXref.accession ==
-                                                                         row['ID(s) interactor B'].split(
-                                                                             ':')[1]).one().protein)
+            A_id = row['#ID(s) interactor A'].split(':')
+            B_id = row['ID(s) interactor B'].split(':')
+            if A_id[0] == 'uniprotkb':
+                if session.query(Interactor).filter(Interactor.id == A_id[1]).first() is not None:
+                    interactors.append(session.query(Interactor).filter(Interactor.id == A_id[1]).one())
+                elif session.query(Protein).filter(Protein.uniprotkb == A_id[1]).first() is not None:
+                    interactors.append(session.query(Protein).filter(Protein.uniprotkb == A_id[1]).one())
+            elif A_id[0] == 'refseq':
+                if session.query(Protein).filter(Protein.ncbi_acc == A_id[1]).first() is not None:
+                    interactors.append(session.query(Protein).filter(Protein.ncbi_acc == A_id[1]).one())
+            if B_id[0] == 'uniprotkb':
+                if session.query(Interactor).filter(Interactor.id == B_id[1]).first() is not None:
+                    interactors.append(session.query(Interactor).filter(Interactor.id == B_id[1]).one())
+                elif session.query(Protein).filter(Protein.uniprotkb == B_id[1]).first() is not None:
+                    interactors.append(session.query(Protein).filter(Protein.uniprotkb == B_id[1]).one())
+            elif B_id[0] == 'refseq':
+                if session.query(Protein).filter(Protein.ncbi_acc == B_id[1]).first() is not None:
+                    interactors.append(session.query(Protein).filter(Protein.ncbi_acc == B_id[1]).one())
 
-            if (len(interactors) != 2): continue
-
+            if len(interactors) != 2: continue
             homogenous = (interactors[0] == interactors[1])
+            type = interactors[0].type + '-' + interactors[1].type
+            alt_type = interactors[1].type + '-' + interactors[0].type
             interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
                                                             (Interaction.interactors.contains(interactors[1])),
                                                             (Interaction.homogenous == homogenous)).first()
             if (interaction == None):
-                interaction = Interaction(strain=strain, type=(interactors[0].type + '-' + interactors[1].type),
-                                          homogenous=homogenous, interactors=interactors)
-                session.add(interaction), session.commit()
+                interaction = Interaction(strain=strain, type=type, homogenous=homogenous, interactors=interactors)
+                if row['Interaction detection method(s)'] != '-':
+                    if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
+                        interaction.is_experimental = 1
+                    else:
+                        interaction.is_experimental = 0
+            else:
+                if (type not in interaction.type) and (alt_type not in interaction.type):
+                    interaction.type += ', ' + type
+                if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
+                    interaction.is_experimental = 1
+                elif (row['Interaction detection method(s)'] == '-') and (interaction.is_experimental == 0):
+                    interaction.is_experimental = None
 
-            author, date, ref, type, pmid, detection = None, None, None, None, None, None
+            author, date, type, pmid, detection = None, None, None, None, None, None
             if (row['Publication 1st author(s)'] != '-'):
                 author = row['Publication 1st author(s)'].split('-')[0]
                 date = row['Publication 1st author(s)'].split('-')[1]
-                ref = row['Publication 1st author(s)']
             if (row['Interaction type(s)'] != '-'):
                 type = row['Interaction type(s)'].split('(')[1][:-1]
             if (row['Publication Identifier(s)'] != '-'):

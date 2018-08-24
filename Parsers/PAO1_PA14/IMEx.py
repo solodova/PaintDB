@@ -1,13 +1,12 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionXref, InteractionSource
+from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
 from Parsers.Parser import is_experimental_psimi
 
-def parse_intact(session):
-    parse_intact('PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'taxid:208964(pseae)', session)
-    parse_intact('PA14/IntAct.txt', 'PA14', 'taxid:208963(pseab)', session)
-    parse_intact('PAO1/IntAct.txt', 'PAO1', 'taxid:208964(pseae)', session)
+def parse_imex(session):
+    parse_imex('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'taxid:208964(pseae)', session)
+    parse_imex('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'taxid:208963(pseab)', session)
 
-def parse_intact(file, strain, taxid, session):
+def parse_imex(file, strain, taxid, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
         for row in reader:
@@ -30,9 +29,9 @@ def parse_intact(file, strain, taxid, session):
                 interactors.append(session.query(Protein).filter(Protein.uniprotkb == B_id).one())
 
             if len(interactors) != 2: continue
-            type = (interactors[0].type + '-' + interactors[1].type)
-            alt_type = (interactors[1].type + '-' + interactors[0].type)
             homogenous = (interactors[0] == interactors[1])
+            type = interactors[0].type + '-' + interactors[1].type
+            alt_type = interactors[1].type + '-' + interactors[0].type
             interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
                                                             (Interaction.interactors.contains(interactors[1])),
                                                             (Interaction.homogenous == homogenous)).first()
@@ -48,7 +47,7 @@ def parse_intact(file, strain, taxid, session):
                     interaction.type += ', ' + type
                 if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
                     interaction.is_experimental = 1
-                # how to avoid duplicate references
+
             reference = InteractionReference(interaction_id=interaction.id,
                                              detection_method=row['Interaction detection method(s)'].split('(')[1][:-1],
                                              author_ln=row['Publication 1st author(s)'].split(' ')[0],
@@ -57,23 +56,23 @@ def parse_intact(file, strain, taxid, session):
                                              interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
                                              source_db=row['Source database(s)'].split('(')[1][:-1],
                                              confidence=row['Confidence value(s)'])
-
             session.add(reference)
 
-            xref_field = row['Interaction identifier(s)'].split(':')
-            xref = session.query(InteractionXref).filter(InteractionXref.accession == xref_field[1],
-                                                         InteractionXref.interaction_id == interaction.id).first()
+            for xref in row['Interaction identifier(s)'].split('|'):
+                xref_field = xref.split(':')
+                xref = session.query(InteractionXref).filter(InteractionXref.accession == xref_field[1],
+                                                             InteractionXref.interaction_id == interaction.id).first()
 
-            if xref is None:
-                xref = InteractionXref(interaction_id=interaction.id, accession=xref_field[1],
-                                       data_source=xref_field[0])
-                session.add(xref)
+                if xref is None:
+                    xref = InteractionXref(interaction_id=interaction.id, accession=xref_field[1],
+                                           data_source=xref_field[0])
+                    session.add(xref)
 
             source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                             InteractionSource.data_source == 'IntAct').first()
+                                                             InteractionSource.data_source == 'IMEx').first()
 
             if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='IntAct')
+                source = InteractionSource(interaction_id=interaction.id, data_source='IMEx')
                 session.add(source)
         session.commit()
-        print(session.query(Interaction).count())
+    print(session.query(Interaction).count())

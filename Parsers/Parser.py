@@ -19,20 +19,11 @@ if __name__ == '__main__':
                           'MI:0009', 'MI:0073', 'MI:0084', 'MI:0048', 'MI:0899', 'MI:0900', 'MI:0066', 'MI:0108',
                           'MI:0098', 'MI:0115', 'MI:1087', 'MI:1031', 'MI:0813', 'MI:0440', 'MI:0892', 'MI:2189',
                           'MI:0947', 'MI:0411', 'MI:0047', 'MI:2283', 'MI:0049', 'MI:2167', 'MI:0657', 'MI:1232']
-    def find_type(psi_code):
-        return {
-            '1110': 'predicted interaction',
-            '2232': 'molecular association',
-            '0914': 'association',
-            '0915': 'physical association',
-            '0407': 'direct interaction',
-        }[psi_code]
 
     def is_experimental_psimi(psi_code):
         return psi_code in experimental_psimi
 
-
-    from File_Descriptions.file_desc import parse
+    from File_Descriptions.file_desc import parse, parse_string
     parse()
 
     # info = {}

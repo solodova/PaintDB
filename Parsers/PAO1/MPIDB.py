@@ -1,58 +1,74 @@
-with open('PAO1/PSICQUIC/MPIDB.txt') as csvfile:
-    reader = csv.DictReader(csvfile, delimiter='\t')
-    for row in reader:
-        interactors = []
+import csv
+from Schema1 import Interactor, Protein, Interaction, InteractionSource, InteractionReference, InteractionXref
+from Parsers.Parser import is_experimental_psimi
 
-        if ((row['Taxid interactor A'].split('|')[0] != 'taxid:208964(pseae)') |
-                (row['Taxid interactor B'].split('|')[0] != 'taxid:208964(pseae)')): continue
+def parse_mpidb(session):
+    with open('PAO1/PSICQUIC/MPIDB.txt') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter='\t')
+        for row in reader:
+            interactors = []
 
-        if (session.query(Interactor).filter(
-                Interactor.id == row['#ID(s) interactor A'].split(':')[1]).first() != None):
-            interactors.append(session.query(Interactor).filter(
-                Interactor.id == row['#ID(s) interactor A'].split(':')[1]).one())
-        elif row['#ID(s) interactor A'].split(':')[0] == 'uniprotkb':
-            if (session.query(Protein).filter(
-                    Protein.uniprotkb == row['#ID(s) interactor A'].split(':')[1]).first() != None):
-                interactors.append(session.query(Protein).filter(
-                    Protein.uniprotkb == row['#ID(s) interactor A'].split(':')[1]).one())
-        if (session.query(Interactor).filter(
-                Interactor.id == row['ID(s) interactor B'].split(':')[1]).first() != None):
-            interactors.append(session.query(Interactor).filter(
-                Interactor.id == row['ID(s) interactor B'].split(':')[1]).one())
-        elif row['ID(s) interactor B'].split(':')[0] == 'uniprotkb':
-            if (session.query(Protein).filter(
-                    Protein.uniprotkb == row['ID(s) interactor B'].split(':')[1]).first() != None):
-                interactors.append(session.query(Protein).filter(
-                    Protein.uniprotkb == row['ID(s) interactor B'].split(':')[1]).one())
+            if (row['Taxid interactor A'].split('|')[0] != 'taxid:208964(pseae)') |\
+                    (row['Taxid interactor B'].split('|')[0] != 'taxid:208964(pseae)'): continue
 
-        if (len(interactors) != 2): continue
+            A_id = row['#ID(s) interactor A'].split(':')[1]
+            B_id = row['ID(s) interactor B'].split(':')[1]
 
-        homogenous = (interactors[0] == interactors[1])
-        interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
-                                                        (Interaction.interactors.contains(interactors[1])),
-                                                        (Interaction.homogenous == homogenous)).first()
-        if (interaction == None):
-            interaction = Interaction(strain='PAO1', type=(interactors[0].type + '-' + interactors[1].type),
-                                      homogenous=homogenous, interactors=interactors)
-            session.add(interaction), session.commit()
+            if session.query(Interactor).filter(Interactor.id == A_id).first() is not None:
+                interactors.append(session.query(Interactor).filter(Interactor.id ==A_id).one())
+            elif session.query(Protein).filter(Protein.uniprotkb == A_id).first() is not None:
+                interactors.append(session.query(Protein).filter(Protein.uniprotkb == A_id).one())
 
-        reference = InteractionReference(interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
-                                         interaction_id=interaction.id,
-                                         confidence_score=row['Confidence value(s)'],
-                                         pmid=row['Publication Identifier(s)'].split('med:')[1][:8],
-                                         detection_method=
-                                         row['Interaction detection method(s)'].split('(')[1][:-1],
-                                         author_last_name=row['Publication 1st author(s)'].split(' ')[0],
-                                         publication_date=row['Publication 1st author(s)'].split('(')[1][:-1],
-                                         publication_ref=row['Publication 1st author(s)'],
-                                         source_db=row['Source database(s)'].split('(')[1][:-1],
-                                         experimental_role_a=
-                                         row['Experimental role(s) interactor A'].split('(')[1][:-1],
-                                         experimental_role_b=
-                                         row['Experimental role(s) interactor B'].split('(')[1][:-1],
-                                         interactor_a_id=row['#ID(s) interactor A'].split(':')[1],
-                                         interactor_b_id=row['ID(s) interactor B'].split(':')[1])
-        session.add(reference)
-        interaction.is_experimental = 1
-    session.commit()
-    print(session.query(Interaction).count())
+            if session.query(Interactor).filter(Interactor.id == B_id).first() is not None:
+                interactors.append(session.query(Interactor).filter(Interactor.id == B_id).one())
+            elif session.query(Protein).filter(Protein.uniprotkb == B_id).first() is not None:
+                interactors.append(session.query(Protein).filter(Protein.uniprotkb == B_id).one())
+
+            if len(interactors) != 2: continue
+            homogenous = (interactors[0] == interactors[1])
+            type = interactors[0].type + '-' + interactors[1].type
+            alt_type = interactors[1].type + '-' + interactors[0].type
+            interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
+                                                            (Interaction.interactors.contains(interactors[1])),
+                                                            (Interaction.homogenous == homogenous)).first()
+            if interaction is None:
+                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors)
+                if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
+                    interaction.is_experimental = 1
+                else:
+                    interaction.is_experimental = 0
+                session.add(interaction), session.commit()
+            else:
+                if (type not in interaction.type) and (alt_type not in interaction.type):
+                    interaction.type += ', ' + type
+                if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
+                    interaction.is_experimental = 1
+
+            reference = InteractionReference(interaction_id=interaction.id,
+                                             detection_method=row['Interaction detection method(s)'].split('(')[1][:-1],
+                                             author_ln=row['Publication 1st author(s)'].split(' ')[0],
+                                             pub_date=row['Publication 1st author(s)'].split('(')[1][:-1],
+                                             pmid=row['Publication Identifier(s)'].split('pubmed:')[1][:8],
+                                             confidence=row['Confidence value(s)'],
+                                             interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
+                                             source_db=row['Source database(s)'])
+            session.add(reference)
+
+            for xref in row['Interaction identifier(s)'].split('|'):
+                xref_field = xref.split(':')
+                xref = session.query(InteractionXref).filter(InteractionXref.accession == xref_field[1],
+                                                             InteractionXref.interaction_id == interaction.id).first()
+
+                if xref is None:
+                    xref = InteractionXref(interaction_id=interaction.id, accession=xref_field[1],
+                                           data_source=xref_field[0])
+                    session.add(xref)
+
+            source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
+                                                             InteractionSource.data_source == 'MPIDB').first()
+
+            if source is None:
+                source = InteractionSource(interaction_id=interaction.id, data_source='MPIDB')
+                session.add(source)
+        session.commit()
+        print(session.query(Interaction).count())
