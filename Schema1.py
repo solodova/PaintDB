@@ -71,8 +71,6 @@ class Protein(Interactor):
     ncbi_acc = Column(String)
     # eg. Q9HT76
     uniprotkb = Column(String)
-    # remains None until determined
-    is_tf = Column(String)
 
     __mapper_args__ = {
         'polymorphic_identity': 'p',
@@ -186,11 +184,14 @@ class Interaction(Base):
     # remains None unless confirmation from ortholog or derived from ortholog
     ortholog_derived = Column(String)
     type = Column(String)
+    # remains None if the interaction is not tfbs, otherwise describes interaction
+    is_tfbs = Column(Integer)
     # whether the two interactors are the same (0 or 1)
     homogenous = Column(Integer)
 
     xrefs = relationship("InteractionXref", backref="interaction")
     references = relationship("InteractionReference", backref="interaction")
+    sources = relationship("InteractionSource")
 
 
 class InteractionReference(Base):
@@ -199,12 +200,15 @@ class InteractionReference(Base):
     interaction_id = Column(Integer, ForeignKey('interaction.id'))
 
     # PSI MI term (except Geoff)
+    psimi_detection = Column(String)
     detection_method = Column(String)
     author_ln = Column(String)
     pub_date = Column(String)
     pmid = Column(String)
+    psimi_type = Column(String)
     # remains None if '-', otherwise psimi OR just 'predicted'
     interaction_type = Column(String)
+    psimi_db = Column(String)
     source_db = Column(String)
     # when there is additional comment about the interaction (eg. more detailed description)
     comment=Column(String)
@@ -212,8 +216,6 @@ class InteractionReference(Base):
     confidence = Column(String)
     interactor_a = Column(String)
     interactor_b = Column(String)
-    interactor_a_orth = Column(String)
-    interactor_b_orth = Column(String)
 
 
 
@@ -228,7 +230,7 @@ class InteractionSource(Base):
     __tablename__ ='interaction_source'
 
     interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
-    data_source=Column(Integer, ForeignKey('interaction.id'), primary_key=True)
+    data_source=Column(Integer, primary_key=True)
 
 
 

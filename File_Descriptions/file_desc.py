@@ -22,7 +22,7 @@ def parse():
 
 
     #for file in file_names:
-    file = 'PA14/PSICQUIC/iRefIndex.txt'
+    file = 'Ecoli/PSICQUIC/UniProt.txt'
 
     input_file = input_prefix+file
     with open(input_file) as csvfile:
@@ -68,6 +68,7 @@ def parse():
         with open(input_file) as csvfile:
             reader= csv.DictReader(csvfile, delimiter='\t')
             for row in reader:
+                if row[col] is None: continue
                 fields = row[col].split('|')
 
                 for id in fields:

@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:P76364', 'chebi:"CHEBI:15422"']
+{'uniprotkb': 91, 'chebi': 1}
+not present in all entries: chebi, uniprotkb
+num elements in column: {1: 92}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:P0A9X4', 'intenz:3.6.3.12']
+{'uniprotkb': 91, 'intenz': 1}
+not present in all entries: intenz, uniprotkb
+num elements in column: {1: 92}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['intact:EBI-1126877', 'uniprotkb:O07991', 'chebi:"CHEBI:40938"', 'dip:DIP-5971N']
+{'intact': 93, 'uniprotkb': 224, 'chebi': 6, 'dip': 3}
+not present in all entries: chebi, dip, uniprotkb
+num elements in column: {3: 23, 4: 18, 2: 25, 1: 5, 5: 3, 6: 15, 7: 1, 9: 2}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['intact:EBI-371008', 'uniprotkb:P13519', 'wwpdb:5mrw', 'dip:DIP-1102N']
+{'intact': 94, 'uniprotkb': 227, 'wwpdb': 1, 'dip': 8}
+not present in all entries: wwpdb, dip, uniprotkb
+num elements in column: {4: 15, 3: 25, 2: 17, 1: 9, 5: 7, 6: 16, 7: 3}
+
+column name: Alias(es) interactor A
+sample entries: ['psi-mi:cbea_ecoli(display_long)', 'uniprotkb:cbeA(gene name)', "intact:Adenosine 5'-triphosphate(synonym)"]
+{'psi-mi': 184, 'uniprotkb': 449, 'intact': 17}
+not present in all entries: intact, uniprotkb
+num elements in column: {8: 29, 7: 24, 9: 4, 6: 19, 5: 3, 19: 1, 3: 4, 4: 6, 15: 2}
+
+column name: Alias(es) interactor B
+sample entries: ['psi-mi:mreb_ecoli(display_long)', 'uniprotkb:mreB(gene name)', 'intact: KdpFABC potassium import complex(complex recommended name)']
+{'psi-mi': 184, 'uniprotkb': 451, 'intact': 2}
+not present in all entries: intact, uniprotkb
+num elements in column: {7: 50, 8: 20, 6: 10, 5: 3, 4: 7, 15: 1, 9: 1}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0096"(pull down)']
+{'psi-mi': 92}
+not present in all entries: 
+num elements in column: {1: 92}
+
+column name: Publication 1st author(s)
+sample entries: ['Masuda et al. (2012)']
+{}
+not present in all entries: 
+num elements in column: {1: 92}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:22515815', 'imex:IM-17992', 'mint:MINT-5214949']
+{'pubmed': 92, 'imex': 69, 'mint': 4}
+not present in all entries: mint, imex
+num elements in column: {2: 65, 3: 4, 1: 23}
+
+column name: Taxid interactor A
+sample entries: ['taxid:83333(ecoli)']
+{'taxid': 184}
+not present in all entries: 
+num elements in column: {2: 92}
+
+column name: Taxid interactor B
+sample entries: ['taxid:83333(ecoli)']
+{'taxid': 184}
+not present in all entries: 
+num elements in column: {2: 92}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0915"(physical association)']
+{'psi-mi': 92}
+not present in all entries: 
+num elements in column: {1: 92}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0486"(UniProt)']
+{'psi-mi': 92}
+not present in all entries: 
+num elements in column: {1: 92}
+
+column name: Interaction identifier(s)
+sample entries: ['intact:EBI-6384173', 'imex:IM-17992-1', 'pdbe:3CTL', 'wwpdb:5mrw']
+{'intact': 92, 'imex': 66, 'pdbe': 2, 'wwpdb': 5}
+not present in all entries: pdbe, wwpdb, imex
+num elements in column: {2: 61, 3: 6, 1: 25}
+
+column name: Confidence value(s)
+sample entries: ['intact-miscore:0.54']
+{'intact-miscore': 92}
+not present in all entries: 
+num elements in column: {1: 92}
+

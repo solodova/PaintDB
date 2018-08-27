@@ -28,13 +28,13 @@ def parse_string(session):
                 interactors.append(session.query(Interactor).filter(Interactor.id == locus_tag2).one())
 
             if len(interactors) != 2: continue
-            type = interactors[0].type + '-' + interactors[1].type
-            alt_type = interactors[1].type + '-' + interactors[0].type
             homogenous = (interactors[0] == interactors[1])
+
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactors[0]),
                                                             Interaction.interactors.contains(interactors[1]),
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
+                type = interactors[0].type + '-' + interactors[1].type
                 interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors)
                 session.add(interaction), session.commit()
                 if is_experimental_psimi(row['detection'].split('MI:')[1][:4]):
@@ -42,8 +42,6 @@ def parse_string(session):
                 else:
                     interaction.is_experimental = 0
             else:
-                if (type not in interaction.type) and (alt_type not in interaction.type):
-                    interaction.type += ', ' + type
                 if is_experimental_psimi(row['detection'].split('MI:')[1][:4]):
                     interaction.is_experimental = 1
 

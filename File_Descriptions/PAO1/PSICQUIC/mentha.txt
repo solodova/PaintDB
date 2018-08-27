@@ -1,0 +1,252 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:Q51548']
+{'uniprotkb': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:Q9I157']
+{'uniprotkb': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Alias(es) interactor A
+sample entries: ['uniprotkb:"PVDA {ECO:0000303', 'PUBMED:8106324}"(gene name)', 'EMBL:AAG07989.1}"(gene name)']
+{'uniprotkb': 41, 'PUBMED': 4, 'EMBL': 13}
+not present in all entries: EMBL, PUBMED
+num elements in column: {2: 17, 1: 24}
+
+column name: Alias(es) interactor B
+sample entries: ['uniprotkb:"PVDL {ECO:0000313', 'EMBL:AAG05812.1}"(gene name)', 'PUBMED:8106324}"(gene name)']
+{'uniprotkb': 41, 'EMBL': 16, 'PUBMED': 1}
+not present in all entries: PUBMED, EMBL
+num elements in column: {2: 17, 1: 24}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0096"(pull down)']
+{'psi-mi': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Publication 1st author(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:24042050']
+{'pubmed': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Taxid interactor A
+sample entries: ['taxid:208964(Pseudomonas aeruginosa PAO1)']
+{'taxid': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Taxid interactor B
+sample entries: ['taxid:208964(Pseudomonas aeruginosa PAO1)']
+{'taxid': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0914"(association)']
+{'psi-mi': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0471"(MINT)']
+{'psi-mi': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction identifier(s)
+sample entries: ['intact:EBI-8691183', 'mint:MINT-8406599']
+{'intact': 30, 'mint': 11}
+not present in all entries: mint, intact
+num elements in column: {1: 41}
+
+column name: Confidence value(s)
+sample entries: ['mentha-score:0.21']
+{'mentha-score': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Expansion method(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Biological role(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Biological role(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Experimental role(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Experimental role(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Type(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Type(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Xref(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Xref(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction Xref(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Annotation(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Annotation(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction annotation(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Host organism(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction parameter(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Creation date
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Update date
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Checksum(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Checksum(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Interaction Checksum(s)
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Negative
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Feature(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Feature(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Stoichiometry(s) interactor A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Stoichiometry(s) interactor B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Identification method participant A
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+
+column name: Identification method participant B
+sample entries: ['-']
+{'-': 41}
+not present in all entries: 
+num elements in column: {1: 41}
+

@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:P0ACD4']
+{'uniprotkb': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:P0A6B7', 'ecoliwiki:TolB', 'flybase:FBgn0000117', 'rgd:69002']
+{'uniprotkb': 909, 'ecoliwiki': 64, 'flybase': 4, 'rgd': 3}
+not present in all entries: ecoliwiki, flybase, rgd, uniprotkb
+num elements in column: {1: 980}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['-']
+{'-': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['-']
+{'-': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Alias(es) interactor A
+sample entries: ['uniprotkb:iscU(gene name)']
+{'uniprotkb': 2940}
+not present in all entries: 
+num elements in column: {3: 980}
+
+column name: Alias(es) interactor B
+sample entries: ['uniprotkb:iscS(gene name)', '-']
+{'uniprotkb': 2727, '-': 71}
+not present in all entries: -, uniprotkb
+num elements in column: {3: 909, 1: 71}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0045"(experimental interaction detection)']
+{'psi-mi': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Publication 1st author(s)
+sample entries: ['Urbina et al. (2001)']
+{}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:11577100']
+{'pubmed': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Taxid interactor A
+sample entries: ['taxid:83333("Escherichia coli (strain K12)")']
+{'taxid': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Taxid interactor B
+sample entries: ['taxid:83333("Escherichia coli (strain K12)")']
+{'taxid': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0914"(association)']
+{'psi-mi': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0466"(ecocyc)']
+{'psi-mi': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Interaction identifier(s)
+sample entries: ['-']
+{'-': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+
+column name: Confidence value(s)
+sample entries: ['-']
+{'-': 980}
+not present in all entries: 
+num elements in column: {1: 980}
+

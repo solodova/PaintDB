@@ -1,6 +1,6 @@
 from Bio.KEGG.REST import kegg_list, kegg_get, kegg_conv
 from Bio.KEGG.KGML.KGML_parser import read
-from Schema1 import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionXref
+from Schema1 import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionXref, InteractionSource
 
 kegg_compounds = {}
 
@@ -175,5 +175,12 @@ def parse_KEGG(org_id, strain, session):
                                                           (InteractionXref.data_source == 'KEGG')).first() == None):
                     xref = InteractionXref(interaction_id=interaction.id, data_source='KEGG')
                     session.add(xref), session.commit()
+
+                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
+                                                                 InteractionSource.data_source == 'KEGG').first()
+
+                if source is None:
+                    source = InteractionSource(interaction_id=interaction.id, data_source='KEGG')
+                    session.add(source)
 
     print(session.query(Interaction).count())

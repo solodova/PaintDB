@@ -1,58 +1,77 @@
 import csv
-from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref
+from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionSource
+from Parsers.Parser import is_experimental_psimi
 
-def parse_Ecoli_ChEMBL(session):
+def parse_ecoli_chembl(session):
     with open('Data/Ecoli/PSICQUIC/ChEMBL.txt') as csvfile:
         reader = csv.DictReader(csvfile)
 
         for row in reader:
-            IDs_metabolite = row['#ID(s) interactor A'].split('|')
-            IDs_protein = row['ID(s) interactor B'].split('|')
-            ChEBI_metabolite = None
-            UniProt_protein = None
-            for id in IDs_metabolite:
-                if id[:5] == 'chebi':
-                    ChEBI_metabolite = id.split(':')[2][:-1]
+            uniprot_protein = row['ID(s) interactor B'].split('uniprotkb:')[1][:6]
 
-            for id in IDs_protein:
-                if id[:8] == 'uniprotkb':
-                    UniProt_protein = id.split(':')[1]
+            orthologs = []
+            for ecoli_ortholog in session.query(OrthologEcoli).filter(
+                    OrthologEcoli.ortholog_uniprot == uniprot_protein).all():
+                orthologs.append([ecoli_ortholog.protein, ecoli_ortholog.ortholog_id])
 
+            if len(orthologs) == 0: continue
 
-            metabolite = session.query(Metabolite).filter(Metabolite.ChEBI == ChEBI_metabolite).first()
-            if metabolite is None: continue
+            chebi_metabolite = row['#ID(s) interactor A'].split('CHEBI:')[1][:6]
 
-            interactor_B = []
-            for ortholog in session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == UniProt_protein).all():
-                interactor_B.append([ortholog.protein, ortholog.ortholog_id])
+            metabolite = session.query(Metabolite).filter(Metabolite.chebi == chebi_metabolite).first()
+            if metabolite is None:
+                metabolite = Metabolite(id=chebi_metabolite)
+                session.add(metabolite), session.commit()
 
-            for interactor in interactor_B:
+            for interactor in orthologs:
                 interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor[0]),
                                                                 Interaction.interactors.contains(metabolite)).first()
 
-                if (interaction != None):
-                    if (interaction.ortholog_derived == None):
-                        interaction.ortholog_derived = 'confirmed from E.coli'
-                    elif ('from E. coli' not in interaction.ortholog_derived):
-                        interaction.ortholog_derived += ', confirmed from E. coli'
+                if interaction is not None:
+                    if interaction.ortholog_derived is None:
+                        interaction.ortholog_derived = 'cfe'
+                    elif 'fe' not in interaction.ortholog_derived:
+                        interaction.ortholog_derived += ', cfe'
                     session.commit()
                 else:
                     interaction = Interaction(strain=interactor.strain, interactors=[metabolite, interactor[0]],
-                                              type='protein-metabolite',
-                                              is_experimental=0, ortholog_derived='from E. coli')
+                                              type='p-m', ortholog_derived='fe')
+                    # should ortholog interactions be marked as experimental?
+                    if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
+                        interaction.is_experimental=1
                     session.add(interaction), session.commit()
 
+                interactor_a, interactor_b = '', ''
+                if interaction.interactors[0] == metabolite:
+                    interactor_a = metabolite.id
+                    interactor_b = interactor[1]
+                else:
+                    interactor_b = metabolite.id
+                    interactor_a = interactor[1]
+
+                author, date, pmid = None, None, None
+                if row['Publication 1st author(s)'] != '-':
+                    author = row['Publication 1st author(s)'].split(' ')[0]
+                    date = row['Publication 1st author(s)'].split('(')[1][:-1]
+                if row['Publication identifier(s)'] != '-':
+                    pmid = row['Publication Identifier(s)'].split('pubmed:')[1][:8]
                 reference = InteractionReference(interaction_id = interaction.id,
-                                                 pmid = row['Publication Identifier(s)'].split(':')[1],
-                                                 publication_date = row['Publication 1st author(s)'].split('(')[1][:-1],
-                                                 author_last_name = row['Publication 1st author(s)'].split(' ')[0],
-                                                 publication_ref = row['Publication 1st author(s)'],
-                                                 detection_method = row['Interaction detection method(s)'].split('(')[1][:-1],
+                                                 detection_method=row['Interaction detection method(s)'].split('(')[1][
+                                                                  :-1],
+                                                 author_ln=author,
+                                                 pmid = pmid,
+                                                 pub_date = date,
                                                  interaction_type = row['Interaction type(s)'].split('(')[1][:-1],
+                                                 source_db=row['Source database(s)'].split('(')[1][:-1],
                                                  confidence_score = row['Confidence value(s)'].split('(')[0],
-                                                 interactor_A = metabolite.id, interactor_B = interactor.id,
-                                                 interactor_A_id = metabolite.id, interactor_B_id = interactor[1],
-                                                 source_db = row['Source database(s)'].split('(')[1][:-1])
-                xref = InteractionXref(interaction_id = interaction.id, data_source = 'ChEMBL',
-                                       accession = row['Interaction identifier(s)'].split(':')[1])
-                session.add(reference), session.add(xref), session.commit()
+                                                 interactor_a = interactor_a,
+                                                 interactor_b = interactor_b)
+                session.add(reference)
+                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
+                                                                 InteractionSource.data_source == 'ChEMBL').first()
+
+                if source is None:
+                    source = InteractionSource(interaction_id=interaction.id, data_source='ChEMBL')
+                    session.add(source)
+
+        session.commit()

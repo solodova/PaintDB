@@ -1,7 +1,7 @@
 import csv
-from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference
+from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference, InteractionSource
 
-def parse_Ecoli_RegulonDB(session):
+def parse_ecoli_regulondb(session):
     with open('Ecoli/RegulonDB.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -13,40 +13,47 @@ def parse_Ecoli_RegulonDB(session):
                 OrthologEcoli.ortholog_name == row['Regulated gene']).all()
 
             for ortholog_A in orthologs_A:
-                if ortholog_A != None:
-                    interactor_A = session.query(Interactor).filter(Interactor.id == ortholog_A.protein_id).one()
-                    for ortholog_B in orthologs_B:
-                        if ortholog_B != None:
-                            interactor_B = session.query(Interactor).filter(
-                                Interactor.id == ortholog_B.protein_id).one()
-                            if (interactor_A.strain == interactor_B.strain):
-                                interactors.append([interactor_A, interactor_B])
+                for ortholog_B in orthologs_B:
+                    if (ortholog_A is not None) and (ortholog_B is not None):
+                        if (ortholog_A.strain_protein == ortholog_B.strain_protein):
+                            interactors.append([[ortholog_A.protein, ortholog_A.ortholog_id],
+                                                [ortholog_B.protein, ortholog_B.ortholog_id]])
 
             for interactor_pair in interactors:
-                homogenous = (interactor_pair[0] == interactor_pair[1])
-                interaction = session.query(Interaction).filter(
-                    (Interaction.interactors.contains(interactor_pair[0])),
-                    (Interaction.interactors.contains(interactor_pair[1])),
-                    (Interaction.homogenous == homogenous)).first()
-                if (interaction != None):
-                    if (interaction.ortholog_derived == None):
-                        interaction.ortholog_derived = 'confirmed from E.coli'
-                    elif ('from E. coli' not in interaction.ortholog_derived):
-                        interaction.ortholog_derived += ', confirmed from E. coli'
+                homogenous = (interactor_pair[0][0] == interactor_pair[1][0])
+                interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_pair[0][0]),
+                                                                Interaction.interactors.contains(interactor_pair[1][0]),
+                                                                Interaction.homogenous == homogenous).first()
+                if interaction is not None:
+                    if interaction.ortholog_derived is None:
+                        interaction.ortholog_derived = 'cfe'
+                    elif 'fe' not in interaction.ortholog_derived:
+                        interaction.ortholog_derived += ', cfe'
                     session.commit()
-                if (interaction == None):
-                    interaction = Interaction(strain=interactor_pair[0].strain, interactors=interactor_pair,
-                                              type=(interactor_pair[0].type + '-' + interactor_pair[1].type),
-                                              is_experimental=0, ortholog_derived='from E. coli')
-                    session.add(interaction), session.commit()
-                reference = InteractionReference(interaction_id=interaction.id,
-                                                 interaction_type='TF/sigma-binding site (' +
-                                                                  row['Regulatory effect'] + 'regulation)',
-                                                 detection_method=row['Evidence'],
-                                                 interaction_full_name=row['TF name'].lower() + ' regulates(' +
-                                                                       row['Regulatory effect'] + ') ' +
-                                                                       row['Regulated gene'],
-                                                 source_db='RegulonDB')
-                session.add(reference)
+                else:
+                    interaction = Interaction(strain=interactor_pair[0][0].strain,
+                                              interactors=[interactor_pair[0][0], interactor_pair[1][0]],
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
+                                              ortholog_derived='fe')
+
+                for evidence in row['Evidence'][1:-1].split(', '):
+                    reference = InteractionReference(interaction_id=interaction.id,
+                                                     detection_method=evidence,
+                                                     interaction_type='TF/sigma-binding site (' +
+                                                                      row['Regulatory effect'] + 'regulation)',
+                                                     confidence=row['Evidence type'],
+                                                     comment=interactor_pair[0][1] + ' regulates(' +
+                                                                           row['Regulatory effect'] + ') ' +
+                                                                           interactor_pair[1][1],
+                                                     source_db='RegulonDB')
+                    session.add(reference)
+
+                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
+                                                                 InteractionSource.data_source == 'RegulonDB').first()
+
+                if source is None:
+                    source = InteractionSource(interaction_id=interaction.id, data_source='RegulonDB')
+                    session.add(source)
+
         session.commit()
         print(session.query(InteractionReference).count())

@@ -26,6 +26,7 @@ if __name__ == '__main__':
     from File_Descriptions.file_desc import parse, parse_string
     parse()
 
+
     # info = {}
     # info_num = {"Locus Tag": 0, "Name": 0, "Product Name": 0, "NCBI Accession": 0}
     # with open('Data/PAO1/Gene_Info/pseudomonas_db_info.csv') as csvfile:

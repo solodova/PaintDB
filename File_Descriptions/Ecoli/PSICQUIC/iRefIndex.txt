@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['refseq:NP_416577', 'rogid:5OVAl4g+WaNLrCtFTZ3L4/44Mus511145', 'uniprotkb:P37902', 'complex:WHyatdcxo/WYVvB/bAPfOnWYv6A']
+{'refseq': 909, 'rogid': 3373, 'uniprotkb': 33705, 'complex': 38319}
+not present in all entries: rogid, uniprotkb, complex, refseq
+num elements in column: {1: 76306}
+
+column name: ID(s) interactor B
+sample entries: ['refseq:NP_418560', 'rogid:5OVAl4g+WaNLrCtFTZ3L4/44Mus511145', 'uniprotkb:P23847']
+{'refseq': 1281, 'rogid': 3541, 'uniprotkb': 71484}
+not present in all entries: rogid, uniprotkb, refseq
+num elements in column: {1: 76306}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['entrezgene/locuslink:946602', 'refseq:NP_416577', 'rogid:oknrAEQaD30NK6tRuzDiWBN0PIw511145', 'irogid:9915656', 'ddbj/embl/genbank:AAB03035', 'genbank_protein_gi:AAB03035', 'pdb:1UAA', 'uniprotkb:P37902', 'cygd:YHR041C', 'sgd:S000004861']
+{'entrezgene/locuslink': 32313, 'refseq': 1775, 'rogid': 76306, 'irogid': 37987, 'ddbj/embl/genbank': 990, 'genbank_protein_gi': 936, 'pdb': 7941, 'uniprotkb': 44947, 'cygd': 14, 'sgd': 2}
+not present in all entries: ddbj/embl/genbank, genbank_protein_gi, pdb, uniprotkb, cygd, sgd, refseq, entrezgene/locuslink, irogid
+num elements in column: {4: 16297, 5: 17317, 1: 38319, 3: 4373}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['entrezgene/locuslink:948660', 'refseq:NP_418560', 'rogid:qoMBjb+3F+TeqodjnIG9eTRcIA8511145', 'irogid:9917571', 'ddbj/embl/genbank:AAC75741', 'genbank_protein_gi:AAC75741', 'pdb:1UAA', 'uniprotkb:P23847', 'cygd:YPR070W']
+{'entrezgene/locuslink': 75416, 'refseq': 2131, 'rogid': 76306, 'irogid': 76306, 'ddbj/embl/genbank': 848, 'genbank_protein_gi': 816, 'pdb': 8553, 'uniprotkb': 96943, 'cygd': 25}
+not present in all entries: ddbj/embl/genbank, genbank_protein_gi, pdb, uniprotkb, cygd, refseq, entrezgene/locuslink
+num elements in column: {4: 33820, 5: 37303, 3: 5183}
+
+column name: Alias(es) interactor A
+sample entries: ['hgnc:yegL', 'crogid:oknrAEQaD30NK6tRuzDiWBN0PIw83333', 'icrogid:3391329', 'uniprotkb:GLTI_ECOLI']
+{'hgnc': 32350, 'crogid': 76306, 'icrogid': 76306, 'uniprotkb': 33793}
+not present in all entries: uniprotkb, hgnc
+num elements in column: {3: 5294, 2: 41837, 4: 26956, 5: 2141, 15: 1, 9: 12, 7: 34, 8: 3, 12: 3, 6: 13, 11: 9, 24: 3}
+
+column name: Alias(es) interactor B
+sample entries: ['hgnc:cutA', 'crogid:qoMBjb+3F+TeqodjnIG9eTRcIA883333', 'icrogid:3740879', 'uniprotkb:DPPA_ECOLI']
+{'hgnc': 75395, 'crogid': 76306, 'icrogid': 76306, 'uniprotkb': 71731}
+not present in all entries: uniprotkb, hgnc
+num elements in column: {3: 6593, 2: 3662, 4: 58032, 5: 7912, 7: 39, 15: 6, 6: 22, 8: 1, 12: 11, 13: 2, 10: 6, 9: 10, 11: 8, 24: 2}
+
+column name: Interaction detection method(s)
+sample entries: ['-', 'psi-mi:"MI:0067"(light scattering)']
+{'-': 2132, 'psi-mi': 74176}
+not present in all entries: psi-mi, -
+num elements in column: {1: 76305, 3: 1}
+
+column name: Publication 1st author(s)
+sample entries: ['-', 'Le HT (2012)']
+{'-': 40266}
+not present in all entries: -
+num elements in column: {1: 76306}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:15690043', '-']
+{'pubmed': 77455, '-': 932}
+not present in all entries: -, pubmed
+num elements in column: {1: 75414, 2: 526, 3: 101, 4: 132, 6: 30, 11: 1, 7: 43, 5: 27, 19: 9, 18: 1, 8: 6, 9: 1, 15: 12, 12: 2, 13: 1}
+
+column name: Taxid interactor A
+sample entries: ['taxid:511145(Escherichia coli str. K-12 substr. MG1655)', '-']
+{'taxid': 37987, '-': 38319}
+not present in all entries: -, taxid
+num elements in column: {1: 76306}
+
+column name: Taxid interactor B
+sample entries: ['taxid:511145(Escherichia coli str. K-12 substr. MG1655)']
+{'taxid': 76306}
+not present in all entries: 
+num elements in column: {1: 76306}
+
+column name: Interaction type(s)
+sample entries: ['-', 'psi-mi:"MI:0915"(physical association)']
+{'-': 16718, 'psi-mi': 59588}
+not present in all entries: psi-mi, -
+num elements in column: {1: 76306}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0462"(bind)']
+{'psi-mi': 76306}
+not present in all entries: 
+num elements in column: {1: 76306}
+
+column name: Interaction identifier(s)
+sample entries: ['bind:208405', 'rigid:d186UJNFRXM4CMY0ks2v8JKJ77g', 'edgetype:X', 'biogrid:734761', 'dip:DIP-45195E', 'intact:EBI-863119', 'mpidb:MPIDB-INT-1280', '-:-', 'pdb:1m41', 'intenz:1.5.1.38', 'pdbe:3ct7', 'emdb:EMD-2321', 'hprd:-']
+{'bind': 5696, 'rigid': 76306, 'edgetype': 76306, 'biogrid': 110, 'dip': 31379, 'intact': 36168, 'mpidb': 1749, '-': 799, 'pdb': 111, 'intenz': 56, 'pdbe': 6, 'emdb': 7, 'hprd': 225}
+not present in all entries: biogrid, dip, intact, mpidb, -, pdb, intenz, pdbe, emdb, hprd, bind
+num elements in column: {3: 76306}
+
+column name: Confidence value(s)
+sample entries: ['hpr:6500', 'lpr:6500', 'np:1', '-']
+{'hpr': 75862, 'lpr': 75862, 'np': 75862, '-': 444}
+not present in all entries: -, hpr, lpr, np
+num elements in column: {3: 75862, 1: 444}
+

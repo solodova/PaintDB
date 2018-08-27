@@ -4,8 +4,9 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from UI.__init__ import Session
-from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
+import re
+#from UI.__init__ import Session
+#from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
@@ -53,8 +54,11 @@ def upload():
             metabolite_file.save(os.path.join(app.config['UPLOAD_FOLDER'], mfile))
             flash(metabolite_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         if protein_file is not None:
-            pfile = secure_filename(('proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()))
-            protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], pfile))
+            #pfile = secure_filename(('proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()))
+            pfile = 'proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()
+            parts = re.split(r'/', pfile)
+            protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], *parts))
+            #protein_file.save('UI\\user_upload\\' + pfile)
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
     return render_template('query/upload.html')
@@ -76,24 +80,24 @@ def filter():
         filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
                    'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
 
-        for filter in filters.keys():
-            if filter in request.form:
-                filters[filter] = request.form.getlist(filter)
-
-        for filter in filters:
-            if 'None' in filter:
-                filter=['None']
-            elif 'All' in filter:
-                filter=['All']
-
-        session = Session()
-        interactions = []
-        for strain in filters['strain']:
-            if strain == 'None':
-                'nothing'
-
-        for strain in filters['strain']:
-            session.query(Interaction).filter(Interaction.strain == strain)
+        # for filter in filters.keys():
+        #     if filter in request.form:
+        #         filters[filter] = request.form.getlist(filter)
+        #
+        # for filter in filters:
+        #     if 'None' in filter:
+        #         filter=['None']
+        #     elif 'All' in filter:
+        #         filter=['All']
+        #
+        # session = Session()
+        # interactions = []
+        # for strain in filters['strain']:
+        #     if strain == 'None':
+        #         'nothing'
+        #
+        # for strain in filters['strain']:
+        #     session.query(Interaction).filter(Interaction.strain == strain)
         return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')
 

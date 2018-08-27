@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:P08394', 'intact:EBI-15689882', 'refseq:NP_288176', 'chebi:"CHEBI:15422"', 'reactome:R-HSA-114618', 'matrixdb:MULT_82_human', 'ddbj/embl/genbank:AE017221']
+{'uniprotkb': 22069, 'intact': 142, 'refseq': 6, 'chebi': 284, 'reactome': 1, 'matrixdb': 1, 'ddbj/embl/genbank': 5}
+not present in all entries: intact, refseq, chebi, reactome, matrixdb, ddbj/embl/genbank, uniprotkb
+num elements in column: {1: 22508}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:P07648', 'intact:EBI-553720', 'refseq:NP_288176', '-', 'intenz:3.5.1', 'ddbj/embl/genbank:CP000468']
+{'uniprotkb': 22391, 'intact': 94, 'refseq': 3, '-': 8, 'intenz': 7, 'ddbj/embl/genbank': 5}
+not present in all entries: intact, refseq, -, intenz, ddbj/embl/genbank, uniprotkb
+num elements in column: {1: 22508}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['intact:EBI-556814', 'uniprotkb:Q2MA17', 'dip:DIP-29834N', '-', 'psi-mi:MINT-5277993', 'chebi:"CHEBI:9160"', 'reactome:R-HSA-114617', 'matrixdb:MULT_23_human', 'wwpdb:1PK6', 'rnacentral:URS000075A884_9606', 'mirbase:MI0000737', 'ensembl:ENSG00000199165', 'genbank_nucl_gi:216019']
+{'intact': 23364, 'uniprotkb': 38410, 'dip': 145, '-': 108, 'psi-mi': 1, 'chebi': 724, 'reactome': 2, 'matrixdb': 1, 'wwpdb': 5, 'rnacentral': 3, 'mirbase': 3, 'ensembl': 2, 'genbank_nucl_gi': 1}
+not present in all entries: dip, -, psi-mi, chebi, reactome, matrixdb, wwpdb, rnacentral, mirbase, ensembl, genbank_nucl_gi, uniprotkb, intact
+num elements in column: {2: 6289, 3: 7554, 1: 3882, 4: 2683, 5: 830, 9: 21, 7: 214, 8: 104, 15: 22, 6: 861, 19: 5, 16: 3, 11: 10, 10: 13, 17: 5, 28: 1, 12: 4, 13: 5, 119: 1, 22: 1}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['intact:EBI-556823', 'uniprotkb:Q2MA15', 'uniparc:UPI00000D382C', 'dip:DIP-584N', '-', 'chebi:"CHEBI:9160"', 'pubmed:11886561', 'wwpdb:5mrw', 'rnacentral:URS000075A884_9606', 'mirbase:MI0000737', 'ensembl:ENSG00000199165', 'intenz:3.1.13.1', 'genbank_nucl_gi:216019']
+{'intact': 22875, 'uniprotkb': 41108, 'uniparc': 1, 'dip': 159, '-': 79, 'chebi': 7, 'pubmed': 1, 'wwpdb': 1, 'rnacentral': 5, 'mirbase': 5, 'ensembl': 2, 'intenz': 3, 'genbank_nucl_gi': 2}
+not present in all entries: uniparc, dip, -, chebi, pubmed, wwpdb, rnacentral, mirbase, ensembl, intenz, genbank_nucl_gi, uniprotkb, intact
+num elements in column: {3: 9103, 2: 6104, 1: 3250, 8: 481, 4: 2257, 6: 286, 5: 665, 9: 45, 7: 149, 11: 25, 15: 26, 19: 6, 10: 54, 17: 1, 12: 19, 16: 5, 13: 16, 18: 8, 14: 7, 22: 1}
+
+column name: Alias(es) interactor A
+sample entries: ['psi-mi:recb_ecoli(display_long)', 'uniprotkb:Exodeoxyribonuclease V 135 kDa polypeptide(gene name synonym)', "intact:Adenosine 5'-triphosphate(synonym)"]
+{'psi-mi': 44643, 'uniprotkb': 105681, 'intact': 1912}
+not present in all entries: intact, uniprotkb
+num elements in column: {11: 623, 10: 1028, 6: 4823, 7: 5284, 5: 4360, 8: 2888, 4: 574, 9: 1474, 3: 422, 2: 535, 13: 69, 20: 3, 17: 45, 12: 67, 14: 121, 1: 82, 19: 94, 16: 2, 15: 9, 28: 3, 18: 2}
+
+column name: Alias(es) interactor B
+sample entries: ['psi-mi:recc_ecoli(display_long)', 'uniprotkb:Exodeoxyribonuclease V 125 kDa polypeptide(gene name synonym)', '-', 'intact:p-aminobenzoyl-glutamate hydrolase(complex recommended name)']
+{'psi-mi': 44556, 'uniprotkb': 102935, '-': 8, 'intact': 23}
+not present in all entries: -, intact, uniprotkb, psi-mi
+num elements in column: {8: 2116, 10: 583, 11: 538, 3: 412, 6: 7193, 7: 5247, 9: 1229, 5: 3914, 13: 82, 4: 427, 14: 102, 20: 2, 17: 35, 12: 83, 25: 3, 2: 367, 1: 157, 19: 2, 15: 9, 18: 4, 16: 3}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0096"(pull down)', 'intact:"IA:2751"(sulfurtransferase assay)']
+{'psi-mi': 22483, 'intact': 25}
+not present in all entries: intact, psi-mi
+num elements in column: {1: 22508}
+
+column name: Publication 1st author(s)
+sample entries: ['Butland et al. (2005)', 'Butland et al. (2005)', '-']
+{'-': 100}
+not present in all entries: -
+num elements in column: {1: 22508}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:15690043', 'mint:MINT-5217509', 'imex:IM-21967', 'doi:10.1038/nature03239']
+{'pubmed': 22508, 'mint': 12906, 'imex': 22508, 'doi': 15655}
+not present in all entries: mint, doi
+num elements in column: {4: 12558, 2: 6575, 3: 3340, 5: 35}
+
+column name: Taxid interactor A
+sample entries: ['taxid:83333(ecoli)']
+{'taxid': 45016}
+not present in all entries: 
+num elements in column: {2: 22508}
+
+column name: Taxid interactor B
+sample entries: ['taxid:83333(ecoli)', '-']
+{'taxid': 45000, '-': 8}
+not present in all entries: -, taxid
+num elements in column: {2: 22500, 1: 8}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0914"(association)', 'intact:"IA:2752"(sulfurtransferase reaction)']
+{'psi-mi': 22483, 'intact': 25}
+not present in all entries: intact, psi-mi
+num elements in column: {1: 22508}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0469"(IntAct)']
+{'psi-mi': 22508}
+not present in all entries: 
+num elements in column: {1: 22508}
+
+column name: Interaction identifier(s)
+sample entries: ['intact:EBI-882076', 'imex:IM-21967-720', 'dip:DIP-50829E', 'mint:MINT-7233262', 'wwpdb:3k70', 'mpidb:MPIDB-INT-1522', 'rcsb pdb:3eza', 'pdbe:4bht', 'emdb:2325', 'go:"GO:0051260"', 'flannotator:CPTI-001194']
+{'intact': 22508, 'imex': 21843, 'dip': 8511, 'mint': 421, 'wwpdb': 121, 'mpidb': 555, 'rcsb pdb': 59, 'pdbe': 8, 'emdb': 12, 'go': 1, 'flannotator': 49}
+not present in all entries: dip, mint, wwpdb, mpidb, rcsb pdb, pdbe, emdb, go, flannotator, imex
+num elements in column: {2: 12149, 3: 9681, 4: 16, 5: 4, 6: 1, 1: 657}
+
+column name: Confidence value(s)
+sample entries: ['intact-miscore:0.62', 'author score:665', '-', 'ist:3', 'core:true']
+{'intact-miscore': 22505, 'author score': 530, '-': 3, 'ist': 1, 'core': 1}
+not present in all entries: author score, -, ist, core, intact-miscore
+num elements in column: {1: 22032, 2: 420, 3: 56}
+

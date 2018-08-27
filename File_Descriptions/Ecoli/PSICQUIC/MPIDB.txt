@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:P06971', 'intact:EBI-6480461', 'chebi:"CHEBI:15996"']
+{'uniprotkb': 583, 'intact': 5, 'chebi': 3}
+not present in all entries: intact, chebi, uniprotkb
+num elements in column: {1: 591}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:P05820', '-']
+{'uniprotkb': 590, '-': 1}
+not present in all entries: -, uniprotkb
+num elements in column: {1: 591}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['intact:EBI-1116714', 'uniprotkb:P71280', '-', 'chebi:"CHEBI:42934"']
+{'intact': 606, 'uniprotkb': 866, '-': 5, 'chebi': 12}
+not present in all entries: -, chebi, uniprotkb, intact
+num elements in column: {3: 158, 4: 66, 10: 4, 1: 161, 6: 2, 2: 178, 7: 12, 17: 4, 5: 6}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['intact:EBI-6413473', 'uniprotkb:P76800', '-']
+{'intact': 608, 'uniprotkb': 834, '-': 1}
+not present in all entries: uniprotkb, -, intact
+num elements in column: {1: 164, 3: 183, 10: 7, 4: 49, 6: 4, 2: 164, 7: 3, 5: 15, 8: 2}
+
+column name: Alias(es) interactor A
+sample entries: ['psi-mi:fhua_ecoli(display_long)', 'uniprotkb:JW0146(locus name)', "intact:5'-GTP(synonym)"]
+{'psi-mi': 1111, 'uniprotkb': 2283, 'intact': 24}
+not present in all entries: intact, uniprotkb
+num elements in column: {9: 26, 6: 137, 7: 91, 5: 119, 8: 47, 12: 7, 11: 3, 10: 24, 2: 70, 17: 1, 4: 33, 1: 1, 3: 31, 14: 1}
+
+column name: Alias(es) interactor B
+sample entries: ['psi-mi:ceam_ecolx(display_long)', 'uniprotkb:cma(gene name)', '-']
+{'psi-mi': 1105, 'uniprotkb': 2220, '-': 1}
+not present in all entries: -, uniprotkb, psi-mi
+num elements in column: {3: 41, 8: 43, 6: 134, 5: 110, 4: 32, 7: 120, 9: 14, 13: 1, 11: 7, 10: 11, 12: 4, 2: 63, 1: 9, 14: 2}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0405"(competition binding)']
+{'psi-mi': 591}
+not present in all entries: 
+num elements in column: {1: 591}
+
+column name: Publication 1st author(s)
+sample entries: ['Helbig et al. (2011)']
+{}
+not present in all entries: 
+num elements in column: {1: 591}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:21148729', 'imex:IM-18380']
+{'pubmed': 591, 'imex': 591}
+not present in all entries: 
+num elements in column: {2: 591}
+
+column name: Taxid interactor A
+sample entries: ['taxid:83333(ecoli)']
+{'taxid': 1182}
+not present in all entries: 
+num elements in column: {2: 591}
+
+column name: Taxid interactor B
+sample entries: ['taxid:562(ecolx)', '-']
+{'taxid': 1180, '-': 1}
+not present in all entries: -, taxid
+num elements in column: {2: 590, 1: 1}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0915"(physical association)']
+{'psi-mi': 591}
+not present in all entries: 
+num elements in column: {1: 591}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0903"(mpidb)']
+{'psi-mi': 591}
+not present in all entries: 
+num elements in column: {1: 591}
+
+column name: Interaction identifier(s)
+sample entries: ['intact:EBI-6413477', 'mpidb:MPIDB-INT-1522', 'imex:IM-18380-1', 'wwpdb:2PKX']
+{'intact': 591, 'mpidb': 555, 'imex': 591, 'wwpdb': 7}
+not present in all entries: wwpdb, mpidb
+num elements in column: {3: 552, 4: 5, 2: 34}
+
+column name: Confidence value(s)
+sample entries: ['intact-miscore:0.40']
+{'intact-miscore': 591}
+not present in all entries: 
+num elements in column: {1: 591}
+

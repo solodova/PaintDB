@@ -18,19 +18,17 @@ def parse_xlinkdb(session):
 
             if len(interactors) != 2: continue
             homogenous = (interactors[0] == interactors[1])
-            type = interactors[0].type + '-' + interactors[1].type
-            alt_type = interactors[1].type + '-' + interactors[0].type
+
             interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
                                                             (Interaction.interactors.contains(interactors[1])),
                                                             (Interaction.homogenous == homogenous)).first()
-            if (interaction == None):
+            if interaction is None:
+                type = interactors[0].type + '-' + interactors[1].type
                 interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors,
                                           is_experimental = 1)
                 session.add(interaction), session.commit()
             else:
                 interaction.is_experimental = 1
-                if (type not in interaction.type) and (alt_type not in interaction.type):
-                    interaction.type += ', ' + type
 
             reference = InteractionReference(interaction_id=interaction.id,
                                              detection_method='chemical cross-linking mass spectrometry',

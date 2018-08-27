@@ -1,0 +1,90 @@
+column name: #ID(s) interactor A
+sample entries: ['uniprotkb:P68688']
+{'uniprotkb': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: ID(s) interactor B
+sample entries: ['uniprotkb:P73728']
+{'uniprotkb': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Alt. ID(s) interactor A
+sample entries: ['-']
+{'-': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Alt. ID(s) interactor B
+sample entries: ['-']
+{'-': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Alias(es) interactor A
+sample entries: ['uniprotkb:GRXA(gene name)', 'EMBL:AAG58818.1}"(gene name)']
+{'uniprotkb': 50046, 'EMBL': 3}
+not present in all entries: EMBL
+num elements in column: {1: 50043, 2: 3}
+
+column name: Alias(es) interactor B
+sample entries: ['uniprotkb:P73728(gene name)', 'EMBL:AAG58814.1}"(gene name)']
+{'uniprotkb': 50046, 'EMBL': 4}
+not present in all entries: EMBL
+num elements in column: {1: 50042, 2: 4}
+
+column name: Interaction detection method(s)
+sample entries: ['psi-mi:"MI:0415"(enzymatic study)']
+{'psi-mi': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Publication 1st author(s)
+sample entries: ['-']
+{'-': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Publication Identifier(s)
+sample entries: ['pubmed:15509585']
+{'pubmed': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Taxid interactor A
+sample entries: ['taxid:83333(Escherichia coli K-12)']
+{'taxid': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Taxid interactor B
+sample entries: ['taxid:1111708(Synechocystis sp. PCC 6803 substr. Kazusa)']
+{'taxid': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Interaction type(s)
+sample entries: ['psi-mi:"MI:0407"(direct interaction)']
+{'psi-mi': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Source database(s)
+sample entries: ['psi-mi:"MI:0469"(IntAct)']
+{'psi-mi': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+
+column name: Interaction identifier(s)
+sample entries: ['intact:EBI-863119', 'dip:DIP-56587E', 'mint:MINT-8087991', 'biogrid:2327796']
+{'intact': 28250, 'dip': 21385, 'mint': 410, 'biogrid': 1}
+not present in all entries: dip, mint, biogrid, intact
+num elements in column: {1: 50046}
+
+column name: Confidence value(s)
+sample entries: ['mentha-score:0.309']
+{'mentha-score': 50046}
+not present in all entries: 
+num elements in column: {1: 50046}
+

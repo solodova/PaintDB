@@ -27,12 +27,12 @@ def parse_adipinteractomes(session):
 
             if len(interactors) != 2: continue
             homogenous = (interactors[0] == interactors[1])
-            type = interactors[0].type + '-' + interactors[1].type
-            alt_type = interactors[1].type + '-' + interactors[0].type
+
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactors[0]),
                                                             Interaction.interactors.contains(interactors[1]),
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
+                type = interactors[0].type + '-' + interactors[1].type
                 interaction = Interaction(strain='PAO1', homogenous=homogenous, interactors=interactors, type=type)
                 session.add(interaction), session.commit()
                 if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
@@ -40,8 +40,6 @@ def parse_adipinteractomes(session):
                 else:
                     interaction.is_experimental = 0
             else:
-                if (type not in interaction.type) and (alt_type not in interaction.type):
-                    interaction.type += ', ' + type
                 if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
                     interaction.is_experimental = 1
 

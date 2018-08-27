@@ -30,13 +30,13 @@ def parse_intact(file, strain, taxid, session):
                 interactors.append(session.query(Protein).filter(Protein.uniprotkb == B_id).one())
 
             if len(interactors) != 2: continue
-            type = (interactors[0].type + '-' + interactors[1].type)
-            alt_type = (interactors[1].type + '-' + interactors[0].type)
             homogenous = (interactors[0] == interactors[1])
+
             interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
                                                             (Interaction.interactors.contains(interactors[1])),
                                                             (Interaction.homogenous == homogenous)).first()
             if interaction is None:
+                type = (interactors[0].type + '-' + interactors[1].type)
                 interaction = Interaction(strain=strain, type=type, homogenous=homogenous, interactors=interactors)
                 if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
                     interaction.is_experimental = 1
@@ -44,8 +44,6 @@ def parse_intact(file, strain, taxid, session):
                     interaction.is_experimental = 0
                 session.add(interaction), session.commit()
             else:
-                if (type not in interaction.type) and (alt_type not in interaction.type):
-                    interaction.type += ', ' + type
                 if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
                     interaction.is_experimental = 1
                 # how to avoid duplicate references
