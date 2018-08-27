@@ -1,90 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:P06971', 'intact:EBI-6480461', 'chebi:"CHEBI:15996"']
-{'uniprotkb': 583, 'intact': 5, 'chebi': 3}
-not present in all entries: intact, chebi, uniprotkb
+total num occurences of each id:{'uniprotkb': 583, 'intact': 5, 'chebi': 3}
+not present in all entries: {'intact': 586, 'chebi': 588, 'uniprotkb': 8}
+number of each id in entries:{'uniprotkb': {1: 583, 0: 8}, 'intact': {0: 586, 1: 5}, 'chebi': {0: 588, 1: 3}}
 num elements in column: {1: 591}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:P05820', '-']
-{'uniprotkb': 590, '-': 1}
-not present in all entries: -, uniprotkb
+total num occurences of each id:{'uniprotkb': 590, '-': 1}
+not present in all entries: {'-': 590, 'uniprotkb': 1}
+number of each id in entries:{'uniprotkb': {1: 590, 0: 1}, '-': {0: 590, 1: 1}}
 num elements in column: {1: 591}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['intact:EBI-1116714', 'uniprotkb:P71280', '-', 'chebi:"CHEBI:42934"']
-{'intact': 606, 'uniprotkb': 866, '-': 5, 'chebi': 12}
-not present in all entries: -, chebi, uniprotkb, intact
+total num occurences of each id:{'intact': 606, 'uniprotkb': 866, '-': 5, 'chebi': 12}
+not present in all entries: {'-': 586, 'chebi': 588, 'uniprotkb': 184, 'intact': 5}
+number of each id in entries:{'intact': {1: 566, 0: 5, 2: 20}, 'uniprotkb': {2: 158, 3: 66, 9: 4, 0: 184, 5: 2, 1: 158, 6: 12, 16: 4, 4: 3}, '-': {0: 586, 1: 5}, 'chebi': {0: 588, 4: 3}}
 num elements in column: {3: 158, 4: 66, 10: 4, 1: 161, 6: 2, 2: 178, 7: 12, 17: 4, 5: 6}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['intact:EBI-6413473', 'uniprotkb:P76800', '-']
-{'intact': 608, 'uniprotkb': 834, '-': 1}
-not present in all entries: uniprotkb, -, intact
+total num occurences of each id:{'intact': 608, 'uniprotkb': 834, '-': 1}
+not present in all entries: {'uniprotkb': 182, '-': 590, 'intact': 1}
+number of each id in entries:{'intact': {1: 572, 0: 1, 2: 18}, 'uniprotkb': {0: 182, 2: 183, 9: 7, 3: 49, 5: 4, 1: 146, 6: 3, 4: 15, 7: 2}, '-': {0: 590, 1: 1}}
 num elements in column: {1: 164, 3: 183, 10: 7, 4: 49, 6: 4, 2: 164, 7: 3, 5: 15, 8: 2}
 
-column name: Alias(es) interactor A
-sample entries: ['psi-mi:fhua_ecoli(display_long)', 'uniprotkb:JW0146(locus name)', "intact:5'-GTP(synonym)"]
-{'psi-mi': 1111, 'uniprotkb': 2283, 'intact': 24}
-not present in all entries: intact, uniprotkb
-num elements in column: {9: 26, 6: 137, 7: 91, 5: 119, 8: 47, 12: 7, 11: 3, 10: 24, 2: 70, 17: 1, 4: 33, 1: 1, 3: 31, 14: 1}
-
-column name: Alias(es) interactor B
-sample entries: ['psi-mi:ceam_ecolx(display_long)', 'uniprotkb:cma(gene name)', '-']
-{'psi-mi': 1105, 'uniprotkb': 2220, '-': 1}
-not present in all entries: -, uniprotkb, psi-mi
-num elements in column: {3: 41, 8: 43, 6: 134, 5: 110, 4: 32, 7: 120, 9: 14, 13: 1, 11: 7, 10: 11, 12: 4, 2: 63, 1: 9, 14: 2}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0405"(competition binding)']
-{'psi-mi': 591}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 591}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 591}}
 num elements in column: {1: 591}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['Helbig et al. (2011)']
-{}
-not present in all entries: 
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
 num elements in column: {1: 591}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:21148729', 'imex:IM-18380']
-{'pubmed': 591, 'imex': 591}
-not present in all entries: 
+total num occurences of each id:{'pubmed': 591, 'imex': 591}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 591}, 'imex': {1: 591}}
 num elements in column: {2: 591}
 
-column name: Taxid interactor A
-sample entries: ['taxid:83333(ecoli)']
-{'taxid': 1182}
-not present in all entries: 
-num elements in column: {2: 591}
-
-column name: Taxid interactor B
-sample entries: ['taxid:562(ecolx)', '-']
-{'taxid': 1180, '-': 1}
-not present in all entries: -, taxid
-num elements in column: {2: 590, 1: 1}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0915"(physical association)']
-{'psi-mi': 591}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 591}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 591}}
 num elements in column: {1: 591}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0903"(mpidb)']
-{'psi-mi': 591}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 591}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 591}}
 num elements in column: {1: 591}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-6413477', 'mpidb:MPIDB-INT-1522', 'imex:IM-18380-1', 'wwpdb:2PKX']
-{'intact': 591, 'mpidb': 555, 'imex': 591, 'wwpdb': 7}
-not present in all entries: wwpdb, mpidb
+total num occurences of each id:{'intact': 591, 'mpidb': 555, 'imex': 591, 'wwpdb': 7}
+not present in all entries: {'wwpdb': 584, 'mpidb': 36}
+number of each id in entries:{'intact': {1: 591}, 'mpidb': {1: 555, 0: 36}, 'imex': {1: 591}, 'wwpdb': {0: 584, 1: 7}}
 num elements in column: {3: 552, 4: 5, 2: 34}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['intact-miscore:0.40']
-{'intact-miscore': 591}
-not present in all entries: 
+total num occurences of each id:{'intact-miscore': 591}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 591}}
 num elements in column: {1: 591}
 

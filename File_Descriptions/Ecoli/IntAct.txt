@@ -1,90 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:P0AEZ3', 'intact:EBI-1126478', 'chebi:"CHEBI:15422"', 'reactome:R-HSA-114618', 'matrixdb:MULT_82_human']
-{'uniprotkb': 28528, 'intact': 106, 'chebi': 268, 'reactome': 1, 'matrixdb': 1}
-not present in all entries: intact, chebi, reactome, matrixdb, uniprotkb
+total num occurences of each id:{'uniprotkb': 28528, 'intact': 106, 'chebi': 268, 'reactome': 1, 'matrixdb': 1}
+not present in all entries: {'intact': 28798, 'chebi': 28636, 'reactome': 28903, 'matrixdb': 28903, 'uniprotkb': 376}
+number of each id in entries:{'uniprotkb': {1: 28528, 0: 376}, 'intact': {0: 28798, 1: 106}, 'chebi': {0: 28636, 1: 268}, 'reactome': {0: 28903, 1: 1}, 'matrixdb': {0: 28903, 1: 1}}
 num elements in column: {1: 28904}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:P0A734', 'intact:EBI-558736', '-', 'intenz:3.5.1']
-{'uniprotkb': 28832, 'intact': 63, '-': 5, 'intenz': 4}
-not present in all entries: intact, -, intenz, uniprotkb
+total num occurences of each id:{'uniprotkb': 28832, 'intact': 63, '-': 5, 'intenz': 4}
+not present in all entries: {'intact': 28841, '-': 28899, 'intenz': 28900, 'uniprotkb': 72}
+number of each id in entries:{'uniprotkb': {1: 28832, 0: 72}, 'intact': {0: 28841, 1: 63}, '-': {0: 28899, 1: 5}, 'intenz': {0: 28900, 1: 4}}
 num elements in column: {1: 28904}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['intact:EBI-554545', 'uniprotkb:P18197', 'dip:DIP-584N', 'psi-mi:MINT-5277993', '-', 'chebi:"CHEBI:9160"', 'reactome:R-HSA-114617', 'matrixdb:MULT_23_human', 'wwpdb:1PK6']
-{'intact': 28904, 'uniprotkb': 47501, 'dip': 114, 'psi-mi': 3, '-': 81, 'chebi': 665, 'reactome': 2, 'matrixdb': 1, 'wwpdb': 5}
-not present in all entries: dip, psi-mi, -, chebi, reactome, matrixdb, wwpdb, uniprotkb, intact
+total num occurences of each id:{'intact': 28904, 'uniprotkb': 47501, 'dip': 114, 'psi-mi': 3, '-': 81, 'chebi': 665, 'reactome': 2, 'matrixdb': 1, 'wwpdb': 5}
+not present in all entries: {'dip': 28790, 'psi-mi': 28901, '-': 28823, 'chebi': 28779, 'reactome': 28902, 'matrixdb': 28903, 'wwpdb': 28903, 'uniprotkb': 4248, 'intact': 106}
+number of each id in entries:{'intact': {1: 28693, 2: 104, 0: 106, 3: 1}, 'uniprotkb': {1: 9647, 2: 10277, 4: 961, 3: 3208, 0: 4248, 8: 15, 6: 86, 7: 104, 14: 38, 5: 286, 18: 10, 15: 9, 16: 5, 10: 4, 9: 5, 26: 1}, 'dip': {0: 28790, 1: 114}, 'psi-mi': {0: 28901, 1: 3}, '-': {0: 28823, 1: 81}, 'chebi': {0: 28779, 1: 4, 6: 92, 4: 13, 5: 3, 2: 2, 8: 1, 3: 10}, 'reactome': {0: 28902, 1: 2}, 'matrixdb': {0: 28903, 1: 1}, 'wwpdb': {0: 28903, 5: 1}}
 num elements in column: {2: 9578, 3: 10354, 5: 981, 4: 3249, 1: 4082, 9: 16, 7: 180, 8: 104, 15: 38, 6: 288, 19: 10, 16: 9, 17: 5, 11: 4, 10: 5, 28: 1}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['intact:EBI-1118020', 'uniprotkb:P18198', 'dip:DIP-584N', '-', 'chebi:"CHEBI:9160"', 'uniparc:UPI00000D382C', 'pubmed:11886561', 'wwpdb:5mrw']
-{'intact': 28920, 'uniprotkb': 51067, 'dip': 86, '-': 58, 'chebi': 7, 'uniparc': 1, 'pubmed': 1, 'wwpdb': 1}
-not present in all entries: dip, -, chebi, uniparc, pubmed, wwpdb, uniprotkb, intact
+total num occurences of each id:{'intact': 28920, 'uniprotkb': 51067, 'dip': 86, '-': 58, 'chebi': 7, 'uniparc': 1, 'pubmed': 1, 'wwpdb': 1}
+not present in all entries: {'dip': 28818, '-': 28846, 'chebi': 28897, 'uniparc': 28903, 'pubmed': 28903, 'wwpdb': 28903, 'uniprotkb': 2877, 'intact': 67}
+number of each id in entries:{'intact': {1: 28758, 0: 67, 2: 75, 3: 4}, 'uniprotkb': {1: 8978, 3: 2879, 2: 12736, 0: 2877, 4: 764, 8: 3, 6: 42, 7: 426, 10: 15, 14: 37, 18: 6, 9: 22, 5: 107, 16: 1, 11: 8, 15: 2, 23: 1}, 'dip': {0: 28818, 1: 86}, '-': {0: 28846, 1: 58}, 'chebi': {0: 28897, 1: 7}, 'uniparc': {0: 28903, 1: 1}, 'pubmed': {0: 28903, 1: 1}, 'wwpdb': {0: 28903, 1: 1}}
 num elements in column: {2: 8911, 4: 2952, 3: 12725, 1: 2874, 5: 770, 9: 3, 7: 40, 8: 430, 11: 15, 15: 37, 19: 6, 10: 22, 6: 107, 17: 1, 12: 8, 16: 2, 24: 1}
 
-column name: Alias(es) interactor A
-sample entries: ['psi-mi:mind_ecoli(display_long)', 'uniprotkb:Cell division inhibitor MinD(gene name synonym)', "intact:Adenosine 5'-triphosphate(synonym)"]
-{'psi-mi': 57779, 'uniprotkb': 138585, 'intact': 1758}
-not present in all entries: intact, uniprotkb
-num elements in column: {6: 6836, 5: 6778, 7: 6420, 8: 3928, 10: 1261, 9: 2017, 13: 68, 11: 768, 12: 91, 14: 132, 4: 81, 17: 53, 3: 126, 2: 232, 1: 22, 19: 88, 20: 2, 16: 1}
-
-column name: Alias(es) interactor B
-sample entries: ['psi-mi:mine_ecoli(display_long)', 'uniprotkb:minE(gene name)', '-', 'intact:p-aminobenzoyl-glutamate hydrolase(complex recommended name)']
-{'psi-mi': 57894, 'uniprotkb': 140463, '-': 5, 'intact': 14}
-not present in all entries: -, intact, uniprotkb, psi-mi
-num elements in column: {5: 5208, 6: 9646, 11: 879, 7: 6299, 8: 2833, 10: 846, 9: 2503, 13: 78, 12: 161, 14: 139, 17: 56, 4: 96, 25: 7, 33: 5, 48: 2, 3: 81, 2: 37, 1: 26, 20: 2}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0014"(adenylate cyclase complementation)', 'intact:"IA:2751"(sulfurtransferase assay)']
-{'psi-mi': 28879, 'intact': 25}
-not present in all entries: intact, psi-mi
+total num occurences of each id:{'psi-mi': 28879, 'intact': 25}
+not present in all entries: {'intact': 28879, 'psi-mi': 25}
+number of each id in entries:{'psi-mi': {1: 28879, 0: 25}, 'intact': {0: 28879, 1: 25}}
 num elements in column: {1: 28904}
 
-column name: Publication 1st author(s)
-sample entries: ['Park et al. (2011)']
-{}
-not present in all entries: 
+column name: publication
+sample entries: ['Park et al. (2011)', 'Pan et al.']
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
 num elements in column: {1: 28904}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:21816275', 'imex:IM-16555', 'mint:MINT-8200662', 'doi:10.1038/emboj.2011.192']
-{'pubmed': 28904, 'imex': 19672, 'mint': 12797, 'doi': 14391}
-not present in all entries: mint, doi, imex
+total num occurences of each id:{'pubmed': 28904, 'imex': 19672, 'mint': 12797, 'doi': 14391}
+not present in all entries: {'mint': 16188, 'doi': 14513, 'imex': 9232}
+number of each id in entries:{'pubmed': {1: 28904}, 'imex': {1: 19672, 0: 9232}, 'mint': {0: 16188, 1: 12635, 2: 81}, 'doi': {0: 14513, 1: 14391}}
 num elements in column: {2: 5207, 4: 12525, 3: 1973, 1: 9166, 5: 33}
 
-column name: Taxid interactor A
-sample entries: ['taxid:83333(ecoli)']
-{'taxid': 57808}
-not present in all entries: 
-num elements in column: {2: 28904}
-
-column name: Taxid interactor B
-sample entries: ['taxid:83333(ecoli)', '-']
-{'taxid': 57798, '-': 5}
-not present in all entries: -, taxid
-num elements in column: {2: 28899, 1: 5}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0915"(physical association)', 'intact:"IA:2752"(sulfurtransferase reaction)']
-{'psi-mi': 28879, 'intact': 25}
-not present in all entries: intact, psi-mi
+total num occurences of each id:{'psi-mi': 28879, 'intact': 25}
+not present in all entries: {'intact': 28879, 'psi-mi': 25}
+number of each id in entries:{'psi-mi': {1: 28879, 0: 25}, 'intact': {0: 28879, 1: 25}}
 num elements in column: {1: 28904}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0469"(IntAct)']
-{'psi-mi': 28904}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 28904}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 28904}}
 num elements in column: {1: 28904}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-4369430', 'imex:IM-16555-1', 'wwpdb:3R9J', 'mint:MINT-8200709', 'dip:DIP-18085E', 'rcsb pdb:1MBV', 'pdbe:4bht', 'emdb:2325', 'mpidb:MPIDB-INT-2081']
-{'intact': 28904, 'imex': 19658, 'wwpdb': 110, 'mint': 372, 'dip': 7985, 'rcsb pdb': 121, 'pdbe': 10, 'emdb': 12, 'mpidb': 405}
-not present in all entries: wwpdb, mint, dip, rcsb pdb, pdbe, emdb, mpidb, imex
+total num occurences of each id:{'intact': 28904, 'imex': 19658, 'wwpdb': 110, 'mint': 372, 'dip': 7985, 'rcsb pdb': 121, 'pdbe': 10, 'emdb': 12, 'mpidb': 405}
+not present in all entries: {'wwpdb': 28803, 'mint': 28532, 'dip': 20919, 'rcsb pdb': 28785, 'pdbe': 28896, 'emdb': 28894, 'mpidb': 28499, 'imex': 9246}
+number of each id in entries:{'intact': {1: 28904}, 'imex': {1: 19658, 0: 9246}, 'wwpdb': {0: 28803, 1: 96, 2: 2, 4: 1, 3: 2}, 'mint': {0: 28532, 1: 372}, 'dip': {0: 20919, 1: 7985}, 'rcsb pdb': {0: 28785, 1: 118, 3: 1}, 'pdbe': {0: 28896, 1: 6, 2: 2}, 'emdb': {0: 28894, 1: 8, 2: 2}, 'mpidb': {0: 28499, 1: 405}}
 num elements in column: {2: 10932, 3: 8839, 1: 9114, 5: 4, 4: 14, 6: 1}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['intact-miscore:0.60', 'author score:significant but weak signal', '-']
-{'intact-miscore': 28903, 'author score': 29, '-': 1}
-not present in all entries: author score, -, intact-miscore
+total num occurences of each id:{'intact-miscore': 28903, 'author score': 29, '-': 1}
+not present in all entries: {'author score': 28875, '-': 28903, 'intact-miscore': 1}
+number of each id in entries:{'intact-miscore': {1: 28903, 0: 1}, 'author score': {0: 28875, 1: 29}, '-': {0: 28903, 1: 1}}
 num elements in column: {1: 28875, 2: 29}
 

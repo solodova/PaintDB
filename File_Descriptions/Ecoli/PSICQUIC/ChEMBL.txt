@@ -1,90 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['chembl:CHEMBL287670', 'chebi:"CHEBI:141459"']
-{'chembl': 205, 'chebi': 205}
-not present in all entries: 
+total num occurences of each id:{'chembl': 205, 'chebi': 205}
+not present in all entries: {}
+number of each id in entries:{'chembl': {1: 205}, 'chebi': {1: 205}}
 num elements in column: {2: 205}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:P62593', 'chembl:CHEMBL2065']
-{'uniprotkb': 205, 'chembl': 205}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 205, 'chembl': 205}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 205}, 'chembl': {1: 205}}
 num elements in column: {2: 205}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['-']
-{'-': 205}
-not present in all entries: 
+total num occurences of each id:{'-': 205}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['uniprotkb:blaT-6(gene name)']
-{'uniprotkb': 205}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 205}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Alias(es) interactor A
-sample entries: ['unknown:"InChI=1S/C11H15NO5.K/c1-4-7-6(5(2)13)10(14)12(7)8(11(15)16)9(4)17-3;/h4-7,13H,1-3H3,(H,15,16);/q;+1/p-1/t4-,5+,6+,7?;/m0./s1"(inchi id)']
-{'unknown': 1005}
-not present in all entries: 
-num elements in column: {4: 143, 7: 25, 5: 16, 6: 9, 8: 6, 13: 4, 12: 2}
-
-column name: Alias(es) interactor B
-sample entries: ['uniprotkb:Beta-lactamase TEM(gene name synonym)', 'unknown:blat_ecolx(shortLabel)']
-{'uniprotkb': 2309, 'unknown': 205}
-not present in all entries: 
-num elements in column: {17: 132, 4: 50, 11: 2, 2: 15, 3: 6}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0401"(biochemical)']
-{'psi-mi': 205}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 205}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Publication 1st author(s)
-sample entries: ['Pfaendler et al (2000)', 'Pfaendler et al (2000)', '-']
-{'-': 13}
-not present in all entries: -
+column name: publication
+sample entries: ['Pfaendler et al (2000)', '-']
+total num occurences of each id:{'-': 13}
+not present in all entries: {'-': 192}
+number of each id in entries:{'-': {0: 192, 1: 13}}
 num elements in column: {1: 205}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:10890171', '-']
-{'pubmed': 192, '-': 13}
-not present in all entries: -, pubmed
+total num occurences of each id:{'pubmed': 192, '-': 13}
+not present in all entries: {'-': 192, 'pubmed': 13}
+number of each id in entries:{'pubmed': {1: 192, 0: 13}, '-': {0: 192, 1: 13}}
 num elements in column: {1: 205}
 
-column name: Taxid interactor A
-sample entries: ['-']
-{'-': 205}
-not present in all entries: 
-num elements in column: {1: 205}
-
-column name: Taxid interactor B
-sample entries: ['taxid:562(escherichia coli)']
-{'taxid': 205}
-not present in all entries: 
-num elements in column: {1: 205}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0915"(physical association)']
-{'psi-mi': 205}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 205}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0967"(ChEMBL)']
-{'psi-mi': 205}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 205}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['chembl:CHEMBL655059']
-{'chembl': 205}
-not present in all entries: 
+total num occurences of each id:{'chembl': 205}
+not present in all entries: {}
+number of each id in entries:{'chembl': {1: 205}}
 num elements in column: {1: 205}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['chembl:high(ChEMBL given confidence)']
-{'chembl': 205}
-not present in all entries: 
+total num occurences of each id:{'chembl': 205}
+not present in all entries: {}
+number of each id in entries:{'chembl': {1: 205}}
 num elements in column: {1: 205}
 

@@ -1,6 +1,6 @@
 import csv
 from Schema1 import OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
-from Parsers.Parser import is_experimental_psimi
+from Schema1 import is_experimental_psimi
 def parse_ecoli_imex(session):
     with open('Ecoli/PSICQUIC/IMEx.txt') as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')

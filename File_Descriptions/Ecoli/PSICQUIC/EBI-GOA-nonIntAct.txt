@@ -1,90 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:P0ACD4']
-{'uniprotkb': 980}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 980}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 980}}
 num elements in column: {1: 980}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:P0A6B7', 'ecoliwiki:TolB', 'flybase:FBgn0000117', 'rgd:69002']
-{'uniprotkb': 909, 'ecoliwiki': 64, 'flybase': 4, 'rgd': 3}
-not present in all entries: ecoliwiki, flybase, rgd, uniprotkb
+total num occurences of each id:{'uniprotkb': 909, 'ecoliwiki': 64, 'flybase': 4, 'rgd': 3}
+not present in all entries: {'ecoliwiki': 916, 'flybase': 976, 'rgd': 977, 'uniprotkb': 71}
+number of each id in entries:{'uniprotkb': {1: 909, 0: 71}, 'ecoliwiki': {0: 916, 1: 64}, 'flybase': {0: 976, 1: 4}, 'rgd': {0: 977, 1: 3}}
 num elements in column: {1: 980}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['-']
-{'-': 980}
-not present in all entries: 
+total num occurences of each id:{'-': 980}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['-']
-{'-': 980}
-not present in all entries: 
+total num occurences of each id:{'-': 980}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Alias(es) interactor A
-sample entries: ['uniprotkb:iscU(gene name)']
-{'uniprotkb': 2940}
-not present in all entries: 
-num elements in column: {3: 980}
-
-column name: Alias(es) interactor B
-sample entries: ['uniprotkb:iscS(gene name)', '-']
-{'uniprotkb': 2727, '-': 71}
-not present in all entries: -, uniprotkb
-num elements in column: {3: 909, 1: 71}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0045"(experimental interaction detection)']
-{'psi-mi': 980}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 980}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['Urbina et al. (2001)']
-{}
-not present in all entries: 
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
 num elements in column: {1: 980}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:11577100']
-{'pubmed': 980}
-not present in all entries: 
+total num occurences of each id:{'pubmed': 980}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Taxid interactor A
-sample entries: ['taxid:83333("Escherichia coli (strain K12)")']
-{'taxid': 980}
-not present in all entries: 
-num elements in column: {1: 980}
-
-column name: Taxid interactor B
-sample entries: ['taxid:83333("Escherichia coli (strain K12)")']
-{'taxid': 980}
-not present in all entries: 
-num elements in column: {1: 980}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0914"(association)']
-{'psi-mi': 980}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 980}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0466"(ecocyc)']
-{'psi-mi': 980}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 980}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['-']
-{'-': 980}
-not present in all entries: 
+total num occurences of each id:{'-': 980}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 980}}
 num elements in column: {1: 980}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['-']
-{'-': 980}
-not present in all entries: 
+total num occurences of each id:{'-': 980}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 980}}
 num elements in column: {1: 980}
 

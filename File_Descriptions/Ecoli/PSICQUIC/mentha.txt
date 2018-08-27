@@ -1,90 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:P68688']
-{'uniprotkb': 50046}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 50046}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:P73728']
-{'uniprotkb': 50046}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 50046}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['-']
-{'-': 50046}
-not present in all entries: 
+total num occurences of each id:{'-': 50046}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['-']
-{'-': 50046}
-not present in all entries: 
+total num occurences of each id:{'-': 50046}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Alias(es) interactor A
-sample entries: ['uniprotkb:GRXA(gene name)', 'EMBL:AAG58818.1}"(gene name)']
-{'uniprotkb': 50046, 'EMBL': 3}
-not present in all entries: EMBL
-num elements in column: {1: 50043, 2: 3}
-
-column name: Alias(es) interactor B
-sample entries: ['uniprotkb:P73728(gene name)', 'EMBL:AAG58814.1}"(gene name)']
-{'uniprotkb': 50046, 'EMBL': 4}
-not present in all entries: EMBL
-num elements in column: {1: 50042, 2: 4}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0415"(enzymatic study)']
-{'psi-mi': 50046}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 50046}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['-']
-{'-': 50046}
-not present in all entries: 
+total num occurences of each id:{'-': 50046}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:15509585']
-{'pubmed': 50046}
-not present in all entries: 
+total num occurences of each id:{'pubmed': 50046}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Taxid interactor A
-sample entries: ['taxid:83333(Escherichia coli K-12)']
-{'taxid': 50046}
-not present in all entries: 
-num elements in column: {1: 50046}
-
-column name: Taxid interactor B
-sample entries: ['taxid:1111708(Synechocystis sp. PCC 6803 substr. Kazusa)']
-{'taxid': 50046}
-not present in all entries: 
-num elements in column: {1: 50046}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0407"(direct interaction)']
-{'psi-mi': 50046}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 50046}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0469"(IntAct)']
-{'psi-mi': 50046}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 50046}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 50046}}
 num elements in column: {1: 50046}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-863119', 'dip:DIP-56587E', 'mint:MINT-8087991', 'biogrid:2327796']
-{'intact': 28250, 'dip': 21385, 'mint': 410, 'biogrid': 1}
-not present in all entries: dip, mint, biogrid, intact
+total num occurences of each id:{'intact': 28250, 'dip': 21385, 'mint': 410, 'biogrid': 1}
+not present in all entries: {'dip': 28661, 'mint': 49636, 'biogrid': 50045, 'intact': 21796}
+number of each id in entries:{'intact': {1: 28250, 0: 21796}, 'dip': {0: 28661, 1: 21385}, 'mint': {0: 49636, 1: 410}, 'biogrid': {0: 50045, 1: 1}}
 num elements in column: {1: 50046}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['mentha-score:0.309']
-{'mentha-score': 50046}
-not present in all entries: 
+total num occurences of each id:{'mentha-score': 50046}
+not present in all entries: {}
+number of each id in entries:{'mentha-score': {1: 50046}}
 num elements in column: {1: 50046}
 

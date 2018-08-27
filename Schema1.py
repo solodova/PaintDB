@@ -4,6 +4,17 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import backref
 from sqlalchemy.ext.declarative import declarative_base
 
+# stopped at chromatography tech
+experimental_psimi = ['MI:0045', 'MI:0401', 'MI:0400','MI:0004', 'MI:2288', 'MI:0019', 'MI:0006', 'MI:0007',
+                          'MI:0402', 'MI:0225', 'MI:1218', 'MI:1028', 'MI:1029', 'MI:0858', 'MI:0946', 'MI:1017',
+                          'MI:0729', 'MI:0096', 'MI:0963', 'MI:0676', 'MI:0008', 'MI:0225', 'MI:0081', 'MI:0089',
+                          'MI:0678', 'MI:0695', 'MI:0092', 'MI:0946', 'MI:0095', 'MI:0921', 'MI:0405', 'MI:0034',
+                          'MI:0009', 'MI:0073', 'MI:0084', 'MI:0048', 'MI:0899', 'MI:0900', 'MI:0066', 'MI:0108',
+                          'MI:0098', 'MI:0115', 'MI:1087', 'MI:1031', 'MI:0813', 'MI:0440', 'MI:0892', 'MI:2189',
+                          'MI:0947', 'MI:0411', 'MI:0047', 'MI:2283', 'MI:0049', 'MI:2167', 'MI:0657', 'MI:1232']
+
+def is_experimental_psimi(psi_code):
+    return psi_code in experimental_psimi
 
 Base = declarative_base()
 
@@ -180,7 +191,7 @@ class Interaction(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     strain = Column(String)
     # remains None unless definitively determined
-    is_experimental = Column(Integer)
+    #is_experimental = Column(Integer)
     # remains None unless confirmation from ortholog or derived from ortholog
     ortholog_derived = Column(String)
     type = Column(String)
@@ -231,6 +242,7 @@ class InteractionSource(Base):
 
     interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
     data_source=Column(Integer, primary_key=True)
+    is_experimental = Column(Integer)
 
 
 

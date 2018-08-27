@@ -1,252 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['BindingDB_monomerID:3436', 'chebi:"CHEBI:46557"']
-{'BindingDB_monomerID': 1411, 'chebi': 79}
-not present in all entries: chebi
+total num occurences of each id:{'BindingDB_monomerID': 1411, 'chebi': 79}
+not present in all entries: {'chebi': 1332}
+number of each id in entries:{'BindingDB_monomerID': {1: 1411}, 'chebi': {0: 1332, 1: 79}}
 num elements in column: {1: 1332, 2: 79}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['BindingDB_polymerID:4028', 'uniprotkb:P24182']
-{'BindingDB_polymerID': 1411, 'uniprotkb': 1}
-not present in all entries: uniprotkb
+total num occurences of each id:{'BindingDB_polymerID': 1411, 'uniprotkb': 1}
+not present in all entries: {'uniprotkb': 1410}
+number of each id in entries:{'BindingDB_polymerID': {1: 1411}, 'uniprotkb': {1: 1, 0: 1410}}
 num elements in column: {2: 1, 1: 1410}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['pubchem:5328120', 'chembl:924']
-{'pubchem': 1411, 'chembl': 1036}
-not present in all entries: chembl
+total num occurences of each id:{'pubchem': 1411, 'chembl': 1036}
+not present in all entries: {'chembl': 383}
+number of each id in entries:{'pubchem': {1: 1411}, 'chembl': {0: 383, 1: 1021, 2: 6, 3: 1}}
 num elements in column: {1: 383, 2: 1021, 3: 6, 4: 1}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['uniprotkb:Q2M8V9', '-']
-{'uniprotkb': 1, '-': 1410}
-not present in all entries: -, uniprotkb
+total num occurences of each id:{'uniprotkb': 1, '-': 1410}
+not present in all entries: {'-': 1, 'uniprotkb': 1410}
+number of each id in entries:{'uniprotkb': {1: 1, 0: 1410}, '-': {0: 1, 1: 1410}}
 num elements in column: {1: 1411}
 
-column name: Alias(es) interactor A
-sample entries: ['unknown:"Nc1ncc2cc(c(N)nc2n1)-c1c(Br)cccc1Br"(smiles string)', 'psi-mi:"6-(2,6-Dibromo-phenyl)-pyrido[2,3-d]pyrimidine-2,7-diamine"(display_long)']
-{'unknown': 1396, 'psi-mi': 4001}
-not present in all entries: unknown
-num elements in column: {6: 29, 5: 80, 8: 2, 4: 713, 7: 20, 10: 4, 3: 538, 12: 2, 2: 15, 9: 3, 13: 1, 15: 1, 22: 1, 16: 1, 14: 1}
-
-column name: Alias(es) interactor B
-sample entries: ['psi-mi:"ACC"(display_long)']
-{'psi-mi': 4256}
-not present in all entries: 
-num elements in column: {3: 142, 1: 530, 5: 394, 2: 236, 9: 52, 7: 12, 4: 1, 8: 11, 10: 4, 6: 29}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0045"(experimental interaction detection)']
-{'psi-mi': 1411}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 1411}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 1411}}
 num elements in column: {1: 1411}
 
-column name: Publication 1st author(s)
-sample entries: ['Mochalkin et al (2009)', 'Ciulli et al (2006)', '-']
-{'-': 58}
-not present in all entries: -
+column name: publication
+sample entries: ['Mochalkin et al (2009)', '-']
+total num occurences of each id:{'-': 58}
+not present in all entries: {'-': 1353}
+number of each id in entries:{'-': {0: 1353, 1: 58}}
 num elements in column: {1: 1411}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:19413326', 'patent:US8592468', '-']
-{'pubmed': 1228, 'patent': 93, '-': 90}
-not present in all entries: patent, -, pubmed
+total num occurences of each id:{'pubmed': 1228, 'patent': 93, '-': 90}
+not present in all entries: {'patent': 1318, '-': 1321, 'pubmed': 183}
+number of each id in entries:{'pubmed': {1: 1228, 0: 183}, 'patent': {0: 1318, 1: 93}, '-': {0: 1321, 1: 90}}
 num elements in column: {1: 1411}
 
-column name: Taxid interactor A
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Taxid interactor B
-sample entries: ['taxid:83333(Escherichia coli)']
-{'taxid': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0915"(physical association)']
-{'psi-mi': 1411}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 1411}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 1411}}
 num elements in column: {1: 1411}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:1123"(BindingDB)']
-{'psi-mi': 1411}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 1411}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 1411}}
 num elements in column: {1: 1411}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['bindingdb:58650']
-{'bindingdb': 1411}
-not present in all entries: 
+total num occurences of each id:{'bindingdb': 1411}
+not present in all entries: {}
+number of each id in entries:{'bindingdb': {1: 1411}}
 num elements in column: {1: 1411}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
+total num occurences of each id:{'-': 1411}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 1411}}
 num elements in column: {1: 1411}
-
-column name: Expansion method(s)
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Biological role(s) interactor A
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Biological role(s) interactor B
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Experimental role(s) interactor A
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Experimental role(s) interactor B
-sample entries: ['-']
-{'-': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Type(s) interactor A
-sample entries: ['psi-mi:"MI:0328"(small molecule)']
-{'psi-mi': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Type(s) interactor B
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 1411}
-not present in all entries: 
-num elements in column: {1: 1411}
-
-column name: Xref(s) interactor A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Xref(s) interactor B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Interaction Xref(s)
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Annotation(s) interactor A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Annotation(s) interactor B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Interaction annotation(s)
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Host organism(s)
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Interaction parameter(s)
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Creation date
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Update date
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Checksum(s) interactor A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Checksum(s) interactor B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Interaction Checksum(s)
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Negative
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Feature(s) interactor A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Feature(s) interactor B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Stoichiometry(s) interactor A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Stoichiometry(s) interactor B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Identification method participant A
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
-
-column name: Identification method participant B
-sample entries: []
-{}
-not present in all entries: 
-num elements in column: {}
 

@@ -2,7 +2,7 @@
 import csv
 from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, InteractorXref, \
     InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema1 import is_experimental_psimi
 
 def parse_ecoli_bindingdb(session):
     with open('Data/Ecoli/PSICQUIC/BindingDB.txt') as csvfile:
