@@ -21,11 +21,11 @@ def parse_inparalogs(file, dict):
             # ignore Non/Borderline SSD
             if (row['Ortholuge Class'] != '') & (row['Ortholuge Class'] != 'SSD'): continue
 
-            if (row['Strain 1 Inparalogs (Locus Tag/Name)'] != ''):
+            if row['Strain 1 Inparalogs (Locus Tag/Name)'] != '':
                 strain1_inparalogs = row['Strain 1 Inparalogs (Locus Tag/Name)'].split(']')
 
                 for inparalog in strain1_inparalogs:
-                    if (inparalog == ''): continue
+                    if inparalog == '': continue
                     trimmed_inparalog = inparalog[:5]
                     if (inparalog[0] == ';'):
                         trimmed_inparalog = inparalog[1:6]

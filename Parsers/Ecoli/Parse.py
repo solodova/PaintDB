@@ -2,6 +2,8 @@ import csv
 from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, InteractorXref, \
     InteractionSource
 from Schema1 import is_experimental_psimi
+import itertools
+
 
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
@@ -110,24 +112,71 @@ def parse_ecoli_bindingdb(session):
                     interactor_b = interactor_pair[0][1]
                     interactor_a = interactor_pair[1][1]
 
-                psimi_detection, psimi_db, psimi_type, author, date, confidences = None, None, None, None, None, [None]
-                    if 'MI' in row['Interaction detection method(s)']:
-                        psimi_detection = row['Interaction detection method(s)'].split('MI:')[1][:4]
-                    if 'MI' in row['Interaction type(s)']:
-                        psimi_type = row['Interaction type(s)'].split('MI:')[1][:4]
-                    if 'MI' in row['Source database(s)']:
-                        psimi_db = row['Source database(s)'].split('MI:')[1][:4]
-                    if row['Publication 1st author(s)'] != '-':
-                        author = row['Publication 1st author(s)'].split(' ')[0]
-                        date = row['Publication 1st author(s)'].split('(')[1][:-1]
-                    if ('intact-miscore' in row['Confidence value(s)']) | (
-                            'author score' in row['Confidence value(s)']):
-                        del confidences[0]
-                        confidence_ids = row['Confidence value(s)'].split('|')
-                        for confidence in confidence_ids:
-                            if (confidence.split(':')[0] == 'intact-miscore') | \
-                                    (confidence.split(':')[0] == 'author score'):
-                                confidences.append(confidence)
+                ref_fields = {'detections': [], 'types': [], 'dbs': [], 'confidences': [], 'authors': [], 'dates': [],
+                              'pmids': [], 'psimi_detections': [], 'psimi_types': [], 'psimi_dbs': []}
+
+                if 'MI' in row['detection']:
+                    for psimi_detection in row['detection'].split('MI:')[1:]:
+                        if psimi_detection == '': continue
+                        ref_fields['detections'].append(psimi_detection[:4])
+                if 'MI' in row['type']:
+                    for psimi_type in row['type'].split('MI:')[1:]:
+                        if psimi_type == '': continue
+                        ref_fields['psimi_types'].append(psimi_type[:4])
+                if 'MI' in row['source_db']:
+                    for psimi_db in row['source_db'].split('MI:')[1:]:
+                        if psimi_db == '': continue
+                        ref_fields['psimi_dbs'].append(psimi_db[:4])
+
+                for detection in row['detection'].split('|'):
+                    if (detection == '-') | (detection == ''): continue
+                    ref_fields['detections'].append(detection.split('(')[1][:-1])
+                for pub in row['publication'].split('|'):
+                    if (pub == '-') | (pub == ''): continue
+                    seps=[' ', '(']
+                    if '-' in row['Publication 1st author(s)']:
+                        seps=['-', '-']
+                    ref_fields['authors'].append(pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0][1:])
+                    if (seps[1] == '-') | ('(' in pub):
+                        ref_fields['dates'].append(pub.split(seps[1])[1][:-1])
+                for id in row['publication'].split('|'):
+                    if ('pubmed' not in id) | (id == '-') | (id == ''): continue
+                    ref_fields['pmids'].append(id.split('pubmed:')[1])
+                for type in row['type'].split('|'):
+                    if (type == '-') | (type == ''): continue
+                    ref_fields['types'].append(type.split('(')[1][:-1])
+                for db in row['source_db'].split('|'):
+                    if (db == '-') | (db == ''): continue
+                    ref_fields['dbs'].append(db.split('(')[1][:-1])
+                for confidence in row['confidence'].split('|'):
+                    if (confidence == '-') | (confidence == ''): continue
+                    if (confidence.split(':')[0] == 'core') | (confidence.split(':')[0] == 'ist'): continue
+                    ref_fields['confidences'].append(confidence.split('(')[1][:-1])
+
+                for field in ref_fields:
+                    if len(ref_fields[field]) == 0:
+                        ref_fields[field].append(None)
+
+                detections_full = []
+                if (ref_fields['psimi_detections'][0] is None) and (ref_fields['detections'][0] is not None):
+                    for i in range(1, len(ref_fields['detections'])):
+                        ref_fields['psimi_detections'].append(None)
+                types_full = []
+                if (ref_fields['psimi_types'][0] is None) and (ref_fields['types'][0] is not None):
+                    for i in range(1, len(ref_fields['types'])):
+                        ref_fields['psimi_types'].append(None)
+                dbs_full = []
+                if (ref_fields['psimi_dbs'][0] is None) and (ref_fields['dbs'][0] is not None):
+                    for i in range(1, len(ref_fields['dbs'])):
+                        ref_fields['psimi_types'].append(None)
+                detections_full = zip(ref_fields['psimi_detections'], ref_fields['detections'])
+                types_full = zip(ref_fields['psimi_types'], ref_fields['types'])
+                dbs_full = zip(ref_fields['psimi_dbs'], ref_fields['dbs'])
+                if (ref_fields['pmids'][0] is None) and (ref_fields[''])
+                if len(ref_fields[''])
+
+                for combination in itertools.product(ref_fields['psimi_detections'], ref_fields[''], us_stars):
+                for psimi_detection, detection in zip(psimi_detections, detections):
                     for confidence in confidences:
                         reference = InteractionReference(interaction_id=interaction.id,
                                                          psimi_detection=psimi_detection,
