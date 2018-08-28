@@ -1,7 +1,7 @@
 if __name__ == '__main__':
 
     from Schema1 import Base, Interactor, Metabolite, Protein, InteractorXref, Reference, OrthologPseudomonas, \
-        OrthologEcoli, GeneOntology, Localization
+        OrthologEcoli, GeneOntology, Localization, InteractionReference
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
     import csv
@@ -10,12 +10,11 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+    from File_Descriptions.file_desc import parse
+    #parse()
+    from Parsers.Ecoli.ortholuge import parse_ortholuge_ecoli
 
-
-
-    from File_Descriptions.file_desc import parse, parse_string
-    parse()
-
+    parse_ortholuge_ecoli(session)
 
     # info = {}
     # info_num = {"Locus Tag": 0, "Name": 0, "Product Name": 0, "NCBI Accession": 0}

@@ -19,12 +19,20 @@ def is_experimental_psimi(psi_code):
 Base = declarative_base()
 
 protein_reference = Table('protein_reference', Base.metadata,
-                             Column('protein_id', String, ForeignKey('protein.id')),
-                             Column('reference_pmid', String, ForeignKey('reference.pmid')))
+                          Column('protein_id', String, ForeignKey('protein.id')),
+                          Column('reference_pmid', String, ForeignKey('reference.pmid')))
 
 interaction_participant = Table('interaction_participant', Base.metadata,
                                 Column('interactor_id', String, ForeignKey('interactor.id')),
                                 Column('interaction_id', Integer, ForeignKey('interaction.id')))
+
+interaction_references = Table('interaction_references', Base.metadata,
+                                Column('interaction_id', String, ForeignKey('interaction.id')),
+                                Column('reference_id', Integer, ForeignKey('interaction_reference.id')))
+
+interaction_sources = Table('interaction_sources', Base.metadata,
+                                Column('interaction_id', String, ForeignKey('interaction.id')),
+                                Column('data_source', Integer, ForeignKey('interaction_source.data_source')))
 
 
 class Interactor(Base):
@@ -46,7 +54,7 @@ class Interactor(Base):
     }
 
     interactions = relationship("Interaction", secondary=interaction_participant, backref="interactors")
-    xrefs = relationship("InteractorXrefs", backref = 'interactor')
+    xrefs = relationship("InteractorXref", backref = 'interactor')
 
 
 class Metabolite(Interactor):
@@ -201,14 +209,14 @@ class Interaction(Base):
     homogenous = Column(Integer)
 
     xrefs = relationship("InteractionXref", backref="interaction")
-    references = relationship("InteractionReference", backref="interaction")
-    sources = relationship("InteractionSource")
+    references = relationship("InteractionReference", secondary=interaction_references, backref="interactions")
+    sources = relationship("InteractionSource", secondary=interaction_sources, backref="interactions")
 
 
 class InteractionReference(Base):
     __tablename__ = 'interaction_reference'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    interaction_id = Column(Integer, ForeignKey('interaction.id'))
+    #interaction_id = Column(Integer, ForeignKey('interaction.id'))
 
     # PSI MI term (except Geoff)
     psimi_detection = Column(String)
@@ -240,8 +248,7 @@ class InteractionXref(Base):
 class InteractionSource(Base):
     __tablename__ ='interaction_source'
 
-    interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
-    data_source=Column(Integer, primary_key=True)
+    data_source=Column(String, primary_key=True)
     is_experimental = Column(Integer)
 
 

@@ -1,252 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:A0A0H2ZEG5']
-{'uniprotkb': 4}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 4}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 4}}
 num elements in column: {1: 4}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:A0A0H2ZEG5']
-{'uniprotkb': 4}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 4}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 4}}
 num elements in column: {1: 4}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['intact:EBI-7862965']
-{'intact': 8}
-not present in all entries: 
+total num occurences of each id:{'intact': 8}
+not present in all entries: {}
+number of each id in entries:{'intact': {2: 4}}
 num elements in column: {2: 4}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['intact:EBI-7862965']
-{'intact': 8}
-not present in all entries: 
+total num occurences of each id:{'intact': 8}
+not present in all entries: {}
+number of each id in entries:{'intact': {2: 4}}
 num elements in column: {2: 4}
 
-column name: Alias(es) interactor A
-sample entries: ['psi-mi:a0a0h2zeg5_pseab(display_long)', 'uniprotkb:folX(gene name)']
-{'psi-mi': 8, 'uniprotkb': 8}
-not present in all entries: 
-num elements in column: {4: 4}
-
-column name: Alias(es) interactor B
-sample entries: ['psi-mi:a0a0h2zeg5_pseab(display_long)', 'uniprotkb:folX(gene name)']
-{'psi-mi': 8, 'uniprotkb': 8}
-not present in all entries: 
-num elements in column: {4: 4}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0114"(x-ray crystallography)']
-{'psi-mi': 4}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 4}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 4}}
 num elements in column: {1: 4}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['Gabrielsen et al. (2012)']
-{}
-not present in all entries: 
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
 num elements in column: {1: 4}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:22575651', 'mint:MINT-8340569']
-{'pubmed': 4, 'mint': 5}
-not present in all entries: 
+total num occurences of each id:{'pubmed': 4, 'mint': 5}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 4}, 'mint': {1: 3, 2: 1}}
 num elements in column: {2: 3, 3: 1}
 
-column name: Taxid interactor A
-sample entries: ['taxid:208963(pseab)']
-{'taxid': 8}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Taxid interactor B
-sample entries: ['taxid:208963(pseab)']
-{'taxid': 8}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0407"(direct interaction)']
-{'psi-mi': 4}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 4}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 4}}
 num elements in column: {1: 4}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0471"(MINT)']
-{'psi-mi': 4}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 4}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 4}}
 num elements in column: {1: 4}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-7862959', 'mint:MINT-8342529']
-{'intact': 4, 'mint': 4}
-not present in all entries: 
+total num occurences of each id:{'intact': 4, 'mint': 4}
+not present in all entries: {}
+number of each id in entries:{'intact': {1: 4}, 'mint': {1: 4}}
 num elements in column: {2: 4}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['intact-miscore:0.62']
-{'intact-miscore': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Expansion method(s)
-sample entries: ['-']
-{'-': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Biological role(s) interactor A
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Biological role(s) interactor B
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Experimental role(s) interactor A
-sample entries: ['psi-mi:"MI:0497"(neutral component)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Experimental role(s) interactor B
-sample entries: ['psi-mi:"MI:0497"(neutral component)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Type(s) interactor A
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Type(s) interactor B
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Xref(s) interactor A
-sample entries: ['go:"GO:0042802"(identical protein binding)', 'refseq:WP_003091897.1', 'interpro:IPR006157(Dihydroneopterin aldolase)', 'mint:A0A0H2ZEG5', 'uniprotkb:Q02QS7(uniprot-removed-ac)', 'rcsb pdb:3FD9']
-{'go': 9, 'refseq': 4, 'interpro': 4, 'mint': 8, 'uniprotkb': 4, 'rcsb pdb': 1}
-not present in all entries: rcsb pdb, go
-num elements in column: {8: 3, 6: 1}
-
-column name: Xref(s) interactor B
-sample entries: ['go:"GO:0042802"(identical protein binding)', 'refseq:WP_003091897.1', 'interpro:IPR006157(Dihydroneopterin aldolase)', 'mint:A0A0H2ZEG5', 'uniprotkb:Q02QS7(uniprot-removed-ac)', 'rcsb pdb:3FD9']
-{'go': 9, 'refseq': 4, 'interpro': 4, 'mint': 8, 'uniprotkb': 4, 'rcsb pdb': 1}
-not present in all entries: rcsb pdb, go
-num elements in column: {8: 3, 6: 1}
-
-column name: Interaction Xref(s)
-sample entries: ['-']
-{'-': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Annotation(s) interactor A
-sample entries: ['comment:mint']
-{'comment': 8}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Annotation(s) interactor B
-sample entries: ['comment:mint']
-{'comment': 8}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Interaction annotation(s)
-sample entries: ['comment:mint', 'figure legend:t1 f3 st2']
-{'comment': 4, 'figure legend': 4}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Host organism(s)
-sample entries: ['taxid:-1(in vitro)']
-{'taxid': 8}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Interaction parameter(s)
-sample entries: ['-', 'kd:0.887x10^-6(molar)']
-{'-': 3, 'kd': 1}
-not present in all entries: kd, -
-num elements in column: {1: 4}
-
-column name: Creation date
-sample entries: ['2012/03/16']
-{}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Update date
-sample entries: ['2014/10/16']
-{}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Checksum(s) interactor A
-sample entries: ['rogid:GiWnYKmjPjDBz5jrT1ZwNuzoowQ208963']
-{'rogid': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Checksum(s) interactor B
-sample entries: ['rogid:GiWnYKmjPjDBz5jrT1ZwNuzoowQ208963']
-{'rogid': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Interaction Checksum(s)
-sample entries: ['intact-crc:8671F6A81334AB2F', 'rigid:A1rG6QwHuohc/hEBLqlh+7eF+s0']
-{'intact-crc': 4, 'rigid': 4}
-not present in all entries: 
-num elements in column: {2: 4}
-
-column name: Negative
-sample entries: ['false']
-{}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Feature(s) interactor A
-sample entries: ['-', 'mutation disrupting interaction:59-59(MINT-8405712)']
-{'-': 3, 'mutation disrupting interaction': 1}
-not present in all entries: mutation disrupting interaction, -
-num elements in column: {1: 4}
-
-column name: Feature(s) interactor B
-sample entries: ['-', 'mutation disrupting interaction:59-59(MINT-8405712)']
-{'-': 3, 'mutation disrupting interaction': 1}
-not present in all entries: mutation disrupting interaction, -
-num elements in column: {1: 4}
-
-column name: Stoichiometry(s) interactor A
-sample entries: ['8']
-{}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Stoichiometry(s) interactor B
-sample entries: ['0']
-{}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Identification method participant A
-sample entries: ['psi-mi:"MI:0396"(predetermined participant)']
-{'psi-mi': 4}
-not present in all entries: 
-num elements in column: {1: 4}
-
-column name: Identification method participant B
-sample entries: ['psi-mi:"MI:0396"(predetermined participant)']
-{'psi-mi': 4}
-not present in all entries: 
+total num occurences of each id:{'intact-miscore': 4}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 4}}
 num elements in column: {1: 4}
 

@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, InteractorXref, \
+from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, \
     InteractionSource
 from Schema1 import is_experimental_psimi
 import itertools
@@ -8,15 +8,28 @@ import itertools
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
-def parse_ecoli_bindingdb(session):
-    with open('Data/Ecoli/PSICQUIC/BindingDB.txt') as csvfile:
+def parse_ecoli(session):
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/ChEMBL.txt', 'ChEMBL')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct.txt')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt')
+    parse_ecoli(session, 'Data/Ecoli/DIP.txt', 'DIP')
+    parse_ecoli(session, 'Data/Ecoli/IntAct.txt', 'IntAct')
+
+def parse_ecoli(session, file, source):
+    with open(file) as csvfile:
         reader = csv.DictReader(csvfile, fieldnames=cols, delimiter = '\t')
 
         # iterate through each interaction
         for row in reader:
             #if (row['interactor_A'] == '-') | (row['interactor_B'] == '-'): continue
-            uniprot_A, refseq_A, orthologs_A = None, None, None
-            uniprot_B, refseq_B, orthologs_B = None, None, None
+            uniprot_A, refseq_A, orthologs_A , uniprot_B, refseq_B, orthologs_B= None, None, None
             pubchem, chebi = None, None
             metabolite_info, metabolite, orthologs = None, None, None
 
@@ -118,7 +131,7 @@ def parse_ecoli_bindingdb(session):
                 if 'MI' in row['detection']:
                     for psimi_detection in row['detection'].split('MI:')[1:]:
                         if psimi_detection == '': continue
-                        ref_fields['detections'].append(psimi_detection[:4])
+                        ref_fields['psimi_detections'].append(psimi_detection[:4])
                 if 'MI' in row['type']:
                     for psimi_type in row['type'].split('MI:')[1:]:
                         if psimi_type == '': continue
@@ -133,14 +146,22 @@ def parse_ecoli_bindingdb(session):
                     ref_fields['detections'].append(detection.split('(')[1][:-1])
                 for pub in row['publication'].split('|'):
                     if (pub == '-') | (pub == ''): continue
-                    seps=[' ', '(']
-                    if '-' in row['Publication 1st author(s)']:
-                        seps=['-', '-']
-                    ref_fields['authors'].append(pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0][1:])
-                    if (seps[1] == '-') | ('(' in pub):
+                    seps = [' ', '(']
+                    author = ''
+                    if ('-' in pub) and (' ' not in pub):
+                        seps = ['-', '-']
+                    if '_' in pub:
+                        author = pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0].split('_')[0][1:] + '-' + \
+                                 pub.split(seps[0])[0].split('_')[1]
+                    else:
+                        author = pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0][1:]
+                    ref_fields['authors'].append(author)
+                    if (seps[1] == '-'):
+                        ref_fields['dates'].append(pub.split(seps[1])[1])
+                    elif ('(' in pub):
                         ref_fields['dates'].append(pub.split(seps[1])[1][:-1])
-                for id in row['publication'].split('|'):
-                    if ('pubmed' not in id) | (id == '-') | (id == ''): continue
+                for id in row['publication_ID'].split('|'):
+                    if ('pubmed' not in id) | (id == '-') | (id == '') | ('DIP' in id): continue
                     ref_fields['pmids'].append(id.split('pubmed:')[1])
                 for type in row['type'].split('|'):
                     if (type == '-') | (type == ''): continue
@@ -151,57 +172,99 @@ def parse_ecoli_bindingdb(session):
                 for confidence in row['confidence'].split('|'):
                     if (confidence == '-') | (confidence == ''): continue
                     if (confidence.split(':')[0] == 'core') | (confidence.split(':')[0] == 'ist'): continue
-                    ref_fields['confidences'].append(confidence.split('(')[1][:-1])
+                    ref_fields['confidences'].append(confidence)
 
                 for field in ref_fields:
                     if len(ref_fields[field]) == 0:
                         ref_fields[field].append(None)
 
-                detections_full = []
                 if (ref_fields['psimi_detections'][0] is None) and (ref_fields['detections'][0] is not None):
                     for i in range(1, len(ref_fields['detections'])):
                         ref_fields['psimi_detections'].append(None)
-                types_full = []
                 if (ref_fields['psimi_types'][0] is None) and (ref_fields['types'][0] is not None):
                     for i in range(1, len(ref_fields['types'])):
                         ref_fields['psimi_types'].append(None)
-                dbs_full = []
                 if (ref_fields['psimi_dbs'][0] is None) and (ref_fields['dbs'][0] is not None):
                     for i in range(1, len(ref_fields['dbs'])):
-                        ref_fields['psimi_types'].append(None)
-                detections_full = zip(ref_fields['psimi_detections'], ref_fields['detections'])
-                types_full = zip(ref_fields['psimi_types'], ref_fields['types'])
-                dbs_full = zip(ref_fields['psimi_dbs'], ref_fields['dbs'])
-                if (ref_fields['pmids'][0] is None) and (ref_fields[''])
-                if len(ref_fields[''])
+                        ref_fields['psimi_dbs'].append(None)
 
-                for combination in itertools.product(ref_fields['psimi_detections'], ref_fields[''], us_stars):
-                for psimi_detection, detection in zip(psimi_detections, detections):
-                    for confidence in confidences:
-                        reference = InteractionReference(interaction_id=interaction.id,
-                                                         psimi_detection=psimi_detection,
-                                                         detection_method=
-                                                         row['Interaction detection method(s)'].split('(')[1][:-1],
-                                                         author_ln=author,
-                                                         pub_date=date,
-                                                         pmid=
-                                                         row['Publication Identifier(s)'].split('pubmed:')[1].split(
-                                                             '|')[0],
-                                                         psimi_type=psimi_type,
-                                                         interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
-                                                         psimi_db=psimi_db,
-                                                         source_db=row['Source database(s)'].split('(')[1][:-1],
-                                                         confidence=confidence,
-                                                         interactor_a_id=interactor_a,
-                                                         interactor_b_id=interactor_b)
-                        session.add(reference)
+                detections_full = list(zip(ref_fields['psimi_detections'], ref_fields['detections']))
+                types_full = list(zip(ref_fields['psimi_types'], ref_fields['types']))
+                dbs_full = list(zip(ref_fields['psimi_dbs'], ref_fields['dbs']))
 
-                    source = session.query(InteractionSource).filter(
-                        InteractionSource.interaction_id == interaction.id,
-                        InteractionSource.data_source == 'IMEx').first()
+                if (ref_fields['dates'][0] is None) and (ref_fields['authors'][0] is not None):
+                    for i in range(1, len(ref_fields['authors'])):
+                        ref_fields['dates'].append(None)
 
-                    if source is None:
-                        source = InteractionSource(interaction_id=interaction.id, data_source='IMEx')
-                        session.add(source)
+                if (ref_fields['authors'][0] is None) and (ref_fields['dates'][0] is None) and \
+                        (ref_fields['pmids'][0] is not None):
+                    for i in range(1, len(ref_fields['pmids'])):
+                        ref_fields['dates'].append(None)
+                        ref_fields['authors'].append(None)
+                if (ref_fields['authors'][0] is not None) and (ref_fields['dates'][0] is not None) and \
+                        (ref_fields['pmids'][0] is None):
+                    for i in range(1, len(ref_fields['authors'])):
+                        ref_fields['pmids'].append(None)
+                if (ref_fields['authors'][0] is not None) and (ref_fields['dates'][0] is None):
+                    if ref_fields['pmids'][0] is None:
+                        for i in range(1, len(ref_fields['authors'])):
+                            ref_fields['dates'].append(None)
+                            ref_fields['pmids'].append(None)
+                    else:
+                        if len(ref_fields['authors']) == len(ref_fields['pmids']):
+                            ref_fields['dates'].append(None)
+
+                pub_full = [(None, None, None)]
+                if (len(ref_fields['authors']) == len(ref_fields['dates'])) and \
+                        (len(ref_fields['authors']) == len(ref_fields['pmids'])):
+                    pub_full = list(zip(ref_fields['authors'], ref_fields['dates'], ref_fields['pmids']))
+                if (len(list(detections_full)) > 1) & (len(list(pub_full)) == 1) & (len(list(types_full)) == 1):
+                    for i in range(1, len(detections_full)):
+                        pub_full.append(pub_full[0])
+                        types_full.append(types_full[0])
+
+                ref_full = list(zip(detections_full, pub_full, types_full))
+
+                ref_parameter_list = []
+
+                for comb in itertools.product(ref_full, dbs_full, ref_fields['confidences']):
+                    ref_parameters = [comb[0][0][0], comb[0][0][1], comb[0][1][0], comb[0][1][1], comb[0][1][2],
+                                      comb[0][2][0], comb[0][2][1], comb[1][0], comb[1][1], comb[2]]
+                    if all(parameter is None for parameter in ref_parameters): continue
+                    ref_parameter_list.append(ref_parameters)
+
+                for ref in ref_parameter_list:
+                    reference = InteractionReference(psimi_detection=ref[0], detection=ref[1], author_ln=ref[2],
+                                                     pub_date=ref[3], pmid=ref[4], psimi_type=ref[5], type=ref[6],
+                                                     psimi_db=ref[7],db=ref[8], confidence=ref[9],
+                                                     interactor_a=interactor_a, interactor_b=interactor_b)
+                    if session.query(InteractionReference).filter(InteractionReference == reference).first() is None:
+                        interaction.references.append(reference)
+                        session.add(reference), session.commit()
+                    else:
+                        if reference not in interaction.references:
+                            interaction.references.append(reference)
+                        interaction.append(reference)
+
+                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
+                                                                 InteractionSource.data_source == source).first()
+
+                is_experimental, not_experimental, experimental = None, None, None
+                for psimi_detection in ref_fields['psimi_detections']:
+                    if psimi_detection is not None:
+                        if is_experimental_psimi(psimi_detection):
+                            is_experimental = 1
+                        else:
+                            not_experimental = 1
+                if is_experimental == 1:
+                    experimental = 1
+                elif not_experimental == 1:
+                    experimental = 0
+                if source is None:
+                    source = InteractionSource(interaction_id=interaction.id, data_source=source,
+                                               is_experimental=experimental)
+                    session.add(source)
+                elif experimental == 1:
+                    source.is_experimental= 1
             session.commit()
             print(session.query(Interaction).count())

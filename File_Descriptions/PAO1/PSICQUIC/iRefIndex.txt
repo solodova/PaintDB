@@ -1,252 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:Q9HUS3', 'refseq:NP_250044', 'rogid:rzo1emW+T0Xjkfz34tqQEsuL27k208964', 'complex:JmWcgmPkHg+be8sYUkpgQArardI']
-{'uniprotkb': 385, 'refseq': 32, 'rogid': 99, 'complex': 61}
-not present in all entries: refseq, rogid, complex, uniprotkb
+total num occurences of each id:{'uniprotkb': 385, 'refseq': 32, 'rogid': 99, 'complex': 61}
+not present in all entries: {'refseq': 545, 'rogid': 478, 'complex': 516, 'uniprotkb': 192}
+number of each id in entries:{'uniprotkb': {1: 385, 0: 192}, 'refseq': {0: 545, 1: 32}, 'rogid': {0: 478, 1: 99}, 'complex': {0: 516, 1: 61}}
 num elements in column: {1: 577}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:Q9HUS3', 'rogid:ON6IczUEJUTb9F46L6aalvE5W/o208964', 'refseq:NP_250468']
-{'uniprotkb': 435, 'rogid': 95, 'refseq': 47}
-not present in all entries: rogid, refseq, uniprotkb
+total num occurences of each id:{'uniprotkb': 435, 'rogid': 95, 'refseq': 47}
+not present in all entries: {'rogid': 482, 'refseq': 530, 'uniprotkb': 142}
+number of each id in entries:{'uniprotkb': {1: 435, 0: 142}, 'rogid': {0: 482, 1: 95}, 'refseq': {0: 530, 1: 47}}
 num elements in column: {1: 577}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['entrezgene/locuslink:882265', 'uniprotkb:Q9HUS3', 'rogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964', 'irogid:29031125', 'refseq:NP_250044', 'ddbj/embl/genbank:AAC64521', 'genbank_protein_gi:AAC64521', 'pdb:1U7I']
-{'entrezgene/locuslink': 421, 'uniprotkb': 383, 'rogid': 577, 'irogid': 516, 'refseq': 136, 'ddbj/embl/genbank': 47, 'genbank_protein_gi': 47, 'pdb': 156}
-not present in all entries: refseq, ddbj/embl/genbank, genbank_protein_gi, pdb, uniprotkb, entrezgene/locuslink, irogid
+total num occurences of each id:{'entrezgene/locuslink': 421, 'uniprotkb': 383, 'rogid': 577, 'irogid': 516, 'refseq': 136, 'ddbj/embl/genbank': 47, 'genbank_protein_gi': 47, 'pdb': 156}
+not present in all entries: {'refseq': 441, 'ddbj/embl/genbank': 530, 'genbank_protein_gi': 530, 'pdb': 525, 'uniprotkb': 194, 'entrezgene/locuslink': 164, 'irogid': 61}
+number of each id in entries:{'entrezgene/locuslink': {1: 407, 0: 164, 3: 2, 2: 4}, 'uniprotkb': {1: 383, 0: 194}, 'rogid': {1: 577}, 'irogid': {1: 516, 0: 61}, 'refseq': {0: 441, 1: 136}, 'ddbj/embl/genbank': {0: 530, 1: 47}, 'genbank_protein_gi': {0: 530, 1: 47}, 'pdb': {0: 525, 3: 52}}
 num elements in column: {4: 342, 5: 166, 3: 8, 1: 61}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['entrezgene/locuslink:882265', 'uniprotkb:Q9HUS3', 'rogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964', 'irogid:29031125', 'pdb:1U6L', 'refseq:NP_250468', 'ddbj/embl/genbank:AAC64521', 'genbank_protein_gi:AAC64521', 'cygd:YDR385W']
-{'entrezgene/locuslink': 489, 'uniprotkb': 433, 'rogid': 577, 'irogid': 577, 'pdb': 146, 'refseq': 152, 'ddbj/embl/genbank': 47, 'genbank_protein_gi': 47, 'cygd': 22}
-not present in all entries: pdb, refseq, ddbj/embl/genbank, genbank_protein_gi, cygd, entrezgene/locuslink, uniprotkb
+total num occurences of each id:{'entrezgene/locuslink': 489, 'uniprotkb': 433, 'rogid': 577, 'irogid': 577, 'pdb': 146, 'refseq': 152, 'ddbj/embl/genbank': 47, 'genbank_protein_gi': 47, 'cygd': 22}
+not present in all entries: {'pdb': 528, 'refseq': 425, 'ddbj/embl/genbank': 530, 'genbank_protein_gi': 530, 'cygd': 566, 'entrezgene/locuslink': 92, 'uniprotkb': 156}
+number of each id in entries:{'entrezgene/locuslink': {1: 483, 0: 92, 3: 2}, 'uniprotkb': {1: 409, 0: 156, 2: 12}, 'rogid': {1: 577}, 'irogid': {1: 577}, 'pdb': {0: 528, 3: 48, 2: 1}, 'refseq': {0: 425, 1: 152}, 'ddbj/embl/genbank': {0: 530, 1: 47}, 'genbank_protein_gi': {0: 530, 1: 47}, 'cygd': {0: 566, 2: 11}}
 num elements in column: {4: 393, 5: 183, 3: 1}
 
-column name: Alias(es) interactor A
-sample entries: ['hgnc:desT', 'uniprotkb:Q9HUS3_PSEAE', 'crogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964', 'icrogid:29031125']
-{'hgnc': 421, 'uniprotkb': 385, 'crogid': 577, 'icrogid': 577}
-not present in all entries: uniprotkb, hgnc
-num elements in column: {4: 371, 3: 44, 2: 156, 6: 2, 5: 4}
-
-column name: Alias(es) interactor B
-sample entries: ['hgnc:desT', 'uniprotkb:Q9HUS3_PSEAE', 'crogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964', 'icrogid:29031125']
-{'hgnc': 500, 'uniprotkb': 435, 'crogid': 577, 'icrogid': 577}
-not present in all entries: hgnc, uniprotkb
-num elements in column: {4: 421, 2: 91, 3: 52, 6: 2, 5: 11}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0114"(x-ray crystallography)', '-']
-{'psi-mi': 505, '-': 74}
-not present in all entries: -, psi-mi
+total num occurences of each id:{'psi-mi': 505, '-': 74}
+not present in all entries: {'-': 503, 'psi-mi': 74}
+number of each id in entries:{'psi-mi': {1: 502, 0: 74, 3: 1}, '-': {0: 503, 1: 74}}
 num elements in column: {1: 576, 3: 1}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['-', 'miller-2010-1']
-{'-': 432}
-not present in all entries: -
+total num occurences of each id:{'-': 432}
+not present in all entries: {'-': 145}
+number of each id in entries:{'-': {1: 432, 0: 145}}
 num elements in column: {1: 577}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:20639888', '-']
-{'pubmed': 492, '-': 87}
-not present in all entries: -, pubmed
+total num occurences of each id:{'pubmed': 492, '-': 87}
+not present in all entries: {'-': 490, 'pubmed': 87}
+number of each id in entries:{'pubmed': {1: 488, 0: 87, 2: 2}, '-': {0: 490, 1: 87}}
 num elements in column: {1: 575, 2: 2}
 
-column name: Taxid interactor A
-sample entries: ['taxid:208964(Pseudomonas aeruginosa PAO1)', '-']
-{'taxid': 516, '-': 61}
-not present in all entries: -, taxid
-num elements in column: {1: 577}
-
-column name: Taxid interactor B
-sample entries: ['taxid:208964(Pseudomonas aeruginosa PAO1)']
-{'taxid': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0407"(direct interaction)', '-']
-{'psi-mi': 368, '-': 209}
-not present in all entries: -, psi-mi
+total num occurences of each id:{'psi-mi': 368, '-': 209}
+not present in all entries: {'-': 368, 'psi-mi': 209}
+number of each id in entries:{'psi-mi': {1: 368, 0: 209}, '-': {0: 368, 1: 209}}
 num elements in column: {1: 577}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0465"(dip)']
-{'psi-mi': 577}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 577}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 577}}
 num elements in column: {1: 577}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['dip:DIP-186572E', 'rigid:nCkoaaxXZeF+gqERBP3sAn+UCHw', 'edgetype:Y', 'intact:EBI-15866453', 'bind:306116', 'mpidb:MPIDB-INT-1723', 'pdb:3dcq']
-{'dip': 72, 'rigid': 577, 'edgetype': 577, 'intact': 147, 'bind': 209, 'mpidb': 144, 'pdb': 5}
-not present in all entries: intact, bind, mpidb, pdb, dip
+total num occurences of each id:{'dip': 72, 'rigid': 577, 'edgetype': 577, 'intact': 147, 'bind': 209, 'mpidb': 144, 'pdb': 5}
+not present in all entries: {'intact': 430, 'bind': 368, 'mpidb': 433, 'pdb': 572, 'dip': 505}
+number of each id in entries:{'dip': {1: 72, 0: 505}, 'rigid': {1: 577}, 'edgetype': {1: 577}, 'intact': {0: 430, 1: 147}, 'bind': {0: 368, 1: 209}, 'mpidb': {0: 433, 1: 144}, 'pdb': {0: 572, 1: 5}}
 num elements in column: {3: 577}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['hpr:1', 'lpr:1', 'np:1', '-']
-{'hpr': 501, 'lpr': 501, 'np': 501, '-': 76}
-not present in all entries: -, hpr, lpr, np
+total num occurences of each id:{'hpr': 501, 'lpr': 501, 'np': 501, '-': 76}
+not present in all entries: {'-': 501, 'hpr': 76, 'lpr': 76, 'np': 76}
+number of each id in entries:{'hpr': {1: 501, 0: 76}, 'lpr': {1: 501, 0: 76}, 'np': {1: 501, 0: 76}, '-': {0: 501, 1: 76}}
 num elements in column: {3: 501, 1: 76}
-
-column name: Expansion method(s)
-sample entries: ['none:none', 'psi-mi:"MI:1062"(bipartite expansion)']
-{'none': 516, 'psi-mi': 61}
-not present in all entries: psi-mi, none
-num elements in column: {1: 577}
-
-column name: Biological role(s) interactor A
-sample entries: ['psi-mi:"MI:0000"(unspecified)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Biological role(s) interactor B
-sample entries: ['psi-mi:"MI:0000"(unspecified)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Experimental role(s) interactor A
-sample entries: ['psi-mi:"MI:0000"(unspecified)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Experimental role(s) interactor B
-sample entries: ['psi-mi:"MI:0000"(unspecified)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Type(s) interactor A
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Type(s) interactor B
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Xref(s) interactor A
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Xref(s) interactor B
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Interaction Xref(s)
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Annotation(s) interactor A
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Annotation(s) interactor B
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Interaction annotation(s)
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Host organism(s)
-sample entries: ['-', 'taxid:562(Escherichia coli)']
-{'-': 431, 'taxid': 146}
-not present in all entries: taxid, -
-num elements in column: {1: 577}
-
-column name: Interaction parameter(s)
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Creation date
-sample entries: ['2018/01/22']
-{}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Update date
-sample entries: ['2018/01/22']
-{}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Checksum(s) interactor A
-sample entries: ['rogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964']
-{'rogid': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Checksum(s) interactor B
-sample entries: ['rogid:CwyHGy9CaKg2JwP3a3Xb6JSwLVk208964']
-{'rogid': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Interaction Checksum(s)
-sample entries: ['rigid:nCkoaaxXZeF+gqERBP3sAn+UCHw']
-{'rigid': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Negative
-sample entries: ['false']
-{}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Feature(s) interactor A
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Feature(s) interactor B
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Stoichiometry(s) interactor A
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Stoichiometry(s) interactor B
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Identification method participant A
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
-
-column name: Identification method participant B
-sample entries: ['-']
-{'-': 577}
-not present in all entries: 
-num elements in column: {1: 577}
 

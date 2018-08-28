@@ -1,252 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:A0A0H2Z989', 'complex:KK5loJe2We7yphnDkPc3j/gt+ks']
-{'uniprotkb': 33, 'complex': 150}
-not present in all entries: complex, uniprotkb
+total num occurences of each id:{'uniprotkb': 33, 'complex': 150}
+not present in all entries: {'complex': 33, 'uniprotkb': 150}
+number of each id in entries:{'uniprotkb': {1: 33, 0: 150}, 'complex': {0: 33, 1: 150}}
 num elements in column: {1: 183}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:A0A0H2Z989']
-{'uniprotkb': 183}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 183}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 183}}
 num elements in column: {1: 183}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['uniprotkb:A0A0H2Z989', 'rogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963', 'irogid:30433072']
-{'uniprotkb': 33, 'rogid': 183, 'irogid': 33}
-not present in all entries: uniprotkb, irogid
+total num occurences of each id:{'uniprotkb': 33, 'rogid': 183, 'irogid': 33}
+not present in all entries: {'uniprotkb': 150, 'irogid': 150}
+number of each id in entries:{'uniprotkb': {1: 33, 0: 150}, 'rogid': {1: 183}, 'irogid': {1: 33, 0: 150}}
 num elements in column: {3: 33, 1: 150}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['uniprotkb:A0A0H2Z989', 'rogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963', 'irogid:30433072', 'entrezgene/locuslink:14515639']
-{'uniprotkb': 183, 'rogid': 183, 'irogid': 183, 'entrezgene/locuslink': 4}
-not present in all entries: entrezgene/locuslink
+total num occurences of each id:{'uniprotkb': 183, 'rogid': 183, 'irogid': 183, 'entrezgene/locuslink': 4}
+not present in all entries: {'entrezgene/locuslink': 179}
+number of each id in entries:{'uniprotkb': {1: 183}, 'rogid': {1: 183}, 'irogid': {1: 183}, 'entrezgene/locuslink': {0: 179, 1: 4}}
 num elements in column: {3: 179, 4: 4}
 
-column name: Alias(es) interactor A
-sample entries: ['uniprotkb:A0A0H2Z989_PSEAB', 'crogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963', 'icrogid:30433072']
-{'uniprotkb': 33, 'crogid': 183, 'icrogid': 183}
-not present in all entries: uniprotkb
-num elements in column: {3: 33, 2: 150}
-
-column name: Alias(es) interactor B
-sample entries: ['uniprotkb:A0A0H2Z989_PSEAB', 'crogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963', 'icrogid:30433072', 'hgnc:H380_gp35']
-{'uniprotkb': 183, 'crogid': 183, 'icrogid': 183, 'hgnc': 4}
-not present in all entries: hgnc
-num elements in column: {3: 179, 4: 4}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0071"(molecular sieving)']
-{'psi-mi': 183}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 183}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 183}}
 num elements in column: {1: 183}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['bernhards-2013-1', '-']
-{'-': 94}
-not present in all entries: -
+total num occurences of each id:{'-': 94}
+not present in all entries: {'-': 89}
+number of each id in entries:{'-': {0: 89, 1: 94}}
 num elements in column: {1: 183}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['pubmed:23279839']
-{'pubmed': 183}
-not present in all entries: 
+total num occurences of each id:{'pubmed': 183}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 183}}
 num elements in column: {1: 183}
 
-column name: Taxid interactor A
-sample entries: ['taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)', '-']
-{'taxid': 33, '-': 150}
-not present in all entries: -, taxid
-num elements in column: {1: 183}
-
-column name: Taxid interactor B
-sample entries: ['taxid:208963(Pseudomonas aeruginosa UCBPP-PA14)']
-{'taxid': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0407"(direct interaction)']
-{'psi-mi': 183}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 183}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 183}}
 num elements in column: {1: 183}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0469"(intact)']
-{'psi-mi': 183}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 183}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 183}}
 num elements in column: {1: 183}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-8288491', 'rigid:LjUWnzk/C+zypl0T+u5AX1gExGA', 'edgetype:Y', 'dip:DIP-189143E']
-{'intact': 89, 'rigid': 183, 'edgetype': 183, 'dip': 94}
-not present in all entries: dip, intact
+total num occurences of each id:{'intact': 89, 'rigid': 183, 'edgetype': 183, 'dip': 94}
+not present in all entries: {'dip': 89, 'intact': 94}
+number of each id in entries:{'intact': {1: 89, 0: 94}, 'rigid': {1: 183}, 'edgetype': {1: 183}, 'dip': {0: 89, 1: 94}}
 num elements in column: {3: 183}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['hpr:2', 'lpr:2', 'np:1']
-{'hpr': 183, 'lpr': 183, 'np': 183}
-not present in all entries: 
+total num occurences of each id:{'hpr': 183, 'lpr': 183, 'np': 183}
+not present in all entries: {}
+number of each id in entries:{'hpr': {1: 183}, 'lpr': {1: 183}, 'np': {1: 183}}
 num elements in column: {3: 183}
-
-column name: Expansion method(s)
-sample entries: ['none:none', 'psi-mi:"MI:1062"(bipartite expansion)']
-{'none': 33, 'psi-mi': 150}
-not present in all entries: psi-mi, none
-num elements in column: {1: 183}
-
-column name: Biological role(s) interactor A
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Biological role(s) interactor B
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Experimental role(s) interactor A
-sample entries: ['psi-mi:"MI:0497"(neutral component)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Experimental role(s) interactor B
-sample entries: ['psi-mi:"MI:0497"(neutral component)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Type(s) interactor A
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Type(s) interactor B
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Xref(s) interactor A
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Xref(s) interactor B
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Interaction Xref(s)
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Annotation(s) interactor A
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Annotation(s) interactor B
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Interaction annotation(s)
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Host organism(s)
-sample entries: ['taxid:-1(-)', '-']
-{'taxid': 89, '-': 94}
-not present in all entries: -, taxid
-num elements in column: {1: 183}
-
-column name: Interaction parameter(s)
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Creation date
-sample entries: ['2018/01/22']
-{}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Update date
-sample entries: ['2018/01/22']
-{}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Checksum(s) interactor A
-sample entries: ['rogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963']
-{'rogid': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Checksum(s) interactor B
-sample entries: ['rogid:FktaT52lY0EbdSi5WQg2W7wrTVQ208963']
-{'rogid': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Interaction Checksum(s)
-sample entries: ['rigid:LjUWnzk/C+zypl0T+u5AX1gExGA']
-{'rigid': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Negative
-sample entries: ['false']
-{}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Feature(s) interactor A
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Feature(s) interactor B
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Stoichiometry(s) interactor A
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Stoichiometry(s) interactor B
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Identification method participant A
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
-
-column name: Identification method participant B
-sample entries: ['-']
-{'-': 183}
-not present in all entries: 
-num elements in column: {1: 183}
 

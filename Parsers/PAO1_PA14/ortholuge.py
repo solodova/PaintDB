@@ -14,22 +14,24 @@ def get_inparalogs(ortholog_file):
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row['Strain 1 Inparalogs (Locus Tag/Name)'] != '':
-                strain1_inparalogs = row['Strain 1 Inparalogs (Locus Tag/Name)'].split(';')
+                strain1_inparalogs = row['Strain 1 Inparalogs (Locus Tag/Name)'].split(']')
 
                 for inparalog in strain1_inparalogs:
                     inparalog_id=inparalog.split('[')[0]
-
+                    if inparalog_id[0] == ';':
+                        del inparalog_id[0]
                     if inparalog_id in inparalogs.keys():
                         inparalogs[inparalog_id].append(row['Locus Tag (Strain 2)'])
                     else:
                         inparalogs[inparalog_id] = [row['Locus Tag (Strain 2)']]
 
             if row['Strain 2 Inparalogs (Locus Tag/Name)'] != '':
-                strain2_inparalogs = row['Strain 2 Inparalogs (Locus Tag/Name)'].split(';')
+                strain2_inparalogs = row['Strain 2 Inparalogs (Locus Tag/Name)'].split(']')
 
                 for inparalog in strain2_inparalogs:
-                    inparalog_id=inparalog.split('[')[0]
-
+                    inparalog_id = inparalog.split('[')[0]
+                    if inparalog_id[0] == ';':
+                        del inparalog_id[0]
                     if inparalog_id in inparalogs.keys():
                         inparalogs[inparalog_id].append(row['Locus Tag (Strain 1)'])
                     else:

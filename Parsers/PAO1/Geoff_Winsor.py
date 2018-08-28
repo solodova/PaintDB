@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, Interaction, InteractionSource, InteractionReference
+from Schema1 import Interactor, Interaction, InteractionSource, InteractionReference, is_experimental_psimi
 
 def parse_geoff(session):
     with open('Data/PAO1/GeoffWinsor.csv') as csvfile:
@@ -9,7 +9,7 @@ def parse_geoff(session):
 
             if session.query(Interactor).filter(Interactor.id == row['locus_tag']).first() is not None:
                 interactors.append(session.query(Interactor).filter(Interactor.id == row['locus_tag']).one())
-            row = next(reader)
+            next(reader)
             if session.query(Interactor).filter(Interactor.id == row['locus_tag']).first() is not None:
                 interactors.append(session.query(Interactor).filter(Interactor.id == row['locus_tag']).one())
 
@@ -21,23 +21,24 @@ def parse_geoff(session):
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
                 type = interactors[0].type + '-' + interactors[1].type
-                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors,
-                                          is_experimental=1)
+                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors)
                 session.add(interaction), session.commit()
-            else:
-                interaction.is_experimental = 1
 
-            reference = InteractionReference(interaction_id=interaction.id,
-                                             detection_method=row['experimental type'],
-                                             pmid=row['pmid'],
-                                             comment=row['full_name'])
-            session.add(reference)
+
+            reference = InteractionReference(detection_method=row['experimental type'],
+                                             pmid=row['pmid'])
+            if session.query(InteractionReference).filter(InteractionReference == reference).first() is None:
+                interaction.references.append(reference)
+                session.add(reference), session.commit()
+            else:
+                if reference not in interaction.references:
+                    interaction.references.append(reference)
 
             source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
                                                              InteractionSource.data_source == 'Geoff').first()
 
             if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='Geoff')
+                source = InteractionSource(interaction_id=interaction.id, data_source='Geoff', is_experimental=1)
                 session.add(source)
 
         session.commit()

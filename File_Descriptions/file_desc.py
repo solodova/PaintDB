@@ -30,7 +30,7 @@ def parse():
     of_interest_ecoli_cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'detection',
             'publication', 'publication_ID', 'type', 'source_db', 'identifier', 'confidence']
     #for file in file_names:
-    file = file_names[10]
+    file = file_names[24]
 
     input_file = input_prefix+file
 

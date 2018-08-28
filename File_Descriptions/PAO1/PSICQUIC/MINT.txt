@@ -1,252 +1,77 @@
-column name: #ID(s) interactor A
+column name: interactor_A
 sample entries: ['uniprotkb:Q51548']
-{'uniprotkb': 21}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 21}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 21}}
 num elements in column: {1: 21}
 
-column name: ID(s) interactor B
+column name: interactor_B
 sample entries: ['uniprotkb:Q9I157']
-{'uniprotkb': 21}
-not present in all entries: 
+total num occurences of each id:{'uniprotkb': 21}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 21}}
 num elements in column: {1: 21}
 
-column name: Alt. ID(s) interactor A
+column name: altID_A
 sample entries: ['intact:EBI-8691202', 'uniprotkb:Q5EEX5']
-{'intact': 24, 'uniprotkb': 8}
-not present in all entries: uniprotkb
+total num occurences of each id:{'intact': 24, 'uniprotkb': 8}
+not present in all entries: {'uniprotkb': 19}
+number of each id in entries:{'intact': {1: 18, 2: 3}, 'uniprotkb': {0: 19, 4: 2}}
 num elements in column: {1: 16, 2: 3, 5: 2}
 
-column name: Alt. ID(s) interactor B
+column name: altID_B
 sample entries: ['intact:EBI-8691252', 'uniprotkb:Q5EEX5']
-{'intact': 24, 'uniprotkb': 8}
-not present in all entries: uniprotkb
+total num occurences of each id:{'intact': 24, 'uniprotkb': 8}
+not present in all entries: {'uniprotkb': 19}
+number of each id in entries:{'intact': {1: 18, 2: 3}, 'uniprotkb': {0: 19, 4: 2}}
 num elements in column: {1: 16, 2: 3, 5: 2}
 
-column name: Alias(es) interactor A
-sample entries: ['psi-mi:pvda_pseae(display_long)', 'uniprotkb:"L-ornithine N(5)-hydroxylase"(gene name synonym)']
-{'psi-mi': 39, 'uniprotkb': 56}
-not present in all entries: 
-num elements in column: {8: 4, 4: 13, 2: 3, 5: 1}
-
-column name: Alias(es) interactor B
-sample entries: ['psi-mi:q9i157_pseae(display_long)', 'uniprotkb:pvdL(gene name)']
-{'psi-mi': 39, 'uniprotkb': 45}
-not present in all entries: 
-num elements in column: {4: 16, 8: 1, 2: 3, 6: 1}
-
-column name: Interaction detection method(s)
+column name: detection
 sample entries: ['psi-mi:"MI:0096"(pull down)']
-{'psi-mi': 21}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 21}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 21}}
 num elements in column: {1: 21}
 
-column name: Publication 1st author(s)
+column name: publication
 sample entries: ['Imperi et al. (2013)']
-{}
-not present in all entries: 
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
 num elements in column: {1: 21}
 
-column name: Publication Identifier(s)
+column name: publication_ID
 sample entries: ['imex:IM-21420', 'pubmed:24042050', 'mint:fj-12-0809', 'doi:10.1038/embor.2010.96']
-{'imex': 17, 'pubmed': 21, 'mint': 9, 'doi': 2}
-not present in all entries: mint, doi, imex
+total num occurences of each id:{'imex': 17, 'pubmed': 21, 'mint': 9, 'doi': 2}
+not present in all entries: {'mint': 15, 'doi': 19, 'imex': 4}
+number of each id in entries:{'imex': {1: 17, 0: 4}, 'pubmed': {1: 21}, 'mint': {0: 15, 2: 3, 1: 3}, 'doi': {0: 19, 1: 2}}
 num elements in column: {2: 16, 3: 3, 4: 2}
 
-column name: Taxid interactor A
-sample entries: ['taxid:208964(pseae)']
-{'taxid': 42}
-not present in all entries: 
-num elements in column: {2: 21}
-
-column name: Taxid interactor B
-sample entries: ['taxid:208964(pseae)']
-{'taxid': 42}
-not present in all entries: 
-num elements in column: {2: 21}
-
-column name: Interaction type(s)
+column name: type
 sample entries: ['psi-mi:"MI:0914"(association)']
-{'psi-mi': 21}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 21}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 21}}
 num elements in column: {1: 21}
 
-column name: Source database(s)
+column name: source_db
 sample entries: ['psi-mi:"MI:0471"(MINT)']
-{'psi-mi': 21}
-not present in all entries: 
+total num occurences of each id:{'psi-mi': 21}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 21}}
 num elements in column: {1: 21}
 
-column name: Interaction identifier(s)
+column name: identifier
 sample entries: ['intact:EBI-8691183', 'imex:IM-21420-1', 'mint:MINT-8405716']
-{'intact': 21, 'imex': 17, 'mint': 6}
-not present in all entries: mint, imex
+total num occurences of each id:{'intact': 21, 'imex': 17, 'mint': 6}
+not present in all entries: {'mint': 15, 'imex': 4}
+number of each id in entries:{'intact': {1: 21}, 'imex': {1: 17, 0: 4}, 'mint': {0: 15, 1: 6}}
 num elements in column: {2: 19, 3: 2}
 
-column name: Confidence value(s)
+column name: confidence
 sample entries: ['intact-miscore:0.35']
-{'intact-miscore': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Expansion method(s)
-sample entries: ['psi-mi:"MI:1060"(spoke expansion)', '-']
-{'psi-mi': 2, '-': 19}
-not present in all entries: -, psi-mi
-num elements in column: {1: 21}
-
-column name: Biological role(s) interactor A
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Biological role(s) interactor B
-sample entries: ['psi-mi:"MI:0499"(unspecified role)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Experimental role(s) interactor A
-sample entries: ['psi-mi:"MI:0496"(bait)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Experimental role(s) interactor B
-sample entries: ['psi-mi:"MI:0498"(prey)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Type(s) interactor A
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Type(s) interactor B
-sample entries: ['psi-mi:"MI:0326"(protein)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Xref(s) interactor A
-sample entries: ['go:"GO:0004497"(monooxygenase activity)', 'interpro:IPR036188', 'mint:Q51548', 'rcsb pdb:3S5W', 'refseq:NP_251076.1', 'dip:DIP-48787N']
-{'go': 139, 'interpro': 109, 'mint': 27, 'rcsb pdb': 160, 'refseq': 42, 'dip': 8}
-not present in all entries: dip, rcsb pdb
-num elements in column: {13: 4, 19: 1, 21: 3, 15: 1, 111: 1, 22: 2, 23: 5, 14: 3, 24: 1}
-
-column name: Xref(s) interactor B
-sample entries: ['refseq:WP_003115540.1', 'go:"GO:0002049"(pyoverdine biosynthetic process)', 'interpro:IPR036736', 'mint:Q9I157', 'rcsb pdb:3S5W', 'dip:DIP-48787N']
-{'refseq': 42, 'go': 122, 'interpro': 129, 'mint': 27, 'rcsb pdb': 152, 'dip': 8}
-not present in all entries: rcsb pdb, dip
-num elements in column: {17: 1, 16: 3, 13: 1, 21: 3, 15: 1, 111: 1, 22: 2, 23: 5, 14: 3, 12: 1}
-
-column name: Interaction Xref(s)
-sample entries: ['-', 'go:"GO:0060187"(cell pole)', 'rcsb pdb:4RNF']
-{'-': 17, 'go': 2, 'rcsb pdb': 3}
-not present in all entries: go, rcsb pdb, -
-num elements in column: {1: 20, 2: 1}
-
-column name: Annotation(s) interactor A
-sample entries: ['-', 'comment:mint', 'crc64:9C3881D7B6D64B67']
-{'-': 11, 'comment': 12, 'crc64': 3}
-not present in all entries: comment, crc64, -
-num elements in column: {1: 17, 3: 1, 2: 3}
-
-column name: Annotation(s) interactor B
-sample entries: ['-', 'comment:mint', 'crc64:9C3881D7B6D64B67', 'function:Inhibitor of the alkaline protease. It forms a non-covalent bond with the protease and may prevent its autocatalytic cleavage in the periplasm']
-{'-': 11, 'comment': 12, 'crc64': 3, 'function': 1}
-not present in all entries: comment, crc64, function, -
-num elements in column: {1: 17, 3: 2, 2: 2}
-
-column name: Interaction annotation(s)
-sample entries: ['figure legend:f3a', 'curation depth:imex curation', 'full coverage:Only protein-protein interactions', 'comment:"\\"Iron-depleted P. aeruginosa cells were analyzed by confocal  laser scanning microscopy to assess the in vivo localization of ECFP- and EYFP-tagged  proteins. The two protein pairs (PvdA-ECFP/EYFP-PvdJ and PvdA-ECFP/PvdD-EYFP) clearly  co-localized in both exponential and stationary phase cells (Figs. 4 and S3). During early  exponential phase, this protein complex was mainly detected at cell poles (Fig. 4). Such  polar localization was less evident in late exponential and stationary phase cells, where  proteins appeared more homogeneously distributed at the cell periphery (Fig. S3).\\""']
-{'figure legend': 20, 'curation depth': 17, 'full coverage': 17, 'comment': 11}
-not present in all entries: comment, curation depth, full coverage, figure legend
-num elements in column: {3: 13, 4: 5, 2: 3}
-
-column name: Host organism(s)
-sample entries: ['taxid:208964(pseae)']
-{'taxid': 42}
-not present in all entries: 
-num elements in column: {2: 21}
-
-column name: Interaction parameter(s)
-sample entries: ['-']
-{'-': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Creation date
-sample entries: ['2013/08/26']
-{}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Update date
-sample entries: ['2014/10/16']
-{}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Checksum(s) interactor A
-sample entries: ['rogid:XrioRsBd5r9+qcESs5Th37hJqPo208964']
-{'rogid': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Checksum(s) interactor B
-sample entries: ['rogid:307B51C60Ie7OAj4EwZlJgVARfw208964']
-{'rogid': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Interaction Checksum(s)
-sample entries: ['intact-crc:D15C31C4FCF88D42', 'rigid:AMt2DVYKNK+QOI1cwHaCjq/+LSo']
-{'intact-crc': 13, 'rigid': 21}
-not present in all entries: intact-crc
-num elements in column: {2: 13, 1: 8}
-
-column name: Negative
-sample entries: ['false']
-{}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Feature(s) interactor A
-sample entries: ['his tag:?-?', 'fusion protein:?-?', 'cyan fluorescent protein tag:c-c', 'enhanced yellow fluorescent protein tag:c-c', '-', 'binding-associated region:1-142(MINT-8011556)', 'tag:?-?(MINT-580850)']
-{'his tag': 2, 'fusion protein': 3, 'cyan fluorescent protein tag': 1, 'enhanced yellow fluorescent protein tag': 1, '-': 9, 'binding-associated region': 4, 'tag': 1}
-not present in all entries: fusion protein, cyan fluorescent protein tag, enhanced yellow fluorescent protein tag, -, binding-associated region, tag, his tag
-num elements in column: {1: 21}
-
-column name: Feature(s) interactor B
-sample entries: ['-', 'fusion protein:?-?', 'binding-associated region:1023-2157', 'enhanced yellow fluorescent protein tag:n-n', 'cyan fluorescent protein tag:c-c', 'mutation increasing interaction:112-112', 'tag:?-?(MINT-580843)']
-{'-': 8, 'fusion protein': 3, 'binding-associated region': 5, 'enhanced yellow fluorescent protein tag': 1, 'cyan fluorescent protein tag': 1, 'mutation increasing interaction': 3, 'tag': 1}
-not present in all entries: fusion protein, binding-associated region, enhanced yellow fluorescent protein tag, cyan fluorescent protein tag, mutation increasing interaction, tag, -
-num elements in column: {1: 20, 2: 1}
-
-column name: Stoichiometry(s) interactor A
-sample entries: ['-', '12']
-{'-': 15}
-not present in all entries: -
-num elements in column: {1: 21}
-
-column name: Stoichiometry(s) interactor B
-sample entries: ['-', '0']
-{'-': 10}
-not present in all entries: -
-num elements in column: {1: 21}
-
-column name: Identification method participant A
-sample entries: ['psi-mi:"MI:0032"(de novo protein sequencing by mass spectrometry)']
-{'psi-mi': 21}
-not present in all entries: 
-num elements in column: {1: 21}
-
-column name: Identification method participant B
-sample entries: ['psi-mi:"MI:0032"(de novo protein sequencing by mass spectrometry)']
-{'psi-mi': 21}
-not present in all entries: 
+total num occurences of each id:{'intact-miscore': 21}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 21}}
 num elements in column: {1: 21}
 
