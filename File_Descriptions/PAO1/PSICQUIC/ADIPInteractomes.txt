@@ -1,0 +1,77 @@
+column name: interactor_A
+sample entries: ['uniprotkb:Q9I524']
+total num occurences of each id:{'uniprotkb': 65}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 65}}
+num elements in column: {1: 65}
+
+column name: interactor_B
+sample entries: ['uniprotkb:Q9I524']
+total num occurences of each id:{'uniprotkb': 65}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 65}}
+num elements in column: {1: 65}
+
+column name: altID_A
+sample entries: ['-']
+total num occurences of each id:{'-': 65}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 65}}
+num elements in column: {1: 65}
+
+column name: altID_B
+sample entries: ['-']
+total num occurences of each id:{'-': 65}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 65}}
+num elements in column: {1: 65}
+
+column name: detection
+sample entries: ['psi-mi:"MI:0014"(adenylate cyclase complementation)']
+total num occurences of each id:{'psi-mi': 65}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 65}}
+num elements in column: {1: 65}
+
+column name: publication
+sample entries: ['Battesti, A. et al.(2009)']
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
+num elements in column: {1: 65}
+
+column name: publication_ID
+sample entries: ['pubmed:18996989']
+total num occurences of each id:{'pubmed': 65}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 65}}
+num elements in column: {1: 65}
+
+column name: type
+sample entries: ['-']
+total num occurences of each id:{'-': 65}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 65}}
+num elements in column: {1: 65}
+
+column name: source_db
+sample entries: ['psi-mi:"MI:0469"(intact)']
+total num occurences of each id:{'psi-mi': 65}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 65}}
+num elements in column: {1: 65}
+
+column name: identifier
+sample entries: ['intact:EBI-6405030', 'dip:DIP-196846E']
+total num occurences of each id:{'intact': 59, 'dip': 6}
+not present in all entries: {'dip': 59, 'intact': 6}
+number of each id in entries:{'intact': {1: 59, 0: 6}, 'dip': {0: 59, 1: 6}}
+num elements in column: {1: 65}
+
+column name: confidence
+sample entries: ['-']
+total num occurences of each id:{'-': 65}
+not present in all entries: {}
+number of each id in entries:{'-': {1: 65}}
+num elements in column: {1: 65}
+

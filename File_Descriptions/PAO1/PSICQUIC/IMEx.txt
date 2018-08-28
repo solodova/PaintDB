@@ -1,0 +1,77 @@
+column name: interactor_A
+sample entries: ['uniprotkb:Q51548']
+total num occurences of each id:{'uniprotkb': 132}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 132}}
+num elements in column: {1: 132}
+
+column name: interactor_B
+sample entries: ['uniprotkb:Q9I157']
+total num occurences of each id:{'uniprotkb': 132}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 132}}
+num elements in column: {1: 132}
+
+column name: altID_A
+sample entries: ['intact:EBI-8691202', 'uniprotkb:Q5EEX5']
+total num occurences of each id:{'intact': 133, 'uniprotkb': 40}
+not present in all entries: {'uniprotkb': 111}
+number of each id in entries:{'intact': {1: 131, 2: 1}, 'uniprotkb': {0: 111, 4: 4, 1: 10, 2: 7}}
+num elements in column: {1: 110, 5: 4, 2: 11, 3: 7}
+
+column name: altID_B
+sample entries: ['intact:EBI-8691252', 'uniprotkb:Q9S506']
+total num occurences of each id:{'intact': 133, 'uniprotkb': 48}
+not present in all entries: {'uniprotkb': 110}
+number of each id in entries:{'intact': {1: 131, 2: 1}, 'uniprotkb': {0: 110, 1: 13, 2: 1, 4: 7, 5: 1}}
+num elements in column: {1: 109, 2: 14, 3: 1, 5: 7, 6: 1}
+
+column name: detection
+sample entries: ['psi-mi:"MI:0096"(pull down)']
+total num occurences of each id:{'psi-mi': 132}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 132}}
+num elements in column: {1: 132}
+
+column name: publication
+sample entries: ['Imperi et al. (2013)']
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
+num elements in column: {1: 132}
+
+column name: publication_ID
+sample entries: ['imex:IM-21420', 'pubmed:24042050', 'doi:10.1016/j.str.2014.02.009', 'mint:MINT-8011524']
+total num occurences of each id:{'imex': 132, 'pubmed': 132, 'doi': 66, 'mint': 2}
+not present in all entries: {'doi': 66, 'mint': 130}
+number of each id in entries:{'imex': {1: 132}, 'pubmed': {1: 132}, 'doi': {0: 66, 1: 66}, 'mint': {0: 130, 1: 2}}
+num elements in column: {2: 66, 3: 64, 4: 2}
+
+column name: type
+sample entries: ['psi-mi:"MI:0914"(association)']
+total num occurences of each id:{'psi-mi': 132}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 132}}
+num elements in column: {1: 132}
+
+column name: source_db
+sample entries: ['psi-mi:"MI:0471"(MINT)']
+total num occurences of each id:{'psi-mi': 132}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 132}}
+num elements in column: {1: 132}
+
+column name: identifier
+sample entries: ['intact:EBI-8691183', 'imex:IM-21420-1', 'mpidb:MPIDB-INT-2075', 'wwpdb:2oz6', 'dip:DIP-196444E', 'mint:MINT-8011551']
+total num occurences of each id:{'intact': 132, 'imex': 132, 'mpidb': 46, 'wwpdb': 1, 'dip': 64, 'mint': 2}
+not present in all entries: {'mpidb': 86, 'wwpdb': 131, 'dip': 68, 'mint': 130}
+number of each id in entries:{'intact': {1: 132}, 'imex': {1: 132}, 'mpidb': {0: 86, 1: 46}, 'wwpdb': {0: 131, 1: 1}, 'dip': {0: 68, 1: 64}, 'mint': {0: 130, 1: 2}}
+num elements in column: {2: 20, 3: 111, 4: 1}
+
+column name: confidence
+sample entries: ['intact-miscore:0.35']
+total num occurences of each id:{'intact-miscore': 132}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 132}}
+num elements in column: {1: 132}
+

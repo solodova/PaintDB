@@ -1,0 +1,77 @@
+column name: interactor_A
+sample entries: ['uniprotkb:P27017']
+total num occurences of each id:{'uniprotkb': 7}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 7}}
+num elements in column: {1: 7}
+
+column name: interactor_B
+sample entries: ['uniprotkb:P10932']
+total num occurences of each id:{'uniprotkb': 7}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 7}}
+num elements in column: {1: 7}
+
+column name: altID_A
+sample entries: ['intact:EBI-1028510', 'uniprotkb:P31690']
+total num occurences of each id:{'intact': 7, 'uniprotkb': 3}
+not present in all entries: {'uniprotkb': 5}
+number of each id in entries:{'intact': {1: 7}, 'uniprotkb': {0: 5, 2: 1, 1: 1}}
+num elements in column: {1: 5, 3: 1, 2: 1}
+
+column name: altID_B
+sample entries: ['intact:EBI-1028502', 'uniprotkb:Q9HY68']
+total num occurences of each id:{'intact': 7, 'uniprotkb': 1}
+not present in all entries: {'uniprotkb': 6}
+number of each id in entries:{'intact': {1: 7}, 'uniprotkb': {0: 6, 1: 1}}
+num elements in column: {1: 6, 2: 1}
+
+column name: detection
+sample entries: ['psi-mi:"MI:0114"(x-ray crystallography)']
+total num occurences of each id:{'psi-mi': 7}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 7}}
+num elements in column: {1: 7}
+
+column name: publication
+sample entries: ["O'Hara et al. (1999)"]
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
+num elements in column: {1: 7}
+
+column name: publication_ID
+sample entries: ['pubmed:10508151', 'imex:IM-19088']
+total num occurences of each id:{'pubmed': 7, 'imex': 4}
+not present in all entries: {'imex': 3}
+number of each id in entries:{'pubmed': {1: 7}, 'imex': {0: 3, 1: 4}}
+num elements in column: {1: 3, 2: 4}
+
+column name: type
+sample entries: ['psi-mi:"MI:0407"(direct interaction)']
+total num occurences of each id:{'psi-mi': 7}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 7}}
+num elements in column: {1: 7}
+
+column name: source_db
+sample entries: ['psi-mi:"MI:0469"(IntAct)']
+total num occurences of each id:{'psi-mi': 7}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 7}}
+num elements in column: {1: 7}
+
+column name: identifier
+sample entries: ['intact:EBI-1028522', 'rcsb pdb:1QO0', 'imex:IM-19088-4']
+total num occurences of each id:{'intact': 7, 'rcsb pdb': 2, 'imex': 4}
+not present in all entries: {'imex': 3, 'rcsb pdb': 5}
+number of each id in entries:{'intact': {1: 7}, 'rcsb pdb': {1: 2, 0: 5}, 'imex': {0: 3, 1: 4}}
+num elements in column: {2: 6, 1: 1}
+
+column name: confidence
+sample entries: ['intact-miscore:0.44']
+total num occurences of each id:{'intact-miscore': 7}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 7}}
+num elements in column: {1: 7}
+

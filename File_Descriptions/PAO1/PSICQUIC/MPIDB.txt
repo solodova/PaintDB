@@ -1,0 +1,77 @@
+column name: interactor_A
+sample entries: ['uniprotkb:P52003']
+total num occurences of each id:{'uniprotkb': 47}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 47}}
+num elements in column: {1: 47}
+
+column name: interactor_B
+sample entries: ['uniprotkb:Q9HXS2']
+total num occurences of each id:{'uniprotkb': 47}
+not present in all entries: {}
+number of each id in entries:{'uniprotkb': {1: 47}}
+num elements in column: {1: 47}
+
+column name: altID_A
+sample entries: ['intact:EBI-6400193', 'uniprotkb:Q5EEX5']
+total num occurences of each id:{'intact': 47, 'uniprotkb': 20}
+not present in all entries: {'uniprotkb': 38}
+number of each id in entries:{'intact': {1: 47}, 'uniprotkb': {4: 2, 1: 2, 0: 38, 2: 5}}
+num elements in column: {5: 2, 2: 2, 1: 38, 3: 5}
+
+column name: altID_B
+sample entries: ['intact:EBI-6400203', 'uniprotkb:Q9S506']
+total num occurences of each id:{'intact': 47, 'uniprotkb': 5}
+not present in all entries: {'uniprotkb': 42}
+number of each id in entries:{'intact': {1: 47}, 'uniprotkb': {0: 42, 1: 5}}
+num elements in column: {1: 42, 2: 5}
+
+column name: detection
+sample entries: ['psi-mi:"MI:0065"(isothermal titration calorimetry)']
+total num occurences of each id:{'psi-mi': 47}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 47}}
+num elements in column: {1: 47}
+
+column name: publication
+sample entries: ['Daigle et al. (2007)']
+total num occurences of each id:{}
+not present in all entries: {}
+number of each id in entries:{}
+num elements in column: {1: 47}
+
+column name: publication_ID
+sample entries: ['pubmed:17545281', 'imex:IM-18497']
+total num occurences of each id:{'pubmed': 47, 'imex': 47}
+not present in all entries: {}
+number of each id in entries:{'pubmed': {1: 47}, 'imex': {1: 47}}
+num elements in column: {2: 47}
+
+column name: type
+sample entries: ['psi-mi:"MI:0407"(direct interaction)']
+total num occurences of each id:{'psi-mi': 47}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 47}}
+num elements in column: {1: 47}
+
+column name: source_db
+sample entries: ['psi-mi:"MI:0903"(mpidb)']
+total num occurences of each id:{'psi-mi': 47}
+not present in all entries: {}
+number of each id in entries:{'psi-mi': {1: 47}}
+num elements in column: {1: 47}
+
+column name: identifier
+sample entries: ['intact:EBI-6455035', 'imex:IM-18497-2', 'mpidb:MPIDB-INT-2075', 'wwpdb:2oz6']
+total num occurences of each id:{'intact': 47, 'imex': 47, 'mpidb': 46, 'wwpdb': 1}
+not present in all entries: {'mpidb': 1, 'wwpdb': 46}
+number of each id in entries:{'intact': {1: 47}, 'imex': {1: 47}, 'mpidb': {0: 1, 1: 46}, 'wwpdb': {0: 46, 1: 1}}
+num elements in column: {2: 1, 3: 45, 4: 1}
+
+column name: confidence
+sample entries: ['intact-miscore:0.53']
+total num occurences of each id:{'intact-miscore': 47}
+not present in all entries: {}
+number of each id in entries:{'intact-miscore': {1: 47}}
+num elements in column: {1: 47}
+
