@@ -11,10 +11,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     from File_Descriptions.file_desc import parse
-    parse()
+    #parse()
     from Parsers.Ecoli.ortholuge import parse_ortholuge_ecoli
 
-
+    from Parsers.PAO1_PA14_Ecoli.KEGG import get_KEGG_compounds
+    get_KEGG_compounds()
     #parse_ortholuge_ecoli(session)
 
     # info = {}

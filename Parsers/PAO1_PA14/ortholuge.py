@@ -59,9 +59,10 @@ def parse_orthologs(ortholog_file, session):
 
 
 def parse_ortholog_interactions(session):
-    for interaction in session.query(Interaction).filter(or_(Interaction.type == 'p-p',
-                                                             Interaction.type == 'm-p',
-                                                             Interaction.type == 'p-m')).all():
+    all_interactions =session.query(Interaction).filter(or_(Interaction.type == 'p-p',
+                                                         Interaction.type == 'm-p',
+                                                         Interaction.type == 'p-m')).all()
+    for interaction in all_interactions:
         new_interactors, ortholog_interactors = [], [[], []]
         num = 0
         ortho = []
@@ -95,32 +96,59 @@ def parse_ortholog_interactions(session):
                     new_interaction.ortholog_derived += ', cf' + interaction.strain
                 session.commit()
             else:
-                strain = None
-                if interactor_pair[0].type == 'p':
-                    strain = interactor_pair[0].strain
-                else:
-                    strain = interactor_pair[1].strain
+                strain = 'PAO1'
+                if interaction.strain == 'PAO1':
+                    strain = 'PA14'
                 new_interaction = Interaction(strain=strain, type=interaction.type,
                                               ortholog_derived='f' + interaction.strain, interactors=interactor_pair,
-                                              homogenous=homogenous, is_experimental=0)
+                                              homogenous=homogenous)
                 session.add(new_interaction), session.commit()
 
             for reference in interaction.references:
-                if reference is not None:
+                new_ref = session.query(InteractionReference).filter(
+                    InteractionReference.psimi_detection == reference.psimi_detection,
+                    InteractionReference.detection_method==reference.detection_method,
+                    InteractionReference.author_ln==reference.author_ln,
+                    InteractionReference.pub_date==reference.pub_date,
+                    InteractionReference.pmid==reference.pmid,
+                    InteractionReference.psimi_type==reference.psimi_type,
+                    InteractionReference.interaction_type==reference.interaction_type,
+                    InteractionReference.psimi_db== reference.psimi_db,
+                    InteractionReference.source_db==reference.source_db,
+                    InteractionReference.confidence==reference.confidence,
+                    InteractionReference.comment == reference.comment,
+                    InteractionReference.interactor_a==interaction.interactors[0].id,
+                    InteractionReference.interactor_b==interaction.interactors[1].id).first()
+
+                if new_ref is None:
                     new_reference = InteractionReference(interaction_id=new_interaction.id,
+                                                         psimi_detection=reference.psimi_detection,
                                                          detection_method=reference.detection_method,
                                                          author_ln=reference.author_ln,
                                                          pub_date=reference.pub_date,
                                                          pmid=reference.pmid,
+                                                         psimi_type = reference.psimi_type,
                                                          type=reference.type,
+                                                         psimi_db=reference.psimi_db,
                                                          source_db=reference.source_db,
                                                          confidence=reference.confidence,
+                                                         comment = reference.comment,
                                                          interactor_a = interaction.interactors[0].id,
                                                          interactor_b = interaction.interactors[1].id)
-                    session.add(new_reference)
+                    session.add(new_reference), session.commit()
+                    new_interaction.references.append(new_reference)
 
             for source in interaction.sources:
-                new_source = InteractionSource(interaction_id=new_interaction.id, data_source=source.data_source)
-                session.add(new_source)
+                new_source = session.query(InteractionSource).filter(
+                    InteractionSource.data_source == source.data_source + '(' + interaction.strain + ')',
+                    InteractionSource.is_experimental == source.is_experimental).first()
+                if new_source is None:
+                    new_source = InteractionSource(data_source = source.data_source + '(' + interaction.strain + ')',
+                                                    is_experimental = source.is_experimental)
+                    session.add(new_source), session.commit()
+                    new_interaction.append(new_source)
+                elif new_source not in new_interaction.sources:
+                    new_interaction.sources.append(new_source)
+
         session.commit()
     print(session.query(Interaction).count())

@@ -5,7 +5,7 @@ def parse_ecoli_regulondb(session):
     with open('Ecoli/RegulonDB.csv') as csvfile:
         reader = csv.DictReader(csvfile)
 
-        source = InteractionSource(data_source = 'RegulonDB', is_experimental = 2)
+        source = InteractionSource(data_source = 'RegulonDB(Ecoli)', is_experimental = 2)
         session.add(source), session.commit()
 
         for row in reader:

@@ -123,7 +123,7 @@ def parse(strain, session):
                             # create a new metabolite if it doesn't exist
                             if metabolite is None:
                                 metabolite = Metabolite(id=new_metabolite_A, name = id_A,
-                                                        ecocyc = ecocyc_compounds[id_A]['ecocyc'],
+                                                        ecocyc = new_metabolite_A,
                                                         pubchem=ecocyc_compounds[id_A]['pubchem'],
                                                         kegg=ecocyc_compounds[id_A]['kegg'],
                                                         cas= ecocyc_compounds[id_A]['cas'],
@@ -139,7 +139,7 @@ def parse(strain, session):
                             metabolite=session.query(Metabolite).filter(Metabolite.id==new_metabolite_B).first()
                             if metabolite is None:
                                 metabolite = Metabolite(id=new_metabolite_B, name = id_B,
-                                                        ecocyc = ecocyc_compounds[id_B]['ecocyc'],
+                                                        ecocyc = new_metabolite_B,
                                                         pubchem=ecocyc_compounds[id_B]['pubchem'],
                                                         kegg=ecocyc_compounds[id_B]['kegg'],
                                                         cas= ecocyc_compounds[id_B]['cas'],
@@ -198,10 +198,10 @@ def parse(strain, session):
                                 InteractionReference.interactor_a == interactor_a,
                                 InteractionReference.interactor_b == interactor_b).first()
                         if reference is None:
-                            new_ref = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
+                            reference = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
                                                            interactor_a=interactor_a, interactor_b=interactor_b)
-                            session.add(new_ref), session.commit()
-                            interaction.references.append(new_ref)
+                            session.add(reference), session.commit()
+                            interaction.references.append(reference)
                         elif reference not in interaction.references:
                             interaction.references.append(reference)
 
