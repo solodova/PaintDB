@@ -1,6 +1,5 @@
 import csv
-from Schema1 import Interactor, Interaction, InteractionReference, InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema1 import Interactor, Interaction, InteractionReference, InteractionSource, is_experimental_psimi
 def find_type(psi_code):
     return {
         '1110': 'predicted interaction',
@@ -21,47 +20,65 @@ def parse_string(session):
             locus_tag1 = row['interactor_A'].split('|')[0].split('.')[1]
             locus_tag2 = row['interactor_B'].split('|')[0].split('.')[1]
 
-            if session.query(Interactor).filter(Interactor.id == locus_tag1).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == locus_tag1).one())
+            interactor_A = session.query(Interactor).filter(Interactor.id == locus_tag1).first()
+            interactor_B = session.query(Interactor).filter(Interactor.id == locus_tag2).first()
 
-            if session.query(Interactor).filter(Interactor.id == locus_tag2).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == locus_tag2).one())
-
-            if len(interactors) != 2: continue
+            if (interactor_A is None) | (interactor_B is None): continue
             homogenous = (interactors[0] == interactors[1])
 
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactors[0]),
                                                             Interaction.interactors.contains(interactors[1]),
-                                                            Interaction.homogenous == homogenous).first()
+                                                             Interaction.homogenous == homogenous).first()
+
+            is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
             if interaction is None:
-                type = interactors[0].type + '-' + interactors[1].type
-                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors)
+                interaction = Interaction(strain='PAO1', homogenous=homogenous, interactors=interactors,
+                                          type = (interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
-                if is_experimental_psimi(row['detection'].split('MI:')[1][:4]):
-                    interaction.is_experimental = 1
-                else:
-                    interaction.is_experimental = 0
-            else:
-                if is_experimental_psimi(row['detection'].split('MI:')[1][:4]):
-                    interaction.is_experimental = 1
 
-            source_db = None
-            if (row['source_db'] != '-'):
+            source_db, psimi_db = None, None
+            if row['source_db'] != '-':
                 source_db = row['source_db'].split('(')[1][:-1]
+                psimi_db = row['source_db'].split('MI:')[1][:4]
 
-            reference = InteractionReference(interaction_id=interaction.id,
-                                             detection_method=row['detection'].split('(')[1][:-1],
-                                             interaction_type=find_type(row['type'].split(':')[2][:-1]),
-                                             source_db=source_db,
-                                             confidence= row['confidence'])
-            session.add(reference)
+            reference = session.query(InteractionReference).filter(
+                InteractionReference.psimi_detection == row['detection'].split('MI:')[1][:4],
+                InteractionReference.detection_method == row['detection'].split('(')[1][:-1],
+                InteractionReference.author_ln == None,
+                InteractionReference.pub_date == None,
+                InteractionReference.pmid == None,
+                InteractionReference.psimi_type == row['type'].split('MI:')[1][:4],
+                InteractionReference.interaction_type == find_type(row['type'].split(':')[2][:-1]),
+                InteractionReference.psimi_db == psimi_db,
+                InteractionReference.source_db == source_db,
+                InteractionReference.confidence == row['confidence'],
+                InteractionReference.comment == None,
+                InteractionReference.interactor_a == None,
+                InteractionReference.interactor_b == None).first()
+            if reference is None:
+                reference = InteractionReference(psimi_detection=row['detection'].split('MI:')[1][:4],
+                                                 detection_method=row['detection'].split('(')[1][:-1],
+                                                 psimi_type=row['type'].split('MI:')[1][:4],
+                                                 interaction_type=find_type(row['type'].split(':')[2][:-1]),
+                                                 psimi_db=psimi_db,
+                                                 source_db=source_db,
+                                                 confidence=row['confidence'])
+                interaction.references.append(reference)
+                session.add(reference), session.commit()
+            else:
+                if reference not in interaction.references:
+                    interaction.references.append(reference)
 
-            source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                             InteractionSource.data_source == 'STRING').first()
+            source = session.query(InteractionSource).filter(InteractionSource.data_source == 'STRING',
+                                                             is_experimental == is_experimental).first()
 
             if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='STRING')
-                session.add(source)
+                source = InteractionSource(data_source='STRING', is_experimental = is_experimental)
+                session.add(source), session.commit()
+                interaction.sources.append(source)
+            elif source not in interaction.sources:
+                interaction.sources.append(source)
+
 
         session.commit()
         print(session.query(Interaction).count())

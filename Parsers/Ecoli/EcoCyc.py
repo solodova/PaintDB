@@ -51,6 +51,8 @@ def get_ecocyc_compounds(session):
 
 
 def parse(strain, session):
+    source = InteractionSource(data_source = 'EcoCyc', is_experimental=2)
+    session.add(source), session.commit()
     for path in ecocyc_paths:
         interaction_file_name = "Data/Ecoli/ecocyc_files/interactions_sif/" + path + "_interactions.txt"
         #if there was a problem with obtaining the sif files for a pathway, they may not exist
@@ -162,10 +164,9 @@ def parse(strain, session):
                         # if interaction already exists but has no ortholog derivation, add 'cfe'
                         if interaction.ortholog_derived is None:
                             interaction.ortholog_derived = 'cfe'
-                        else:
-                            # if interaction has an ortholog derivation but ecoli is not mentioned, add 'cfe'
-                            if 'fe' not in interaction.ortholog_derived:
-                                interaction.ortholog_derived += ', cfe'
+                        # if interaction has an ortholog derivation but ecoli is not mentioned, add 'cfe'
+                        elif 'fe' not in interaction.ortholog_derived:
+                            interaction.ortholog_derived += ', cfe'
 
                     #in case the interaction already existed, make sure interactor_a and interactor_b variables for
                     # new interaction reference match up with the first and second interactors of the existing
@@ -198,22 +199,14 @@ def parse(strain, session):
                                 InteractionReference.interactor_b == interactor_b).first()
                         if reference is None:
                             new_ref = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
-                                                       interactor_a=interactor_a, interactor_b=interactor_b)
-                            interaction.references.append(new_ref)
+                                                           interactor_a=interactor_a, interactor_b=interactor_b)
                             session.add(new_ref), session.commit()
-                        else:
-                            if reference not in interaction.references:
-                                interaction.references.append(reference)
+                            interaction.references.append(new_ref)
+                        elif reference not in interaction.references:
+                            interaction.references.append(reference)
 
-                    source = session.query(InteractionSource).filter(InteractionSource.data_source == 'EcoCyc').first()
-
-                    if source is None:
-                        source = InteractionSource(data_source='EcoCyc')
+                    if source not in interaction.sources:
                         interaction.sources.append(source)
-                        session.add(source), session.commit()
-                    else:
-                        if source not in interaction.sources:
-                            interaction.sources.append(source)
                 session.commit()
     print(session.query(Interaction).count())
     #print(session.query(Interaction).filter(Interaction.type == 'p-p').count())

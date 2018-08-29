@@ -4,42 +4,34 @@ from Schema1 import Interactor, Interaction, InteractionSource, InteractionRefer
 def parse_geoff(session):
     with open('Data/PAO1/GeoffWinsor.csv') as csvfile:
         reader = csv.DictReader(csvfile)
+
+        source = InteractionSource(data_source='Geoff', is_experimental=1)
+        session.add(source), session.commit()
+
         for row in reader:
-            interactors = []
 
-            if session.query(Interactor).filter(Interactor.id == row['locus_tag']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['locus_tag']).one())
+            interactor_A = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
             next(reader)
-            if session.query(Interactor).filter(Interactor.id == row['locus_tag']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['locus_tag']).one())
+            interactor_B = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
 
-            if len(interactors) != 2: continue
-            homogenous = (interactors[0] == interactors[1])
+            if (interactor_A is None) | (interactor_B is None): continue
+            homogenous = (interactor_A == interactor_B)
 
-            interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactors[0]),
-                                                            Interaction.interactors.contains(interactors[1]),
+            interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
+                                                            Interaction.interactors.contains(interactor_B),
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
-                type = interactors[0].type + '-' + interactors[1].type
-                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors)
+                interaction = Interaction(strain='PAO1', homogenous=homogenous,
+                                          interactors = [interactor_A, interactor_B],
+                                          type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
 
+            reference = InteractionReference(detection_method=row['experimental type'], pmid=row['pmid'])
+            interaction.references.append(reference)
+            session.add(reference), session.commit()
 
-            reference = InteractionReference(detection_method=row['experimental type'],
-                                             pmid=row['pmid'])
-            if session.query(InteractionReference).filter(InteractionReference == reference).first() is None:
-                interaction.references.append(reference)
-                session.add(reference), session.commit()
-            else:
-                if reference not in interaction.references:
-                    interaction.references.append(reference)
-
-            source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                             InteractionSource.data_source == 'Geoff').first()
-
-            if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='Geoff', is_experimental=1)
-                session.add(source)
+            if source not in interaction.sources:
+                interaction.sources.append(source)
 
         session.commit()
         print(session.query(Interaction).count())

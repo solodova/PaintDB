@@ -11,10 +11,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     from File_Descriptions.file_desc import parse
-    #parse()
+    parse()
     from Parsers.Ecoli.ortholuge import parse_ortholuge_ecoli
 
-    parse_ortholuge_ecoli(session)
+
+    #parse_ortholuge_ecoli(session)
 
     # info = {}
     # info_num = {"Locus Tag": 0, "Name": 0, "Product Name": 0, "NCBI Accession": 0}

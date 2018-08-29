@@ -4,6 +4,10 @@ from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference
 def parse_ecoli_regulondb(session):
     with open('Ecoli/RegulonDB.csv') as csvfile:
         reader = csv.DictReader(csvfile)
+
+        source = InteractionSource(data_source = 'RegulonDB', is_experimental = 2)
+        session.add(source), session.commit()
+
         for row in reader:
             interactors = []
 
@@ -14,10 +18,10 @@ def parse_ecoli_regulondb(session):
 
             for ortholog_A in orthologs_A:
                 for ortholog_B in orthologs_B:
-                    if (ortholog_A is not None) and (ortholog_B is not None):
-                        if (ortholog_A.strain_protein == ortholog_B.strain_protein):
-                            interactors.append([[ortholog_A.protein, ortholog_A.ortholog_id],
-                                                [ortholog_B.protein, ortholog_B.ortholog_id]])
+                    if (ortholog_A is not None) and (ortholog_B is not None) and \
+                        (ortholog_A.strain_protein == ortholog_B.strain_protein):
+                        interactors.append([[ortholog_A.protein, ortholog_A.ortholog_id],
+                                            [ortholog_B.protein, ortholog_B.ortholog_id]])
 
             for interactor_pair in interactors:
                 homogenous = (interactor_pair[0][0] == interactor_pair[1][0])
@@ -64,21 +68,16 @@ def parse_ecoli_regulondb(session):
                         InteractionReference.interactor_a == interactor_a,
                         InteractionReference.interactor_b == interactor_b).first()
                     if reference is None:
-                        new_ref = InteractionReference(detection_method = evidence, type = type, source_db='regulondb',
-                                                       confidence = row['Evidence type'], comment=comment,
-                                                       interactor_a=interactor_a, interactor_b=interactor_b)
-                        interaction.references.append(new_ref)
-                        session.add(new_ref), session.commit()
-                    else:
-                        if reference not in interaction.references:
-                            interaction.references.append(reference)
+                        reference = InteractionReference(detection_method = evidence, type = type, comment=comment,
+                                                         source_db='regulondb', confidence = row['Evidence type'],
+                                                         interactor_a=interactor_a, interactor_b=interactor_b)
+                        interaction.references.append(reference)
+                        session.add(reference), session.commit()
+                    elif reference not in interaction.references:
+                        interaction.references.append(reference)
 
-                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                                 InteractionSource.data_source == 'RegulonDB').first()
-
-                if source is None:
-                    source = InteractionSource(interaction_id=interaction.id, data_source='RegulonDB')
-                    session.add(source)
+                if source not in interaction.sources:
+                    interaction.sources.append(source)
 
         session.commit()
         print(session.query(InteractionReference).count())

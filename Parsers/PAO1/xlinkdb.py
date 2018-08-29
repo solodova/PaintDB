@@ -4,44 +4,47 @@ from Schema1 import Interactor, Protein, Interaction, InteractionReference, Inte
 def parse_xlinkdb(session):
     with open('PAO1/xlinkdb.txt') as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
+
+        reference = InteractionReference(detection_method='chemical cross-linking mass spectrometry',
+                                         interaction_type='physical association',
+                                         author_ln='Navari',
+                                         pub_date='2015',
+                                         pmid='25800553',
+                                         source_db='xlinkdb')
+        session.add(reference), session.commit()
+
+        source = InteractionSource(data_source='XLinkDB', is_experimental = 1)
+        session.add(source), session.commit()
         for row in reader:
-            interactors = []
 
-            if session.query(Interactor).filter(Interactor.id == row['proA']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['proA']).one())
-            elif session.query(Protein).filter(Protein.uniprotkb == row['proA']).first() is not None:
-                interactors.append(session.query(Protein).filter(Protein.uniprotkb == row['proA']).one())
-            if session.query(Interactor).filter(Interactor.id == row['proB']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['proB']).one())
-            elif session.query(Protein).filter(Protein.uniprotkb == row['proB']).first() is not None:
-                interactors.append(session.query(Protein).filter(Protein.uniprotkb == row['proB']).one())
+            interactor_A = session.query(Interactor).filter(Interactor.id == row['proA'])
+            if interactor_A is None:
+                interactor_A = session.query(Protein).filter(Protein.uniprotkb == row['proA']).first()
 
-            if len(interactors) != 2: continue
-            homogenous = (interactors[0] == interactors[1])
+            if interactor_A is None: continue
 
-            interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
-                                                            (Interaction.interactors.contains(interactors[1])),
-                                                            (Interaction.homogenous == homogenous)).first()
+            interactor_B = session.query(Interactor).filter(Interactor.id == row['proB']).first()
+            if interactor_B is None:
+                interactor_B = session.query(Protein).filter(Protein.uniprotkb == row['proB']).one()
+
+            if interactor_B is None: continue
+
+            homogenous = (interactor_A == interactor_B)
+
+            interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
+                                                            Interaction.interactors.contains(interactor_B),
+                                                            Interaction.homogenous == homogenous).first()
             if interaction is None:
-                type = interactors[0].type + '-' + interactors[1].type
-                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, interactors=interactors,
-                                          is_experimental = 1)
+                interaction = Interaction(strain='PAO1', homogenous=homogenous,
+                                          interactors=[interactor_A, interactor_B],
+                                          type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
-            else:
-                interaction.is_experimental = 1
 
-            reference = InteractionReference(interaction_id=interaction.id,
-                                             detection_method='chemical cross-linking mass spectrometry',
-                                             interaction_type='physical association',
-                                             pmid='25800553',
-                                             source_db='XLinkDB')
-            session.add(reference)
+            if source not in interaction.sources:
+                interaction.sources.append(source)
 
-            source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                             InteractionSource.data_source == 'XLinkDB').first()
-            if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='XLinkDB')
-                session.add(source)
+            if reference not in interaction.references:
+                interaction.references.append(reference)
 
         session.commit()
         print(session.query(Interaction).count())
