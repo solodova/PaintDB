@@ -29,7 +29,7 @@ def parse_ecoli(session, file, source):
         # iterate through each interaction
         for row in reader:
             #if (row['interactor_A'] == '-') | (row['interactor_B'] == '-'): continue
-            uniprot_A, refseq_A, orthologs_A , uniprot_B, refseq_B, orthologs_B= None, None, None
+            uniprot_A, refseq_A, orthologs_A , uniprot_B, refseq_B, orthologs_B= None, None, None, None, None, None
             pubchem, chebi = None, None
             metabolite_info, metabolite, orthologs = None, None, None
 
@@ -116,14 +116,6 @@ def parse_ecoli(session, file, source):
                                               type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
                                               ortholog_derived='fe')
                     session.add(interaction), session.commit()
-
-                interactor_a, interactor_b = None, None
-                if interaction.interactors[0] == interactor_pair[0][0]:
-                    interactor_a = interactor_pair[0][1]
-                    interactor_b = interactor_pair[1][1]
-                else:
-                    interactor_b = interactor_pair[0][1]
-                    interactor_a = interactor_pair[1][1]
 
                 ref_fields = {'detections': [], 'types': [], 'dbs': [], 'confidences': [], 'authors': [], 'dates': [],
                               'pmids': [], 'psimi_detections': [], 'psimi_types': [], 'psimi_dbs': []}
@@ -233,21 +225,36 @@ def parse_ecoli(session, file, source):
                     if all(parameter is None for parameter in ref_parameters): continue
                     ref_parameter_list.append(ref_parameters)
 
-                for ref in ref_parameter_list:
-                    reference = InteractionReference(psimi_detection=ref[0], detection=ref[1], author_ln=ref[2],
-                                                     pub_date=ref[3], pmid=ref[4], psimi_type=ref[5], type=ref[6],
-                                                     psimi_db=ref[7],db=ref[8], confidence=ref[9],
-                                                     interactor_a=interactor_a, interactor_b=interactor_b)
-                    if session.query(InteractionReference).filter(InteractionReference == reference).first() is None:
-                        interaction.references.append(reference)
-                        session.add(reference), session.commit()
-                    else:
-                        if reference not in interaction.references:
-                            interaction.references.append(reference)
-                        interaction.append(reference)
+                interactor_a, interactor_b = None, None
+                if interaction.interactors[0] == interactor_pair[0][0]:
+                    interactor_a = interactor_pair[0][1]
+                    interactor_b = interactor_pair[1][1]
+                else:
+                    interactor_b = interactor_pair[0][1]
+                    interactor_a = interactor_pair[1][1]
 
-                source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                                 InteractionSource.data_source == source).first()
+                for ref in ref_parameter_list:
+                    nref = session.query(InteractionReference).filter(InteractionReference.psimi_detection==ref[0],
+                                                                      InteractionReference.detection_method==ref[1],
+                                                                      InteractionReference.author_ln == ref[2],
+                                                                      InteractionReference.pub_date==ref[3],
+                                                                      InteractionReference.pmid==ref[4],
+                                                                      InteractionReference.psimi_type==ref[5],
+                                                                      InteractionReference.interaction_type==ref[6],
+                                                                      InteractionReference.psimi_db==ref[7],
+                                                                      InteractionReference.source_db==ref[8],
+                                                                      InteractionReference.confidence==ref[9],
+                                                                      InteractionReference.interactor_a==interactor_a,
+                                                                      InteractionReference.interactor_b==interactor_b).first()
+                    if nref is None:
+                        reference = InteractionReference(psimi_detection=ref[0], detection=ref[1], author_ln=ref[2],
+                                                         pub_date=ref[3], pmid=ref[4], psimi_type=ref[5], type=ref[6],
+                                                         psimi_db=ref[7], db=ref[8], confidence=ref[9],
+                                                         interactor_a=interactor_a, interactor_b=interactor_b)
+                        session.add(reference), session.commit()
+                        interaction.references.append(reference)
+                    elif nref not in interaction.references:
+                        interaction.references.append(nref)
 
                 is_experimental, not_experimental, experimental = None, None, None
                 for psimi_detection in ref_fields['psimi_detections']:
@@ -260,11 +267,15 @@ def parse_ecoli(session, file, source):
                     experimental = 1
                 elif not_experimental == 1:
                     experimental = 0
-                if source is None:
-                    source = InteractionSource(interaction_id=interaction.id, data_source=source,
-                                               is_experimental=experimental)
-                    session.add(source)
-                elif experimental == 1:
-                    source.is_experimental= 1
+
+                nsource = session.query(InteractionSource).filter(InteractionSource.data_source == source,
+                                                                  InteractionSource.is_experimental==experimental).first()
+                if nsource is None:
+                    nsource = InteractionSource(data_source=source, is_experimental=experimental)
+                    session.add(source), session.commit()
+                    interaction.sources.append(source)
+                elif nsource not in interaction.sources:
+                    interaction.sources.append(nsource)
+
             session.commit()
             print(session.query(Interaction).count())

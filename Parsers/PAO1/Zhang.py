@@ -5,43 +5,59 @@ def parse_zhang(session):
     with open('Data/PAO1/Zhang.csv') as csvfile:
         reader = csv.DictReader(csvfile)
 
+        source = InteractionSource(data_source = 'Zhang', is_experimental = 0)
+        session.add(source), session.commit()
+        e
         for row in reader:
             if float(row['Confidence']) < 0.9: continue
-            interactors = []
-            if session.query(Interactor).filter(Interactor.id == row['Protein1']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['Protein1']).one())
 
-            if session.query(Interactor).filter(Interactor.id == row['Protein2']).first() is not None:
-                interactors.append(session.query(Interactor).filter(Interactor.id == row['Protein2']).one())
+            interactor_A = session.query(Interactor).filter(Interactor.id == row['Protein1']).first()
+            if interactor_A is None: continue
 
-            if len(interactors) != 2: continue
-            homogenous = (interactors[0] == interactors[1])
+            interactor_B = session.query(Interactor).filter(Interactor.id == row['Protein2']).first()
+            if interactor_B is None: continue
 
-            interaction = session.query(Interaction).filter((Interaction.interactors.contains(interactors[0])),
-                                                            (Interaction.interactors.contains(interactors[1])),
-                                                            (Interaction.homogenous == homogenous)).first()
+            homogenous = (interactor_A == interactor_B)
+
+            interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
+                                                            Interaction.interactors.contains(interactor_B),
+                                                            Interaction.homogenous == homogenous).first()
             if interaction is None:
-                type = interactors[0].type + '-' + interactors[1].type
-                interaction = Interaction(strain='PAO1', type=type, homogenous=homogenous, is_experimental=0,
-                                          interactors=interactors)
+                interaction = Interaction(strain='PAO1', homogenous=homogenous, is_experimental=0,
+                                          interactors=[interactor_A, interactor_B],
+                                          type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
 
-            reference = InteractionReference(interaction_id=interaction.id,
-                                             detection_method='computational prediction',
-                                             author_ln='Zhang',
-                                             pub_date='2012',
-                                             pmid = '22848443',
-                                             interaction_type='predicted',
-                                             confidence=row['Confidence'],
-                                             comment=row['Comment'])
-            session.add(reference)
+            reference = session.query(InteractionReference).filter(
+                InteractionReference.psimi_detection == None,
+                InteractionReference.detection_method == 'computational prediction',
+                InteractionReference.author_ln == 'Zhang',
+                InteractionReference.pub_date == '2012',
+                InteractionReference.pmid == '22848443',
+                InteractionReference.psimi_type == None,
+                InteractionReference.interaction_type == 'predicted',
+                InteractionReference.psimi_db == None,
+                InteractionReference.source_db == None,
+                InteractionReference.confidence == row['Confidence'],
+                InteractionReference.comment == row['Comment'],
+                InteractionReference.interactor_a == None,
+                InteractionReference.interactor_b == None).first()
+            if reference is None:
+                reference = InteractionReference(detection_method='computational prediction',
+                                                 author_ln='Zhang',
+                                                 pub_date='2012',
+                                                 pmid='22848443',
+                                                 interaction_type='predicted',
+                                                 confidence=row['Confidence'],
+                                                 comment=row['Comment'])
+                session.add(reference), session.commit()
+                interaction.references.append(reference)
+            elif reference not in interaction.references:
+                interaction.references.append(reference)
 
-            source = session.query(InteractionSource).filter(InteractionSource.interaction_id == interaction.id,
-                                                             InteractionSource.data_source == 'Zhang').first()
 
-            if source is None:
-                source = InteractionSource(interaction_id=interaction.id, data_source='Zhang')
-                session.add(source)
+            if source not in interaction.sources:
+                interaction.sources.append(source)
 
         session.commit()
     print(session.query(Interaction).count())

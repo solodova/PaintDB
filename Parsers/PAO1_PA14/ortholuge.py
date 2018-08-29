@@ -5,8 +5,8 @@ from sqlalchemy import or_
 inparalogs = {}
 
 def parse_ortholuge(session):
-    get_inparalogs('Orthologs/PAO1-PA14.csv')
-    parse_orthologs('Orthologs/PAO1-PA14.csv', session)
+    get_inparalogs('Data/Ortholog/PAO1-PA14.csv')
+    parse_orthologs('Data/Ortholog/PAO1-PA14.csv', session)
     parse_ortholog_interactions(session)
 
 def get_inparalogs(ortholog_file):
@@ -19,8 +19,8 @@ def get_inparalogs(ortholog_file):
                 for inparalog in strain1_inparalogs:
                     inparalog_id=inparalog.split('[')[0]
                     if inparalog_id[0] == ';':
-                        del inparalog_id[0]
-                    if inparalog_id in inparalogs.keys():
+                        inparalog_id = inparalog_id[1:]
+                    if inparalog_id in inparalogs:
                         inparalogs[inparalog_id].append(row['Locus Tag (Strain 2)'])
                     else:
                         inparalogs[inparalog_id] = [row['Locus Tag (Strain 2)']]
@@ -31,8 +31,8 @@ def get_inparalogs(ortholog_file):
                 for inparalog in strain2_inparalogs:
                     inparalog_id = inparalog.split('[')[0]
                     if inparalog_id[0] == ';':
-                        del inparalog_id[0]
-                    if inparalog_id in inparalogs.keys():
+                        inparalog_id = inparalog_id[1:]
+                    if inparalog_id in inparalogs:
                         inparalogs[inparalog_id].append(row['Locus Tag (Strain 1)'])
                     else:
                         inparalogs[inparalog_id] = [row['Locus Tag (Strain 1)']]
