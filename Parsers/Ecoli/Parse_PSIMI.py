@@ -9,18 +9,18 @@ cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
 def parse_ecoli(session):
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/ChEMBL.txt', 'ChEMBL')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct.txt')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt')
-    parse_ecoli(session, 'Data/Ecoli/DIP.txt', 'DIP')
-    parse_ecoli(session, 'Data/Ecoli/IntAct.txt', 'IntAct')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/ChEMBL.txt', 'ChEMBL(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
+    parse_ecoli(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
 
 def parse_ecoli(session, file, source):
     with open(file) as csvfile:
@@ -111,7 +111,12 @@ def parse_ecoli(session, file, source):
                     elif 'fe' not in interaction.ortholog_derived:
                         interaction.ortholog_derived += ', cfe'
                 else:
-                    interaction = Interaction(strain=interactor_pair[0][0].strain,
+                    strain = None
+                    if interactor_pair[0][0].type == 'p':
+                        strain = interactor_pair[0][0].strain
+                    else:
+                        strain = interactor_pair[1][0].strain
+                    interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
                                               type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
                                               ortholog_derived='fe')
@@ -234,18 +239,20 @@ def parse_ecoli(session, file, source):
                     interactor_a = interactor_pair[1][1]
 
                 for ref in ref_parameter_list:
-                    nref = session.query(InteractionReference).filter(InteractionReference.psimi_detection==ref[0],
-                                                                      InteractionReference.detection_method==ref[1],
-                                                                      InteractionReference.author_ln == ref[2],
-                                                                      InteractionReference.pub_date==ref[3],
-                                                                      InteractionReference.pmid==ref[4],
-                                                                      InteractionReference.psimi_type==ref[5],
-                                                                      InteractionReference.interaction_type==ref[6],
-                                                                      InteractionReference.psimi_db==ref[7],
-                                                                      InteractionReference.source_db==ref[8],
-                                                                      InteractionReference.confidence==ref[9],
-                                                                      InteractionReference.interactor_a==interactor_a,
-                                                                      InteractionReference.interactor_b==interactor_b).first()
+                    nref = session.query(InteractionReference).filter(
+                        InteractionReference.psimi_detection==ref[0],
+                        InteractionReference.detection_method==ref[1],
+                        InteractionReference.author_ln == ref[2],
+                        InteractionReference.pub_date==ref[3],
+                        InteractionReference.pmid==ref[4],
+                        InteractionReference.psimi_type==ref[5],
+                        InteractionReference.interaction_type==ref[6],
+                        InteractionReference.psimi_db==ref[7],
+                        InteractionReference.source_db==ref[8],
+                        InteractionReference.confidence==ref[9],
+                        InteractionReference.comment== None,
+                        InteractionReference.interactor_a==interactor_a,
+                        InteractionReference.interactor_b==interactor_b).first()
                     if nref is None:
                         reference = InteractionReference(psimi_detection=ref[0], detection=ref[1], author_ln=ref[2],
                                                          pub_date=ref[3], pmid=ref[4], psimi_type=ref[5], type=ref[6],
@@ -256,7 +263,7 @@ def parse_ecoli(session, file, source):
                     elif nref not in interaction.references:
                         interaction.references.append(nref)
 
-                is_experimental, not_experimental, experimental = None, None, None
+                is_experimental, not_experimental, experimental = 2, 2, 2
                 for psimi_detection in ref_fields['psimi_detections']:
                     if psimi_detection is not None:
                         if is_experimental_psimi(psimi_detection):

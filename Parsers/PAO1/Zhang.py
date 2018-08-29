@@ -7,7 +7,7 @@ def parse_zhang(session):
 
         source = InteractionSource(data_source = 'Zhang', is_experimental = 0)
         session.add(source), session.commit()
-        e
+
         for row in reader:
             if float(row['Confidence']) < 0.9: continue
 
@@ -54,7 +54,6 @@ def parse_zhang(session):
                 interaction.references.append(reference)
             elif reference not in interaction.references:
                 interaction.references.append(reference)
-
 
             if source not in interaction.sources:
                 interaction.sources.append(source)

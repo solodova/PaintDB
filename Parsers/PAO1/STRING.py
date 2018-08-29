@@ -30,7 +30,6 @@ def parse_string(session):
                                                             Interaction.interactors.contains(interactors[1]),
                                                              Interaction.homogenous == homogenous).first()
 
-            is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous, interactors=interactors,
                                           type = (interactor_A.type + '-' + interactor_B.type))
@@ -68,6 +67,8 @@ def parse_string(session):
             else:
                 if reference not in interaction.references:
                     interaction.references.append(reference)
+
+            is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
 
             source = session.query(InteractionSource).filter(InteractionSource.data_source == 'STRING',
                                                              is_experimental == is_experimental).first()
