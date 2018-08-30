@@ -6,10 +6,10 @@ inparalogs_PA14 = {}
 
 def parse_ortholuge_ecoli(session):
     parse_inparalogs('Data/Ortholog/PAO1-Ecoli.csv', inparalogs_PAO1)
-    #parse_inparalogs('Orthologs/PAO1-Ecoli.csv', inparalogs_PA14)
-    #parse_orthologs('Orthologs/PAO1-Ecoli.csv', 'PAO1', inparalogs_PAO1, session)
-    #parse_orthologs('Orthologs/PA14-Ecoli.csv', 'PA14', inparalogs_PA14, session)
-    #parse_UniProt_IDs('Ecoli/Uniprot_IDs.csv', session)
+    parse_inparalogs('Data/Ortholog/PAO1-Ecoli.csv', inparalogs_PA14)
+    parse_orthologs('Data/Ortholog/PAO1-Ecoli.csv', 'PAO1', inparalogs_PAO1, session)
+    parse_orthologs('Data/Ortholog/PA14-Ecoli.csv', 'PA14', inparalogs_PA14, session)
+    parse_uniprot_ids('Data/Ecoli/Uniprot_IDs.csv', session)
 
 
 def parse_inparalogs(file, dict):
@@ -61,7 +61,7 @@ def parse_orthologs(file, strain, dict, session):
                     continue
             if session.query(Interactor).filter(Interactor.id == row['Locus Tag (Strain 2)']).first() is not None:
                 ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,
-                                         ortholog_id=row['Locus Tag (Strain 1)'], strain_ortholog='E. coli',
+                                         ortholog_id=row['Locus Tag (Strain 1)'],
                                          ortholog_refseq=row['NCBI RefSeq Accession (Strain 1)'])
 
                 if row['Ortholuge Class'] == '':
@@ -71,7 +71,7 @@ def parse_orthologs(file, strain, dict, session):
                 session.add(ortholog)
         session.commit()
 
-def parse_UniProt_IDs(file, session):
+def parse_uniprot_ids(file, session):
     # get all uniprot ids and gene names for E. coli orthologs
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
@@ -79,6 +79,7 @@ def parse_UniProt_IDs(file, session):
             if row['Gene names'] != '':
                 locus = row['Gene names'].split(' ')[0]
                 for ortholog in session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_id == locus).all():
-                    ortholog.ortholog_uniprot = row['Entry']
-                    ortholog.ortholog_name = row['Gene name']
+                    if ortholog is not None:
+                        ortholog.ortholog_uniprot = row['Entry']
+                        ortholog.ortholog_name = row['Gene name']
         session.commit()

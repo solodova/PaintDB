@@ -2,7 +2,7 @@ import csv
 from Schema1 import OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
 from Schema1 import is_experimental_psimi
 def parse_ecoli_imex(session):
-    with open('Ecoli/PSICQUIC/IMEx.txt') as csvfile:
+    with open('Data/Ecoli/PSICQUIC/IMEx.txt') as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
         for row in reader:
             if (row['#ID(s) interactor A'] == '-') | (row['ID(s) interactor B'] == '-'): continue
@@ -53,64 +53,66 @@ def parse_ecoli_imex(session):
                         interaction.ortholog_derived += ', cfe'
                     session.commit()
                 else:
-                    interaction = Interaction(strain=interactor_pair[0][0].strain,
+                    strain = None
+                    if interactor_pair[0][0].type == 'p':
+                        strain = interactor_pair[0][0].strain
+                    else:
+                        strain = interactor_pair[1][0].strain
+                    interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                               ortholog_derived='fe')
-                    if 'MI:' in row['Interaction detection method(s)']:
-                        if is_experimental_psimi(row['Interaction detection method(s)'].split('MI:')[1][:4]):
-                            interaction.is_experimental = 1
                     session.add(interaction), session.commit()
 
-                interactor_a, interactor_b = None, None
-                if interaction.interactors[0] == interactor_pair[0][0]:
-                    interactor_a = interactor_pair[0][1]
-                    interactor_b = interactor_pair[1][1]
-                else:
-                    interactor_b = interactor_pair[0][1]
-                    interactor_a = interactor_pair[1][1]
-
-                psimi_detection, psimi_db, psimi_type, author, date, confidences = None, None, None, None, None, [None]
-                if 'MI' in row['Interaction detection method(s)']:
-                    psimi_detection=row['Interaction detection method(s)'].split('MI:')[1][:4]
-                if 'MI' in row['Interaction type(s)']:
-                    psimi_type = row['Interaction type(s)'].split('MI:')[1][:4]
-                if 'MI' in row['Source database(s)']:
-                    psimi_db = row['Source database(s)'].split('MI:')[1][:4]
-                if row['Publication 1st author(s)'] != '-':
-                    author = row['Publication 1st author(s)'].split(' ')[0]
-                    date=row['Publication 1st author(s)'].split('(')[1][:-1]
-                if ('intact-miscore' in row['Confidence value(s)']) | ('author score' in row['Confidence value(s)']):
-                    del confidences[0]
-                    confidence_ids = row['Confidence value(s)'].split('|')
-                    for confidence in confidence_ids:
-                        if (confidence.split(':')[0] == 'intact-miscore') | \
-                            (confidence.split(':')[0] == 'author score'):
-                            confidences.append(confidence)
-                for confidence in confidences:
-                    reference = InteractionReference(interaction_id=interaction.id,
-                                                     psimi_detection=psimi_detection,
-                                                     detection_method=
-                                                     row['Interaction detection method(s)'].split('(')[1][:-1],
-                                                     author_ln=author,
-                                                     pub_date=date,
-                                                     pmid=
-                                                     row['Publication Identifier(s)'].split('pubmed:')[1].split('|')[0],
-                                                     psimi_type=psimi_type,
-                                                     interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
-                                                     psimi_db=psimi_db,
-                                                     source_db=row['Source database(s)'].split('(')[1][:-1],
-                                                     confidence=confidence,
-                                                     interactor_a_id=interactor_a,
-                                                     interactor_b_id=interactor_b)
-                    session.add(reference)
-
-                source = session.query(InteractionSource).filter(
-                    InteractionSource.interaction_id == interaction.id,
-                    InteractionSource.data_source == 'IMEx').first()
-
-                if source is None:
-                    source = InteractionSource(interaction_id=interaction.id, data_source='IMEx')
-                    session.add(source)
+                # interactor_a, interactor_b = None, None
+                # if interaction.interactors[0] == interactor_pair[0][0]:
+                #     interactor_a = interactor_pair[0][1]
+                #     interactor_b = interactor_pair[1][1]
+                # else:
+                #     interactor_b = interactor_pair[0][1]
+                #     interactor_a = interactor_pair[1][1]
+                #
+                # psimi_detection, psimi_db, psimi_type, author, date, confidences = None, None, None, None, None, [None]
+                # if 'MI' in row['Interaction detection method(s)']:
+                #     psimi_detection=row['Interaction detection method(s)'].split('MI:')[1][:4]
+                # if 'MI' in row['Interaction type(s)']:
+                #     psimi_type = row['Interaction type(s)'].split('MI:')[1][:4]
+                # if 'MI' in row['Source database(s)']:
+                #     psimi_db = row['Source database(s)'].split('MI:')[1][:4]
+                # if row['Publication 1st author(s)'] != '-':
+                #     author = row['Publication 1st author(s)'].split(' ')[0]
+                #     date=row['Publication 1st author(s)'].split('(')[1][:-1]
+                # if ('intact-miscore' in row['Confidence value(s)']) | ('author score' in row['Confidence value(s)']):
+                #     del confidences[0]
+                #     confidence_ids = row['Confidence value(s)'].split('|')
+                #     for confidence in confidence_ids:
+                #         if (confidence.split(':')[0] == 'intact-miscore') | \
+                #             (confidence.split(':')[0] == 'author score'):
+                #             confidences.append(confidence)
+                # for confidence in confidences:
+                #     reference = InteractionReference(interaction_id=interaction.id,
+                #                                      psimi_detection=psimi_detection,
+                #                                      detection_method=
+                #                                      row['Interaction detection method(s)'].split('(')[1][:-1],
+                #                                      author_ln=author,
+                #                                      pub_date=date,
+                #                                      pmid=
+                #                                      row['Publication Identifier(s)'].split('pubmed:')[1].split('|')[0],
+                #                                      psimi_type=psimi_type,
+                #                                      interaction_type=row['Interaction type(s)'].split('(')[1][:-1],
+                #                                      psimi_db=psimi_db,
+                #                                      source_db=row['Source database(s)'].split('(')[1][:-1],
+                #                                      confidence=confidence,
+                #                                      interactor_a_id=interactor_a,
+                #                                      interactor_b_id=interactor_b)
+                #     session.add(reference)
+                #
+                # source = session.query(InteractionSource).filter(
+                #     InteractionSource.interaction_id == interaction.id,
+                #     InteractionSource.data_source == 'IMEx').first()
+                #
+                # if source is None:
+                #     source = InteractionSource(interaction_id=interaction.id, data_source='IMEx')
+                #     session.add(source)
         session.commit()
         print(session.query(Interaction).count())

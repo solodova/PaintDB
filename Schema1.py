@@ -189,7 +189,6 @@ class OrthologEcoli(Base):
     ortholog_refseq = Column(String)
     ortholog_name = Column(String)
     strain_protein = Column(String)
-    strain_ortholog = Column(String)
     ortholuge_classification = Column(String)
 
 
@@ -249,7 +248,7 @@ class InteractionSource(Base):
     __tablename__ ='interaction_source'
 
     data_source=Column(String, primary_key=True)
-    is_experimental = Column(Integer)
+    is_experimental = Column(Integer, primary_key=True)
 
 
 

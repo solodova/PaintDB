@@ -44,9 +44,9 @@ def parse_regulatory_network(session):
                 source_db, detections = None, [None]
                 if row['source_db'] != '':
                     source_db=row['source_db']
-                if row['detection'] != '':
+                if row['evidence'] != '':
                     del detections[0]
-                    for type in row['detection'].split(', '):
+                    for type in row['evidence'].split(', '):
                         detections.append(type)
 
                 for detection in detections:
@@ -63,4 +63,3 @@ def parse_regulatory_network(session):
                     interaction.sources.append(source)
 
         session.commit()
-        print(session.query(InteractionReference).count())

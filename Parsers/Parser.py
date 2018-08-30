@@ -1,23 +1,40 @@
 if __name__ == '__main__':
 
     from Schema1 import Base, Interactor, Metabolite, Protein, InteractorXref, Reference, OrthologPseudomonas, \
-        OrthologEcoli, GeneOntology, Localization, InteractionReference
-    from sqlalchemy import create_engine
+        OrthologEcoli, GeneOntology, Localization, InteractionReference, ProteinComplex, Interaction
+    from sqlalchemy import create_engine, or_
     from sqlalchemy.orm import sessionmaker
     import csv
 
-    engine = create_engine('sqlite:///:memory:', echo=True)
+    engine = create_engine('sqlite:///:memory:')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    from File_Descriptions.file_desc import parse
-    #parse()
-    from Parsers.Ecoli.ortholuge import parse_ortholuge_ecoli
 
-    from Parsers.PAO1_PA14_Ecoli.KEGG import get_KEGG_compounds
-    get_KEGG_compounds()
-    #parse_ortholuge_ecoli(session)
+    from Parsers.PAO1_PA14 import pseudomonas_db, ortholuge, Parse_PSIMI, regulatory_network
+    from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
+    from Parsers.PAO1_PA14_Ecoli import KEGG
+    from Parsers.Ecoli import Parse_PSIMI, ortholuge
 
+    pseudomonas_db.parse_pseudomonasdb(session)
+    ortholuge.parse_ortholuge_ecoli(session)
+
+    #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PAO1').count())
+    #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PA14').count())
+    Parse_PSIMI.parse_ecoli_psimi(session)
+    print(session.query(Interaction).filter(Interaction.strain == 'PAO1').count())
+    print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
+                                            Interaction.type == 'p-p').count())
+    print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
+                                            or_(Interaction.type == 'm-p',
+                                                (Interaction.type == 'p-m'))).count())
+
+    print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
+    print(session.query(Interaction).filter(Interaction.strain == 'PA14',
+                                            Interaction.type == 'p-p').count())
+    print(session.query(Interaction).filter(Interaction.strain == 'PA14',
+                                            or_(Interaction.type == 'm-p',
+                                                (Interaction.type == 'p-m'))).count())
     # info = {}
     # info_num = {"Locus Tag": 0, "Name": 0, "Product Name": 0, "NCBI Accession": 0}
     # with open('Data/PAO1/Gene_Info/pseudomonas_db_info.csv') as csvfile:

@@ -8,21 +8,20 @@ import itertools
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
-def parse_ecoli(session):
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/ChEMBL.txt', 'ChEMBL(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
-    parse_ecoli(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
+def parse_ecoli_psimi(session):
+    #parse(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
+    parse(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
+    #parse(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
+    #parse(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
 
-def parse_ecoli(session, file, source):
+def parse(session, file, source):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile, fieldnames=cols, delimiter = '\t')
 
@@ -42,7 +41,7 @@ def parse_ecoli(session, file, source):
                 orthologs_A = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == uniprot_A).all()
             if (orthologs_A is None) and (refseq_A is not None):
                 orthologs_A = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_refseq == refseq_A).all()
-            if orthologs_A is None & ((uniprot_A is not None) | (refseq_A is not None)): continue
+            if (orthologs_A is None) & ((uniprot_A is not None) | (refseq_A is not None)): continue
 
             if 'uniprotkb' in row['interactor_B']:
                 uniprot_B = row['interactor_B'].split('uniprotkb:')[1].split('|')[0]
@@ -53,7 +52,7 @@ def parse_ecoli(session, file, source):
                 orthologs_B = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == uniprot_B).all()
             if (orthologs_B is None) and (refseq_B is not None):
                 orthologs_B = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_refseq == refseq_B).all()
-            if orthologs_B is None & ((uniprot_B is not None) | (refseq_B is not None)): continue
+            if (orthologs_B is None) & ((uniprot_B is not None) | (refseq_B is not None)): continue
 
             if (orthologs_A is None) and (orthologs_B is None): continue
 
@@ -118,7 +117,7 @@ def parse_ecoli(session, file, source):
                         strain = interactor_pair[1][0].strain
                     interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                               ortholog_derived='fe')
                     session.add(interaction), session.commit()
 
@@ -254,12 +253,13 @@ def parse_ecoli(session, file, source):
                         InteractionReference.interactor_a==interactor_a,
                         InteractionReference.interactor_b==interactor_b).first()
                     if nref is None:
-                        reference = InteractionReference(psimi_detection=ref[0], detection=ref[1], author_ln=ref[2],
-                                                         pub_date=ref[3], pmid=ref[4], psimi_type=ref[5], type=ref[6],
-                                                         psimi_db=ref[7], db=ref[8], confidence=ref[9],
+                        nref = InteractionReference(psimi_detection=ref[0], detection_method=ref[1],
+                                                         author_ln=ref[2], pub_date=ref[3], pmid=ref[4],
+                                                         psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7],
+                                                         source_db=ref[8], confidence=ref[9],
                                                          interactor_a=interactor_a, interactor_b=interactor_b)
-                        session.add(reference), session.commit()
-                        interaction.references.append(reference)
+                        session.add(nref), session.commit()
+                        interaction.references.append(nref)
                     elif nref not in interaction.references:
                         interaction.references.append(nref)
 
@@ -279,10 +279,9 @@ def parse_ecoli(session, file, source):
                                                                   InteractionSource.is_experimental==experimental).first()
                 if nsource is None:
                     nsource = InteractionSource(data_source=source, is_experimental=experimental)
-                    session.add(source), session.commit()
-                    interaction.sources.append(source)
+                    session.add(nsource), session.commit()
+                    interaction.sources.append(nsource)
                 elif nsource not in interaction.sources:
                     interaction.sources.append(nsource)
 
             session.commit()
-            print(session.query(Interaction).count())

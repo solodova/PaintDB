@@ -9,14 +9,11 @@ def parse_geoff(session):
         session.add(source), session.commit()
 
         for row in reader:
-
             interactor_A = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
-            next(reader)
+            row = next(reader)
             interactor_B = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
-
             if (interactor_A is None) | (interactor_B is None): continue
             homogenous = (interactor_A == interactor_B)
-
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
                                                             Interaction.interactors.contains(interactor_B),
                                                             Interaction.homogenous == homogenous).first()
@@ -26,7 +23,7 @@ def parse_geoff(session):
                                           type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
 
-            reference = InteractionReference(detection_method=row['experimental type'], pmid=row['pmid'])
+            reference = InteractionReference(detection_method=row['experimental_type'], pmid=row['pmid'])
             interaction.references.append(reference)
             session.add(reference), session.commit()
 
@@ -34,4 +31,3 @@ def parse_geoff(session):
                 interaction.sources.append(source)
 
         session.commit()
-        print(session.query(Interaction).count())

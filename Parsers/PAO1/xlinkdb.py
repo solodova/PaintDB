@@ -2,7 +2,7 @@ import csv
 from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
 def parse_xlinkdb(session):
-    with open('PAO1/xlinkdb.txt') as csvfile:
+    with open('Data/PAO1/xlinkdb.txt') as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
 
         reference = InteractionReference(detection_method='chemical cross-linking mass spectrometry',
@@ -17,7 +17,7 @@ def parse_xlinkdb(session):
         session.add(source), session.commit()
         for row in reader:
 
-            interactor_A = session.query(Interactor).filter(Interactor.id == row['proA'])
+            interactor_A = session.query(Interactor).filter(Interactor.id == row['proA']).first()
             if interactor_A is None:
                 interactor_A = session.query(Protein).filter(Protein.uniprotkb == row['proA']).first()
 
@@ -25,7 +25,7 @@ def parse_xlinkdb(session):
 
             interactor_B = session.query(Interactor).filter(Interactor.id == row['proB']).first()
             if interactor_B is None:
-                interactor_B = session.query(Protein).filter(Protein.uniprotkb == row['proB']).one()
+                interactor_B = session.query(Protein).filter(Protein.uniprotkb == row['proB']).first()
 
             if interactor_B is None: continue
 
@@ -47,4 +47,3 @@ def parse_xlinkdb(session):
                 interaction.references.append(reference)
 
         session.commit()
-        print(session.query(Interaction).count())
