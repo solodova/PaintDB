@@ -14,14 +14,15 @@ if __name__ == '__main__':
     from Parsers.PAO1_PA14 import pseudomonas_db, ortholuge, Parse_PSIMI, regulatory_network
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
-    from Parsers.Ecoli import Parse_PSIMI, ortholuge
+    from Parsers.Ecoli import Parse_PSIMI, ortholuge, EcoCyc
 
     pseudomonas_db.parse_pseudomonasdb(session)
     ortholuge.parse_ortholuge_ecoli(session)
 
     #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PAO1').count())
     #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PA14').count())
-    Parse_PSIMI.parse_ecoli_psimi(session)
+    #Parse_PSIMI.parse_ecoli_psimi(session)
+    EcoCyc.parse_ecocyc(session)
     print(session.query(Interaction).filter(Interaction.strain == 'PAO1').count())
     print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
                                             Interaction.type == 'p-p').count())

@@ -32,7 +32,7 @@ interaction_references = Table('interaction_references', Base.metadata,
 
 interaction_sources = Table('interaction_sources', Base.metadata,
                                 Column('interaction_id', String, ForeignKey('interaction.id')),
-                                Column('data_source', Integer, ForeignKey('interaction_source.data_source')))
+                                Column('data_source', Integer, ForeignKey('interaction_source.id')))
 
 
 class Interactor(Base):
@@ -247,8 +247,9 @@ class InteractionXref(Base):
 class InteractionSource(Base):
     __tablename__ ='interaction_source'
 
-    data_source=Column(String, primary_key=True)
-    is_experimental = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    data_source=Column(String)
+    is_experimental = Column(Integer)
 
 
 

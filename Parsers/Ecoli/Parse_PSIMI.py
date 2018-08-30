@@ -16,10 +16,10 @@ def parse_ecoli_psimi(session):
     #parse(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
     #parse(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
     #parse(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
-    parse(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
+    #parse(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
     #parse(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
     #parse(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
-    #parse(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
+    parse(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
 
 def parse(session, file, source):
     with open(file) as csvfile:

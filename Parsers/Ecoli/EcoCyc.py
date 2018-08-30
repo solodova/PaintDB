@@ -9,8 +9,10 @@ ecocyc_compounds = {}
 def parse_ecocyc(session):
     get_ecocyc_paths()
     get_ecocyc_compounds(session)
+    source = InteractionSource(data_source='EcoCyc', is_experimental=2)
+    session.add(source), session.commit()
     parse('PAO1', session)
-    #parse('PA14', session)
+    parse('PA14', session)
 
 def get_ecocyc_paths():
     with open('Data/Ecoli/ecocyc_files/paths.txt') as csvfile:
@@ -51,8 +53,6 @@ def get_ecocyc_compounds(session):
 
 
 def parse(strain, session):
-    source = InteractionSource(data_source = 'EcoCyc', is_experimental=2)
-    session.add(source), session.commit()
     for path in ecocyc_paths:
         interaction_file_name = "Data/Ecoli/ecocyc_files/interactions_sif/" + path + "_interactions.txt"
         #if there was a problem with obtaining the sif files for a pathway, they may not exist
@@ -78,11 +78,26 @@ def parse(strain, session):
                 else:
                     A_ecocyc = ecocyc_compounds[id_A]['ecocyc']
                     #check if the metabolite already exists in database
-                    metabolite = session.query(Metabolite).filter(Metabolite.ecocyc == A_ecocyc).first()
+                    metabolite = session.query(Metabolite).filter(
+                        or_(Metabolite.ecocyc == ecocyc_compounds[id_A]['ecocyc'],
+                            Metabolite.chebi == ecocyc_compounds[id_A]['chebi'],
+                            Metabolite.pubchem == ecocyc_compounds[id_A]['pubchem'],
+                            Metabolite.kegg == ecocyc_compounds[id_A]['kegg'],
+                            Metabolite.cas == ecocyc_compounds[id_A]['cas'])).first()
                     if metabolite is not None:
                         # if metabolite exists, add both the metabolite and it's name (needed for reference)
                         # to interactors_A
-                        interactors_A.append([metabolite, metabolite.name])
+                        if metabolite.ecocyc is None:
+                            metabolite.ecocyc = ecocyc_compounds[id_A]['ecocyc']
+                        if metabolite.kegg is None:
+                            metabolite.kegg = ecocyc_compounds[id_A]['kegg']
+                        if metabolite.chebi is None:
+                            metabolite.chebi = ecocyc_compounds[id_A]['chebi']
+                        if metabolite.cas is None:
+                            metabolite.cas = ecocyc_compounds[id_A]['cas']
+                        if metabolite.pubchem is None:
+                            metabolite.pubchem = ecocyc_compounds[id_A]['pubchem']
+                        interactors_A.append([metabolite, metabolite.id])
                     else:
                         # if metabolite doesn't exist yet, store it's id to create it later (don't create it now
                         # since if interactor_B is invalid, there is no need for new metabolite to be created)
@@ -96,9 +111,14 @@ def parse(strain, session):
                             interactors_B.append([ortholog.protein, ortholog.ortholog_id])
                 else:
                     B_ecocyc = ecocyc_compounds[id_B]['ecocyc']
-                    metabolite = session.query(Metabolite).filter(Metabolite.ecocyc == B_ecocyc).first()
+                    metabolite = session.query(Metabolite).filter(
+                        or_(Metabolite.ecocyc == ecocyc_compounds[id_B]['ecocyc'],
+                            Metabolite.chebi == ecocyc_compounds[id_B]['chebi'],
+                            Metabolite.pubchem == ecocyc_compounds[id_B]['pubchem'],
+                            Metabolite.kegg == ecocyc_compounds[id_B]['kegg'],
+                            Metabolite.cas == ecocyc_compounds[id_B]['cas'])).first()
                     if metabolite is not None:
-                        interactors_B.append([metabolite, metabolite.name])
+                        interactors_B.append([metabolite, metabolite.id])
                     else:
                         new_metabolite_B = B_ecocyc
 
@@ -131,7 +151,7 @@ def parse(strain, session):
                                 session.add(metabolite), session.commit()
                             # and the interactor pair (for the new metabolite, make sure to add it's name (for
                             # reference later)
-                            interactor_pairs.append([interactor_B, [metabolite, id_A]])
+                            interactor_pairs.append([interactor_B, [metabolite, new_metabolite_A]])
                 # same as previous case, but if new metabolite is new_metabolite_B
                 elif new_metabolite_B is not None:
                     for interactor_A in interactors_A:
@@ -145,7 +165,7 @@ def parse(strain, session):
                                                         cas= ecocyc_compounds[id_B]['cas'],
                                                         chebi=ecocyc_compounds[id_B]['chebi'])
                                 session.add(metabolite), session.commit()
-                            interactor_pairs.append([interactor_A, [metabolite, id_B]])
+                            interactor_pairs.append([interactor_A, [metabolite, new_metabolite_B]])
 
                 # iterate through all interactor pairs and create new interactions
                 for interactor_pair in interactor_pairs:
@@ -156,8 +176,9 @@ def parse(strain, session):
                         Interaction.homogenous == homogenous).first()
 
                     if interaction is None:
-                        interaction = Interaction(type=interactor_pair[0][0].type + '-' + interactor_pair[1][0].type,
-                                                  strain=strain, homogenous=homogenous, interactors=interactor_pair,
+                        interaction = Interaction(type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
+                                                  strain=strain, homogenous=homogenous,
+                                                  interactors=[interactor_pair[0][0], interactor_pair[1][0]],
                                                   ortholog_derived='fe')
                         session.add(interaction), session.commit()
                     else:
@@ -204,9 +225,7 @@ def parse(strain, session):
                             interaction.references.append(reference)
                         elif reference not in interaction.references:
                             interaction.references.append(reference)
-
+                    source = session.query(InteractionSource).filter(InteractionSource.data_source == 'EcoCyc').first()
                     if source not in interaction.sources:
                         interaction.sources.append(source)
                 session.commit()
-    print(session.query(Interaction).count())
-    #print(session.query(Interaction).filter(Interaction.type == 'p-p').count())
