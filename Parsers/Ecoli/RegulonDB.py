@@ -2,7 +2,7 @@ import csv
 from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference, InteractionSource
 
 def parse_ecoli_regulondb(session):
-    with open('Ecoli/RegulonDB.csv') as csvfile:
+    with open('Data/Ecoli/RegulonDB.csv') as csvfile:
         reader = csv.DictReader(csvfile)
 
         source = InteractionSource(data_source = 'RegulonDB(Ecoli)', is_experimental = 2)
@@ -37,7 +37,7 @@ def parse_ecoli_regulondb(session):
                 else:
                     interaction = Interaction(strain=interactor_pair[0][0].strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0]),
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                               ortholog_derived='fe')
                     session.add(interaction), session.commit()
 

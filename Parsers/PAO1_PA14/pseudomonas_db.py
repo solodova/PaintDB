@@ -3,12 +3,12 @@ from Schema1 import Protein, ProteinComplex, Interactor, InteractorXref, Localiz
 
 def parse_pseudomonasdb(session):
     get_gene_info('Data/PAO1/Gene_Info/pseudomonas_db_info.csv', 'PAO1', session)
-    #get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
+    get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
     #get_localizations('Data/PAO1/Gene_Info/pseudomonas_db_localizations.csv', session)
     #get_ontology('Data/PAO1/Gene_Info/pseudomonas_db_go.csv', session)
 
     get_gene_info('Data/PA14/Gene_Info/pseudomonas_db_info.csv', 'PA14', session)
-    #get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
+    get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
     # get_localizations('Data/PA14/Gene_Info/pseudomonas_db_localizations.csv', session)
     # get_ontology('Data/PA14/Gene_Info/pseudomonas_db_go.csv', session)
 

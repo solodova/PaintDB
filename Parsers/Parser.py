@@ -14,15 +14,24 @@ if __name__ == '__main__':
     from Parsers.PAO1_PA14 import pseudomonas_db, ortholuge, Parse_PSIMI, regulatory_network
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
-    from Parsers.Ecoli import Parse_PSIMI, ortholuge, EcoCyc
+    from Parsers.Ecoli import EcoCyc, RegulonDB
 
     pseudomonas_db.parse_pseudomonasdb(session)
-    ortholuge.parse_ortholuge_ecoli(session)
+    #ortholuge.parse_ortholuge_ecoli(session)
+    Geoff_Winsor.parse_geoff(session)
+    xlinkdb.parse_xlinkdb(session)
+    Parse_PSIMI.parse_psimi_pseudomonas(session)
+    regulatory_network.parse_regulatory_network(session)
+    KEGG.get_kegg_compounds()
+    KEGG.parse_pseudomonas_kegg(session)
+    Zhang.parse_zhang(session)
+    ortholuge.parse_ortholuge(session)
 
-    #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PAO1').count())
-    #print(session.query(OrthologEcoli).filter(OrthologEcoli.strain_protein == 'PA14').count())
+    #print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
+    #print(session.query(OrthologPseudomonas).filter(OrthologPseudomonas.strain_ortholog == 'PA14').count())
     #Parse_PSIMI.parse_ecoli_psimi(session)
-    EcoCyc.parse_ecocyc(session)
+    #EcoCyc.parse_ecocyc(session)
+    #RegulonDB.parse_ecoli_regulondb(session)
     print(session.query(Interaction).filter(Interaction.strain == 'PAO1').count())
     print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
                                             Interaction.type == 'p-p').count())

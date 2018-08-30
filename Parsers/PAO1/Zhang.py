@@ -23,7 +23,7 @@ def parse_zhang(session):
                                                             Interaction.interactors.contains(interactor_B),
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
-                interaction = Interaction(strain='PAO1', homogenous=homogenous, is_experimental=0,
+                interaction = Interaction(strain='PAO1', homogenous=homogenous,
                                           interactors=[interactor_A, interactor_B],
                                           type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
@@ -59,4 +59,3 @@ def parse_zhang(session):
                 interaction.sources.append(source)
 
         session.commit()
-    print(session.query(Interaction).count())

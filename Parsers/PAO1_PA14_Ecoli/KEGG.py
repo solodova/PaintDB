@@ -7,7 +7,7 @@ kegg_compounds = {}
 def parse_pseudomonas_kegg(session):
     source = InteractionSource(data_source='KEGG', is_experimental=2)
     session.add(source), session.commit()
-    #parse('pae', 'PAO1', 'KEGG', session)
+    parse('pae', 'PAO1', 'KEGG', session)
     parse('pau', 'PA14', 'KEGG', session)
 
 def parse_ecoli_kegg(session):

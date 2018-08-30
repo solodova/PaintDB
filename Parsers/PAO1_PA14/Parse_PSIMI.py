@@ -7,20 +7,20 @@ cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
 def parse_psimi_pseudomonas(session):
-    #parse('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes', session)
-    #parse('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx', session)
-    #parse('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct', session)
-    # parse('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex', session)
-     #parse('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha', session)
-     #parse('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT', session)
-     #parse('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB', session)
-    #parse('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct', session)
-    #
-     #parse('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx', session)
-     #parse('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex', session)
-     #parse('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha', session)
-     #parse('Data/PA14/PSICQUIC/MINT.txt', 'PA14', 'MINT', session)
-     parse('Data/PA14/IntAct.txt', 'PA14', 'IntAct', session)
+    parse('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes', session)
+    parse('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx', session)
+    parse('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct', session)
+    parse('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex', session)
+    parse('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha', session)
+    parse('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT', session)
+    parse('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB', session)
+    parse('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct', session)
+
+    parse('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx', session)
+    parse('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex', session)
+    parse('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha', session)
+    parse('Data/PA14/PSICQUIC/MINT.txt', 'PA14', 'MINT', session)
+    parse('Data/PA14/IntAct.txt', 'PA14', 'IntAct', session)
 
 def parse(file, strain, source, session):
     with open(file) as csvfile:

@@ -17,6 +17,7 @@ def get_inparalogs(ortholog_file):
                 strain1_inparalogs = row['Strain 1 Inparalogs (Locus Tag/Name)'].split(']')
 
                 for inparalog in strain1_inparalogs:
+                    if inparalog == '': continue
                     inparalog_id=inparalog.split('[')[0]
                     if inparalog_id[0] == ';':
                         inparalog_id = inparalog_id[1:]
@@ -29,6 +30,7 @@ def get_inparalogs(ortholog_file):
                 strain2_inparalogs = row['Strain 2 Inparalogs (Locus Tag/Name)'].split(']')
 
                 for inparalog in strain2_inparalogs:
+                    if inparalog == '': continue
                     inparalog_id = inparalog.split('[')[0]
                     if inparalog_id[0] == ';':
                         inparalog_id = inparalog_id[1:]
@@ -121,14 +123,13 @@ def parse_ortholog_interactions(session):
                     InteractionReference.interactor_b==interaction.interactors[1].id).first()
 
                 if new_ref is None:
-                    new_reference = InteractionReference(interaction_id=new_interaction.id,
-                                                         psimi_detection=reference.psimi_detection,
+                    new_reference = InteractionReference(psimi_detection=reference.psimi_detection,
                                                          detection_method=reference.detection_method,
                                                          author_ln=reference.author_ln,
                                                          pub_date=reference.pub_date,
                                                          pmid=reference.pmid,
                                                          psimi_type = reference.psimi_type,
-                                                         type=reference.type,
+                                                         interaction_type=reference.interaction_type,
                                                          psimi_db=reference.psimi_db,
                                                          source_db=reference.source_db,
                                                          confidence=reference.confidence,
@@ -146,9 +147,8 @@ def parse_ortholog_interactions(session):
                     new_source = InteractionSource(data_source = source.data_source + '(' + interaction.strain + ')',
                                                     is_experimental = source.is_experimental)
                     session.add(new_source), session.commit()
-                    new_interaction.append(new_source)
+                    new_interaction.sources.append(new_source)
                 elif new_source not in new_interaction.sources:
                     new_interaction.sources.append(new_source)
 
         session.commit()
-    print(session.query(Interaction).count())
