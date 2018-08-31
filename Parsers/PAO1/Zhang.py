@@ -11,10 +11,10 @@ def parse_zhang(session):
         for row in reader:
             if float(row['Confidence']) < 0.9: continue
 
-            interactor_A = session.query(Interactor).filter(Interactor.id == row['Protein1']).first()
+            interactor_A = session.query(Interactor).get(row['Protein1'])
             if interactor_A is None: continue
 
-            interactor_B = session.query(Interactor).filter(Interactor.id == row['Protein2']).first()
+            interactor_B = session.query(Interactor).get(row['Protein2'])
             if interactor_B is None: continue
 
             homogenous = (interactor_A == interactor_B)
@@ -28,20 +28,11 @@ def parse_zhang(session):
                                           type=(interactor_A.type + '-' + interactor_B.type))
                 session.add(interaction), session.commit()
 
-            reference = session.query(InteractionReference).filter(
-                InteractionReference.psimi_detection == None,
-                InteractionReference.detection_method == 'computational prediction',
-                InteractionReference.author_ln == 'Zhang',
-                InteractionReference.pub_date == '2012',
-                InteractionReference.pmid == '22848443',
-                InteractionReference.psimi_type == None,
-                InteractionReference.interaction_type == 'predicted',
-                InteractionReference.psimi_db == None,
-                InteractionReference.source_db == None,
-                InteractionReference.confidence == row['Confidence'],
-                InteractionReference.comment == row['Comment'],
-                InteractionReference.interactor_a == None,
-                InteractionReference.interactor_b == None).first()
+            reference = session.query(InteractionReference).filter_by(detection_method = 'computational prediction',
+                                                                      pmid = '22848443',
+                                                                      interaction_type = 'predicted',
+                                                                      confidence = row['Confidence'],
+                                                                      comment = row['Comment']).first()
             if reference is None:
                 reference = InteractionReference(detection_method='computational prediction',
                                                  author_ln='Zhang',

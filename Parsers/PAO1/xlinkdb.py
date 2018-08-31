@@ -11,23 +11,22 @@ def parse_xlinkdb(session):
                                          pub_date='2015',
                                          pmid='25800553',
                                          source_db='xlinkdb')
-        session.add(reference), session.commit()
 
         source = InteractionSource(data_source='XLinkDB', is_experimental = 1)
-        session.add(source), session.commit()
+        session.add(source), session.add(reference), session.commit()
         for row in reader:
 
-            interactor_A = session.query(Interactor).filter(Interactor.type == 'pc',
-                                                            Interactor.id == row['proA']).first()
+            interactor_A = session.query(Interactor).filter_by(type = 'pc',
+                                                               id = row['proA']).first()
             if interactor_A is None:
-                interactor_A = session.query(Protein).filter(Protein.uniprotkb == row['proA']).first()
+                interactor_A = session.query(Protein).filter_by(uniprotkb = row['proA']).first()
 
             if interactor_A is None: continue
 
-            interactor_B = session.query(Interactor).filter(Interactor.type == 'pc',
-                                                            Interactor.id == row['proB']).first()
+            interactor_B = session.query(Interactor).filter_by(type = 'pc',
+                                                               id = row['proB']).first()
             if interactor_B is None:
-                interactor_B = session.query(Protein).filter(Protein.uniprotkb == row['proB']).first()
+                interactor_B = session.query(Protein).filter_by(uniprotkb = row['proB']).first()
 
             if interactor_B is None: continue
 

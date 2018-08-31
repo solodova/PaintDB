@@ -9,10 +9,11 @@ def parse_geoff(session):
         session.add(source), session.commit()
 
         for row in reader:
-            interactor_A = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
+            interactor_A = session.query(Interactor).get(row['locus_tag'])
+            if interactor_A is None: continue
             row = next(reader)
-            interactor_B = session.query(Interactor).filter(Interactor.id == row['locus_tag']).first()
-            if (interactor_A is None) | (interactor_B is None): continue
+            interactor_B = session.query(Interactor).get(row['locus_tag'])
+            if interactor_B is None: continue
             homogenous = (interactor_A == interactor_B)
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
                                                             Interaction.interactors.contains(interactor_B),

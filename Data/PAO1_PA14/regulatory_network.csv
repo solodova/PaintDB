@@ -1,4 +1,4 @@
-Regulator (TF or sigma),Operon,Target,mode,evidence,pmid,Strain,source_db
+Regulator,Operon,Target,mode,evidence,pmid,Strain,source_db
 agmR,,pqqH,+,"lac-promoter, B-galactosidase assay, RT-PCR",19902179,ATCC,
 algR,,hcnA,-,"mutant, PCR",19270096,PAO1,
 anr,cox,coxA,-,"Microarray, Gene Chip data analysis",19930444,PAO1,

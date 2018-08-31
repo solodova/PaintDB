@@ -2,8 +2,9 @@ import csv
 from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
 def parse_regulatory_network(session):
-    source = InteractionSource(data_source = 'Galan-Vasquez', is_experimental=2)
-    session.add(source), session.commit()
+    source_PAO1 = InteractionSource(data_source = 'Galan-Vasquez(PAO1)', is_experimental=2)
+    source_PA14 = InteractionSource(data_source='Galan-Vasquez(PA14)', is_experimental=2)
+    session.add(source_PAO1), session.add(source_PA14), session.commit()
 
     with open('Data/PAO1_PA14/regulatory_network.csv') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -13,18 +14,15 @@ def parse_regulatory_network(session):
             for strain in strains:
                 if (strain != 'PAO1') and (strain != 'PA14'): continue
                 interactors = []
-                interactor_A =session.query(Protein).filter(Protein.name == row['Regulator (TF or sigma)'],
-                                                            Protein.strain == strain).first()
+                interactor_A =session.query(Protein).filter_by(name = row['Regulator'], strain = strain).first()
                 if interactor_A is None:
-                    interactor_A=session.query(Interactor).filter(
-                        Interactor.id == row['Regulator (TF or sigma)']).first()
+                    interactor_A=session.query(Interactor).get(row['Regulator (TF or sigma)'])
 
                 if interactor_A is None: continue
 
-                interactor_B = session.query(Protein).filter(Protein.name == row['Target'],
-                                                             Protein.strain == strain).first()
+                interactor_B = session.query(Protein).filter_by(name = row['Target'], strain = strain).first()
                 if interactor_B is None:
-                    interactor_B = session.query(Interactor).filter(Interactor.id == row['Target']).first()
+                    interactor_B = session.query(Interactor).get(row['Target'])
 
                 if interactor_B is None: continue
 
@@ -59,7 +57,11 @@ def parse_regulatory_network(session):
                                                                            row['mode'] + ') ' + interactor_B.id)
                     session.add(reference)
 
-                if source not in interaction.sources:
-                    interaction.sources.append(source)
+                if strain == 'PAO1':
+                    if source_PAO1 not in interaction.sources:
+                        interaction.sources.append(source_PAO1)
+                else:
+                    if source_PA14 not in interaction.sources:
+                        interaction.sources.append(source_PA14)
 
         session.commit()

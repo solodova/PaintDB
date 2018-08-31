@@ -38,9 +38,9 @@ def parse(session, file, source):
                 refseq_A = row['interactor_A'].split('refseq:')[1].split('|')[0]
 
             if uniprot_A is not None:
-                orthologs_A = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == uniprot_A).all()
+                orthologs_A = session.query(OrthologEcoli).filter_by(ortholog_uniprot = uniprot_A).all()
             if (orthologs_A is None) and (refseq_A is not None):
-                orthologs_A = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_refseq == refseq_A).all()
+                orthologs_A = session.query(OrthologEcoli).filter_by(ortholog_refseq = refseq_A).all()
             if (orthologs_A is None) & ((uniprot_A is not None) | (refseq_A is not None)): continue
 
             if 'uniprotkb' in row['interactor_B']:
@@ -49,9 +49,9 @@ def parse(session, file, source):
                 refseq_B = row['interactor_B'].split('refseq:')[1].split('|')[0]
 
             if uniprot_B is not None:
-                orthologs_B = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == uniprot_B).all()
+                orthologs_B = session.query(OrthologEcoli).filter_by(ortholog_uniprot = uniprot_B).all()
             if (orthologs_B is None) and (refseq_B is not None):
-                orthologs_B = session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_refseq == refseq_B).all()
+                orthologs_B = session.query(OrthologEcoli).filter_by(ortholog_refseq = refseq_B).all()
             if (orthologs_B is None) & ((uniprot_B is not None) | (refseq_B is not None)): continue
 
             if (orthologs_A is None) and (orthologs_B is None): continue
@@ -79,10 +79,10 @@ def parse(session, file, source):
                 id = None
                 if chebi is not None:
                     id = chebi
-                    metabolite = session.query(Metabolite).filter(Metabolite.chebi == chebi).first()
+                    metabolite = session.query(Metabolite).filter_by(chebi = chebi).first()
                 if (metabolite is None) & (pubchem is not None):
                     id = pubchem
-                    metabolite = session.query(Metabolite).filter(Metabolite.pubchem == pubchem).first()
+                    metabolite = session.query(Metabolite).filter(pubchem = pubchem).first()
                 if metabolite is None:
                     metabolite = Metabolite(id = id, chebi=chebi, pubchem=pubchem)
                     session.add(metabolite), session.commit()
@@ -104,12 +104,7 @@ def parse(session, file, source):
                 interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_pair[0][0]),
                                                                 Interaction.interactors.contains(interactor_pair[1][0]),
                                                                 Interaction.homogenous == homogenous).first()
-                if interaction is not None:
-                    if interaction.ortholog_derived is None:
-                        interaction.ortholog_derived = 'cfe'
-                    elif 'fe' not in interaction.ortholog_derived:
-                        interaction.ortholog_derived += ', cfe'
-                else:
+                if interaction is None:
                     strain = None
                     if interactor_pair[0][0].type == 'p':
                         strain = interactor_pair[0][0].strain
@@ -117,8 +112,7 @@ def parse(session, file, source):
                         strain = interactor_pair[1][0].strain
                     interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
-                                              ortholog_derived='fe')
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type))
                     session.add(interaction), session.commit()
 
                 ref_fields = {'detections': [], 'types': [], 'dbs': [], 'confidences': [], 'authors': [], 'dates': [],
@@ -238,20 +232,18 @@ def parse(session, file, source):
                     interactor_a = interactor_pair[1][1]
 
                 for ref in ref_parameter_list:
-                    nref = session.query(InteractionReference).filter(
-                        InteractionReference.psimi_detection==ref[0],
-                        InteractionReference.detection_method==ref[1],
-                        InteractionReference.author_ln == ref[2],
-                        InteractionReference.pub_date==ref[3],
-                        InteractionReference.pmid==ref[4],
-                        InteractionReference.psimi_type==ref[5],
-                        InteractionReference.interaction_type==ref[6],
-                        InteractionReference.psimi_db==ref[7],
-                        InteractionReference.source_db==ref[8],
-                        InteractionReference.confidence==ref[9],
-                        InteractionReference.comment== None,
-                        InteractionReference.interactor_a==interactor_a,
-                        InteractionReference.interactor_b==interactor_b).first()
+                    nref = session.query(InteractionReference).filter_by(psimi_detection=ref[0],
+                                                                         detection_method=ref[1],
+                                                                         author_ln = ref[2],
+                                                                         pub_date=ref[3],
+                                                                         pmid=ref[4],
+                                                                         psimi_type=ref[5],
+                                                                         interaction_type=ref[6],
+                                                                         psimi_db=ref[7],
+                                                                         source_db=ref[8],
+                                                                         confidence=ref[9],
+                                                                         interactor_a=interactor_a,
+                                                                         interactor_b=interactor_b).first()
                     if nref is None:
                         nref = InteractionReference(psimi_detection=ref[0], detection_method=ref[1],
                                                          author_ln=ref[2], pub_date=ref[3], pmid=ref[4],
@@ -275,8 +267,8 @@ def parse(session, file, source):
                 elif not_experimental == 1:
                     experimental = 0
 
-                nsource = session.query(InteractionSource).filter(InteractionSource.data_source == source,
-                                                                  InteractionSource.is_experimental==experimental).first()
+                nsource = session.query(InteractionSource).filter_by(data_source = source,
+                                                                     is_experimental=experimental).first()
                 if nsource is None:
                     nsource = InteractionSource(data_source=source, is_experimental=experimental)
                     session.add(nsource), session.commit()
@@ -284,4 +276,4 @@ def parse(session, file, source):
                 elif nsource not in interaction.sources:
                     interaction.sources.append(nsource)
 
-            session.commit()
+        session.commit()

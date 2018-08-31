@@ -68,8 +68,8 @@ def parse(strain, session):
 
                 #if id_A isn't in ecocyc_compounds, it's probably a uniprot id; search for ecoli orthologs matching id_A
                 if id_A not in ecocyc_compounds:
-                    for ortholog in session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == id_A,
-                                                                         OrthologEcoli.strain_protein == strain).all():
+                    for ortholog in session.query(OrthologEcoli).filter_by(ortholog_uniprot = id_A,
+                                                                           strain_protein = strain).all():
                         if ortholog is not None:
                             # add both the pseudomonas protein and the ortholog id (will be needed for reference)
                             # to interactors_A
@@ -78,12 +78,12 @@ def parse(strain, session):
                 else:
                     A_ecocyc = ecocyc_compounds[id_A]['ecocyc']
                     #check if the metabolite already exists in database
-                    metabolite = session.query(Metabolite).filter(
-                        or_(Metabolite.ecocyc == ecocyc_compounds[id_A]['ecocyc'],
-                            Metabolite.chebi == ecocyc_compounds[id_A]['chebi'],
-                            Metabolite.pubchem == ecocyc_compounds[id_A]['pubchem'],
-                            Metabolite.kegg == ecocyc_compounds[id_A]['kegg'],
-                            Metabolite.cas == ecocyc_compounds[id_A]['cas'])).first()
+                    metabolite = session.query(Metabolite).filter_by(
+                        or_(ecocyc = ecocyc_compounds[id_A]['ecocyc'],
+                            chebi = ecocyc_compounds[id_A]['chebi'],
+                            pubchem = ecocyc_compounds[id_A]['pubchem'],
+                            kegg = ecocyc_compounds[id_A]['kegg'],
+                            cas = ecocyc_compounds[id_A]['cas'])).first()
                     if metabolite is not None:
                         # if metabolite exists, add both the metabolite and it's name (needed for reference)
                         # to interactors_A
@@ -107,18 +107,18 @@ def parse(strain, session):
 
                 # same as for id_A above
                 if id_B not in ecocyc_compounds:
-                    for ortholog in session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_uniprot == id_B,
-                                                                        OrthologEcoli.strain_protein == strain).all():
+                    for ortholog in session.query(OrthologEcoli).filter_by(ortholog_uniprot = id_B,
+                                                                        strain_protein = strain).all():
                         if ortholog is not None:
                             interactors_B.append([ortholog.protein, ortholog.ortholog_id])
                 else:
                     B_ecocyc = ecocyc_compounds[id_B]['ecocyc']
-                    metabolite = session.query(Metabolite).filter(
-                        or_(Metabolite.ecocyc == ecocyc_compounds[id_B]['ecocyc'],
-                            Metabolite.chebi == ecocyc_compounds[id_B]['chebi'],
-                            Metabolite.pubchem == ecocyc_compounds[id_B]['pubchem'],
-                            Metabolite.kegg == ecocyc_compounds[id_B]['kegg'],
-                            Metabolite.cas == ecocyc_compounds[id_B]['cas'])).first()
+                    metabolite = session.query(Metabolite).filter_by(
+                        or_(ecocyc = ecocyc_compounds[id_B]['ecocyc'],
+                            chebi = ecocyc_compounds[id_B]['chebi'],
+                            pubchem = ecocyc_compounds[id_B]['pubchem'],
+                            kegg = ecocyc_compounds[id_B]['kegg'],
+                            cas = ecocyc_compounds[id_B]['cas'])).first()
                     if metabolite is not None:
                         # if metabolite exists, add both the metabolite and it's name (needed for reference)
                         # to interactors_A
@@ -155,7 +155,7 @@ def parse(strain, session):
                         if interactor_B[0].type != 'm':
                             # check if new metabolite exists in database (eg. if more than one ortholog was found for
                             # interactors_B, you don't want to create the same new metabolite twice)
-                            metabolite=session.query(Metabolite).filter(Metabolite.id==new_metabolite_A).first()
+                            metabolite=session.query(Metabolite).filter_by(id=new_metabolite_A).first()
                             # create a new metabolite if it doesn't exist
                             if metabolite is None:
                                 metabolite = Metabolite(id=new_metabolite_A, name = id_A,
@@ -172,7 +172,7 @@ def parse(strain, session):
                 elif new_metabolite_B is not None:
                     for interactor_A in interactors_A:
                         if interactor_A[0].type != 'm':
-                            metabolite=session.query(Metabolite).filter(Metabolite.id==new_metabolite_B).first()
+                            metabolite=session.query(Metabolite).filter_by(id=new_metabolite_B).first()
                             if metabolite is None:
                                 metabolite = Metabolite(id=new_metabolite_B, name = id_B,
                                                         ecocyc = new_metabolite_B,
@@ -194,16 +194,8 @@ def parse(strain, session):
                     if interaction is None:
                         interaction = Interaction(type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                                   strain=strain, homogenous=homogenous,
-                                                  interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                                  ortholog_derived='fe')
+                                                  interactors=[interactor_pair[0][0], interactor_pair[1][0]])
                         session.add(interaction), session.commit()
-                    else:
-                        # if interaction already exists but has no ortholog derivation, add 'cfe'
-                        if interaction.ortholog_derived is None:
-                            interaction.ortholog_derived = 'cfe'
-                        # if interaction has an ortholog derivation but ecoli is not mentioned, add 'cfe'
-                        elif 'fe' not in interaction.ortholog_derived:
-                            interaction.ortholog_derived += ', cfe'
 
                     #in case the interaction already existed, make sure interactor_a and interactor_b variables for
                     # new interaction reference match up with the first and second interactors of the existing
@@ -220,20 +212,11 @@ def parse(strain, session):
                     for pmid in interaction_row["INTERACTION_PUBMED_ID"].split(';'):
                         comment = interactor_pair[0][1] + interaction_row["INTERACTION_TYPE"] + interactor_pair[1][1]
                         # check if interaction reference already exists in db
-                        reference = session.query(InteractionReference).filter(
-                                InteractionReference.psimi_detection == None,
-                                InteractionReference.detection_method == None,
-                                InteractionReference.author_ln == None,
-                                InteractionReference.pub_date == None,
-                                InteractionReference.pmid == pmid,
-                                InteractionReference.psimi_type == None,
-                                InteractionReference.interaction_type == None,
-                                InteractionReference.psimi_db == None,
-                                InteractionReference.source_db == 'ecocyc',
-                                InteractionReference.confidence == None,
-                                InteractionReference.comment == comment,
-                                InteractionReference.interactor_a == interactor_a,
-                                InteractionReference.interactor_b == interactor_b).first()
+                        reference = session.query(InteractionReference).filter_by(pmid = pmid,
+                                                                                  source_db = 'ecocyc',
+                                                                                  comment = comment,
+                                                                                  interactor_a = interactor_a,
+                                                                                  interactor_b = interactor_b).first()
                         if reference is None:
                             reference = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
                                                            interactor_a=interactor_a, interactor_b=interactor_b)
@@ -241,7 +224,7 @@ def parse(strain, session):
                             interaction.references.append(reference)
                         elif reference not in interaction.references:
                             interaction.references.append(reference)
-                    source = session.query(InteractionSource).filter(InteractionSource.data_source == 'EcoCyc').first()
+                    source = session.query(InteractionSource).filter_by(data_source = 'EcoCyc').first()
                     if source not in interaction.sources:
                         interaction.sources.append(source)
                 session.commit()

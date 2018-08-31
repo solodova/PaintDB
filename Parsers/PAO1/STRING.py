@@ -20,10 +20,11 @@ def parse_string(session):
             locus_tag1 = row['interactor_A'].split('|')[0].split('.')[1]
             locus_tag2 = row['interactor_B'].split('|')[0].split('.')[1]
 
-            interactor_A = session.query(Interactor).filter(Interactor.id == locus_tag1).first()
-            interactor_B = session.query(Interactor).filter(Interactor.id == locus_tag2).first()
+            interactor_A = session.query(Interactor).get(locus_tag1)
+            if interactor_A is None: continue
+            interactor_B = session.query(Interactor).get(locus_tag2)
+            if interactor_B is None: continue
 
-            if (interactor_A is None) | (interactor_B is None): continue
             homogenous = (interactors[0] == interactors[1])
 
             interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactors[0]),
@@ -40,20 +41,13 @@ def parse_string(session):
                 source_db = row['source_db'].split('(')[1][:-1]
                 psimi_db = row['source_db'].split('MI:')[1][:4]
 
-            reference = session.query(InteractionReference).filter(
-                InteractionReference.psimi_detection == row['detection'].split('MI:')[1][:4],
-                InteractionReference.detection_method == row['detection'].split('(')[1][:-1],
-                InteractionReference.author_ln == None,
-                InteractionReference.pub_date == None,
-                InteractionReference.pmid == None,
-                InteractionReference.psimi_type == row['type'].split('MI:')[1][:4],
-                InteractionReference.interaction_type == find_type(row['type'].split(':')[2][:-1]),
-                InteractionReference.psimi_db == psimi_db,
-                InteractionReference.source_db == source_db,
-                InteractionReference.confidence == row['confidence'],
-                InteractionReference.comment == None,
-                InteractionReference.interactor_a == None,
-                InteractionReference.interactor_b == None).first()
+            reference = session.query(InteractionReference).filter_by(psimi_detection = row['detection'].split('MI:')[1][:4],
+                                                                      detection_method = row['detection'].split('(')[1][:-1],
+                                                                      psimi_type = row['type'].split('MI:')[1][:4],
+                                                                      interaction_type = find_type(row['type'].split(':')[2][:-1]),
+                                                                      psimi_db = psimi_db,
+                                                                      source_db = source_db,
+                                                                      confidence = row['confidence']).first()
             if reference is None:
                 reference = InteractionReference(psimi_detection=row['detection'].split('MI:')[1][:4],
                                                  detection_method=row['detection'].split('(')[1][:-1],
@@ -70,8 +64,8 @@ def parse_string(session):
 
             is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
 
-            source = session.query(InteractionSource).filter(InteractionSource.data_source == 'STRING',
-                                                             is_experimental == is_experimental).first()
+            source = session.query(InteractionSource).filter_by(data_source = 'STRING',
+                                                                is_experimental = is_experimental).first()
 
             if source is None:
                 source = InteractionSource(data_source='STRING', is_experimental = is_experimental)

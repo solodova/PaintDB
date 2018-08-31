@@ -86,12 +86,12 @@ def parse(org_id, strain, sourcedb, session):
 
                     # check if interactor (protein or metabolite) already exists
                     if (kegg_id is None) & (org_id != 'eco'):
-                        interactor = session.query(Interactor).filter(Interactor.id == id.split(':')[1]).first()
+                        interactor = session.query(Interactor).filter_by(id = id.split(':')[1]).first()
                         if interactor is not None:
                             interactors[num].append([interactor, None])
                     # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
                     elif kegg_id is not None:
-                        interactor = session.query(Metabolite).filter(Metabolite.kegg == kegg_id).first()
+                        interactor = session.query(Metabolite).filter_by(kegg = kegg_id).first()
                         if interactor is None:
                             new_metabolites[num].append(kegg_id)
                         else:
@@ -99,9 +99,8 @@ def parse(org_id, strain, sourcedb, session):
                         # if it is a valid compound, create new metabolite
                     # if parsing E. coli path, add all orthologs to interactor list
                     elif org_id == 'eco':
-                        for ortholog in (session.query(OrthologEcoli).filter(
-                                OrthologEcoli.ortholog_id == id.split(':')[1],
-                                OrthologEcoli.strain_protein == strain).all()):
+                        for ortholog in (session.query(OrthologEcoli).filter_by(ortholog_id = id.split(':')[1],
+                                                                                strain_protein = strain).all()):
                             if ortholog is not None:
                                 interactors[num].append([ortholog.protein, ortholog.ortholog_id])
 
@@ -114,7 +113,7 @@ def parse(org_id, strain, sourcedb, session):
             for interactor1 in interactors[0]:
                 for id in new_metabolites[1]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).filter(Metabolite.kegg == id).first()
+                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -123,7 +122,7 @@ def parse(org_id, strain, sourcedb, session):
             for interactor1 in interactors[1]:
                 for id in new_metabolites[0]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).filter(Metabolite.kegg == id).first()
+                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -141,7 +140,7 @@ def parse(org_id, strain, sourcedb, session):
                     if int(compound_node_id) not in compound_ids: continue
                     # if compound id is valid, either add existing matching metabolite or create new one and add
                     kegg_id = compound_ids[int(compound_node_id)]
-                    metabolite = session.query(Metabolite).filter(Metabolite.kegg == kegg_id).first()
+                    metabolite = session.query(Metabolite).filter_by(kegg = kegg_id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id=kegg_id, name=kegg_compounds[kegg_id]['name'],
                                                 pubchem=kegg_compounds[kegg_id]['pubchem'],
@@ -166,15 +165,8 @@ def parse(org_id, strain, sourcedb, session):
                     interaction = Interaction(type=interactor_pair[0][0].type + '-' + interactor_pair[1][0].type,
                                               strain=strain, homogenous=homogenous,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]])
-                    if org_id == 'eco':
-                        interaction.ortholog_derived = 'fe'
-
                     session.add(interaction), session.commit()
                 if org_id == 'eco':
-                    if interaction.ortholog_derived is None:
-                        interaction.ortholog_derived = 'cfe'
-                    elif 'fe' not in interaction.ortholog_derived:
-                        interaction.ortholog_derived += ', cfe'
 
                     interactor_a, interactor_b = None, None
                     if interaction.interactors[0] == interactor_pair[0][0]:
@@ -184,20 +176,9 @@ def parse(org_id, strain, sourcedb, session):
                         interactor_b = interactor_pair[0][1]
                         interactor_a = interactor_pair[1][1]
 
-                    reference = session.query(InteractionReference).filter(
-                        InteractionReference.psimi_detection == None,
-                        InteractionReference.detection_method == None,
-                        InteractionReference.author_ln == None,
-                        InteractionReference.pub_date == None,
-                        InteractionReference.pmid == None,
-                        InteractionReference.psimi_type == None,
-                        InteractionReference.interaction_type == None,
-                        InteractionReference.psimi_db == None,
-                        InteractionReference.source_db == 'kegg',
-                        InteractionReference.confidence == None,
-                        InteractionReference.comment == None,
-                        InteractionReference.interactor_a == interactor_a,
-                        InteractionReference.interactor_b == interactor_b).first()
+                    reference = session.query(InteractionReference).filter_by(source_db = 'kegg',
+                                                                              interactor_a = interactor_a,
+                                                                              interactor_b = interactor_b).first()
                     if reference is None:
                         reference = InteractionReference(source_db = 'kegg',
                                                          interactor_a=interactor_a, interactor_b=interactor_b)
@@ -206,7 +187,7 @@ def parse(org_id, strain, sourcedb, session):
                     elif reference not in interaction.references:
                         interaction.references.append(reference)
 
-                source = session.query(InteractionSource).filter(InteractionSource.data_source == sourcedb).first()
+                source = session.query(InteractionSource).filter_by(data_source = sourcedb).first()
                 if source not in interaction.sources:
                     interaction.sources.append(source)
         session.commit()

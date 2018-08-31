@@ -40,38 +40,37 @@ def get_xrefs(file, strain, session):
         reader = csv.DictReader(csvfile)
         for row in reader:
             if (row['Feature Type'] == 'CDS') and \
-                    (session.query(Interactor).filter(Interactor.id == row['Locus Tag']).first() is not None):
+                    (session.query(Interactor).get(row['Locus Tag']) is not None):
                 for type in types:
                     # if no accession present, don't include xref
                     if row[type] == '': continue
                     # create and add xref if it isn't present already (need to check if xref already exists since
                     # there are duplicate xrefs in file
-                    if session.query(InteractorXref).filter(InteractorXref.interactor_id == row['Locus Tag'],
-                                                             InteractorXref.accession == row[type]).first() is None:
+                    if session.query(InteractorXref).filter_by(interactor_id = row['Locus Tag'],
+                                                               accession = row[type]).first() is None:
                         xref = InteractorXref(accession=row[type], interactor_id=row['Locus Tag'], source=type)
                         session.add(xref)
 
                     # for uniprotkb ids, also need to set uniprotkb attribute of corresponding protein
                     if type == 'UniProtKB Accession':
                         # for uniprotkb ids, also need to set uniprotkb attribute of corresponding protein
-                        interactor = session.query(Interactor).filter(Interactor.id == row['Locus Tag']).one()
+                        interactor = session.query(Interactor).get(row['Locus Tag'])
                         interactor.uniprotkb = row[type]
-                        session.commit()
 
-                        num_interactors = session.query(Protein).filter(Protein.uniprotkb == row[type]).count()
+                        num_interactors = session.query(Protein).filter_by(uniprotkb = row[type]).count()
                         # if two interactors have the same uniprotkb id, they are part of a protein complex together
                         # create a new interactor with id being the uniprotkb id, and 'protein complex' as product name
                         if num_interactors == 2:
                             interactor = ProteinComplex(id=row[type], strain=strain, type='pc')
                             session.add(interactor)
-                session.commit()
+            session.commit()
 
 
 def get_localizations(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            if session.query(Interactor).filter(Interactor.id == row['Locus Tag']).first() is not None:
+            if session.query(Interactor).get(row['Locus Tag']) is not None:
                 localization = Localization(protein_id=row['Locus Tag'], localization=row['Subcellular Localization'],
                                             confidence=row['Confidence'])
                 session.add(localization)
@@ -82,7 +81,7 @@ def get_ontology(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            if session.query(Interactor).filter(Interactor.id == row['Locus Tag']).first() is not None:
+            if session.query(Interactor).filter_by(id = row['Locus Tag']).first() is not None:
                 ontology = GeneOntology(gene_id=row['Locus Tag'], accession=row['Accession'], go_term=row['GO Term'],
                                         evidence_code=row['GO Evidence Code'], pmid=row['PMID'],
                                         eco_code=row['Evidence Ontology ECO Code'],

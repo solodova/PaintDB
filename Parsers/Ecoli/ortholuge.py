@@ -59,7 +59,7 @@ def parse_orthologs(file, strain, dict, session):
             if row['Locus Tag (Strain 1)'] in dict:
                 if row['Locus Tag (Strain 2)'] in dict[row['Locus Tag (Strain 1)']]:
                     continue
-            if session.query(Interactor).filter(Interactor.id == row['Locus Tag (Strain 2)']).first() is not None:
+            if session.query(Interactor).filter_by(id = row['Locus Tag (Strain 2)']).first() is not None:
                 ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,
                                          ortholog_id=row['Locus Tag (Strain 1)'],
                                          ortholog_refseq=row['NCBI RefSeq Accession (Strain 1)'])
@@ -78,7 +78,7 @@ def parse_uniprot_ids(file, session):
         for row in reader:
             if row['Gene names'] != '':
                 locus = row['Gene names'].split(' ')[0]
-                for ortholog in session.query(OrthologEcoli).filter(OrthologEcoli.ortholog_id == locus).all():
+                for ortholog in session.query(OrthologEcoli).filter_by(ortholog_id = locus).all():
                     if ortholog is not None:
                         ortholog.ortholog_uniprot = row['Entry']
                         ortholog.ortholog_name = row['Gene name']
