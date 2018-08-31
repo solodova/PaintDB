@@ -57,7 +57,7 @@ def parse_orthologs(file, strain, dict, session):
 
             # don't include inparalog interactions
             if row['Locus Tag (Strain 1)'] in dict:
-                if (row['Locus Tag (Strain 2)'] in dict[row['Locus Tag (Strain 1)']]):
+                if row['Locus Tag (Strain 2)'] in dict[row['Locus Tag (Strain 1)']]:
                     continue
             if session.query(Interactor).filter(Interactor.id == row['Locus Tag (Strain 2)']).first() is not None:
                 ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,

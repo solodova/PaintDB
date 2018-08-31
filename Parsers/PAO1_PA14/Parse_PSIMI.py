@@ -7,20 +7,20 @@ cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
 def parse_psimi_pseudomonas(session):
-    parse('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes', session)
-    parse('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx', session)
-    parse('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct', session)
-    parse('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex', session)
-    parse('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha', session)
-    parse('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT', session)
-    parse('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB', session)
-    parse('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct', session)
+    parse('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT(PAO1)', session)
+    parse('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB(PAO1)', session)
+    parse('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
 
-    parse('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx', session)
-    parse('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex', session)
-    parse('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha', session)
-    parse('Data/PA14/PSICQUIC/MINT.txt', 'PA14', 'MINT', session)
-    parse('Data/PA14/IntAct.txt', 'PA14', 'IntAct', session)
+    parse('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx(PA14)', session)
+    parse('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex(PA14)', session)
+    parse('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha(PA14)', session)
+    parse('Data/PA14/PSICQUIC/MINT.txt', 'PA14', 'MINT(PA14)', session)
+    parse('Data/PA14/IntAct.txt', 'PA14', 'IntAct(PA14)', session)
 
 def parse(file, strain, source, session):
     with open(file) as csvfile:
@@ -36,7 +36,8 @@ def parse(file, strain, source, session):
                 refseq_A = row['interactor_A'].split('refseq:')[1].split('|')[0]
 
             if uniprot_A is not None:
-                interactor_A = session.query(Interactor).filter(Interactor.id == uniprot_A).first()
+                interactor_A = session.query(Interactor).filter(Interactor.type == 'pc',
+                                                                Interactor.id == uniprot_A).first()
                 if interactor_A is None:
                     interactor_A = session.query(Protein).filter(Protein.uniprotkb == uniprot_A).first()
             if (interactor_A is None) and (refseq_A is not None):
@@ -50,7 +51,8 @@ def parse(file, strain, source, session):
                 refseq_B = row['interactor_B'].split('refseq:')[1].split('|')[0]
 
             if uniprot_B is not None:
-                interactor_B = session.query(Interactor).filter(Interactor.id == uniprot_B).first()
+                interactor_B = session.query(Interactor).filter(Interactor.type == 'pc',
+                                                                Interactor.id == uniprot_B).first()
                 if interactor_B is None:
                     interactor_B = session.query(Protein).filter(Protein.uniprotkb == uniprot_B).first()
             if (interactor_B is None) and (refseq_B is not None):

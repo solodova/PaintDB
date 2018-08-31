@@ -97,7 +97,9 @@ def parse(strain, session):
                             metabolite.cas = ecocyc_compounds[id_A]['cas']
                         if metabolite.pubchem is None:
                             metabolite.pubchem = ecocyc_compounds[id_A]['pubchem']
-                        interactors_A.append([metabolite, metabolite.id])
+                        if metabolite.name is None:
+                            metabolite.name = id_A
+                        interactors_A.append([metabolite, metabolite.name])
                     else:
                         # if metabolite doesn't exist yet, store it's id to create it later (don't create it now
                         # since if interactor_B is invalid, there is no need for new metabolite to be created)
@@ -118,7 +120,21 @@ def parse(strain, session):
                             Metabolite.kegg == ecocyc_compounds[id_B]['kegg'],
                             Metabolite.cas == ecocyc_compounds[id_B]['cas'])).first()
                     if metabolite is not None:
-                        interactors_B.append([metabolite, metabolite.id])
+                        # if metabolite exists, add both the metabolite and it's name (needed for reference)
+                        # to interactors_A
+                        if metabolite.ecocyc is None:
+                            metabolite.ecocyc = ecocyc_compounds[id_B]['ecocyc']
+                        if metabolite.kegg is None:
+                            metabolite.kegg = ecocyc_compounds[id_B]['kegg']
+                        if metabolite.chebi is None:
+                            metabolite.chebi = ecocyc_compounds[id_B]['chebi']
+                        if metabolite.cas is None:
+                            metabolite.cas = ecocyc_compounds[id_B]['cas']
+                        if metabolite.pubchem is None:
+                            metabolite.pubchem = ecocyc_compounds[id_B]['pubchem']
+                        if metabolite.name is None:
+                            metabolite.name = id_B
+                        interactors_B.append([metabolite, metabolite.name])
                     else:
                         new_metabolite_B = B_ecocyc
 
@@ -151,7 +167,7 @@ def parse(strain, session):
                                 session.add(metabolite), session.commit()
                             # and the interactor pair (for the new metabolite, make sure to add it's name (for
                             # reference later)
-                            interactor_pairs.append([interactor_B, [metabolite, new_metabolite_A]])
+                            interactor_pairs.append([interactor_B, [metabolite, id_A]])
                 # same as previous case, but if new metabolite is new_metabolite_B
                 elif new_metabolite_B is not None:
                     for interactor_A in interactors_A:
@@ -165,7 +181,7 @@ def parse(strain, session):
                                                         cas= ecocyc_compounds[id_B]['cas'],
                                                         chebi=ecocyc_compounds[id_B]['chebi'])
                                 session.add(metabolite), session.commit()
-                            interactor_pairs.append([interactor_A, [metabolite, new_metabolite_B]])
+                            interactor_pairs.append([interactor_A, [metabolite, id_B]])
 
                 # iterate through all interactor pairs and create new interactions
                 for interactor_pair in interactor_pairs:

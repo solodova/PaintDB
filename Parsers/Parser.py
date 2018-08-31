@@ -6,7 +6,7 @@ if __name__ == '__main__':
     from sqlalchemy.orm import sessionmaker
     import csv
 
-    engine = create_engine('sqlite:///:memory:')
+    engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()

@@ -1,13 +1,12 @@
 import functools, os, glob
 from flask import (
-    Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Flask, Blueprint, flash, g, redirect, render_template, request, url_for
 )
+from . import Session, removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-import re
-#from UI.__init__ import Session
 #from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
-
+import re
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
 
@@ -61,6 +60,7 @@ def upload():
             #protein_file.save('UI\\user_upload\\' + pfile)
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
+    removeFiles()
     return render_template('query/upload.html')
 
 @bp.route('uploaded', methods=['GET', 'POST'])
@@ -80,24 +80,26 @@ def filter():
         filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
                    'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
 
-        # for filter in filters.keys():
-        #     if filter in request.form:
-        #         filters[filter] = request.form.getlist(filter)
-        #
-        # for filter in filters:
-        #     if 'None' in filter:
-        #         filter=['None']
-        #     elif 'All' in filter:
-        #         filter=['All']
-        #
-        # session = Session()
-        # interactions = []
-        # for strain in filters['strain']:
-        #     if strain == 'None':
-        #         'nothing'
-        #
-        # for strain in filters['strain']:
-        #     session.query(Interaction).filter(Interaction.strain == strain)
+        session = Session()
+
+        for filter in filters:
+            if filter in request.form:
+                filters[filter] = request.form.getlist(filter)
+
+        for filter in filters:
+            if 'None' in filter:
+                filters[filter]=['None']
+            elif 'All' in filter:
+                filters[filter]=['All']
+
+        session = Session()
+
+        if (('PAO1' in filters['strain']) and ('PA14' in filters['strain'])) | ('All' in filters['strain']):
+
+
+        #for strain in filters['strain']:
+            #session.query(Interaction).filter(Interaction.strain == strain)
+
         return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')
 

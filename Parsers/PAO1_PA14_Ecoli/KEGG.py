@@ -5,10 +5,11 @@ from Schema1 import Interactor, Metabolite, OrthologEcoli, Interaction, Interact
 kegg_compounds = {}
 
 def parse_pseudomonas_kegg(session):
-    source = InteractionSource(data_source='KEGG', is_experimental=2)
-    session.add(source), session.commit()
-    parse('pae', 'PAO1', 'KEGG', session)
-    parse('pau', 'PA14', 'KEGG', session)
+    source_PAO1 = InteractionSource(data_source='KEGG(PAO1)', is_experimental=2)
+    source_PA14 = InteractionSource(data_source='KEGG(PA14)', is_experimental=2)
+    session.add(source_PAO1), session.add(source_PA14), session.commit()
+    parse('pae', 'PAO1', 'KEGG(PAO1)', session)
+    parse('pau', 'PA14', 'KEGG(PA14)', session)
 
 def parse_ecoli_kegg(session):
     source = InteractionSource(data_source='KEGG(Ecoli)', is_experimental=2)

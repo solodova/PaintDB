@@ -141,10 +141,10 @@ def parse_ortholog_interactions(session):
 
             for source in interaction.sources:
                 new_source = session.query(InteractionSource).filter(
-                    InteractionSource.data_source == source.data_source + '(' + interaction.strain + ')',
+                    InteractionSource.data_source == source.data_source,
                     InteractionSource.is_experimental == source.is_experimental).first()
                 if new_source is None:
-                    new_source = InteractionSource(data_source = source.data_source + '(' + interaction.strain + ')',
+                    new_source = InteractionSource(data_source = source.data_source,
                                                     is_experimental = source.is_experimental)
                     session.add(new_source), session.commit()
                     new_interaction.sources.append(new_source)

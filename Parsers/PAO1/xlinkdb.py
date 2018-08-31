@@ -17,13 +17,15 @@ def parse_xlinkdb(session):
         session.add(source), session.commit()
         for row in reader:
 
-            interactor_A = session.query(Interactor).filter(Interactor.id == row['proA']).first()
+            interactor_A = session.query(Interactor).filter(Interactor.type == 'pc',
+                                                            Interactor.id == row['proA']).first()
             if interactor_A is None:
                 interactor_A = session.query(Protein).filter(Protein.uniprotkb == row['proA']).first()
 
             if interactor_A is None: continue
 
-            interactor_B = session.query(Interactor).filter(Interactor.id == row['proB']).first()
+            interactor_B = session.query(Interactor).filter(Interactor.type == 'pc',
+                                                            Interactor.id == row['proB']).first()
             if interactor_B is None:
                 interactor_B = session.query(Protein).filter(Protein.uniprotkb == row['proB']).first()
 

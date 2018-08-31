@@ -152,9 +152,9 @@ def parse(session, file, source):
                     else:
                         author = pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0][1:]
                     ref_fields['authors'].append(author)
-                    if (seps[1] == '-'):
+                    if seps[1] == '-':
                         ref_fields['dates'].append(pub.split(seps[1])[1])
-                    elif ('(' in pub):
+                    elif '(' in pub:
                         ref_fields['dates'].append(pub.split(seps[1])[1][:-1])
                 for id in row['publication_ID'].split('|'):
                     if ('pubmed' not in id) | (id == '-') | (id == '') | ('DIP' in id): continue

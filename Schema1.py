@@ -18,11 +18,15 @@ def is_experimental_psimi(psi_code):
 
 Base = declarative_base()
 
-protein_reference = Table('protein_reference', Base.metadata,
+protein_references = Table('protein_references', Base.metadata,
                           Column('protein_id', String, ForeignKey('protein.id')),
                           Column('reference_pmid', String, ForeignKey('reference.pmid')))
 
-interaction_participant = Table('interaction_participant', Base.metadata,
+protein_localizations = Table('protein_localizations', Base.metadata,
+                              Column('localization_id', String, ForeignKey('localization.id')),
+                              Column('protein_id', String, ForeignKey('protein.id')))
+
+interaction_participants = Table('interaction_participants', Base.metadata,
                                 Column('interactor_id', String, ForeignKey('interactor.id')),
                                 Column('interaction_id', Integer, ForeignKey('interaction.id')))
 
@@ -53,7 +57,7 @@ class Interactor(Base):
         'polymorphic_on': type
     }
 
-    interactions = relationship("Interaction", secondary=interaction_participant, backref="interactors")
+    interactions = relationship("Interaction", secondary=interaction_participants, backref="interactors")
     xrefs = relationship("InteractorXref", backref = 'interactor')
 
 
@@ -96,7 +100,7 @@ class Protein(Interactor):
     }
 
     localizations = relationship("Localization", backref="protein")
-    references = relationship("Reference", secondary=protein_reference, backref="proteins")
+    references = relationship("Reference", secondary=protein_references, backref="proteins")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
     ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
 
@@ -163,8 +167,6 @@ class Localization(Base):
     __tablename__ = 'localization'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    # eg. PA0001
-    protein_id = Column(String, ForeignKey('protein.id'))
     # eg. Cytoplasmic
     localization = Column(String)
     # eg. Class 3
@@ -184,11 +186,11 @@ class OrthologEcoli(Base):
     __tablename__ = 'ortholog_ecoli'
 
     protein_id = Column(String, ForeignKey('protein.id'), primary_key=True)
+    strain_protein = Column(String)
     ortholog_id = Column(String, primary_key=True)
     ortholog_uniprot = Column(String)
     ortholog_refseq = Column(String)
     ortholog_name = Column(String)
-    strain_protein = Column(String)
     ortholuge_classification = Column(String)
 
 
