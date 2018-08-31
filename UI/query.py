@@ -2,10 +2,11 @@ import functools, os, glob
 from flask import (
     Flask, Blueprint, flash, g, redirect, render_template, request, url_for
 )
+from sqlalchemy import in_
 from . import Session, removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-#from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
+from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref
 import re
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
@@ -79,7 +80,10 @@ def filter():
     if request.method == 'POST':
         filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
                    'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
-
+        filters = {'strain': ['PAO1', 'PA14'], 'interaction_type': ['p-p', 'p-m', 'p-bs'],
+                   'ortholog_mapping': ['PAO1/PA14', 'PAO1/Ecoli', 'PA14/Ecoli'],
+                   'Ecoli_sources': [],
+                   'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
         session = Session()
 
         for filter in filters:
@@ -94,8 +98,16 @@ def filter():
 
         session = Session()
 
-        if (('PAO1' in filters['strain']) and ('PA14' in filters['strain'])) | ('All' in filters['strain']):
+        #if (('PAO1' in filters['strain']) and ('PA14' in filters['strain'])) | ('All' in filters['strain']):
+        interactions = session.query(Interaction)
 
+        if (filters['strain'][0] != 'All') and not (('PAO1' in filters['strain']) and ('PA14' in filters['strain'])):
+            interactions = interactions.filter(Interaction.strain == filters['strain'][0])
+        if (filters['interaction_type'] != 'All') and not (('p-p' in filters['interaction_type']) and
+                                                           ('p-m' in filters['interaction_type']) and
+                                                           ('p-bs' in filters['interaction_type'])):
+
+            interactions = interactions.filter(Interaction.type == )
 
         #for strain in filters['strain']:
             #session.query(Interaction).filter(Interaction.strain == strain)
