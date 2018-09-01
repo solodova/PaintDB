@@ -9,7 +9,7 @@ def parse_geoff(session):
         session.add(source), session.commit()
 
         for row in reader:
-            interactor_A = session.query(Interactor).get(row['locus_tag'])
+            interactor_A = session.query(Interactor).get(row['locus_tag'], 'PA14')
             if interactor_A is None: continue
             row = next(reader)
             interactor_B = session.query(Interactor).get(row['locus_tag'])

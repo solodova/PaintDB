@@ -15,7 +15,7 @@ if __name__ == '__main__':
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
     from Parsers.Ecoli import EcoCyc, RegulonDB
-
+    p1 = Protein(type-=)
     int1 = Interaction(type='1')
     int2 = Interaction(type='2')
     int3 = Interaction(type='3')
@@ -29,13 +29,13 @@ if __name__ == '__main__':
     session.add_all([int1, int2, int3, db1, db2, db3])
     session.commit()
     sources = ['db1', 'db2']
-    query = session.query(Interaction).join(Interaction.sources).filter(InteractionSource.data_source.in_(sources)).filter(Interaction.type == '1')
-
-    for q in query.all():
-        print(q.type)
-        for s in q.sources:
-            print(s.data_source)
-        print(q.references)
+    #query = session.query(Interaction).join(Interaction.sources).filter(InteractionSource.data_source.in_(sources)).filter(Interaction.type == '1')
+    query = session.query(Interaction).
+    # for q in query.all():
+    #     print(q.type)
+    #     for s in q.sources:
+    #         print(s.data_source)
+    #     print(q.references)
 
     # pseudomonas_db.parse_pseudomonasdb(session)
     # #ortholuge.parse_ortholuge_ecoli(session)

@@ -105,17 +105,6 @@ class Protein(Interactor):
     ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
 
 
-class ProteinComplex(Interactor):
-    __tablename__ = 'protein_complex'
-
-    # uniprotkb id (eg. Q9HT76)
-    id = Column(String, ForeignKey('interactor.id'), primary_key = True)
-    strain = Column(String)
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'pc',
-    }
-
 class InteractorXref(Base):
     # note that some PAO1 proteins will have multiple xrefs from the same source
     __tablename__ = 'interactor_xref'
