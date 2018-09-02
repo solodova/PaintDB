@@ -1,7 +1,7 @@
 if __name__ == '__main__':
 
-    from Schema1 import Base, Interactor, Metabolite, Protein, InteractorXref, Reference, OrthologPseudomonas, \
-        OrthologEcoli, GeneOntology, Localization, InteractionReference, ProteinComplex, Interaction, InteractionSource
+    from Schema1 import Base, Interactor, Metabolite, Protein, InteractorXref, ProteinReference, OrthologPseudomonas, \
+        OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
     from sqlalchemy import create_engine, or_
     from sqlalchemy.orm import sessionmaker
     import csv
@@ -11,42 +11,55 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    from Parsers.PAO1_PA14 import pseudomonas_db, ortholuge, Parse_PSIMI, regulatory_network
+    from Parsers.PAO1_PA14 import pseudomonas_db, Parse_PSIMI, regulatory_network
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
-    from Parsers.Ecoli import EcoCyc, RegulonDB
-    p1 = Protein(type-=)
-    int1 = Interaction(type='1')
-    int2 = Interaction(type='2')
-    int3 = Interaction(type='3')
+    from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge
+    p1 = Protein(id='A')
+    p2 = Protein(id='B')
+    p3 = Protein(id='C')
+    int1 = Interaction(type='1', interactors=[p1, p2], homogenous = 0)
+    int2 = Interaction(type='2', interactors=[p1, p1], homogenous=1)
+    int3 = Interaction(type='3', interactors=[p2, p3], homogenous=0)
     db1 = InteractionSource(data_source='db1')
     db2 = InteractionSource(data_source='db2')
     db3 = InteractionSource(data_source='db3')
+    ref1 = InteractionReference(pmid='1')
+    ref2 = InteractionReference(pmid='2')
+    ref3 = InteractionReference(pmid='3')
+    int1.references.append(ref1)
     int1.sources.append(db1)
     int1.sources.append(db2)
     int2.sources.append(db2)
     int3.sources.append(db3)
-    session.add_all([int1, int2, int3, db1, db2, db3])
+    session.add_all([int1, int2, int3, db1, db2, db3, p1, p2, p3])
     session.commit()
-    sources = ['db1', 'db2']
+    #sources = ['db1', 'db2']
+    query= session.query(Interaction).filter(Interaction.interactors.contains(p1),
+                                             Interaction.interactors.contains(p2),
+                                             Interaction.homogenous == 0).join(Interaction.sources, Interaction.references).first()
+
+    print(query.sources, query.references)
     #query = session.query(Interaction).join(Interaction.sources).filter(InteractionSource.data_source.in_(sources)).filter(Interaction.type == '1')
-    query = session.query(Interaction).
+    #query = session.query(Interaction).
     # for q in query.all():
     #     print(q.type)
     #     for s in q.sources:
     #         print(s.data_source)
     #     print(q.references)
 
-    # pseudomonas_db.parse_pseudomonasdb(session)
-    # #ortholuge.parse_ortholuge_ecoli(session)
-    # Geoff_Winsor.parse_geoff(session)
+    pseudomonas_db.parse_pseudomonasdb(session)
+
+    #ortholuge.parse_ortholuge_ecoli(session)
+    Geoff_Winsor.parse_geoff(session)
+    print(session.query(Interaction).count())
     # xlinkdb.parse_xlinkdb(session)
     # Parse_PSIMI.parse_psimi_pseudomonas(session)
     # regulatory_network.parse_regulatory_network(session)
     # KEGG.get_kegg_compounds()
     # KEGG.parse_pseudomonas_kegg(session)
     # Zhang.parse_zhang(session)
-    # ortholuge.parse_ortholuge(session)
+    #ortholuge.parse_ortholuge(session)
 
     #print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
     #print(session.query(OrthologPseudomonas).filter(OrthologPseudomonas.strain_ortholog == 'PA14').count())

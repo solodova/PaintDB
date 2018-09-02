@@ -20,7 +20,7 @@ Base = declarative_base()
 
 protein_references = Table('protein_references', Base.metadata,
                           Column('protein_id', String, ForeignKey('protein.id')),
-                          Column('reference_pmid', String, ForeignKey('reference.pmid')))
+                          Column('reference_pmid', String, ForeignKey('protein_reference.pmid')))
 
 protein_localizations = Table('protein_localizations', Base.metadata,
                               Column('localization_id', String, ForeignKey('localization.id')),
@@ -100,7 +100,7 @@ class Protein(Interactor):
     }
 
     localizations = relationship("Localization", secondary=protein_localizations, backref="protein")
-    references = relationship("Reference", secondary=protein_references, backref="proteins")
+    references = relationship("ProteinReference", secondary=protein_references, backref="proteins")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
     ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
 
@@ -123,8 +123,8 @@ class InteractorXref(Base):
     source = Column(String)
 
 
-class Reference(Base):
-    __tablename__ = 'reference'
+class ProteinReference(Base):
+    __tablename__ = 'protein_reference'
 
     pmid = Column(String, primary_key=True)
     pub_date = Column(String)

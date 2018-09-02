@@ -164,7 +164,7 @@ def parse(strain, session):
                                                         kegg=ecocyc_compounds[id_A]['kegg'],
                                                         cas= ecocyc_compounds[id_A]['cas'],
                                                         chebi=ecocyc_compounds[id_A]['chebi'])
-                                session.add(metabolite), session.commit()
+                                session.add(metabolite)
                             # and the interactor pair (for the new metabolite, make sure to add it's name (for
                             # reference later)
                             interactor_pairs.append([interactor_B, [metabolite, id_A]])
@@ -180,7 +180,7 @@ def parse(strain, session):
                                                         kegg=ecocyc_compounds[id_B]['kegg'],
                                                         cas= ecocyc_compounds[id_B]['cas'],
                                                         chebi=ecocyc_compounds[id_B]['chebi'])
-                                session.add(metabolite), session.commit()
+                                session.add(metabolite)
                             interactor_pairs.append([interactor_A, [metabolite, id_B]])
 
                 # iterate through all interactor pairs and create new interactions
@@ -220,7 +220,6 @@ def parse(strain, session):
                         if reference is None:
                             reference = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
                                                            interactor_a=interactor_a, interactor_b=interactor_b)
-                            session.add(reference), session.commit()
                             interaction.references.append(reference)
                         elif reference not in interaction.references:
                             interaction.references.append(reference)

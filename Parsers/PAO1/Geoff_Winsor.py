@@ -9,7 +9,7 @@ def parse_geoff(session):
         session.add(source), session.commit()
 
         for row in reader:
-            interactor_A = session.query(Interactor).get(row['locus_tag'], 'PA14')
+            interactor_A = session.query(Interactor).get(row['locus_tag'])
             if interactor_A is None: continue
             row = next(reader)
             interactor_B = session.query(Interactor).get(row['locus_tag'])
@@ -20,13 +20,17 @@ def parse_geoff(session):
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous,
-                                          interactors = [interactor_A, interactor_B],
-                                          type=(interactor_A.type + '-' + interactor_B.type))
+                                          interactors = [interactor_A, interactor_B], type='p-p')
                 session.add(interaction), session.commit()
 
-            reference = InteractionReference(detection_method=row['experimental_type'], pmid=row['pmid'])
-            interaction.references.append(reference)
-            session.add(reference), session.commit()
+            reference = session.query(InteractionReference).filter_by(detection_method=row['experimental_type'],
+                                                                      pmid=row['pmid']).first()
+
+            if reference is None:
+                reference = InteractionReference(detection_method=row['experimental_type'], pmid=row['pmid'])
+                interaction.references.append(reference)
+            elif reference not in interaction.references:
+                interaction.references.append(reference)
 
             if source not in interaction.sources:
                 interaction.sources.append(source)

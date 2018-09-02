@@ -1,16 +1,16 @@
 import csv
-from Schema1 import Protein, ProteinComplex, Interactor, InteractorXref, Localization, GeneOntology
+from Schema1 import Protein, Interactor, InteractorXref, Localization, GeneOntology
 
 def parse_pseudomonasdb(session):
     get_gene_info('Data/PAO1/Gene_Info/pseudomonas_db_info.csv', 'PAO1', session)
-    get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
+    #get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
     #get_localizations('Data/PAO1/Gene_Info/pseudomonas_db_localizations.csv', session)
     #get_ontology('Data/PAO1/Gene_Info/pseudomonas_db_go.csv', session)
 
-    get_gene_info('Data/PA14/Gene_Info/pseudomonas_db_info.csv', 'PA14', session)
-    get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
-    # get_localizations('Data/PA14/Gene_Info/pseudomonas_db_localizations.csv', session)
-    # get_ontology('Data/PA14/Gene_Info/pseudomonas_db_go.csv', session)
+    #get_gene_info('Data/PA14/Gene_Info/pseudomonas_db_info.csv', 'PA14', session)
+    #get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
+    #get_localizations('Data/PA14/Gene_Info/pseudomonas_db_localizations.csv', session)
+    #get_ontology('Data/PA14/Gene_Info/pseudomonas_db_go.csv', session)
 
 
 def get_gene_info(file, strain, session):
@@ -21,15 +21,22 @@ def get_gene_info(file, strain, session):
                       "Synonyms", "NCBI Accession"]
         reader = csv.DictReader(csvfile, fieldnames=fieldnames)
         row_num = 0
+        proteins = []
         for row in reader:
             # skip first three rows since they don't contain interactor info
             if (row['Feature Type'] == 'CDS') and (row_num >= 3):
+                ncbi_acc, name = None, None
+                if row['NCBI Accession'] != '':
+                    ncbi_acc = row['NCBI Accession']
+                if row['Name'] != '':
+                    name = row['Name']
                 # trim trailing " character from locus tag
-                protein = Protein(id=row['Locus Tag'][:-1], name=row['Name'], type='p', strain=strain,
-                                  product_name=row['Product Name'], ncbi_acc=row['NCBI Accession'])
-                session.add(protein)
+                proteins.append(Protein(id=row['Locus Tag'][:-1], name=name, strain=strain,
+                                  product_name=row['Product Name'], ncbi_acc=ncbi_acc))
+
             row_num += 1
-        session.commit()
+        session.add_all(proteins)
+    session.commit()
 
 
 def get_xrefs(file, strain, session):
@@ -61,30 +68,41 @@ def get_xrefs(file, strain, session):
                         # if two interactors have the same uniprotkb id, they are part of a protein complex together
                         # create a new interactor with id being the uniprotkb id, and 'protein complex' as product name
                         if num_interactors == 2:
-                            interactor = ProteinComplex(id=row[type], strain=strain, type='pc')
+                            interactor = Protein(id=row[type], strain=strain)
                             session.add(interactor)
-            session.commit()
+    session.commit()
 
 
 def get_localizations(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            if session.query(Interactor).get(row['Locus Tag']) is not None:
-                localization = Localization(protein_id=row['Locus Tag'], localization=row['Subcellular Localization'],
-                                            confidence=row['Confidence'])
-                session.add(localization)
-        session.commit()
-
+            interactor = session.query(Interactor).get(row['Locus Tag'])
+            if interactor is not None:
+                localization = session.query(Localization).filter_by(localization=row['Subcellular Localization'],
+                                                                     confidence=row['Confidence']).first()
+                if localization is None:
+                    interactor.localizations.append(Localization(localization=row['Subcellular Localization'],
+                                                                 confidence=row['Confidence']))
+                elif localization not in interactor.localizations:
+                    interactor.localizations.append(localization)
+    session.commit()
 
 def get_ontology(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
+        ontologies = []
         for row in reader:
-            if session.query(Interactor).filter_by(id = row['Locus Tag']).first() is not None:
-                ontology = GeneOntology(gene_id=row['Locus Tag'], accession=row['Accession'], go_term=row['GO Term'],
-                                        evidence_code=row['GO Evidence Code'], pmid=row['PMID'],
-                                        eco_code=row['Evidence Ontology ECO Code'],
-                                        eco_term=row['Evidence Ontology Term'])
-                session.add(ontology)
-        session.commit()
+            if session.query(Interactor).get(row['Locus Tag']) is not None:
+                pmid, evidence_code, eco_code = None, None, None
+                if row['PMID'] != '':
+                    pmid=row['PMID']
+                if row['GO Evidence Code'] != '':
+                    evidence_code = row['GO Evidence Code']
+                if row['Evidence Ontology ECO Code'] != '':
+                    eco_code = row['Evidence Ontology ECO Code']
+                ontologies.append(GeneOntology(gene_id=row['Locus Tag'], accession=row['Accession'],
+                                               go_term=row['GO Term'], evidence_code=evidence_code, pmid=pmid,
+                                               eco_code=eco_code, eco_term=row['Evidence Ontology Term']))
+        session.add_all(ontologies)
+    session.commit()

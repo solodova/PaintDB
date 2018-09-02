@@ -24,8 +24,7 @@ def parse_zhang(session):
                                                             Interaction.homogenous == homogenous).first()
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous,
-                                          interactors=[interactor_A, interactor_B],
-                                          type=(interactor_A.type + '-' + interactor_B.type))
+                                          interactors=[interactor_A, interactor_B], type='p-p')
                 session.add(interaction), session.commit()
 
             reference = session.query(InteractionReference).filter_by(detection_method = 'computational prediction',
@@ -41,7 +40,6 @@ def parse_zhang(session):
                                                  interaction_type='predicted',
                                                  confidence=row['Confidence'],
                                                  comment=row['Comment'])
-                session.add(reference), session.commit()
                 interaction.references.append(reference)
             elif reference not in interaction.references:
                 interaction.references.append(reference)

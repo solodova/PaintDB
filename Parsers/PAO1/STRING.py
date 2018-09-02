@@ -33,7 +33,7 @@ def parse_string(session):
 
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous, interactors=interactors,
-                                          type = (interactor_A.type + '-' + interactor_B.type))
+                                          type = 'p-p')
                 session.add(interaction), session.commit()
 
             source_db, psimi_db = None, None
@@ -57,9 +57,7 @@ def parse_string(session):
                                                  source_db=source_db,
                                                  confidence=row['confidence'])
                 interaction.references.append(reference)
-                session.add(reference), session.commit()
-            else:
-                if reference not in interaction.references:
+            elif reference not in interaction.references:
                     interaction.references.append(reference)
 
             is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
@@ -69,11 +67,9 @@ def parse_string(session):
 
             if source is None:
                 source = InteractionSource(data_source='STRING', is_experimental = is_experimental)
-                session.add(source), session.commit()
                 interaction.sources.append(source)
             elif source not in interaction.sources:
                 interaction.sources.append(source)
 
 
         session.commit()
-        print(session.query(Interaction).count())

@@ -7,7 +7,7 @@ inparalogs = {}
 def parse_ortholuge(session):
     get_inparalogs('Data/Ortholog/PAO1-PA14.csv')
     parse_orthologs('Data/Ortholog/PAO1-PA14.csv', session)
-    parse_ortholog_interactions(session)
+    #parse_ortholog_interactions(session)
 
 def get_inparalogs(ortholog_file):
     with open(ortholog_file) as csvfile:
@@ -34,36 +34,34 @@ def get_inparalogs(ortholog_file):
                     inparalog_id = inparalog.split('[')[0]
                     if inparalog_id[0] == ';':
                         inparalog_id = inparalog_id[1:]
-                    if inparalog_id in inparalogs:
-                        inparalogs[inparalog_id].append(row['Locus Tag (Strain 1)'])
+                    if row['Locus Tag (Strain 1)'] in inparalogs:
+                        inparalogs[row['Locus Tag (Strain 1)']].append(inparalog_id)
                     else:
-                        inparalogs[inparalog_id] = [row['Locus Tag (Strain 1)']]
+                        inparalogs[row['Locus Tag (Strain 1)']] = [inparalog_id]
 
 def parse_orthologs(ortholog_file, session):
     with open(ortholog_file) as csvfile:
         reader = csv.DictReader(csvfile)
+        orthologs = []
         for row in reader:
             if row['Locus Tag (Strain 1)'] in inparalogs:
                 if row['Locus Tag (Strain 2)'] in inparalogs[row['Locus Tag (Strain 1)']]:
                     continue
-            if row['Locus Tag (Strain 2)'] in inparalogs:
-                if row['Locus Tag (Strain 1)'] in inparalogs[row['Locus Tag (Strain 2)']]:
-                    continue
 
-            if session.query(Interactor).filter(Interactor.id == row['Locus Tag (Strain 1)']).first() is not None:
-                if session.query(Interactor).filter(Interactor.id == row['Locus Tag (Strain 2)']).first() is not None:
+            if session.query(Interactor).get(row['Locus Tag (Strain 1)']) is not None:
+                if session.query(Interactor).get(row['Locus Tag (Strain 2)']) is not None:
+
                     ortholog1 = OrthologPseudomonas(protein_id=row['Locus Tag (Strain 1)'], strain_protein='PAO1',
                                                     ortholog_id=row['Locus Tag (Strain 2)'], strain_ortholog='PA14')
                     ortholog2 = OrthologPseudomonas(protein_id=row['Locus Tag (Strain 2)'], strain_protein='PA14',
                                                     ortholog_id=row['Locus Tag (Strain 1)'], strain_ortholog='PAO1')
-                    session.add(ortholog1), session.add(ortholog2)
+                    orthologs.append(ortholog1), orthologs.append(ortholog2)
+        session.add_all(orthologs)
         session.commit()
 
 
 def parse_ortholog_interactions(session):
-    all_interactions =session.query(Interaction).filter(or_(Interaction.type == 'p-p',
-                                                         Interaction.type == 'm-p',
-                                                         Interaction.type == 'p-m')).all()
+    all_interactions =session.query(Interaction).all()
     for interaction in all_interactions:
         new_interactors, ortholog_interactors = [], [[], []]
         num = 0
@@ -72,8 +70,7 @@ def parse_ortholog_interactions(session):
             if interactor.type == 'p':
                 for ortholog in interactor.pseudomonas_orthologs:
                     if ortholog is not None:
-                        ortholog_interactors[num].append(session.query(Interactor).filter_by(
-                            id = ortholog.ortholog_id).one())
+                        ortholog_interactors[num].append(session.query(Interactor).get(ortholog.ortholog_id))
             else:
                 ortholog_interactors[num].append(interactor)
             num += 1
@@ -128,7 +125,6 @@ def parse_ortholog_interactions(session):
                                                          comment = reference.comment,
                                                          interactor_a = interaction.interactors[0].id,
                                                          interactor_b = interaction.interactors[1].id)
-                    session.add(new_reference), session.commit()
                     new_interaction.references.append(new_reference)
 
             for source in interaction.sources:
@@ -137,7 +133,6 @@ def parse_ortholog_interactions(session):
                 if new_source is None:
                     new_source = InteractionSource(data_source = source.data_source,
                                                     is_experimental = source.is_experimental)
-                    session.add(new_source), session.commit()
                     new_interaction.sources.append(new_source)
                 elif new_source not in new_interaction.sources:
                     new_interaction.sources.append(new_source)

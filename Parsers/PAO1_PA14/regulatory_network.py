@@ -55,13 +55,12 @@ def parse_regulatory_network(session):
                                                      source_db=source_db,
                                                      comment=interactor_A.id + ' regulates(' +
                                                                            row['mode'] + ') ' + interactor_B.id)
-                    session.add(reference)
+                    interaction.references.append(reference)
 
                 if strain == 'PAO1':
                     if source_PAO1 not in interaction.sources:
                         interaction.sources.append(source_PAO1)
-                else:
-                    if source_PA14 not in interaction.sources:
-                        interaction.sources.append(source_PA14)
+                elif source_PA14 not in interaction.sources:
+                    interaction.sources.append(source_PA14)
 
         session.commit()

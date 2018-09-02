@@ -16,15 +16,13 @@ def parse_xlinkdb(session):
         session.add(source), session.add(reference), session.commit()
         for row in reader:
 
-            interactor_A = session.query(Interactor).filter_by(type = 'pc',
-                                                               id = row['proA']).first()
+            interactor_A = session.query(Interactor).get(id = row['proA'])
             if interactor_A is None:
                 interactor_A = session.query(Protein).filter_by(uniprotkb = row['proA']).first()
 
             if interactor_A is None: continue
 
-            interactor_B = session.query(Interactor).filter_by(type = 'pc',
-                                                               id = row['proB']).first()
+            interactor_B = session.query(Interactor).get(id = row['proB'])
             if interactor_B is None:
                 interactor_B = session.query(Protein).filter_by(uniprotkb = row['proB']).first()
 
@@ -38,7 +36,7 @@ def parse_xlinkdb(session):
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous,
                                           interactors=[interactor_A, interactor_B],
-                                          type=(interactor_A.type + '-' + interactor_B.type))
+                                          type='p-p')
                 session.add(interaction), session.commit()
 
             if source not in interaction.sources:

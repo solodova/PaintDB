@@ -13,8 +13,7 @@ def parse_ecoli_regulondb(session):
 
             orthologs_A = session.query(OrthologEcoli).filter_by(
                 ortholog_name = (row['TF name'][0].lower() + row['TF name'][1:])).all()
-            orthologs_B = session.query(OrthologEcoli).filter_by(
-                ortholog_name = row['Regulated gene']).all()
+            orthologs_B = session.query(OrthologEcoli).filter_by(ortholog_name = row['Regulated gene']).all()
 
             for ortholog_A in orthologs_A:
                 for ortholog_B in orthologs_B:
@@ -30,8 +29,7 @@ def parse_ecoli_regulondb(session):
                                                                 Interaction.homogenous == homogenous).first()
                 if interaction is None:
                     interaction = Interaction(strain=interactor_pair[0][0].strain,
-                                              interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type))
+                                              interactors=[interactor_pair[0][0], interactor_pair[1][0]], type='p-p')
                     session.add(interaction), session.commit()
 
                 interactor_a, interactor_b = None, None
