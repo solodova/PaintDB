@@ -11,10 +11,11 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    from Parsers.PAO1_PA14 import pseudomonas_db, Parse_PSIMI, regulatory_network
+    from Parsers.PAO1_PA14 import pseudomonas_db, Parse_PSIMI_pseudomonas, regulatory_network, ortholuge_pseudomonas
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
-    from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge
+    from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
+
     p1 = Protein(id='A')
     p2 = Protein(id='B')
     p3 = Protein(id='C')
@@ -35,11 +36,7 @@ if __name__ == '__main__':
     session.add_all([int1, int2, int3, db1, db2, db3, p1, p2, p3])
     session.commit()
     #sources = ['db1', 'db2']
-    query= session.query(Interaction).filter(Interaction.interactors.contains(p1),
-                                             Interaction.interactors.contains(p2),
-                                             Interaction.homogenous == 0).join(Interaction.sources, Interaction.references).first()
 
-    print(query.sources, query.references)
     #query = session.query(Interaction).join(Interaction.sources).filter(InteractionSource.data_source.in_(sources)).filter(Interaction.type == '1')
     #query = session.query(Interaction).
     # for q in query.all():
@@ -48,16 +45,29 @@ if __name__ == '__main__':
     #         print(s.data_source)
     #     print(q.references)
 
-    pseudomonas_db.parse_pseudomonasdb(session)
+    pseudomonas_db.parse(session)
+    Geoff_Winsor.parse(session)
+    xlinkdb.parse(session)
+    Zhang.parse(session)
+    regulatory_network.parse(session)
+    Parse_PSIMI_pseudomonas.parse(session)
+    KEGG.parse_pseudomonas(session)
+    ortholuge_pseudomonas.parse(session)
+
+    ortholuge_ecoli.parse(session)
+    KEGG.parse_ecoli(session)
+    EcoCyc.parse(session)
+    Parse_PSIMI_ecoli.parse(session)
+    RegulonDB.parse(session)
 
     #ortholuge.parse_ortholuge_ecoli(session)
-    Geoff_Winsor.parse_geoff(session)
-    print(session.query(Interaction).count())
-    # xlinkdb.parse_xlinkdb(session)
-    # Parse_PSIMI.parse_psimi_pseudomonas(session)
+    #
+    #print(session.query(Interaction).count())
+    #
+    #Parse_PSIMI.parse_psimi_pseudomonas(session)
     # regulatory_network.parse_regulatory_network(session)
     # KEGG.get_kegg_compounds()
-    # KEGG.parse_pseudomonas_kegg(session)
+    KEGG.parse_pseudomonas_kegg(session)
     # Zhang.parse_zhang(session)
     #ortholuge.parse_ortholuge(session)
 

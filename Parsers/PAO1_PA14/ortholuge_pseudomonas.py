@@ -1,13 +1,12 @@
 import csv
 from Schema1 import Interactor, OrthologPseudomonas, Interaction, InteractionReference, InteractionSource
-from sqlalchemy import or_
 
 inparalogs = {}
 
-def parse_ortholuge(session):
+def parse(session):
     get_inparalogs('Data/Ortholog/PAO1-PA14.csv')
     parse_orthologs('Data/Ortholog/PAO1-PA14.csv', session)
-    #parse_ortholog_interactions(session)
+    parse_ortholog_interactions(session)
 
 def get_inparalogs(ortholog_file):
     with open(ortholog_file) as csvfile:
@@ -63,25 +62,22 @@ def parse_orthologs(ortholog_file, session):
 def parse_ortholog_interactions(session):
     all_interactions =session.query(Interaction).all()
     for interaction in all_interactions:
-        new_interactors, ortholog_interactors = [], [[], []]
+        interactor_pairs, ortholog_interactors = [], [[], []]
         num = 0
-        ortho = []
         for interactor in interaction.interactors:
             if interactor.type == 'p':
                 for ortholog in interactor.pseudomonas_orthologs:
                     if ortholog is not None:
-                        ortholog_interactors[num].append(session.query(Interactor).get(ortholog.ortholog_id))
+                        ortholog_interactors[num].append(ortholog.protein)
             else:
                 ortholog_interactors[num].append(interactor)
             num += 1
 
         for interactor1 in ortholog_interactors[0]:
             for interactor2 in ortholog_interactors[1]:
-                new_interactors.append([interactor1, interactor2])
+                interactor_pairs.append([interactor1, interactor2])
 
-        ortho.append(new_interactors)
-
-        for interactor_pair in new_interactors:
+        for interactor_pair in interactor_pairs:
 
             homogenous = (interactor_pair[0] == interactor_pair[1])
             new_interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_pair[0]),
@@ -112,24 +108,22 @@ def parse_ortholog_interactions(session):
                                                                         interactor_b=interaction.interactors[1].id).first()
 
                 if new_ref is None:
-                    new_reference = InteractionReference(psimi_detection=reference.psimi_detection,
+                    new_ref = InteractionReference(psimi_detection=reference.psimi_detection,
                                                          detection_method=reference.detection_method,
-                                                         author_ln=reference.author_ln,
-                                                         pub_date=reference.pub_date,
-                                                         pmid=reference.pmid,
-                                                         psimi_type = reference.psimi_type,
+                                                         author_ln=reference.author_ln, pub_date=reference.pub_date,
+                                                         pmid=reference.pmid, psimi_type = reference.psimi_type,
                                                          interaction_type=reference.interaction_type,
-                                                         psimi_db=reference.psimi_db,
-                                                         source_db=reference.source_db,
-                                                         confidence=reference.confidence,
-                                                         comment = reference.comment,
+                                                         psimi_db=reference.psimi_db, source_db=reference.source_db,
+                                                         confidence=reference.confidence, comment = reference.comment,
                                                          interactor_a = interaction.interactors[0].id,
                                                          interactor_b = interaction.interactors[1].id)
-                    new_interaction.references.append(new_reference)
+                    new_interaction.references.append(new_ref)
+                elif new_ref not in new_interaction.references:
+                    new_interaction.references.append(new_ref)
 
             for source in interaction.sources:
-                new_source = session.query(InteractionSource).filter_by(data_source = source.data_source,
-                                                                        is_experimental = source.is_experimental).first()
+                new_source = session.query(InteractionSource).filter_by(
+                    data_source = source.data_source, is_experimental = source.is_experimental).first()
                 if new_source is None:
                     new_source = InteractionSource(data_source = source.data_source,
                                                     is_experimental = source.is_experimental)

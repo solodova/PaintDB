@@ -8,20 +8,20 @@ import itertools
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
-def parse_ecoli_psimi(session):
-    #parse(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
-    #parse(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
-    #parse(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
-    parse(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
+def parse(session):
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/IMEx.txt', 'IMEx(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/IntAct.txt', 'IntAct(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/iRefIndex.txt', 'iRefIndex(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/mentha.txt', 'mentha(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/MINT.txt', 'MINT(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/MPIDB.txt', 'MPIDB(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/PSICQUIC/UniProt.txt', 'UniProt(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/DIP.txt', 'DIP(Ecoli)')
+    parse_psimi(session, 'Data/Ecoli/IntAct.txt', 'IntAct(Ecoli)')
 
-def parse(session, file, source):
+def parse_psimi(session, file, source):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile, fieldnames=cols, delimiter = '\t')
 
@@ -232,25 +232,15 @@ def parse(session, file, source):
                     interactor_a = interactor_pair[1][1]
 
                 for ref in ref_parameter_list:
-                    nref = session.query(InteractionReference).filter_by(psimi_detection=ref[0],
-                                                                         detection_method=ref[1],
-                                                                         author_ln = ref[2],
-                                                                         pub_date=ref[3],
-                                                                         pmid=ref[4],
-                                                                         psimi_type=ref[5],
-                                                                         interaction_type=ref[6],
-                                                                         psimi_db=ref[7],
-                                                                         source_db=ref[8],
-                                                                         confidence=ref[9],
-                                                                         interactor_a=interactor_a,
-                                                                         interactor_b=interactor_b).first()
+                    nref = session.query(InteractionReference).filter_by(
+                        psimi_detection=ref[0],detection_method=ref[1], author_ln = ref[2], pub_date=ref[3],
+                        pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
+                        confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b).first()
                     if nref is None:
-                        nref = InteractionReference(psimi_detection=ref[0], detection_method=ref[1],
-                                                         author_ln=ref[2], pub_date=ref[3], pmid=ref[4],
-                                                         psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7],
-                                                         source_db=ref[8], confidence=ref[9],
-                                                         interactor_a=interactor_a, interactor_b=interactor_b)
-                        session.add(nref), session.commit()
+                        nref = InteractionReference(
+                            psimi_detection=ref[0], detection_method=ref[1], author_ln=ref[2], pub_date=ref[3],
+                            pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
+                            confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b)
                         interaction.references.append(nref)
                     elif nref not in interaction.references:
                         interaction.references.append(nref)
@@ -267,13 +257,11 @@ def parse(session, file, source):
                 elif not_experimental == 1:
                     experimental = 0
 
-                nsource = session.query(InteractionSource).filter_by(data_source = source,
-                                                                     is_experimental=experimental).first()
+                nsource = session.query(InteractionSource).filter_by(
+                    data_source = source, is_experimental=experimental).first()
                 if nsource is None:
                     nsource = InteractionSource(data_source=source, is_experimental=experimental)
-                    session.add(nsource), session.commit()
                     interaction.sources.append(nsource)
                 elif nsource not in interaction.sources:
                     interaction.sources.append(nsource)
-
         session.commit()

@@ -1,32 +1,27 @@
 import csv
 from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
-def parse_regulatory_network(session):
+def parse(session):
     source_PAO1 = InteractionSource(data_source = 'Galan-Vasquez(PAO1)', is_experimental=2)
     source_PA14 = InteractionSource(data_source='Galan-Vasquez(PA14)', is_experimental=2)
     session.add(source_PAO1), session.add(source_PA14), session.commit()
 
     with open('Data/PAO1_PA14/regulatory_network.csv') as csvfile:
         reader = csv.DictReader(csvfile)
-        string = []
         for row in reader:
             strains = row['Strain'].split(',')
             for strain in strains:
                 if (strain != 'PAO1') and (strain != 'PA14'): continue
-                interactors = []
+
                 interactor_A =session.query(Protein).filter_by(name = row['Regulator'], strain = strain).first()
                 if interactor_A is None:
                     interactor_A=session.query(Interactor).get(row['Regulator (TF or sigma)'])
-
                 if interactor_A is None: continue
 
                 interactor_B = session.query(Protein).filter_by(name = row['Target'], strain = strain).first()
                 if interactor_B is None:
                     interactor_B = session.query(Interactor).get(row['Target'])
-
                 if interactor_B is None: continue
-
-                string.append(len(interactors))
 
                 # string.append(row['Regulator (TF or sigma)'] + ':' + row['Target'] + '(' + strain + ')')
                 homogenous = (interactor_A == interactor_B)
@@ -36,7 +31,7 @@ def parse_regulatory_network(session):
 
                 if interaction is None:
                     interaction = Interaction(strain=strain, type='p-p', homogenous=homogenous,
-                                              interactors=interactors)
+                                              interactors=[interactor_A, interactor_B])
                     session.add(interaction), session.commit()
 
                 source_db, detections = None, [None]
@@ -48,8 +43,7 @@ def parse_regulatory_network(session):
                         detections.append(type)
 
                 for detection in detections:
-                    reference = InteractionReference(detection_method=row['evidence'],
-                                                     pmid=row['pmid'],
+                    reference = InteractionReference(detection_method=row['evidence'], pmid=row['pmid'],
                                                      interaction_type='TF/sigma-binding site (' + row['mode'] +
                                                                       'regulation)',
                                                      source_db=source_db,

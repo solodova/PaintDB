@@ -1,16 +1,16 @@
 import csv
 from Schema1 import Protein, Interactor, InteractorXref, Localization, GeneOntology
 
-def parse_pseudomonasdb(session):
+def parse(session):
     get_gene_info('Data/PAO1/Gene_Info/pseudomonas_db_info.csv', 'PAO1', session)
-    #get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
-    #get_localizations('Data/PAO1/Gene_Info/pseudomonas_db_localizations.csv', session)
-    #get_ontology('Data/PAO1/Gene_Info/pseudomonas_db_go.csv', session)
+    get_xrefs('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv', 'PAO1', session)
+    get_localizations('Data/PAO1/Gene_Info/pseudomonas_db_localizations.csv', session)
+    get_ontology('Data/PAO1/Gene_Info/pseudomonas_db_go.csv', session)
 
-    #get_gene_info('Data/PA14/Gene_Info/pseudomonas_db_info.csv', 'PA14', session)
-    #get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
-    #get_localizations('Data/PA14/Gene_Info/pseudomonas_db_localizations.csv', session)
-    #get_ontology('Data/PA14/Gene_Info/pseudomonas_db_go.csv', session)
+    get_gene_info('Data/PA14/Gene_Info/pseudomonas_db_info.csv', 'PA14', session)
+    get_xrefs('Data/PA14/Gene_Info/pseudomonas_db_xrefs.csv', 'PA14', session)
+    get_localizations('Data/PA14/Gene_Info/pseudomonas_db_localizations.csv', session)
+    get_ontology('Data/PA14/Gene_Info/pseudomonas_db_go.csv', session)
 
 
 def get_gene_info(file, strain, session):
@@ -32,8 +32,7 @@ def get_gene_info(file, strain, session):
                     name = row['Name']
                 # trim trailing " character from locus tag
                 proteins.append(Protein(id=row['Locus Tag'][:-1], name=name, strain=strain,
-                                  product_name=row['Product Name'], ncbi_acc=ncbi_acc))
-
+                                        product_name=row['Product Name'], ncbi_acc=ncbi_acc))
             row_num += 1
         session.add_all(proteins)
     session.commit()

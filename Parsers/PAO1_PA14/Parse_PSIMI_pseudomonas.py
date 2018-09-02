@@ -1,33 +1,32 @@
 import csv
 from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
 from Schema1 import is_experimental_psimi
+
 import itertools
 
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
-def parse_psimi_pseudomonas(session):
-    parse('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT(PAO1)', session)
-    parse('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB(PAO1)', session)
-    parse('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
+def parse(session):
+    parse_psimi('Data/PAO1/PSICQUIC/ADIPInteractomes.txt', 'PAO1', 'ADIPInteractomes(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'IMEx(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'iRefIndex(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/mentha.txt', 'PAO1', 'mentha(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/MINT.txt', 'PAO1', 'MINT(PAO1)', session)
+    parse_psimi('Data/PAO1/PSICQUIC/MPIDB.txt', 'PAO1', 'MPIDB(PAO1)', session)
+    parse_psimi('Data/PAO1/IntAct.txt', 'PAO1', 'IntAct(PAO1)', session)
 
-    parse('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx(PA14)', session)
-    parse('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex(PA14)', session)
-    parse('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha(PA14)', session)
-    parse('Data/PA14/PSICQUIC/MINT.txt', 'PA14', 'MINT(PA14)', session)
-    parse('Data/PA14/IntAct.txt', 'PA14', 'IntAct(PA14)', session)
+    parse_psimi('Data/PA14/PSICQUIC/IMEx.txt', 'PA14', 'IMEx(PA14)', session)
+    parse_psimi('Data/PA14/PSICQUIC/iRefIndex.txt', 'PA14', 'iRefIndex(PA14)', session)
+    parse_psimi('Data/PA14/PSICQUIC/mentha.txt', 'PA14', 'mentha(PA14)', session)
+    parse_psimi('Data/PA14/IntAct.txt', 'PA14', 'IntAct(PA14)', session)
 
-def parse(file, strain, source, session):
+def parse_psimi(file, strain, source, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t', fieldnames=cols)
         next(reader)
         for row in reader:
-            interactors = []
             uniprot_A, refseq_A, interactor_A, uniprot_B, refseq_B, interactor_B = None, None, None, None, None, None
 
             if 'uniprotkb' in row['interactor_A']:
@@ -41,7 +40,6 @@ def parse(file, strain, source, session):
                     interactor_A = session.query(Protein).filter_by(uniprotkb = uniprot_A).first()
             if (interactor_A is None) and (refseq_A is not None):
                 interactor_A = session.query(Protein).filter_by(ncbi_acc = refseq_A).first()
-
             if interactor_A is None: continue
 
             if 'uniprotkb' in row['interactor_B']:
@@ -177,14 +175,10 @@ def parse(file, strain, source, session):
 
             for ref in ref_parameter_list:
                 nref = session.query(InteractionReference).filter_by(psimi_detection = ref[0],
-                                                                     detection_method = ref[1],
-                                                                     author_ln = ref[2],
-                                                                     pub_date = ref[3],
-                                                                     pmid = ref[4],
-                                                                     psimi_type = ref[5],
-                                                                     interaction_type = ref[6],
-                                                                     psimi_db = ref[7],
-                                                                     source_db = ref[8],
+                                                                     detection_method = ref[1], author_ln = ref[2],
+                                                                     pub_date = ref[3], pmid = ref[4],
+                                                                     psimi_type = ref[5], interaction_type = ref[6],
+                                                                     psimi_db = ref[7], source_db = ref[8],
                                                                      confidence = ref[9]).first()
                 if nref is None:
                     nref = InteractionReference(psimi_detection=ref[0], detection_method=ref[1], author_ln=ref[2],

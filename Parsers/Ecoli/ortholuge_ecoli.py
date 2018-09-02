@@ -1,15 +1,14 @@
 import csv
 from Schema1 import Interactor, OrthologEcoli
 
-inparalogs_PAO1 = {}
-inparalogs_PA14 = {}
+inparalogs_PAO1, inparalogs_PA14 = {}, {}
 
-def parse_ortholuge_ecoli(session):
-    #parse_inparalogs('Data/Ortholog/PAO1-Ecoli.csv', inparalogs_PAO1)
+def parse(session):
+    parse_inparalogs('Data/Ortholog/PAO1-Ecoli.csv', inparalogs_PAO1)
     parse_inparalogs('Data/Ortholog/PA14-Ecoli.csv', inparalogs_PA14)
-    #parse_orthologs('Data/Ortholog/PAO1-Ecoli.csv', 'PAO1', inparalogs_PAO1, session)
+    parse_orthologs('Data/Ortholog/PAO1-Ecoli.csv', 'PAO1', inparalogs_PAO1, session)
     parse_orthologs('Data/Ortholog/PA14-Ecoli.csv', 'PA14', inparalogs_PA14, session)
-    #parse_uniprot_ids('Data/Ecoli/Uniprot_IDs.csv', session)
+    parse_uniprot_ids('Data/Ecoli/Uniprot_IDs.csv', session)
 
 
 def parse_inparalogs(file, dict):
@@ -50,7 +49,6 @@ def parse_inparalogs(file, dict):
 
 def parse_orthologs(file, strain, dict, session):
     # parse all orthologs (don't include inparalogs)
-    d = {}
     with open(file) as csvfile:
         reader2 = csv.DictReader(csvfile)
         for row in reader2:
@@ -61,20 +59,16 @@ def parse_orthologs(file, strain, dict, session):
                 if row['Locus Tag (Strain 2)'] in dict[row['Locus Tag (Strain 1)']]:
                     continue
 
-            if row['Locus Tag (Strain 1)'] in d:
-                print(row['Locus Tag (Strain 1)'], row['Locus Tag (Strain 2)'])
-            else:
-                d[row['Locus Tag (Strain 1)']] = 1
-            # if session.query(Interactor).filter_by(id = row['Locus Tag (Strain 2)']).first() is not None:
-            #     ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,
-            #                              ortholog_id=row['Locus Tag (Strain 1)'],
-            #                              ortholog_refseq=row['NCBI RefSeq Accession (Strain 1)'])
-            #
-            #     if row['Ortholuge Class'] == '':
-            #         ortholog.ortholuge_classification = 'RBBH'
-            #     else:
-            #         ortholog.ortholuge_classification = row['Ortholuge Class']
-            #     session.add(ortholog)
+            if session.query(Interactor).get(row['Locus Tag (Strain 2)']) is not None:
+                ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,
+                                         ortholog_id=row['Locus Tag (Strain 1)'],
+                                         ortholog_refseq=row['NCBI RefSeq Accession (Strain 1)'])
+
+                if row['Ortholuge Class'] == '':
+                    ortholog.ortholuge_classification = 'RBBH'
+                else:
+                    ortholog.ortholuge_classification = row['Ortholuge Class']
+                session.add(ortholog)
         session.commit()
 
 def parse_uniprot_ids(file, session):

@@ -1,7 +1,7 @@
 import csv
 from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference, InteractionSource
 
-def parse_ecoli_regulondb(session):
+def parse(session):
     with open('Data/Ecoli/RegulonDB.csv') as csvfile:
         reader = csv.DictReader(csvfile)
 
@@ -57,7 +57,6 @@ def parse_ecoli_regulondb(session):
                                                          confidence = row['Evidence type'],
                                                          interactor_a=interactor_a, interactor_b=interactor_b)
                         interaction.references.append(reference)
-                        session.add(reference), session.commit()
                     elif reference not in interaction.references:
                         interaction.references.append(reference)
 
