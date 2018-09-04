@@ -16,10 +16,9 @@ def parse(session):
             if interactor_B is None: continue
 
             homogenous = (interactor_A == interactor_B)
-            interaction = session.query(Interaction).\
-                filter(Interaction.interactors.contains(interactor_A),
-                       Interaction.interactors.contains(interactor_B),
-                       Interaction.homogenous == homogenous).first()
+            interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_A),
+                                                            Interaction.interactors.contains(interactor_B),
+                                                            Interaction.homogenous == homogenous).first()
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous , type='p-p',
                                           interactors = [interactor_A, interactor_B])

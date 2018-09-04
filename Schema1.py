@@ -4,14 +4,32 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import backref
 from sqlalchemy.ext.declarative import declarative_base
 
-# stopped at chromatography tech
-experimental_psimi = ['MI:0045', 'MI:0401', 'MI:0400','MI:0004', 'MI:2288', 'MI:0019', 'MI:0006', 'MI:0007',
-                          'MI:0402', 'MI:0225', 'MI:1218', 'MI:1028', 'MI:1029', 'MI:0858', 'MI:0946', 'MI:1017',
-                          'MI:0729', 'MI:0096', 'MI:0963', 'MI:0676', 'MI:0008', 'MI:0225', 'MI:0081', 'MI:0089',
-                          'MI:0678', 'MI:0695', 'MI:0092', 'MI:0946', 'MI:0095', 'MI:0921', 'MI:0405', 'MI:0034',
-                          'MI:0009', 'MI:0073', 'MI:0084', 'MI:0048', 'MI:0899', 'MI:0900', 'MI:0066', 'MI:0108',
-                          'MI:0098', 'MI:0115', 'MI:1087', 'MI:1031', 'MI:0813', 'MI:0440', 'MI:0892', 'MI:2189',
-                          'MI:0947', 'MI:0411', 'MI:0047', 'MI:2283', 'MI:0049', 'MI:2167', 'MI:0657', 'MI:1232']
+experimental_psimi = ['0045', '0401', '0013', '0254', '0428', '1088', '0255', '0090', '0400', '1232', '0091', '0027',
+                      '0030', '0982', '0415', '0417', '1036', '0953', '2197', '0968', '0016', '0943', '1311', '0894',
+                      '0043', '1219', '1086', '0928', '0051', '0964', '0859', '0065', '0067', '2169', '1247', '0071',
+                      '0893', '0891', '0077', '0938', '0099', '0888', '1235', '0966', '0114', '2224', '0439', '0441',
+                      '0872', '0663', '0040', '0416', '0426', '2213', '0827', '1089', '1192', '0257', '2285', '0256',
+                      '0014', '0010', '0011', '0809', '0111', '0231', '0895', '0097', '1203', '0370', '0232', '0004',
+                      '0008', '0405', '0034', '1087', '1031', '0813', '0440', '0892', '0657', '0226', '0227', '0028',
+                      '0029', '1022', '1211', '0430', '0031', '0807', '0983', '0889', '1005', '0989', '1142', '1147',
+                      '1137', '0990', '1309', '0406', '2281', '0984', '2216', '1138', '0996', '1006', '0870', '1011',
+                      '1009', '0998', '1026', '0999', '1007', '1000', '1249', '1001', '0515', '1010', '1034', '0879',
+                      '0979', '0434', '1145', '0972', '0841', '0696', '1325', '1008', '0997', '1229', '0602', '0605',
+                      '1191', '0949', '2198', '0969', '1342', '2196', '1038', '0107', '0069', '0944', '0041', '0042',
+                      '0905', '0229', '0012', '0017', '1030', '0052', '0053', '1016', '0054', '0055', '0510', '0976',
+                      '0965', '0038', '0104', '0826', '2170', '2171', '1104', '1103', '0425', '0825', '0824', '0410',
+                      '1024', '0020', '1037', '1204', '0655', '0369', '1320', '0432', '0726', '0588', '0018', '2288',
+                      '0019', '0096', '0676', '0225', '0081', '0089', '0921', '0073', '0084', '0098', '0115', '2189',
+                      '0947', '0411', '0047', '0049', '2167', '0729', '2191', '2194', '1312', '0404', '0808', '0413',
+                      '0887', '1354', '0991', '0435', '0508', '1252', '1236', '1003', '1002', '1004', '0516', '1035',
+                      '0920', '0880', '0419', '0514', '1019', '0424', '0697', '0698', '0699', '0700', '0603', '1190',
+                      '0604', '0901', '1189', '1183', '0814', '1352', '1313', '2199', '1246', '1238', '0009', '0420',
+                      '0509', '0511', '1321', '0112', '0437', '0438', '0728', '0727', '0916', '0397', '0398', '1356',
+                      '0006', '0007', '0402', '0858', '0946', '1017', '0963', '0678', '0092', '0095', '0048', '0066',
+                      '0108', '2283', '2192', '2193', '2188', '2195', '0276', '0412', '0992', '0993', '0994', '0995',
+                      '0513', '0512', '0423', '0606', '2168', '1184', '1314', '1113', '1111', '1218', '1028', '1029',
+                      '0695', '0899', '0900', '1187', '2277', '2215', '1112', '0399']
+
 
 def is_experimental_psimi(psi_code):
     return psi_code in experimental_psimi
@@ -57,7 +75,7 @@ class Interactor(Base):
         'polymorphic_on': type
     }
 
-    interactions = relationship("Interaction", secondary=interaction_participants, backref="interactors")
+    interactions = relationship("Interaction", secondary=interaction_participants, backref='interactors')
     xrefs = relationship("InteractorXref", backref = 'interactor')
 
 
@@ -188,13 +206,7 @@ class Interaction(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     strain = Column(String)
-    # remains None unless definitively determined
-    #is_experimental = Column(Integer)
-    # remains None unless confirmation from ortholog or derived from ortholog
-    ortholog_derived = Column(String)
     type = Column(String)
-    # remains None if the interaction is not tfbs, otherwise describes interaction
-    is_tfbs = Column(Integer)
     # whether the two interactors are the same (0 or 1)
     homogenous = Column(Integer)
 
@@ -234,6 +246,7 @@ class InteractionXref(Base):
     accession = Column(String, primary_key=True)
     interaction_id = Column(Integer, ForeignKey('interaction.id'), primary_key=True)
     data_source = Column(String)
+
 
 class InteractionSource(Base):
     __tablename__ ='interaction_source'

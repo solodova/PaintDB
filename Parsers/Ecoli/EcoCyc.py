@@ -42,20 +42,22 @@ def get_ecocyc_compounds(session):
                         if id_type[0] not in xrefs: continue
                         ecocyc_compounds[name][id_type[1]] = xrefs.split(id_type[0])[1].split(';')[0]
 
+
+def update_metabolite_info(session):
     for name in ecocyc_compounds:
         metabolite = None
         kegg, pubchem, ecocyc, chebi, cas =  ecocyc_compounds[name]['kegg'],  ecocyc_compounds[name]['pubchem'], \
                                              ecocyc_compounds[name]['ecocyc'],  ecocyc_compounds[name]['chebi'],  \
                                              ecocyc_compounds[name]['cas']
-        if kegg is not None:
-            metabolite = session.query(Metabolite).filter_by(kegg = kegg).first()
-        if (metabolite is None) & (pubchem is not None):
-            metabolite = session.query(Metabolite).filter_by(pubchem=pubchem).first()
+        if pubchem is not None:
+            metabolite = session.query(Metabolite).filter_by(pubchem = pubchem).first()
         if (metabolite is None) & (chebi is not None):
             metabolite = session.query(Metabolite).filter_by(chebi=chebi).first()
+        if (metabolite is None) & (kegg is not None):
+            metabolite = session.query(Metabolite).filter_by(kegg=kegg).first()
         if (metabolite is None) & (cas is not None):
             metabolite = session.query(Metabolite).filter_by(cas=cas).first()
-        if (metabolite is None) & (cas is not None):
+        if (metabolite is None) & (ecocyc is not None):
             metabolite = session.query(Metabolite).filter_by(ecocyc=ecocyc).first()
         if metabolite is None:
             metabolite = session.query(Metabolite).filter_by(name=name).first()
@@ -64,7 +66,7 @@ def get_ecocyc_compounds(session):
             if metabolite.kegg is None:
                 metabolite.kegg = kegg
             if metabolite.pubchem is None:
-                metabolite.pubchem = cas
+                metabolite.pubchem = pubchem
             if metabolite.chebi is None:
                 metabolite.chebi = chebi
             if metabolite.cas is None:

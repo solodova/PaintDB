@@ -85,7 +85,7 @@ def parse_psimi(session, file, source):
                     metabolite = session.query(Metabolite).filter(pubchem = pubchem).first()
                 if metabolite is None:
                     metabolite = Metabolite(id = id, chebi=chebi, pubchem=pubchem)
-                    session.add(metabolite), session.commit()
+                    session.add(metabolite)
 
             interactors = []
             if metabolite is None:

@@ -5,8 +5,8 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine, or_
     from sqlalchemy.orm import sessionmaker
     import csv
-    #/C:\\Users\\olgas\\Desktop\\PaIntDB.db
-    engine = create_engine('sqlite://')
+
+    engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -15,35 +15,6 @@ if __name__ == '__main__':
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
     from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
-
-    p1 = Protein(id='A')
-    p2 = Protein(id='B')
-    p3 = Protein(id='C')
-    int1 = Interaction(type='1', interactors=[p1, p2], homogenous = 0)
-    int2 = Interaction(type='2', interactors=[p1, p1], homogenous=1)
-    int3 = Interaction(type='3', interactors=[p2, p3], homogenous=0)
-    db1 = InteractionSource(data_source='db1')
-    db2 = InteractionSource(data_source='db2')
-    db3 = InteractionSource(data_source='db3')
-    ref1 = InteractionReference(pmid='1')
-    ref2 = InteractionReference(pmid='2')
-    ref3 = InteractionReference(pmid='3')
-    int1.references.append(ref1)
-    int1.sources.append(db1)
-    int1.sources.append(db2)
-    int2.sources.append(db2)
-    int3.sources.append(db3)
-    session.add_all([int1, int2, int3, db1, db2, db3, p1, p2, p3])
-    session.commit()
-    #sources = ['db1', 'db2']
-
-    #query = session.query(Interaction).join(Interaction.sources).filter(InteractionSource.data_source.in_(sources)).filter(Interaction.type == '1')
-    #query = session.query(Interaction).
-    # for q in query.all():
-    #     print(q.type)
-    #     for s in q.sources:
-    #         print(s.data_source)
-    #     print(q.references)
 
     pseudomonas_db.parse(session)
     Geoff_Winsor.parse(session)
@@ -55,27 +26,13 @@ if __name__ == '__main__':
     ortholuge_pseudomonas.parse(session)
 
     ortholuge_ecoli.parse(session)
-    KEGG.parse_ecoli(session)
-    EcoCyc.parse(session)
     Parse_PSIMI_ecoli.parse(session)
     RegulonDB.parse(session)
-
-    #ortholuge.parse_ortholuge_ecoli(session)
-    #
-    #print(session.query(Interaction).count())
-    #
-    #Parse_PSIMI.parse_psimi_pseudomonas(session)
-    # regulatory_network.parse_regulatory_network(session)
-    # KEGG.get_kegg_compounds()
-    KEGG.parse_pseudomonas_kegg(session)
-    # Zhang.parse_zhang(session)
-    #ortholuge.parse_ortholuge(session)
+    KEGG.parse_ecoli(session)
+    EcoCyc.parse(session)
 
     #print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
     #print(session.query(OrthologPseudomonas).filter(OrthologPseudomonas.strain_ortholog == 'PA14').count())
-    #Parse_PSIMI.parse_ecoli_psimi(session)
-    #EcoCyc.parse_ecocyc(session)
-    #RegulonDB.parse_ecoli_regulondb(session)
     # print(session.query(Interaction).filter(Interaction.strain == 'PAO1').count())
     # print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
     #                                         Interaction.type == 'p-p').count())

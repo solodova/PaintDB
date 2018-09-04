@@ -16,6 +16,7 @@ def parse_pseudomonas(session):
 def parse_ecoli(session):
     if not kegg_compounds:
         get_kegg_compounds()
+    update_metabolite_info(session)
     source = InteractionSource(data_source='KEGG(Ecoli)', is_experimental=2)
     session.add(source), session.commit()
     parse_kegg('eco', 'PAO1', 'KEGG(Ecoli)', session)
@@ -45,6 +46,31 @@ def get_kegg_compounds():
     for cpd_id in kegg_conv('pubchem', 'compound').read().split('cpd:'):
         if cpd_id != '':
             kegg_compounds[cpd_id[:6]]['pubchem'] = cpd_id.split('pubchem:')[1].rstrip()
+
+
+def update_metabolite_info(session):
+    for kegg_id in kegg_compounds:
+        metabolite = None
+        pubchem, name, chebi =  kegg_compounds[kegg_id]['pubchem'],  kegg_compounds[kegg_id]['name'], \
+                                kegg_compounds[kegg_id]['chebi']
+        if pubchem is not None:
+            metabolite = session.query(Metabolite).filter_by(pubchem = pubchem).first()
+        if (metabolite is None) & (chebi is not None):
+            metabolite = session.query(Metabolite).filter_by(chebi=chebi).first()
+        if metabolite is None:
+            metabolite = session.query(Metabolite).filter_by(kegg=kegg_id).first()
+        if (metabolite is None) & (name is not None):
+            metabolite = session.query(Metabolite).filter_by(name=name).first()
+
+        if metabolite is not None:
+            if metabolite.kegg is None:
+                metabolite.kegg = kegg_id
+            if metabolite.pubchem is None:
+                metabolite.pubchem = pubchem
+            if metabolite.chebi is None:
+                metabolite.chebi = chebi
+            if metabolite.name is None:
+                metabolite.name = name
 
 def parse_kegg(org_id, strain, sourcedb, session):
     # get pathways for organism specified by org_id
@@ -94,7 +120,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                             interactors[num].append([interactor, None])
                     # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
                     elif kegg_id is not None:
-                        interactor = session.query(Metabolite).filter_by(kegg = kegg_id).first()
+                        interactor = session.query(Metabolite).get(kegg_id)
                         if interactor is None:
                             new_metabolites[num].append(kegg_id)
                         else:
@@ -116,7 +142,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
             for interactor1 in interactors[0]:
                 for id in new_metabolites[1]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
+                    metabolite = session.query(Metabolite).get(id)
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -125,7 +151,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
             for interactor1 in interactors[1]:
                 for id in new_metabolites[0]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
+                    metabolite = session.query(Metabolite).get(id)
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -143,7 +169,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     if int(compound_node_id) not in compound_ids: continue
                     # if compound id is valid, either add existing matching metabolite or create new one and add
                     kegg_id = compound_ids[int(compound_node_id)]
-                    metabolite = session.query(Metabolite).filter_by(kegg = kegg_id).first()
+                    metabolite = session.query(Metabolite).get(kegg_id)
                     if metabolite is None:
                         metabolite = Metabolite(id=kegg_id, name=kegg_compounds[kegg_id]['name'],
                                                 pubchem=kegg_compounds[kegg_id]['pubchem'],
