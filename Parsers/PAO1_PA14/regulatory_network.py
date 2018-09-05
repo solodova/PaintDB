@@ -15,7 +15,7 @@ def parse(session):
 
                 interactor_A =session.query(Protein).filter_by(name = row['Regulator'], strain = strain).first()
                 if interactor_A is None:
-                    interactor_A=session.query(Interactor).get(row['Regulator (TF or sigma)'])
+                    interactor_A=session.query(Interactor).get(row['Regulator'])
                 if interactor_A is None: continue
 
                 interactor_B = session.query(Protein).filter_by(name = row['Target'], strain = strain).first()

@@ -36,9 +36,6 @@ def is_experimental_psimi(psi_code):
 
 Base = declarative_base()
 
-protein_references = Table('protein_references', Base.metadata,
-                          Column('protein_id', String, ForeignKey('protein.id')),
-                          Column('reference_pmid', String, ForeignKey('protein_reference.pmid')))
 
 protein_localizations = Table('protein_localizations', Base.metadata,
                               Column('localization_id', String, ForeignKey('localization.id')),
@@ -76,7 +73,6 @@ class Interactor(Base):
     }
 
     interactions = relationship("Interaction", secondary=interaction_participants, backref='interactors')
-    xrefs = relationship("InteractorXref", backref = 'interactor')
 
 
 class Metabolite(Interactor):
@@ -118,16 +114,16 @@ class Protein(Interactor):
     }
 
     localizations = relationship("Localization", secondary=protein_localizations, backref="protein")
-    references = relationship("ProteinReference", secondary=protein_references, backref="proteins")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
-    ecoli_ortholgs = relationship("OrthologEcoli", backref = "protein")
+    ecoli_orthologs = relationship("OrthologEcoli", backref = "protein")
+    xrefs = relationship("ProteinXref", backref='protein')
 
 
-class InteractorXref(Base):
+class ProteinXref(Base):
     # note that some PAO1 proteins will have multiple xrefs from the same source
     __tablename__ = 'interactor_xref'
 
-    interactor_id = Column(String, ForeignKey("interactor.id"), primary_key=True)
+    protein_id = Column(String, ForeignKey("interactor.id"), primary_key=True)
     # proteins:
     #   - RefSeq Accession: NP_254184.1
     #   - UniProtKB Accession: Q9HT76
@@ -139,15 +135,6 @@ class InteractorXref(Base):
     #   - UniRef50 ID: UniRef50_U2E6Q5
     accession = Column(String, primary_key=True)
     source = Column(String)
-
-
-class ProteinReference(Base):
-    __tablename__ = 'protein_reference'
-
-    pmid = Column(String, primary_key=True)
-    pub_date = Column(String)
-    author_ln = Column(String)
-    full_ref = Column(String)
 
 
 class GeneOntology(Base):

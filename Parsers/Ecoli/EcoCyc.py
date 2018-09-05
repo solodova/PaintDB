@@ -8,6 +8,7 @@ ecocyc_compounds = {}
 def parse(session):
     get_ecocyc_paths()
     get_ecocyc_compounds(session)
+    update_metabolite_info(session)
     source = InteractionSource(data_source='EcoCyc', is_experimental=2)
     session.add(source), session.commit()
     parse_ecocyc('PAO1', session)

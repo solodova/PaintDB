@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Protein, Interactor, InteractorXref, Localization, GeneOntology
+from Schema1 import Protein, Interactor, ProteinXref, Localization, GeneOntology
 
 def parse(session):
     get_gene_info('Data/PAO1/Gene_Info/pseudomonas_db_info.csv', 'PAO1', session)
@@ -52,9 +52,9 @@ def get_xrefs(file, strain, session):
                     if row[type] == '': continue
                     # create and add xref if it isn't present already (need to check if xref already exists since
                     # there are duplicate xrefs in file
-                    if session.query(InteractorXref).filter_by(interactor_id = row['Locus Tag'],
+                    if session.query(ProteinXref).filter_by(protein_id = row['Locus Tag'],
                                                                accession = row[type]).first() is None:
-                        xref = InteractorXref(accession=row[type], interactor_id=row['Locus Tag'], source=type)
+                        xref = ProteinXref(accession=row[type], protein_id=row['Locus Tag'], source=type)
                         session.add(xref)
 
                     # for uniprotkb ids, also need to set uniprotkb attribute of corresponding protein
@@ -67,7 +67,7 @@ def get_xrefs(file, strain, session):
                         # if two interactors have the same uniprotkb id, they are part of a protein complex together
                         # create a new interactor with id being the uniprotkb id, and 'protein complex' as product name
                         if num_interactors == 2:
-                            interactor = Protein(id=row[type], strain=strain)
+                            interactor = Protein(id=row[type], strain=strain, uniprotkb = 'pc')
                             session.add(interactor)
     session.commit()
 

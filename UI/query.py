@@ -8,9 +8,15 @@ from flask import current_app as app
 from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref, \
 InteractionSource
 import re
+import csv
+
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
-import sqlalchemy
+
+psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interactor A', 'Alt. ID(s) interactor B',
+                'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
+                'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
+                'Interaction type(s)', 'Source database(s)', 'Interaction identifier(s)', 'Confidence value(s)']
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -81,17 +87,16 @@ def filter():
     if request.method == 'POST':
         filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
                    'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
-        sources_Ecoli = ['EcoCyc', 'RegulonDB', 'IMEx(Ecoli)', 'BindingDB(Ecoli)', 'EBI-GOA-nonIntAct(Ecoli)',
-                         'IntAct(Ecoli)',
-                         'iRefIndex(Ecoli)', 'mentha(Ecoli)', 'MINT(Ecoli)', 'MPIDB(Ecoli)', 'UniProt(Ecoli)',
-                         'DIP(Ecoli)', 'KEGG(Ecoli)']
+        sources_Ecoli = ['EcoCyc', 'RegulonDB(Ecoli)', 'IMEx(Ecoli)', 'BindingDB(Ecoli)', 'EBI-GOA-nonIntAct(Ecoli)',
+                         'IntAct(Ecoli)', 'iRefIndex(Ecoli)', 'mentha(Ecoli)', 'MINT(Ecoli)', 'MPIDB(Ecoli)',
+                         'UniProt(Ecoli)', 'DIP(Ecoli)', 'KEGG(Ecoli)']
         sources_PAO1 = ['Geoff', 'XLinkDB', 'Zhang', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
                         'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)', 'Galan-Vasquez(PAO1)', 'KEGG(PAO1)']
         sources_PA14 = ['IMEx(PA14)', 'IntAct(PA14)', 'iRefIndex(PA14)', 'mentha(PA14)', 'MINT(PA14)', 'KEGG(PA14)',
                         'Galan-Vasquez(PA14)']
         filters_all ={'strain': ['PAO1', 'PA14'], 'interaction_type': ['p-p', 'p-m', 'p-bs'],
                       'ortholog_mapping': ['PAO1/PA14', 'PAO1/Ecoli', 'PA14/Ecoli'], 'Ecoli_sources': sources_Ecoli,
-                      'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14, 'verification': ['0, 1, 2']}
+                      'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14, 'verification': ['0', '1', '2']}
         sources = []
         session = Session()
 
@@ -103,44 +108,129 @@ def filter():
             if 'None' in filter:
                 filters[filter]=['None']
             elif 'All' in filter:
-                filters[filter]=['All']
-            elif len(filters[filter]) == len(filters_all[filter]):
-                filters[filter] = ['All']
+                filters[filter]=filters_all[filter]
 
         if ('PAO1' in filters['strain']) | ('PAO1/PA14' in filters['ortholog_mapping']):
-            sources.append(filters['PAO1_sources'])
+            if filters['PAO1_sources'][0] != 'None':
+                sources.append(filters['PAO1_sources'])
         if ('PA14' in filters['strain']) | ('PAO1/PA14' in filters['ortholog_mapping']):
-            sources.append(filters['PA14_sources'])
+            if filters['PA14_sources'][0] != 'None':
+                sources.append(filters['PA14_sources'])
         if ('PAO1/Ecoli' in filters['ortholog_mapping']) | ('PA14/Ecoli' in filters['ortholog_mapping']):
-            sources.append(filters['Ecoli_sources'])
+            if filters['ortholog_mapping'][0] != 'None':
+                sources.append(filters['Ecoli_sources'])
+        if len(sources) == (len(filters_all['PAO1_sources']) + len(filters_all['PA14_sources']) +
+                            len(filters_all['Ecoli_sources'])):
+            sources = ['All']
+        if len(sources) == 0:
+            'return, no sources selected!'
         session = Session()
 
         interactions = None
-        if (('PAO1' in filters['strain']) and ('PA14' in filters['strain'])) | ('All' in filters['strain']):
+        if ('PAO1' in filters['strain']) and ('PA14' in filters['strain']):
             interactions = session.query(Interaction)
         elif 'PAO1' in filters['strain']:
             interactions = session.query(Interaction).filter_by(strain = 'PAO1')
         elif 'PA14' in filters['strain']:
-            interactions = session.query(Interaction).filter_by(strain = 'PAO1')
+            interactions = session.query(Interaction).filter_by(strain = 'PA14')
 
-        interactions = session.query(Interaction).join(Interaction.sources)
+        type = []
+        if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
+            type.append('p-p')
+        elif 'p-m' in filters['interaction_type']:
+            type.append('p-m')
+        if len(type) == 1:
+            interactions = interactions.filter_by(type = type[0])
 
-        if filters['strain'][0] != 'All':
-            interactions = interactions.filter(Interaction.strain.in_(filters['strain']))
-        if filters['interaction_type'] != 'All':
-            types = []
-            if 'p-p' in filters['interaction_type']:
-                types.append('p-p'), types.append('p-pc'), types.append('pc-p')
-            if 'p-m' in filters['interaction_type']:
-                types.append('p-m'), types.append('m-p')
-            if len(types) != 0:
-                interactions = interactions.filter(Interaction.type.in_(filters['interaction_type']))
-        if sources
-
+        verifications = []
+        for ver in filters_all['verification']:
+            if ver in filters['verification']:
+                verifications.append(filters['verification'])
 
 
-        #for strain in filters['strain']:
-            #session.query(Interaction).filter(Interaction.strain == strain)
+        interactions = interactions.join(Interaction.sources)
+        if sources[0] != 'All':
+            interactions = interactions.filter(InteractionSource.data_source.in_(sources))
+
+        if (len(verifications) == 1) | (len(verifications) == 2):
+            interactions = interactions.filter(InteractionSource.is_experimental.in_(verifications))
+
+        file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields)
+        file_writer.writeheader()
+        for interaction in interactions.all():
+            if interaction is None: continue
+            interactor_ids, alt_ids, aliases  = [], [], []
+
+            for interactor in interaction.interactors:
+                if interactor.name is None:
+                    aliases.append('')
+                else:
+                    aliases.append(interactor.name)
+
+                if interactor.type == 'p':
+                    if interactor.uniprotkb == 'pc':
+                        interactor_ids.append('uniprotkb:' + interactor.id)
+                        alt_ids.append('')
+                    else:
+                        interactor_ids.append(interactor.id)
+                        alt_id = ''
+                        for xref in interactor.xrefs:
+                            alt_id += xref.source + ':' + xref.accession + '|'
+                        if len(alt_id) != 0:
+                            alt_id = alt_id[:-1]
+                        alt_ids.append(alt_id)
+
+                else:
+                    id = None
+                    alt_id = ''
+                    if interactor.pubchem is not None:
+                        id = 'pubchem:' + interactor.pubchem
+                    if interactor.chebi is not None:
+                        chebi = 'chebi:' + interactor.chebi
+                        if id is None:
+                            id = chebi
+                        else:
+                            alt_id += chebi + '|'
+                    if interactor.cas is not None:
+                        cas = 'cas:' + interactor.cas
+                        if id is None:
+                            id = cas
+                        else:
+                            alt_id += cas + '|'
+                    if interactor.kegg is not None:
+                        kegg = 'kegg:' + interactor.kegg
+                        if id is None:
+                            id = kegg
+                        else:
+                            alt_id += kegg + '|'
+                    if interactor.ecocyc is not None:
+                        ecocyc = 'ecocyc:' + interactor.ecocyc
+                        if id is None:
+                            id = ecocyc
+                        else:
+                            alt_id += ecocyc + '|'
+
+                    if len(alt_id) != 0:
+                        alt_id = alt_id[:-1]
+
+                    alt_ids.append(alt_id)
+
+            # 0064 ortholog interaction (interologs mapping)
+            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], }
+            #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
+            for reference in interaction.references:
+
+
+            if len(interactor_ids) == 1:
+                interactor_ids.append(interactor_ids[0])
+
+            file_writer.writerow({psimi_fields[0]: interactor_ids[0], psimi_fields[1]: interactor_ids[1],
+                                  psimi_fields[2]: , psimi_fields[3]: ,
+                                  psimi_fields[4]: , psimi_fields[5]: ,
+                                  psimi_fields[6]:, psimi_fields[7]:,
+                                  psimi_fields[8]:, psimi_fields[9]:,
+                                  psimi_fields[10]:, psimi_fields[11]:,
+                                  psimi_fields[12]:, psimi_fields[13]:,})
 
         return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')
