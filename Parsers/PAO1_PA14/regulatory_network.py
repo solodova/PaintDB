@@ -34,14 +34,22 @@ def parse(session):
                                               interactors=[interactor_A, interactor_B])
                     session.add(interaction), session.commit()
 
+                source = None
+                if strain == 'PAO1':
+                    source = source_PAO1
+                else:
+                    source = source_PA14
+
+                if source not in interaction.sources:
+                    interaction.sources.append(source)
+
                 source_db, detections = None, [None]
                 if row['source_db'] != '':
-                    source_db=row['source_db']
+                    source_db = row['source_db']
                 if row['evidence'] != '':
                     del detections[0]
                     for type in row['evidence'].split(', '):
                         detections.append(type)
-
                 for detection in detections:
                     reference = InteractionReference(detection_method=row['evidence'], pmid=row['pmid'],
                                                      interaction_type='TF/sigma-binding site (' + row['mode'] +
@@ -49,12 +57,8 @@ def parse(session):
                                                      source_db=source_db,
                                                      comment=interactor_A.id + ' regulates(' +
                                                                            row['mode'] + ') ' + interactor_B.id)
-                    interaction.references.append(reference)
+                    reference.interactions.append(interaction)
+                    reference.sources.append(source)
 
-                if strain == 'PAO1':
-                    if source_PAO1 not in interaction.sources:
-                        interaction.sources.append(source_PAO1)
-                elif source_PA14 not in interaction.sources:
-                    interaction.sources.append(source_PA14)
-
-        session.commit()
+    session.commit()
+    print('regnet', session.query(Interaction).count())

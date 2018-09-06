@@ -82,7 +82,7 @@ def parse_psimi(session, file, source):
                     metabolite = session.query(Metabolite).filter_by(chebi = chebi).first()
                 if (metabolite is None) & (pubchem is not None):
                     id = pubchem
-                    metabolite = session.query(Metabolite).filter(pubchem = pubchem).first()
+                    metabolite = session.query(Metabolite).filter_by(pubchem = pubchem).first()
                 if metabolite is None:
                     metabolite = Metabolite(id = id, chebi=chebi, pubchem=pubchem)
                     session.add(metabolite)
@@ -231,20 +231,6 @@ def parse_psimi(session, file, source):
                     interactor_b = interactor_pair[0][1]
                     interactor_a = interactor_pair[1][1]
 
-                for ref in ref_parameter_list:
-                    nref = session.query(InteractionReference).filter_by(
-                        psimi_detection=ref[0],detection_method=ref[1], author_ln = ref[2], pub_date=ref[3],
-                        pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
-                        confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b).first()
-                    if nref is None:
-                        nref = InteractionReference(
-                            psimi_detection=ref[0], detection_method=ref[1], author_ln=ref[2], pub_date=ref[3],
-                            pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
-                            confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b)
-                        interaction.references.append(nref)
-                    elif nref not in interaction.references:
-                        interaction.references.append(nref)
-
                 is_experimental, not_experimental, experimental = 2, 2, 2
                 for psimi_detection in ref_fields['psimi_detections']:
                     if psimi_detection is not None:
@@ -258,10 +244,30 @@ def parse_psimi(session, file, source):
                     experimental = 0
 
                 nsource = session.query(InteractionSource).filter_by(
-                    data_source = source, is_experimental=experimental).first()
+                    data_source=source, is_experimental=experimental).first()
                 if nsource is None:
                     nsource = InteractionSource(data_source=source, is_experimental=experimental)
                     interaction.sources.append(nsource)
                 elif nsource not in interaction.sources:
                     interaction.sources.append(nsource)
-        session.commit()
+
+                for ref in ref_parameter_list:
+                    nref = session.query(InteractionReference).filter_by(
+                        psimi_detection=ref[0],detection_method=ref[1], author_ln = ref[2], pub_date=ref[3],
+                        pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
+                        confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b).first()
+                    if nref is None:
+                        nref = InteractionReference(
+                            psimi_detection=ref[0], detection_method=ref[1], author_ln=ref[2], pub_date=ref[3],
+                            pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
+                            confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b)
+                        interaction.references.append(nref)
+                        nref.sources.append(source)
+                    else:
+                        if interaction not in nref.interactions:
+                            nref.interactions.append(interaction)
+                        if source not in nref.sources:
+                            nref.sources.append(source)
+
+    session.commit()
+    print(source, session.query(Interaction).count())

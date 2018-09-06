@@ -36,6 +36,7 @@ def get_gene_info(file, strain, session):
             row_num += 1
         session.add_all(proteins)
     session.commit()
+    print('gene info')
 
 
 def get_xrefs(file, strain, session):
@@ -70,6 +71,7 @@ def get_xrefs(file, strain, session):
                             interactor = Protein(id=row[type], strain=strain, uniprotkb = 'pc')
                             session.add(interactor)
     session.commit()
+    print('xrefs')
 
 
 def get_localizations(file, session):
@@ -86,6 +88,7 @@ def get_localizations(file, session):
                 elif localization not in interactor.localizations:
                     interactor.localizations.append(localization)
     session.commit()
+    print('localizations')
 
 def get_ontology(file, session):
     with open(file) as csvfile:
@@ -105,3 +108,4 @@ def get_ontology(file, session):
                                                eco_code=eco_code, eco_term=row['Evidence Ontology Term']))
         session.add_all(ontologies)
     session.commit()
+    print('ontologies')

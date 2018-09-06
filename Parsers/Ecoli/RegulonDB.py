@@ -57,10 +57,15 @@ def parse(session):
                                                          confidence = row['Evidence type'],
                                                          interactor_a=interactor_a, interactor_b=interactor_b)
                         interaction.references.append(reference)
-                    elif reference not in interaction.references:
-                        interaction.references.append(reference)
+                        reference.sources.append(source)
+                    else:
+                        if interaction not in reference.interactions:
+                            interaction.references.append(reference)
+                        if source not in reference.sources:
+                            reference.sources.append(source)
 
                 if source not in interaction.sources:
                     interaction.sources.append(source)
 
-        session.commit()
+    session.commit()
+    print('regulondb', session.query(Interaction).count())

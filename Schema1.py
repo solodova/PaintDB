@@ -53,6 +53,10 @@ interaction_sources = Table('interaction_sources', Base.metadata,
                                 Column('interaction_id', String, ForeignKey('interaction.id')),
                                 Column('data_source', Integer, ForeignKey('interaction_source.id')))
 
+reference_sources = Table('reference_sources', Base.metadata,
+                          Column('reference_id', String, ForeignKey('interaction_reference.id')),
+                          Column('data_source', String, ForeignKey('interaction_source.id')))
+
 
 class Interactor(Base):
     __tablename__ = 'interactor'
@@ -224,6 +228,8 @@ class InteractionReference(Base):
     confidence = Column(String)
     interactor_a = Column(String)
     interactor_b = Column(String)
+
+    sources = relationship('InteractionSource', secondary=reference_sources, backref='references')
 
 
 

@@ -118,17 +118,18 @@ def parse_ortholog_interactions(session):
                                                          interactor_a = interaction.interactors[0].id,
                                                          interactor_b = interaction.interactors[1].id)
                     new_interaction.references.append(new_ref)
-                elif new_ref not in new_interaction.references:
-                    new_interaction.references.append(new_ref)
+                    new_ref.sources = reference.sources
+                else:
+                    if new_interaction not in new_ref.interactions:
+                        new_ref.interactions.append(new_interaction)
+                    for source in reference.sources:
+                        if source is not None:
+                            if source not in new_ref.sources:
+                                new_ref.sources.append(source)
 
             for source in interaction.sources:
-                new_source = session.query(InteractionSource).filter_by(
-                    data_source = source.data_source, is_experimental = source.is_experimental).first()
-                if new_source is None:
-                    new_source = InteractionSource(data_source = source.data_source,
-                                                    is_experimental = source.is_experimental)
-                    new_interaction.sources.append(new_source)
-                elif new_source not in new_interaction.sources:
-                    new_interaction.sources.append(new_source)
+                if source not in new_interaction.sources:
+                    new_interaction.sources.append(source)
 
         session.commit()
+    print('p_orthologs', session.query(Interaction).count())

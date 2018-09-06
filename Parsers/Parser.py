@@ -1,12 +1,12 @@
 if __name__ == '__main__':
 
-    from Schema1 import Base, Interactor, Metabolite, Protein, InteractorXref, ProteinReference, OrthologPseudomonas, \
+    from Schema1 import Base, Interactor, Metabolite, Protein, OrthologPseudomonas, \
         OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
     from sqlalchemy import create_engine, or_
     from sqlalchemy.orm import sessionmaker
-    import csv
-
-    engine = create_engine('sqlite:////Users/olga/Desktop/PaIntDB.db')
+    import csv, datetime
+    #('sqlite:////Users/olga/Desktop/PaIntDB.db')
+    engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -17,19 +17,32 @@ if __name__ == '__main__':
     from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
 
     pseudomonas_db.parse(session)
+    print(datetime.datetime.now())
     Geoff_Winsor.parse(session)
+    print(datetime.datetime.now())
     xlinkdb.parse(session)
+    print(datetime.datetime.now())
     Zhang.parse(session)
+    print(datetime.datetime.now())
     regulatory_network.parse(session)
+    print(datetime.datetime.now())
     Parse_PSIMI_pseudomonas.parse(session)
+    print(datetime.datetime.now())
     KEGG.parse_pseudomonas(session)
+    print(datetime.datetime.now())
     ortholuge_pseudomonas.parse(session)
+    print(datetime.datetime.now())
 
     ortholuge_ecoli.parse(session)
+    print(datetime.datetime.now())
     Parse_PSIMI_ecoli.parse(session)
+    print(datetime.datetime.now())
     RegulonDB.parse(session)
+    print(datetime.datetime.now())
     KEGG.parse_ecoli(session)
+    print(datetime.datetime.now())
     EcoCyc.parse(session)
+    print(datetime.datetime.now())
 
     #print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
     #print(session.query(OrthologPseudomonas).filter(OrthologPseudomonas.strain_ortholog == 'PA14').count())

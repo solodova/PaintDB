@@ -202,6 +202,9 @@ def parse_ecocyc(strain, session):
 
                     comment = interactor_pair[0][1] + interaction_row["INTERACTION_TYPE"] + interactor_pair[1][1]
                     # iterate through all the pmids listed as reference for given interaction
+                    source = session.query(InteractionSource).filter_by(data_source='EcoCyc').first()
+                    if source not in interaction.sources:
+                        interaction.sources.append(source)
                     for pmid in interaction_row["INTERACTION_PUBMED_ID"].split(';'):
                         # check if interaction reference already exists in db
                         reference = session.query(InteractionReference).filter_by(pmid = pmid, source_db = 'ecocyc',
@@ -212,9 +215,11 @@ def parse_ecocyc(strain, session):
                             reference = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
                                                            interactor_a=interactor_a, interactor_b=interactor_b)
                             interaction.references.append(reference)
-                        elif reference not in interaction.references:
-                            interaction.references.append(reference)
-                    source = session.query(InteractionSource).filter_by(data_source = 'EcoCyc').first()
-                    if source not in interaction.sources:
-                        interaction.sources.append(source)
-                session.commit()
+                            reference.sources.append(source)
+                        else:
+                            if interaction not in reference.interactions:
+                                reference.interactions.append(interaction)
+                            if source not in reference.sources:
+                                reference.sources.append(source)
+    session.commit()
+    print('ecocyc', session.query(Interaction).count())

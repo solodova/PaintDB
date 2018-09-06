@@ -9,6 +9,7 @@ def parse(session):
     parse_orthologs('Data/Ortholog/PAO1-Ecoli.csv', 'PAO1', inparalogs_PAO1, session)
     parse_orthologs('Data/Ortholog/PA14-Ecoli.csv', 'PA14', inparalogs_PA14, session)
     parse_uniprot_ids('Data/Ecoli/Uniprot_IDs.csv', session)
+    print('e_orthologs')
 
 
 def parse_inparalogs(file, dict):
@@ -59,17 +60,19 @@ def parse_orthologs(file, strain, dict, session):
                 if row['Locus Tag (Strain 2)'] in dict[row['Locus Tag (Strain 1)']]:
                     continue
 
+            refseq = None
+            if row['NCBI RefSeq Accession (Strain 1)'] != '':
+                refseq = row['NCBI RefSeq Accession (Strain 1)']
             if session.query(Interactor).get(row['Locus Tag (Strain 2)']) is not None:
                 ortholog = OrthologEcoli(protein_id=row['Locus Tag (Strain 2)'], strain_protein=strain,
-                                         ortholog_id=row['Locus Tag (Strain 1)'],
-                                         ortholog_refseq=row['NCBI RefSeq Accession (Strain 1)'])
+                                         ortholog_id=row['Locus Tag (Strain 1)'], ortholog_refseq=refseq)
 
                 if row['Ortholuge Class'] == '':
                     ortholog.ortholuge_classification = 'RBBH'
                 else:
                     ortholog.ortholuge_classification = row['Ortholuge Class']
                 session.add(ortholog)
-        session.commit()
+    session.commit()
 
 def parse_uniprot_ids(file, session):
     # get all uniprot ids and gene names for E. coli orthologs
@@ -78,8 +81,11 @@ def parse_uniprot_ids(file, session):
         for row in reader:
             if row['Gene names'] != '':
                 locus = row['Gene names'].split(' ')[0]
+                name = None
+                if row['Gene name'] != '':
+                    name = row['Gene name']
                 for ortholog in session.query(OrthologEcoli).filter_by(ortholog_id = locus).all():
                     if ortholog is not None:
                         ortholog.ortholog_uniprot = row['Entry']
                         ortholog.ortholog_name = row['Gene name']
-        session.commit()
+    session.commit()

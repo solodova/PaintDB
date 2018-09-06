@@ -30,9 +30,14 @@ def parse(session):
             if reference is None:
                 reference = InteractionReference(detection_method=row['experimental_type'], pmid=row['pmid'])
                 interaction.references.append(reference)
-            elif reference not in interaction.references:
-                interaction.references.append(reference)
+                reference.sources.append(source)
+            else:
+                if interaction not in reference.interactions:
+                    reference.interactions.append(interaction)
+                if source not in reference.sources:
+                    reference.sources.append(source)
 
             if source not in interaction.sources:
                 interaction.sources.append(source)
     session.commit()
+    print('geoff', session.query(Interaction).count())

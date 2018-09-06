@@ -39,6 +39,17 @@ def parse(session):
                 source_db = row['source_db'].split('(')[1][:-1]
                 psimi_db = row['source_db'].split('MI:')[1][:4]
 
+            is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
+
+            source = session.query(InteractionSource).filter_by(data_source='STRING',
+                                                                is_experimental=is_experimental).first()
+
+            if source is None:
+                source = InteractionSource(data_source='STRING', is_experimental=is_experimental)
+                interaction.sources.append(source)
+            elif source not in interaction.sources:
+                interaction.sources.append(source)
+
             reference = session.query(InteractionReference).filter_by(
                 psimi_detection = row['detection'].split('MI:')[1][:4],
                 detection_method = row['detection'].split('(')[1][:-1], psimi_type = row['type'].split('MI:')[1][:4],
@@ -51,17 +62,11 @@ def parse(session):
                                                  interaction_type=find_type(row['type'].split(':')[2][:-1]),
                                                  psimi_db=psimi_db, source_db=source_db, confidence=row['confidence'])
                 interaction.references.append(reference)
-            elif reference not in interaction.references:
-                    interaction.references.append(reference)
+                reference.sources.append(source)
+            else:
+                if interaction not in reference.interactions:
+                    reference.interactions.append(interaction)
+                if source not in reference.sources:
+                    reference.sources.append(source)
 
-            is_experimental = is_experimental_psimi(row['detection'].split('MI:')[1][:4])
-
-            source = session.query(InteractionSource).filter_by(data_source = 'STRING',
-                                                                is_experimental = is_experimental).first()
-
-            if source is None:
-                source = InteractionSource(data_source='STRING', is_experimental = is_experimental)
-                interaction.sources.append(source)
-            elif source not in interaction.sources:
-                interaction.sources.append(source)
         session.commit()

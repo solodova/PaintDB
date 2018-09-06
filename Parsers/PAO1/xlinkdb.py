@@ -9,6 +9,7 @@ def parse(session):
                                          interaction_type='physical association', author_ln='Navari',
                                          pub_date='2015', pmid='25800553', source_db='xlinkdb')
         source = InteractionSource(data_source='XLinkDB', is_experimental = 1)
+        source.references.append(reference)
         session.add(source), session.add(reference), session.commit()
 
         for row in reader:
@@ -34,7 +35,8 @@ def parse(session):
 
             if reference not in interaction.references:
                 interaction.references.append(reference)
-
             if source not in interaction.sources:
                 interaction.sources.append(source)
-        session.commit()
+
+    session.commit()
+    print('xlinkdb', session.query(Interaction).count())

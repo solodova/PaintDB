@@ -205,6 +205,10 @@ def parse_kegg(org_id, strain, sourcedb, session):
                         interactor_b = interactor_pair[0][1]
                         interactor_a = interactor_pair[1][1]
 
+                source = session.query(InteractionSource).filter_by(data_source=sourcedb).first()
+                if source not in interaction.sources:
+                    interaction.sources.append(source)
+
                 reference = session.query(InteractionReference).filter_by(source_db='kegg',
                                                                           comment='in ' + path_name + ' path',
                                                                           interactor_a=interactor_a,
@@ -213,10 +217,12 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     reference = InteractionReference(source_db='kegg', comment='in ' + path_name + ' path',
                                                      interactor_a=interactor_a, interactor_b=interactor_b)
                     interaction.references.append(reference)
-                elif reference not in interaction.references:
-                    interaction.references.append(reference)
+                    reference.sources.append(source)
+                else:
+                    if interaction not in reference.interactions:
+                        reference.interactions.append(interaction)
+                    if source not in reference.sources:
+                        reference.sources.append(source)
 
-                source = session.query(InteractionSource).filter_by(data_source = sourcedb).first()
-                if source not in interaction.sources:
-                    interaction.sources.append(source)
-        session.commit()
+    session.commit()
+    print(sourcedb, session.query(Interaction).count())

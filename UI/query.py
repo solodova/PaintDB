@@ -5,7 +5,7 @@ from flask import (
 from . import Session, removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, InteractorXref, \
+from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, ProteinXref, \
 InteractionSource
 import re
 import csv
@@ -16,7 +16,13 @@ bp = Blueprint('query', __name__, url_prefix='/query')
 psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interactor A', 'Alt. ID(s) interactor B',
                 'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
                 'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
-                'Interaction type(s)', 'Source database(s)', 'Interaction identifier(s)', 'Confidence value(s)']
+                'Interaction type(s)', 'Source database(s)', 'Interaction identifier(s)', 'Confidence value(s)',
+                'Complex expansion', 'Biological role A', 'Biological role B', 'Experimental role A',
+                'Experimental role B', 'Interactor type A', 'Interactor type B', 'Xref(s) interactor A',
+                'Xref(s) interactor B', 'Interaction xref(s)', 'Annotation(s) interactor A',
+                'Annotation(s) interactor B', 'Interaction annotation(s)', 'Taxid host organism',
+                'Interaction parameter(s)', 'Creation date', 'Update date', 'Checksum interactor A',
+                'Checksum interactor B', 'Checksum interaction', 'Negative']
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -160,6 +166,7 @@ def filter():
         for interaction in interactions.all():
             if interaction is None: continue
             interactor_ids, alt_ids, aliases  = [], [], []
+            is_protein = []
 
             for interactor in interaction.interactors:
                 if interactor.name is None:
@@ -168,6 +175,7 @@ def filter():
                     aliases.append(interactor.name)
 
                 if interactor.type == 'p':
+                    is_protein.append(1)
                     if interactor.uniprotkb == 'pc':
                         interactor_ids.append('uniprotkb:' + interactor.id)
                         alt_ids.append('')
@@ -181,12 +189,13 @@ def filter():
                         alt_ids.append(alt_id)
 
                 else:
+                    is_protein.append(0)
                     id = None
                     alt_id = ''
                     if interactor.pubchem is not None:
                         id = 'pubchem:' + interactor.pubchem
                     if interactor.chebi is not None:
-                        chebi = 'chebi:' + interactor.chebi
+                        chebi = 'chebi:"CHEBI:' + interactor.chebi + '"'
                         if id is None:
                             id = chebi
                         else:
@@ -215,22 +224,70 @@ def filter():
 
                     alt_ids.append(alt_id)
 
-            # 0064 ortholog interaction (interologs mapping)
-            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], }
-            #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
-            for reference in interaction.references:
-
-
             if len(interactor_ids) == 1:
                 interactor_ids.append(interactor_ids[0])
+                alt_ids.append(alt_ids[0])
+                aliases.append(aliases[0])
+                is_protein.append(is_protein[0])
+
+            taxid_A, taxid_B, taxid = None, None, None
+            if interaction.strain == 'PAO1':
+                taxid = 'taxid:208964(pseae)'
+            else:
+                taxid = 'taxid:208963(pseab)'
+            if is_protein[0]:
+                taxid_A = taxid
+            if is_protein[1]:
+                taxid_B = taxid
+
+            # 0064 ortholog interaction (interologs mapping)
+            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'confidence': [],
+                    'annotations A': [], 'annotations B': []}
+            #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
+            for reference in interaction.references:
+                refs['detection'].append([reference.detection, reference.psimi_detection])
+                refs['author'].append([reference.author_ln, reference.pub_date])
+                refs['type'].append([reference.interaction_type, reference.psimi_type])
+                refs['db'].append([reference.source_db, reference.psimi_db])
+                refs['confidence'].append(reference.confidence)
+                refs['annotations A'].append(reference.interactor_a)
+                refs['annotations B'].append(reference.interactor_b)
+
+            for col in [refs['detection'], refs['type'], refs['db']]:
+                for field in col:
+                    if (field[0] is not None) & (field[1] is not None):
+                        field = 'psi-mi:"MI:' + field[1] + '"' + '(' + field[0] + ')'
+                    else:
+                        field = field[0]
+
+
+            for author_info in refs['author']:
+                if author_info[0] is not None:
+                    author_info[0] += 'et al.'
+                    if author_info[1] is not None:
+                        author_info[0] += ' (' + author_info[1] + ')'
+                author_info = author_info[0]
+
+            for ref in refs:
+                ref = ['-' if field is None else field for field in ref]
+                if ref.count(ref[0]) == len(ref):
+                    ref = [ref[0]]
+                ref = '|'.join(ref)
 
             file_writer.writerow({psimi_fields[0]: interactor_ids[0], psimi_fields[1]: interactor_ids[1],
-                                  psimi_fields[2]: , psimi_fields[3]: ,
-                                  psimi_fields[4]: , psimi_fields[5]: ,
-                                  psimi_fields[6]:, psimi_fields[7]:,
-                                  psimi_fields[8]:, psimi_fields[9]:,
-                                  psimi_fields[10]:, psimi_fields[11]:,
-                                  psimi_fields[12]:, psimi_fields[13]:,})
+                                  psimi_fields[2]: alt_ids[0], psimi_fields[3]: alt_ids[1],
+                                  psimi_fields[4]: aliases[0], psimi_fields[5]: aliases[1],
+                                  psimi_fields[6]: refs['detection'], psimi_fields[7]: refs['author'],
+                                  psimi_fields[8]: refs['pmid'], psimi_fields[9]: taxid_A, psimi_fields[10]: taxid_B,
+                                  psimi_fields[11]: refs['type'], psimi_fields[12]: refs['db'],
+                                  psimi_fields[13]: refs['confidence'], psimi_fields[14]: None, psimi_fields[15]: None,
+                                  psimi_fields[16]: None, psimi_fields[17]: None, psimi_fields[18]: None,
+                                  psimi_fields[19]: None, psimi_fields[20]: None, psimi_fields[21]: None,
+                                  psimi_fields[22]: None, psimi_fields[23]: None, psimi_fields[24]: None,
+                                  psimi_fields[25]: refs['annotations A'], psimi_fields[26]: refs['annotations B'],
+                                  psimi_fields[27]: None, psimi_fields[28]: None, psimi_fields[29]: None,
+                                  psimi_fields[30]: None, psimi_fields[31]: None, psimi_fields[32]: None,
+                                  psimi_fields[33]: None, psimi_fields[34]: None, psimi_fields[35]: None})
 
         return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')

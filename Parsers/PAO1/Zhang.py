@@ -36,9 +36,14 @@ def parse(session):
                                                  interaction_type='predicted', confidence=row['Confidence'],
                                                  comment=row['Comment'])
                 interaction.references.append(reference)
-            elif reference not in interaction.references:
-                interaction.references.append(reference)
+                reference.sources.append(source)
+            else:
+                if reference not in interaction.references:
+                    interaction.references.append(reference)
+                if source not in reference.sources:
+                    reference.sources.append(source)
 
             if source not in interaction.sources:
                 interaction.sources.append(source)
-        session.commit()
+    session.commit()
+    print('zhang', session.query(Interaction).count())

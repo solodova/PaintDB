@@ -173,6 +173,27 @@ def parse_psimi(file, strain, source, session):
                 if all(parameter is None for parameter in ref_parameters): continue
                 ref_parameter_list.append(ref_parameters)
 
+            is_experimental, not_experimental, experimental = 2, 2, 2
+            for psimi_detection in ref_fields['psimi_detections']:
+                if psimi_detection is not None:
+                    if is_experimental_psimi(psimi_detection):
+                        is_experimental = 1
+                    else:
+                        not_experimental = 1
+            if is_experimental == 1:
+                experimental = 1
+            elif not_experimental == 1:
+                experimental = 0
+
+            new_source = session.query(InteractionSource).filter_by(data_source=source,
+                                                                    is_experimental=experimental).first()
+
+            if new_source is None:
+                new_source = InteractionSource(data_source=source, is_experimental=experimental)
+                interaction.sources.append(new_source)
+            elif new_source not in interaction.sources:
+                interaction.sources.append(new_source)
+
             for ref in ref_parameter_list:
                 nref = session.query(InteractionReference).filter_by(psimi_detection = ref[0],
                                                                      detection_method = ref[1], author_ln = ref[2],
@@ -186,29 +207,12 @@ def parse_psimi(file, strain, source, session):
                                                      interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
                                                      confidence=ref[9])
                     interaction.references.append(nref)
-                elif nref not in interaction.references:
-                    interaction.references.append(nref)
-
-            is_experimental, not_experimental, experimental = 2, 2, 2
-            for psimi_detection in ref_fields['psimi_detections']:
-                if psimi_detection is not None:
-                    if is_experimental_psimi(psimi_detection):
-                        is_experimental = 1
-                    else:
-                        not_experimental = 1
-            if is_experimental == 1:
-                experimental = 1
-            elif not_experimental == 1:
-                experimental = 0
-
-            new_source = session.query(InteractionSource).filter_by(data_source = source,
-                                                                    is_experimental = experimental).first()
-
-            if new_source is None:
-                new_source = InteractionSource(data_source=source, is_experimental=experimental)
-                interaction.sources.append(new_source)
-            elif new_source not in interaction.sources:
-                interaction.sources.append(new_source)
+                    nref.sources.append(new_source)
+                else:
+                    if interaction not in nref.interactions:
+                        nref.interactions.append(interaction)
+                    if new_source not in nref.sources:
+                        nref.sources.append(new_source)
 
             for xref in row['identifier'].split('|'):
                 xref_field = xref.split(':')
@@ -221,3 +225,4 @@ def parse_psimi(file, strain, source, session):
                     session.add(xref)
 
         session.commit()
+    print(source, session.query(Interaction).count())
