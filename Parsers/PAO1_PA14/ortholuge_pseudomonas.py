@@ -4,8 +4,8 @@ from Schema1 import Interactor, OrthologPseudomonas, Interaction, InteractionRef
 inparalogs = {}
 
 def parse(session):
-    get_inparalogs('Data/Ortholog/PAO1-PA14.csv')
-    parse_orthologs('Data/Ortholog/PAO1-PA14.csv', session)
+    #get_inparalogs('Data/Ortholog/PAO1-PA14.csv')
+    #parse_orthologs('Data/Ortholog/PAO1-PA14.csv', session)
     parse_ortholog_interactions(session)
 
 def get_inparalogs(ortholog_file):
@@ -60,7 +60,7 @@ def parse_orthologs(ortholog_file, session):
 
 
 def parse_ortholog_interactions(session):
-    all_interactions =session.query(Interaction).all()
+    all_interactions = session.query(Interaction).all()
     for interaction in all_interactions:
         interactor_pairs, ortholog_interactors = [], [[], []]
         num = 0
@@ -68,7 +68,7 @@ def parse_ortholog_interactions(session):
             if interactor.type == 'p':
                 for ortholog in interactor.pseudomonas_orthologs:
                     if ortholog is not None:
-                        ortholog_interactors[num].append(ortholog.protein)
+                        ortholog_interactors[num].append(session.query(Interactor).get(ortholog.ortholog_id))
             else:
                 ortholog_interactors[num].append(interactor)
             num += 1
@@ -131,5 +131,5 @@ def parse_ortholog_interactions(session):
                 if source not in new_interaction.sources:
                     new_interaction.sources.append(source)
 
-        session.commit()
+    session.commit()
     print('p_orthologs', session.query(Interaction).count())

@@ -262,12 +262,12 @@ def parse_psimi(session, file, source):
                             pmid=ref[4], psimi_type=ref[5], interaction_type=ref[6], psimi_db=ref[7], source_db=ref[8],
                             confidence=ref[9], interactor_a=interactor_a, interactor_b=interactor_b)
                         interaction.references.append(nref)
-                        nref.sources.append(source)
+                        nref.sources.append(nsource)
                     else:
                         if interaction not in nref.interactions:
                             nref.interactions.append(interaction)
-                        if source not in nref.sources:
-                            nref.sources.append(source)
+                        if nsource not in nref.sources:
+                            nref.sources.append(nsource)
 
     session.commit()
     print(source, session.query(Interaction).count())
