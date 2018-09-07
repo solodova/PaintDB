@@ -17,12 +17,7 @@ psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interact
                 'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
                 'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
                 'Interaction type(s)', 'Source database(s)', 'Interaction identifier(s)', 'Confidence value(s)',
-                'Complex expansion', 'Biological role A', 'Biological role B', 'Experimental role A',
-                'Experimental role B', 'Interactor type A', 'Interactor type B', 'Xref(s) interactor A',
-                'Xref(s) interactor B', 'Interaction xref(s)', 'Annotation(s) interactor A',
-                'Annotation(s) interactor B', 'Interaction annotation(s)', 'Taxid host organism',
-                'Interaction parameter(s)', 'Creation date', 'Update date', 'Checksum interactor A',
-                'Checksum interactor B', 'Checksum interaction', 'Negative']
+                'Annotation(s) interactor A', 'Annotation(s) interactor B']
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -153,13 +148,15 @@ def filter():
             if ver in filters['verification']:
                 verifications.append(filters['verification'])
 
-
         interactions = interactions.join(Interaction.sources)
         if sources[0] != 'All':
             interactions = interactions.filter(InteractionSource.data_source.in_(sources))
 
         if (len(verifications) == 1) | (len(verifications) == 2):
             interactions = interactions.filter(InteractionSource.is_experimental.in_(verifications))
+
+        interactions = interactions.join(Interaction.references)
+        interactions = interactions.join(Interaction.xrefs)
 
         file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields)
         file_writer.writeheader()
@@ -180,7 +177,7 @@ def filter():
                         interactor_ids.append('uniprotkb:' + interactor.id)
                         alt_ids.append('')
                     else:
-                        interactor_ids.append(interactor.id)
+                        interactor_ids.append('gene/locus_link:' + interactor.id)
                         alt_id = ''
                         for xref in interactor.xrefs:
                             alt_id += xref.source + ':' + xref.accession + '|'
@@ -241,8 +238,8 @@ def filter():
                 taxid_B = taxid
 
             # 0064 ortholog interaction (interologs mapping)
-            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'confidence': [],
-                    'annotations A': [], 'annotations B': []}
+            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'xrefs': [],
+                    'confidence': [], 'annotations A': [], 'annotations B': []}
             #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
             for reference in interaction.references:
                 refs['detection'].append([reference.detection, reference.psimi_detection])
@@ -260,7 +257,6 @@ def filter():
                     else:
                         field = field[0]
 
-
             for author_info in refs['author']:
                 if author_info[0] is not None:
                     author_info[0] += 'et al.'
@@ -268,6 +264,9 @@ def filter():
                         author_info[0] += ' (' + author_info[1] + ')'
                 author_info = author_info[0]
 
+            for xref in interaction.xrefs:
+                if xref is None: continue
+                refs['xrefs'].append(xref.data_source + ':' + xref.accession)
             for ref in refs:
                 ref = ['-' if field is None else field for field in ref]
                 if ref.count(ref[0]) == len(ref):
@@ -280,14 +279,8 @@ def filter():
                                   psimi_fields[6]: refs['detection'], psimi_fields[7]: refs['author'],
                                   psimi_fields[8]: refs['pmid'], psimi_fields[9]: taxid_A, psimi_fields[10]: taxid_B,
                                   psimi_fields[11]: refs['type'], psimi_fields[12]: refs['db'],
-                                  psimi_fields[13]: refs['confidence'], psimi_fields[14]: None, psimi_fields[15]: None,
-                                  psimi_fields[16]: None, psimi_fields[17]: None, psimi_fields[18]: None,
-                                  psimi_fields[19]: None, psimi_fields[20]: None, psimi_fields[21]: None,
-                                  psimi_fields[22]: None, psimi_fields[23]: None, psimi_fields[24]: None,
-                                  psimi_fields[25]: refs['annotations A'], psimi_fields[26]: refs['annotations B'],
-                                  psimi_fields[27]: None, psimi_fields[28]: None, psimi_fields[29]: None,
-                                  psimi_fields[30]: None, psimi_fields[31]: None, psimi_fields[32]: None,
-                                  psimi_fields[33]: None, psimi_fields[34]: None, psimi_fields[35]: None})
+                                  psimi_fields[13]: refs['xrefs'], psimi_fields[14]: refs['confidence'],
+                                  psimi_fields[15]: refs['annotations A'], psimi_fields[15]: refs['annotations B']})
 
         return render_template('query/results.html', filters=str(filters))
     return render_template('query/filter.html')
