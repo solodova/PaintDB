@@ -2,11 +2,12 @@ if __name__ == '__main__':
 
     from Schema1 import Base, Interactor, Metabolite, Protein, OrthologPseudomonas, \
         OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
-    from sqlalchemy import create_engine, or_
+    from sqlalchemy import create_engine, or_, not_, all_, any_, func
     from sqlalchemy.orm import sessionmaker
     import csv, datetime
-    #('sqlite:////Users/olga/Desktop/PaIntDB.db')
-    engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
+    #('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
+    #'sqlite:////Users/olga/Desktop/PaIntDB.db'
+    engine = create_engine('sqlite:///')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -15,7 +16,31 @@ if __name__ == '__main__':
     from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
     from Parsers.PAO1_PA14_Ecoli import KEGG
     from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
+    from Schema2 import get_db_stats
 
+    # i1 = Interaction(type = '1')
+    # i2 = Interaction(type='2')
+    # i3 = Interaction(type='3')
+    # d1 = InteractionSource(data_source = 'a')
+    # d2 = InteractionSource(data_source='b')
+    # d3 = InteractionSource(data_source='c')
+    # i1.sources.append(d1)
+    # i1.sources.append(d2)
+    # i2.sources.append(d1)
+    # i3.sources.append(d2)
+    # i3.sources.append(d3)
+    # session.add_all([i1,i2,i3,d1,d2,d3])
+    #
+    # #d = session.query(InteractionSource)
+    # # num PA14 = num with PA14 - num with PAO1 and PA14
+    # # num ecoli = num with Ecoli - num with (PAO1 | PA14) and Ecoli
+    # print(session.query(Interaction).join('sources').
+    #                  group_by(Interaction).filter(Interaction.sources.any(InteractionSource.data_source.in_(['a']))).
+    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(['b'])))).count())
+    #filter(InteractionSource.data_source)
+    #print(session.query(Protein).filter(Protein.strain == 'PAO1',Protein.uniprotkb == 'pc').count())
+    get_db_stats('PAO1')
+    get_db_stats('PA14')
     #pseudomonas_db.parse(session)
     #print(datetime.datetime.now())
     #Geoff_Winsor.parse(session)
@@ -30,8 +55,8 @@ if __name__ == '__main__':
     #print(datetime.datetime.now())
     #KEGG.parse_pseudomonas(session)
     #print(datetime.datetime.now())
-    print(session.query(Interaction).filter_by(strain = 'PAO1').count())
-    print(session.query(Interaction).filter_by(strain = 'PA14').count())
+    #print(session.query(Interaction).filter_by(strain = 'PAO1').count())
+    #print(session.query(Interaction).filter_by(strain = 'PA14').count())
     # ortholuge_pseudomonas.parse(session)
     # print(datetime.datetime.now())
     #

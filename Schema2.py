@@ -1,141 +1,348 @@
-def parse_kegg(org_id, strain):
-    # get pathways for organism specified by org_id
-    pathways = kegg_list(database='pathway', org=org_id).read().split('path:')
-    path_names, path_ids = [], []
+from Schema1 import Base, Interactor, Metabolite, Protein, OrthologPseudomonas, \
+    OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
+from sqlalchemy import create_engine, or_, not_, and_
+from sqlalchemy.orm import sessionmaker
+import csv, datetime
 
-    for path in pathways:
-        if path != '':
-            path_names.append(path.split('\t')[1].split(' -')[0])
-            path_ids.append(path[:8])
+# ('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
+engine = create_engine('sqlite:////Users/olga/Desktop/PaIntDB.db')
+# Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+from sqlalchemy import func
 
-    mas_compound_ids = []
-    for path in path_ids:
-        # get kgml representation of path
-        kgml_path = read(kegg_get(path, option='kgml'))
-        path_name = kgml_path._getname()
-        # dictionary of compounds in current path (node_id: kegg_id)
-        #   compound._getid() returns node id (only relevant in context of current path)
-        #   compound._getname() returns kegg id (relevant in overall KEGG DB
-        compound_ids = {}
-        for compound in kgml_path.compounds:
-            compound_ids[compound._getid()] = compound._getname()[-6:]
-        mas_compound_ids.append(compound_ids)
 
-        # go through each relation in path
-        for relation in kgml_path.relations:
-            relation_type = relation.element.attrib['type']
+def newfunc(strain):
+    session = Session()
+    # new_file = open('PaIntDB_PAO1_stats', mode='x')
+    header = ['Statistic', 'Value']
+    file_name = 'PaIntDB_' + strain + '_Protein.csv'
+    file_writer = csv.DictWriter(open(file_name, mode='x', newline=''), fieldnames=header)
+    file_writer.writeheader()
+    file_writer.writerow(
+        {'Statistic': 'Num proteins(p)',
+         'Value': session.query(Protein).filter(Protein.strain == strain,
+                                                or_(Protein.uniprotkb == None, Protein.uniprotkb != 'pc')).count()})
+    file_writer.writerow(
+        {'Statistic': 'Num proteins(pc)',
+         'Value': session.query(Protein).filter(Protein.strain == strain, Protein.uniprotkb == 'pc').count()})
+    file_writer.writerow(
+        {'Statistic': 'Num p with uniprotkb',
+         'Value': session.query(Protein).filter(Protein.strain == strain, Protein.uniprotkb != 'pc',
+                                                Protein.uniprotkb != None).count()})
+    file_writer.writerow(
+        {'Statistic': 'Num p with refseq',
+         'Value': session.query(Protein).filter(Protein.strain == strain,
+                                                or_(Protein.uniprotkb != 'pc', Protein.uniprotkb == None),
+                                                Protein.ncbi_acc != None).count()})
+    file_writer.writerow(
+        {'Statistic': 'Num p with name',
+         'Value': session.query(Protein).filter(Protein.strain == strain,
+                                                or_(Protein.uniprotkb != 'pc', Protein.uniprotkb == None),
+                                                Protein.name != None).count()})
+    file_writer.writerow(
+        {'Statistic': 'Num p with product name',
+         'Value': session.query(Protein).filter(Protein.strain == strain,
+                                                or_(Protein.uniprotkb != 'pc', Protein.uniprotkb == None),
+                                                Protein.product_name != None).count()})
+    # file_writer.writerow({'Statistic': 'Num p with >0 localization',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.localizations).
+    #                       group_by(Protein).having(func.count(Protein.localizations) > 0).count()}))
+    # file_writer.writerow({'Statistic': 'Num p with ==1 localization',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.localizations).
+    #                      group_by(Protein).having(func.count(Protein.localizations) == 1).count()}))
+    # file_writer.writerow({'Statistic': 'Num p with >1 localization',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.localizations).
+    #                      group_by(Protein).having(func.count(Protein.localizations) > 1).count()}))
+    file_writer.writerow({'Statistic': 'Num p with >0 ontology',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(Protein.ontologies).
+                         group_by(Protein).having(func.count(Protein.ontologies) > 0).count()})
+    file_writer.writerow({'Statistic': 'Num p with ==1 ontology',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(Protein.ontologies).
+                         group_by(Protein).having(func.count(Protein.ontologies) == 1).count()})
+    file_writer.writerow({'Statistic': 'Num p with >1 ontology',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(Protein.ontologies).
+                         group_by(Protein).having(func.count(Protein.ontologies) > 1).count()})
+    file_writer.writerow({'Statistic': 'Proteins with >0 ortholog in Pseudomonas (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.pseudomonas_orthologs).
+                         group_by(Protein).having(func.count(Protein.pseudomonas_orthologs) > 0).count()})
+    file_writer.writerow({'Statistic': 'Proteins with ==1 ortholog in Pseudomonas (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.pseudomonas_orthologs).
+                         group_by(Protein).having(func.count(Protein.pseudomonas_orthologs) == 1).count()})
+    file_writer.writerow({'Statistic': 'Proteins with >1 ortholog in Pseudomonas (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.pseudomonas_orthologs).
+                         group_by(Protein).having(func.count(Protein.pseudomonas_orthologs) > 1).count()})
+    file_writer.writerow({'Statistic': 'Proteins with >0 ortholog in Ecoli (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.ecoli_orthologs).
+                         group_by(Protein).having(func.count(Protein.ecoli_orthologs) > 0).count()})
+    file_writer.writerow({'Statistic': 'Proteins with ==1 ortholog in Ecoli (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.ecoli_orthologs).
+                         group_by(Protein).having(func.count(Protein.ecoli_orthologs) == 1).count()})
+    file_writer.writerow({'Statistic': 'Proteins with >1 ortholog in Ecoli (p)',
+                          'Value': session.query(Protein).filter(Protein.strain == strain).join(
+                              Protein.ecoli_orthologs).
+                         group_by(Protein).having(func.count(Protein.ecoli_orthologs) > 1).count()})
+    # file_writer.writerow({'Statistic': 'Num p, pc with interactions',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.interactions).
+    #                      group_by(Protein).having(func.count(Protein.interactions) > 0).count()}))
+    # file_writer.writerow({'Statistic': 'Num p, pc with p-p interactions',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.interactions).
+    #                       filter(Interaction.type == 'p-p').
+    #                      group_by(Protein).having(func.count(Protein.interactions)> 0).count()}))
+    # file_writer.writerow({'Statistic': 'Num p, pc with p-m interactions',
+    #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.interactions).
+    #                       filter(Interaction.type.in_(['p-m', 'm-p'])).
+    #                      group_by(Protein).having(func.count(Protein.interactions) > 0).count()}))
 
-            if (relation_type == 'maplink'): continue
-            # relation._getentry1/2() returns  protein id (locus) or compound id (KEGG id)
-            entries = [relation._getentry1()._getname(), relation._getentry2()._getname()]
-            if (entries[0] == 'undefined') | (entries[1] == 'undefined'): continue
-            interactors = [[], []]
-            new_metabolites = [[], []]
-            # go through each entry in the relation, find/create interactors_sif
-            for num in range(0, 2):
-                # each entry may contain >1 id; go through all of them
-                for id in entries[num].split(' '):
-                    if (id == ''): continue
-                    # if interactor is not protein or compound, continue
-                    if (id.split(':')[0] != org_id) & (id.split(':')[1] not in compounds): continue
+def get_db_stats(strain):
+    session = Session()
+    header = ['Statistic', 'Total', 'Total P-P', 'Total P-M', 'Experimental', 'Experimental P-P',
+              'Experimental P-M', 'Non-experimental', 'Non-experimental P-P', 'Non-experimental P-M',
+              'Unknown detection', 'Unknown detection P-P', 'Unknown detection P-M']
+    file_name = 'PaIntDB_' + strain + '_Interaction.csv'
+    file_writer = csv.DictWriter(open(file_name, mode='x', newline=''), fieldnames=header)
+    file_writer.writeheader()
+    file_writer.writerow(
+        {'Statistic': 'Num interactions',
+         'Total':
+             session.query(Interaction).filter_by(strain=strain).count(),
+         'Total P-P':
+             session.query(Interaction).filter_by(strain=strain, type='p-p').count(),
+         'Total P-M':
+             session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').count(),
+         'Experimental':
+             session.query(Interaction).filter_by(strain=strain).join('sources').
+                 filter(InteractionSource.is_experimental == 1).count(),
+         'Experimental P-P':
+             session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                 filter(InteractionSource.is_experimental == 1).count(),
+         'Experimental P-M':
+             session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                 join('sources').filter(InteractionSource.is_experimental == 1).count(),
+         'Non-experimental':
+             session.query(Interaction).filter_by(strain=strain).join('sources').
+                 filter(InteractionSource.is_experimental == 0).count(),
+         'Non-experimental P-P':
+             session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                 filter(InteractionSource.is_experimental == 0).count(),
+         'Non-experimental P-M':
+             session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                 join('sources').filter(InteractionSource.is_experimental == 0).count(),
+         'Unknown detection':
+             session.query(Interaction).filter_by(strain=strain).join('sources').
+                 filter(InteractionSource.is_experimental == 2).count(),
+         'Unknown detection P-P':
+             session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                 filter(InteractionSource.is_experimental == 2).count(),
+         'Unknown detection P-M':
+             session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                 join('sources').filter(InteractionSource.is_experimental == 2).count()})
 
-                    # check if interactor (protein or metabolite) already exists
-                    if (session.query(Interactor).filter(Interactor.id == id.split(':')[1]).first() is not None):
-                        interactors[num].append(
-                            session.query(Interactor).filter(Interactor.id == id.split(':')[1]).one())
-                    # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
-                    elif (id.split(':')[1] in compounds):
-                        # if it is a valid compound, create new metabolite
-                        new_metabolites[num].append(id.split(':')[1])
-                    # if parsing E. coli path, add all orthologs to interactor list
-                    elif (org_id == 'eco'):
-                        for ortholog in (session.query(OrthologEcoli).filter(
-                                (OrthologEcoli.ortholog_id == id.split(':')[1]),
-                                (OrthologEcoli.strain_protein == strain)).all()):
-                            interactors[num].append(ortholog.protein)
+    print('done')
+    sources_Ecoli = ['EcoCyc', 'RegulonDB(Ecoli)', 'IMEx(Ecoli)', 'BindingDB(Ecoli)', 'EBI-GOA-nonIntAct(Ecoli)',
+                     'IntAct(Ecoli)', 'iRefIndex(Ecoli)', 'mentha(Ecoli)', 'MINT(Ecoli)', 'MPIDB(Ecoli)',
+                     'UniProt(Ecoli)', 'DIP(Ecoli)', 'KEGG(Ecoli)']
 
-            # create list of interactor pairs from two separate lists (interactors_sif[0], interactors_sif[1])
-            interactor_pairs = []
-            for interactor1 in interactors[0]:
-                for interactor2 in interactors[1]:
-                    if (interactor1.type != 'metabolite') | (interactor2.type != 'metabolite'):
-                        interactor_pairs.append([interactor1, interactor2])
+    sources_PA14 = ['IMEx(PA14)', 'IntAct(PA14)', 'iRefIndex(PA14)', 'mentha(PA14)', 'MINT(PA14)', 'KEGG(PA14)',
+                    'Galan-Vasquez(PA14)']
+    sources_PAO1 = ['Geoff', 'XLinkDB', 'Zhang', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
+                    'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)', 'Galan-Vasquez(PAO1)', 'KEGG(PAO1)']
 
-            for interactor1 in interactors[0]:
-                for interactor2 in new_metabolites[1]:
-                    if (interactor1.type != 'metabolite'):
-                        new_metabolite = Metabolite(id=interactor2, type='metabolite',
-                                                name=compounds[interactor2][0],
-                                                pubchem_id=compounds[interactor2][1], kegg_id=interactor2)
-                        session.add(new_metabolite), session.commit()
-                        interactor_pairs.append([interactor1, new_metabolite])
+    for source in [['PAO1', sources_PAO1], ['PA14', sources_PA14], ['Ecoli', sources_Ecoli]]:
+        file_writer.writerow(
+            {'Statistic': 'Num interactions from ' + source[0] + ' sources',
+             'Total':
+                 session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+                     filter(InteractionSource.data_source.in_(source[1])).count(),
+             'Total P-P':
+                 session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                     group_by(Interaction).filter(InteractionSource.data_source.in_(source[1])).count(),
+             'Total P-M':
+                 session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                     join('sources').group_by(Interaction).filter(
+                     InteractionSource.data_source.in_(source[1])).count(),
+             'Experimental':
+                 session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 1,
+                            InteractionSource.data_source.in_(source[1])).count(),
+             'Experimental P-P':
+                 session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                     group_by(Interaction).filter(InteractionSource.is_experimental == 1,
+                                                  InteractionSource.data_source.in_(source[1])).count(),
+             'Experimental P-M':
+                 session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                     join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 1,
+                            InteractionSource.data_source.in_(source[1])).count(),
+             'Non-experimental':
+                 session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 0,
+                            InteractionSource.data_source.in_(source[1])).count(),
+             'Non-experimental P-P':
+                 session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                     group_by(Interaction).filter(InteractionSource.is_experimental == 0,
+                                                  InteractionSource.data_source.in_(source[1])).count(),
+             'Non-experimental P-M':
+                 session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                     join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 0,
+                            InteractionSource.data_source.in_(source[1])).count(),
+             'Unknown detection':
+                 session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 2,
+                            InteractionSource.data_source.in_(source[1])).count(),
+             'Unknown detection P-P':
+                 session.query(Interaction).filter_by(strain=strain, type='p-p').join('sources').
+                     group_by(Interaction).filter(InteractionSource.is_experimental == 2,
+                                                  InteractionSource.data_source.in_(source[1])).count(),
+             'Unknown detection P-M':
+                 session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+                     join('sources').group_by(Interaction).
+                     filter(InteractionSource.is_experimental == 2,
+                            InteractionSource.data_source.in_(source[1])).count()})
+    print('done1')
+    all_sources = sources_PAO1 + sources_PA14 + sources_Ecoli
+    for source in all_sources:
+        file_writer.writerow(
+            {'Statistic': 'Num interactions from ' + source,
+             'Total':
+                 session.query(InteractionSource).filter_by(data_source=source).join('interactions').
+                     filter(Interaction.strain == strain).count(),
+             'Total P-P':
+                 session.query(InteractionSource).filter_by(data_source=source).join('interactions').
+                     filter(Interaction.strain == strain, Interaction.type == 'p-p').count(),
+             'Total P-M':
+                 session.query(InteractionSource).filter_by(data_source=source).join('interactions').
+                     filter(Interaction.strain == strain, Interaction.type != 'p-p').count(),
+             'Experimental':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=1).
+                     join('interactions').filter(Interaction.strain == strain).count(),
+             'Experimental P-P':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=1).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type == 'p-p').count(),
+             'Experimental P-M':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=1).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type != 'p-p').count(),
+             'Non-experimental':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=0).
+                     join('interactions').filter(Interaction.strain == strain).count(),
+             'Non-experimental P-P':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=0).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type == 'p-p').count(),
+             'Non-experimental P-M':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=0).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type != 'p-p').count(),
+             'Unknown detection':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=2).
+                     join('interactions').filter(Interaction.strain == strain).count(),
+             'Unknown detection P-P':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=2).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type == 'p-p').count(),
+             'Unknown detection P-M':
+                 session.query(InteractionSource).filter_by(data_source=source, is_experimental=2).
+                     join('interactions').filter(Interaction.strain == strain,
+                                                 Interaction.type != 'p-p').count()})
+    print('done2')
+    p_sources = sources_PAO1
+    p_ortholog_sources = sources_PA14
+    if strain == 'PA14':
+        p_sources = sources_PA14
+    p_ortholog_sources = sources_PAO1
 
-            for interactor1 in interactors[1]:
-                for interactor2 in new_metabolites[0]:
-                    if (interactor1.type != 'metabolite'):
-                        new_metabolite = Metabolite(id=interactor2, type='metabolite',
-                                                name=compounds[interactor2][0],
-                                                pubchem_id=compounds[interactor2][1], kegg_id=interactor2)
-                        session.add(new_metabolite), session.commit()
-                        interactor_pairs.append([interactor1, new_metabolite])
+    # for source in [['Pseudomonas', p_ortholog_sources, p_sources],
+    #                ['Ecoli', sources_Ecoli, sources_PAO1 + sources_PA14]]:
+    #     file_writer.writerow(
+    #         {'Statistic': 'Num interactions in ' + strain + ' from ' + source[0] + ' orthology',
+    #          'Total':
+    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+    #                  filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Total P-P':
+    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
+    #         join('sources').group_by(Interaction).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Total P-M':
+    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+    #         join('sources').group_by(Interaction).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Experimental':
+    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+    #         filter(InteractionSource.is_experimental == 1).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Experimental P-P':
+    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 1).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Experimental P-M':
+    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 1).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Non-experimental':
+    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+    #         filter(InteractionSource.is_experimental == 0).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Non-experimental P-P':
+    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 0).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Non-experimental P-M':
+    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 0).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Unknown detection':
+    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
+    #         filter(InteractionSource.is_experimental == 2).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Unknown detection P-P':
+    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 2).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
+    #          'Unknown detection P-M':
+    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
+    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 2).
+    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count()})
 
-            if (len(interactor_pairs) == 0): continue
 
-            # get all intermediates in reaction of type compound
-            intermeds = []
-            for subtype in relation.element.iter(tag='subtype'):
-                if 'compound' in subtype.attrib:
-                    compound_node_id = subtype.attrib['compound']
-                    if (compound_node_id == None): continue
-                    if (int(compound_node_id) not in compound_ids): continue
-                    # if compound id is valid, either add existing matching metabolite or create new one and add
-                    compound_id = compound_ids[int(compound_node_id)]
-                    metabolite = session.query(Metabolite).filter(Metabolite.kegg_id == compound_id).first()
-                    if metabolite == None:
-                        metabolite = Metabolite(kegg_id=compound_id, pubchem_id=compounds[compound_id][1],
-                                                name=compounds[compound_id][0], type='metabolite', id=compound_id)
-                        session.add(metabolite)
-                        session.commit()
-                    else:
-                        metabolite = session.query(Metabolite).filter(Metabolite.kegg_id == compound_id).one()
-                    intermeds.append(metabolite)
-
-            # add protein - intermediate interactor pairs
-            for interactor_list in interactors:
-                for interactor in interactor_list:
-                    if (interactor.type != 'metabolite'):
-                        for intermed in intermeds:
-                            interactor_pairs.append([interactor, intermed])
-
-            for interactor_pair in interactor_pairs:
-                homogenous = (interactor_pair[0] == interactor_pair[1])
-                interaction = session.query(Interaction).filter(
-                    (Interaction.interactors.contains(interactor_pair[0])),
-                    (Interaction.interactors.contains(interactor_pair[1])),
-                    (Interaction.homogenous == homogenous)).first()
-
-                if (interaction == None):
-                    interaction = Interaction(type=interactor_pair[0].type + '-' + interactor_pair[1].type,
-                                              strain=strain, is_experimental=0, homogenous=homogenous,
-                                              interactors=interactor_pair)
-                    if org_id == 'eco':
-                        interaction.ortholog_derived = 'from E. coli'
-                    session.add(interaction), session.commit()
-                else:
-                    interaction = session.query(Interaction).filter(
-                        (Interaction.interactors.contains(interactor_pair[0])),
-                        (Interaction.interactors.contains(interactor_pair[1])),
-                        (Interaction.homogenous == homogenous)).one()
-                    if org_id == 'eco':
-                        if (interaction.ortholog_derived == None):
-                            interaction.ortholog_derived = 'from E. coli'
-                        else:
-                            if ('from E.coli' not in interaction.ortholog_derived):
-                                interaction.ortholog_derived += ', confirmed from E.coli'
-
-                if (session.query(InteractionXref).filter((InteractionXref.interaction_id == interaction.id),
-                                                          (InteractionXref.data_source == 'KEGG')).first() == None):
-                    xref = InteractionXref(interaction_id=interaction.id, data_source='KEGG')
-                    session.add(xref), session.commit()
-
-    print(session.query(Interaction).count())
+    # for source in [['Pseudomonas', p_ortholog_sources, p_sources],
+    #                ['Ecoli', sources_Ecoli, sources_PAO1 + sources_PA14]]:
+    #     file_writer.writerow(
+    #         {'Statistic': 'Num interactions in ' + strain + ' from ' + source[0] + ' orthology',
+    #          'Total':
+    #              session.query(Interaction)
+    #                  .filter_by(strain=strain)
+    #                  .join('sources')
+    #                  .group_by(Interaction)
+    #                  .filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
+    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2]))))
+    #                  .count(),
+    #          'Total P-P':'-',
+    #          'Total P-M':'-',
+    #          'Experimental':'-',
+    #          'Experimental P-P':'-',
+    #          'Experimental P-M':'-',
+    #          'Non-experimental':'-',
+    #          'Non-experimental P-P':'-',
+    #          'Non-experimental P-M':'-',
+    #          'Unknown detection':'-',
+    #          'Unknown detection P-P':'-',
+    #          'Unknown detection P-M': '-'})

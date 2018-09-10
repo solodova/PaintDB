@@ -117,10 +117,11 @@ class Protein(Interactor):
         'polymorphic_identity': 'p',
     }
 
-    localizations = relationship("Localization", secondary=protein_localizations, backref="protein")
+    localizations = relationship("Localization", secondary=protein_localizations, backref="proteins")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
     ecoli_orthologs = relationship("OrthologEcoli", backref = "protein")
     xrefs = relationship("ProteinXref", backref='protein')
+    ontologies = relationship("GeneOntology", backref = 'protein')
 
 
 class ProteinXref(Base):
