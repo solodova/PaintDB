@@ -8,7 +8,7 @@ ecocyc_compounds = {}
 def parse(session):
     get_ecocyc_paths()
     get_ecocyc_compounds(session)
-    update_metabolite_info(session)
+    #update_metabolite_info(session)
     source = InteractionSource(data_source='EcoCyc', is_experimental=2)
     session.add(source), session.commit()
     parse_ecocyc('PAO1', session)
@@ -44,7 +44,7 @@ def get_ecocyc_compounds(session):
                         ecocyc_compounds[name][id_type[1]] = xrefs.split(id_type[0])[1].split(';')[0]
 
 
-def update_metabolite_info(session):
+def update_metabolite_info_ecocyc(session):
     for name in ecocyc_compounds:
         metabolite = None
         kegg, pubchem, ecocyc, chebi, cas =  ecocyc_compounds[name]['kegg'],  ecocyc_compounds[name]['pubchem'], \
@@ -186,7 +186,8 @@ def parse_ecocyc(strain, session):
                     if interaction is None:
                         interaction = Interaction(type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                                   strain=strain, homogenous=homogenous,
-                                                  interactors=[interactor_pair[0][0], interactor_pair[1][0]])
+                                                  interactors=[interactor_pair[0][0], interactor_pair[1][0]],
+                                                  ortholog_derived = 'Ecoli')
                         session.add(interaction), session.commit()
 
                     #in case the interaction already existed, make sure interactor_a and interactor_b variables for

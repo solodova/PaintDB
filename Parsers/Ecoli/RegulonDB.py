@@ -29,7 +29,8 @@ def parse(session):
                                                                 Interaction.homogenous == homogenous).first()
                 if interaction is None:
                     interaction = Interaction(strain=interactor_pair[0][0].strain,
-                                              interactors=[interactor_pair[0][0], interactor_pair[1][0]], type='p-p')
+                                              interactors=[interactor_pair[0][0], interactor_pair[1][0]], type='p-p',
+                                              ortholog_derived='Ecoli')
                     session.add(interaction), session.commit()
 
                 interactor_a, interactor_b = None, None

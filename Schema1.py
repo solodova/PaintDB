@@ -201,6 +201,7 @@ class Interaction(Base):
     type = Column(String)
     # whether the two interactors are the same (0 or 1)
     homogenous = Column(Integer)
+    ortholog_derived = Column(String)
 
     xrefs = relationship("InteractionXref", backref="interaction")
     references = relationship("InteractionReference", secondary=interaction_references, backref="interactions")

@@ -112,7 +112,8 @@ def parse_psimi(session, file, source):
                         strain = interactor_pair[1][0].strain
                     interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
-                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type))
+                                              type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
+                                              ortholog_derived='Ecoli')
                     session.add(interaction), session.commit()
 
                 ref_fields = {'detections': [], 'types': [], 'dbs': [], 'confidences': [], 'authors': [], 'dates': [],

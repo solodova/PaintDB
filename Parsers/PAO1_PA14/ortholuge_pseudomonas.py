@@ -89,7 +89,7 @@ def parse_ortholog_interactions(session):
                 if interaction.strain == 'PAO1':
                     strain = 'PA14'
                 new_interaction = Interaction(strain=strain, type=interaction.type, interactors=interactor_pair,
-                                              homogenous=homogenous)
+                                              homogenous=homogenous, ortholog_derived = 'PA14')
                 session.add(new_interaction), session.commit()
 
             for reference in interaction.references:

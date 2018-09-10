@@ -16,7 +16,7 @@ def parse_pseudomonas(session):
 def parse_ecoli(session):
     if not kegg_compounds:
         get_kegg_compounds()
-    update_metabolite_info(session)
+    #update_metabolite_info(session)
     source = InteractionSource(data_source='KEGG(Ecoli)', is_experimental=2)
     session.add(source), session.commit()
     parse_kegg('eco', 'PAO1', 'KEGG(Ecoli)', session)
@@ -48,7 +48,7 @@ def get_kegg_compounds():
             kegg_compounds[cpd_id[:6]]['pubchem'] = cpd_id.split('pubchem:')[1].rstrip()
 
 
-def update_metabolite_info(session):
+def update_metabolite_info_kegg(session):
     for kegg_id in kegg_compounds:
         metabolite = None
         pubchem, name, chebi =  kegg_compounds[kegg_id]['pubchem'],  kegg_compounds[kegg_id]['name'], \
@@ -194,9 +194,11 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     interaction = Interaction(type=interactor_pair[0][0].type + '-' + interactor_pair[1][0].type,
                                               strain=strain, homogenous=homogenous,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]])
+                    if org_id == 'eco':
+                        interaction.ortholog_derived = 'Ecoli'
                     session.add(interaction), session.commit()
 
-                interactor_a, interactor_b, reference = None, None, None
+                interactor_a, interactor_b = None, None
                 if org_id == 'eco':
                     if interaction.interactors[0] == interactor_pair[0][0]:
                         interactor_a = interactor_pair[0][1]
