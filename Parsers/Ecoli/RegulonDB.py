@@ -1,5 +1,5 @@
 import csv
-from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference, InteractionSource
+from Schema import OrthologEcoli, Interactor, Interaction, InteractionReference, InteractionSource
 
 def parse(session):
     with open('Data/Ecoli/RegulonDB.csv') as csvfile:

@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, Interaction, Protein, InteractionReference, InteractionSource, InteractionXref
-from Parsers.Parser import is_experimental_psimi
+from Schema import Interactor, Interaction, Protein, InteractionReference, InteractionSource, InteractionXref
+from Main import is_experimental_psimi
 
 def parse_mint(session):
     parse_mint('PAO1/PSICQUIC/MINT.txt', 'PAO1', 'taxid:208964(pseae)', session)

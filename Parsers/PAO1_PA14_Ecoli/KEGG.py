@@ -1,6 +1,6 @@
 from Bio.KEGG.REST import kegg_list, kegg_get, kegg_conv
 from Bio.KEGG.KGML.KGML_parser import read
-from Schema1 import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionReference, InteractionSource
 
 kegg_compounds = {}
 
@@ -120,7 +120,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                             interactors[num].append([interactor, None])
                     # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
                     elif kegg_id is not None:
-                        interactor = session.query(Metabolite).get(kegg_id)
+                        interactor = session.query(Metabolite).filter_by(kegg = kegg_id)
                         if interactor is None:
                             new_metabolites[num].append(kegg_id)
                         else:
@@ -133,7 +133,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                             if ortholog is not None:
                                 interactors[num].append([ortholog.protein, id.split(':')[1]])
 
-            # create list of interactor pairs from two separate lists (interactors_sif[0], interactors_sif[1])
+            # create list of interactor pairs from two separate lists
             interactor_pairs = []
             for interactor1 in interactors[0]:
                 for interactor2 in interactors[1]:

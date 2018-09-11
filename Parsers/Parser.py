@@ -1,46 +1,40 @@
-if __name__ == '__main__':
+import csv, datetime
+from Parsers.PAO1_PA14 import pseudomonas_db, Parse_PSIMI_pseudomonas, regulatory_network, ortholuge_pseudomonas
+from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
+from Parsers.PAO1_PA14_Ecoli import KEGG
+from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
 
-    from Schema1 import Base, Interactor, Metabolite, Protein, OrthologPseudomonas, \
-        OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
-    from sqlalchemy import create_engine, or_, not_, all_, any_, func
-    from sqlalchemy.orm import sessionmaker
-    import csv, datetime
-    #('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
-    #'sqlite:////Users/olga/Desktop/PaIntDB.db'
-    engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
-    Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
-    session = Session()
+experimental_psimi = ['0045', '0401', '0013', '0254', '0428', '1088', '0255', '0090', '0400', '1232', '0091', '0027',
+                      '0030', '0982', '0415', '0417', '1036', '0953', '2197', '0968', '0016', '0943', '1311', '0894',
+                      '0043', '1219', '1086', '0928', '0051', '0964', '0859', '0065', '0067', '2169', '1247', '0071',
+                      '0893', '0891', '0077', '0938', '0099', '0888', '1235', '0966', '0114', '2224', '0439', '0441',
+                      '0872', '0663', '0040', '0416', '0426', '2213', '0827', '1089', '1192', '0257', '2285', '0256',
+                      '0014', '0010', '0011', '0809', '0111', '0231', '0895', '0097', '1203', '0370', '0232', '0004',
+                      '0008', '0405', '0034', '1087', '1031', '0813', '0440', '0892', '0657', '0226', '0227', '0028',
+                      '0029', '1022', '1211', '0430', '0031', '0807', '0983', '0889', '1005', '0989', '1142', '1147',
+                      '1137', '0990', '1309', '0406', '2281', '0984', '2216', '1138', '0996', '1006', '0870', '1011',
+                      '1009', '0998', '1026', '0999', '1007', '1000', '1249', '1001', '0515', '1010', '1034', '0879',
+                      '0979', '0434', '1145', '0972', '0841', '0696', '1325', '1008', '0997', '1229', '0602', '0605',
+                      '1191', '0949', '2198', '0969', '1342', '2196', '1038', '0107', '0069', '0944', '0041', '0042',
+                      '0905', '0229', '0012', '0017', '1030', '0052', '0053', '1016', '0054', '0055', '0510', '0976',
+                      '0965', '0038', '0104', '0826', '2170', '2171', '1104', '1103', '0425', '0825', '0824', '0410',
+                      '1024', '0020', '1037', '1204', '0655', '0369', '1320', '0432', '0726', '0588', '0018', '2288',
+                      '0019', '0096', '0676', '0225', '0081', '0089', '0921', '0073', '0084', '0098', '0115', '2189',
+                      '0947', '0411', '0047', '0049', '2167', '0729', '2191', '2194', '1312', '0404', '0808', '0413',
+                      '0887', '1354', '0991', '0435', '0508', '1252', '1236', '1003', '1002', '1004', '0516', '1035',
+                      '0920', '0880', '0419', '0514', '1019', '0424', '0697', '0698', '0699', '0700', '0603', '1190',
+                      '0604', '0901', '1189', '1183', '0814', '1352', '1313', '2199', '1246', '1238', '0009', '0420',
+                      '0509', '0511', '1321', '0112', '0437', '0438', '0728', '0727', '0916', '0397', '0398', '1356',
+                      '0006', '0007', '0402', '0858', '0946', '1017', '0963', '0678', '0092', '0095', '0048', '0066',
+                      '0108', '2283', '2192', '2193', '2188', '2195', '0276', '0412', '0992', '0993', '0994', '0995',
+                      '0513', '0512', '0423', '0606', '2168', '1184', '1314', '1113', '1111', '1218', '1028', '1029',
+                      '0695', '0899', '0900', '1187', '2277', '2215', '1112', '0399']
 
-    from Parsers.PAO1_PA14 import pseudomonas_db, Parse_PSIMI_pseudomonas, regulatory_network, ortholuge_pseudomonas
-    from Parsers.PAO1 import Geoff_Winsor, STRING, xlinkdb, Zhang
-    from Parsers.PAO1_PA14_Ecoli import KEGG
-    from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
-    from Schema2 import get_db_stats
 
-    # i1 = Interaction(type = '1')
-    # i2 = Interaction(type='2')
-    # i3 = Interaction(type='3')
-    # d1 = InteractionSource(data_source = 'a')
-    # d2 = InteractionSource(data_source='b')
-    # d3 = InteractionSource(data_source='c')
-    # i1.sources.append(d1)
-    # i1.sources.append(d2)
-    # i2.sources.append(d1)
-    # i3.sources.append(d2)
-    # i3.sources.append(d3)
-    # session.add_all([i1,i2,i3,d1,d2,d3])
-    #
-    # #d = session.query(InteractionSource)
-    # # num PA14 = num with PA14 - num with PAO1 and PA14
-    # # num ecoli = num with Ecoli - num with (PAO1 | PA14) and Ecoli
-    # print(session.query(Interaction).join('sources').
-    #                  group_by(Interaction).filter(Interaction.sources.any(InteractionSource.data_source.in_(['a']))).
-    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(['b'])))).count())
-    #filter(InteractionSource.data_source)
-    #print(session.query(Protein).filter(Protein.strain == 'PAO1',Protein.uniprotkb == 'pc').count())
-    #get_db_stats('PAO1')
-    #get_db_stats('PA14')
+def is_experimental_psimi(psi_code):
+    return psi_code in experimental_psimi
+
+def parse_all(session):
     pseudomonas_db.parse(session)
     print(datetime.datetime.now())
     Geoff_Winsor.parse(session)
@@ -55,13 +49,11 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     KEGG.parse_pseudomonas(session)
     print(datetime.datetime.now())
-    #print(session.query(Interaction).filter_by(strain = 'PAO1').count())
-    #print(session.query(Interaction).filter_by(strain = 'PA14').count())
     ortholuge_pseudomonas.parse(session)
     print(datetime.datetime.now())
 
-    #ortholuge_ecoli.parse(session)
-    #print(datetime.datetime.now())
+    ortholuge_ecoli.parse(session)
+    print(datetime.datetime.now())
     KEGG.parse_ecoli(session)
     print(datetime.datetime.now())
     EcoCyc.parse(session)
@@ -72,105 +64,4 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     KEGG.update_metabolite_info_kegg(session)
     EcoCyc.update_metabolite_info_ecocyc(session)
-    #print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
-    #print(session.query(OrthologPseudomonas).filter(OrthologPseudomonas.strain_ortholog == 'PA14').count())
-    # print(session.query(Interaction).filter(Interaction.strain == 'PAO1').count())
-    # print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
-    #                                         Interaction.type == 'p-p').count())
-    # print(session.query(Interaction).filter(Interaction.strain == 'PAO1',
-    #                                         or_(Interaction.type == 'm-p',
-    #                                             (Interaction.type == 'p-m'))).count())
-    #
-    # print(session.query(Interaction).filter(Interaction.strain == 'PA14').count())
-    # print(session.query(Interaction).filter(Interaction.strain == 'PA14',
-    #                                         Interaction.type == 'p-p').count())
-    # print(session.query(Interaction).filter(Interaction.strain == 'PA14',
-    #                                         or_(Interaction.type == 'm-p',
-    #                                             (Interaction.type == 'p-m'))).count())
-    # info = {}
-    # info_num = {"Locus Tag": 0, "Name": 0, "Product Name": 0, "NCBI Accession": 0}
-    # with open('Data/PAO1/Gene_Info/pseudomonas_db_info.csv') as csvfile:
-    #     fieldnames = ["Sequence", "Locus Tag", "Feature Type", "Start", "End", "Strand", "Name", "Product Name",
-    #                   "Synonyms", "NCBI Accession"]
-    #     interest_fields = ["Locus Tag", "Name", "Product Name", "NCBI Accession"]
-    #     reader = csv.DictReader(csvfile, fieldnames=fieldnames)
-    #     row_num = 0
-    #     for row in reader:
-    #         if (row['Feature Type'] == 'CDS') & (row_num >= 3):
-    #             info[row['Locus Tag'][:-1]] = 1
-    #             for field in interest_fields:
-    #                 if row[field] != '':
-    #                     info_num[field] += 1
-    #         row_num += 1
-    #     print(info_num)
-    #
-    # xrefs = {}
-    # num_xrefs = {}
-    # num_xrefs_unique = {}
-    # with open('Data/PAO1/Gene_Info/pseudomonas_db_xrefs.csv') as csvfile:
-    #     types = ['RefSeq Accession', 'UniProtKB Accession', 'UniProtKB ID', 'GI Number', 'Uniparc', 'UniRef100 ID',
-    #              'UniRef90 ID', 'UniRef50 ID']
-    #
-    #     #types = ['UniProtKB Accession', 'RefSeq Accession']
-    #     for locus in info:
-    #         xrefs[locus] = {}
-    #         for type in types:
-    #             xrefs[locus][type] = 0
-    #             num_xrefs[type] = 0
-    #
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader:
-    #         if (row['Locus Tag'] in info.keys()):
-    #             for type in types:
-    #                 if row[type] != '':
-    #                     num_xrefs[type] += 1
-    #                     xrefs[row['Locus Tag']][type] += 1
-    #
-    #     for type in types:
-    #         num_xrefs_unique[type] = 0
-    #
-    #     for locus in xrefs:
-    #         for type in xrefs[locus]:
-    #             if xrefs[locus][type] >= 1:
-    #                 num_xrefs_unique[type] += 1
-    #
-    #     print(num_xrefs)
-    #     print(num_xrefs_unique)
-    #
-    #
-    # localizations = {}
-    # num_localizations = 0
-    # num_localizations_unique = 0
-    # for locus in info:
-    #     localizations[locus] = 0
-    # with open('Data/PAO1/Gene_Info/pseudomonas_db_localizations.csv') as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader:
-    #         if row['Locus Tag'] in info:
-    #             localizations[row['Locus Tag']] += 1
-    #             num_localizations += 1
-    #
-    #     for locus in localizations:
-    #         if localizations[locus] >= 1:
-    #             num_localizations_unique += 1
-    #
-    #     print(num_localizations, num_localizations_unique)
-    #
-    # ontologies = {}
-    # num_ontologies = 0
-    # num_ontologies_unique = 0
-    # for locus in info:
-    #     ontologies[locus] = 0
-    # with open('Data/PAO1/Gene_Info/pseudomonas_db_go.csv') as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader:
-    #         if row['Locus Tag'] in info:
-    #             ontologies[row['Locus Tag']] += 1
-    #             num_ontologies += 1
-    #
-    #     for locus in ontologies:
-    #         if ontologies[locus] >= 1:
-    #             num_ontologies_unique += 1
-    #
-    #     print(num_ontologies, num_ontologies_unique)
-    #
+

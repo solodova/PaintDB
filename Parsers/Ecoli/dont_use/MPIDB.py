@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
-from Parsers.Parser import is_experimental_psimi
+from Schema import OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
+from Main import is_experimental_psimi
 
 def parse_ecoli_mpidb(session):
     with open('Ecoli/PSICQUIC/MPIDB.txt') as csvfile:

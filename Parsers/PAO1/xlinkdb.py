@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
 def parse(session):
     with open('Data/PAO1/xlinkdb.txt') as csvfile:

@@ -1,7 +1,7 @@
 import csv
 
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionXref, InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionXref, InteractionSource
+from Main import is_experimental_psimi
 
 def parse_adipinteractomes(session):
     with open('PAO1/PSICQUIC/ADIPInteractomes.txt') as csvfile:

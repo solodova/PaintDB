@@ -1,13 +1,14 @@
 import csv
-from Schema1 import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, \
+from Schema import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, \
     InteractionSource
-from Schema1 import is_experimental_psimi
+from Parsers.Parser import is_experimental_psimi
 import itertools
 
-
+# universal column names to be used for all file parsing
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']
 
+# function to parse all Ecoli psimi formatted data files
 def parse(session):
     parse_psimi(session, 'Data/Ecoli/PSICQUIC/BindingDB.txt', 'BindingDB(Ecoli)')
     parse_psimi(session, 'Data/Ecoli/PSICQUIC/EBI-GOA-nonIntAct.txt', 'EBI-GOA-nonIntAct(Ecoli)')
@@ -27,22 +28,31 @@ def parse_psimi(session, file, source):
 
         # iterate through each interaction
         for row in reader:
-            #if (row['interactor_A'] == '-') | (row['interactor_B'] == '-'): continue
+
             uniprot_A, refseq_A, orthologs_A , uniprot_B, refseq_B, orthologs_B= None, None, None, None, None, None
+            # if one of the interactors is metabolte, save it's ids in pubchem and chebi
             pubchem, chebi = None, None
+            # if one of the interactors is a metabolite, metabolite will be that metabolite and orthologs
+            # will be set to the interaction's protein ortholog(s)
             metabolite_info, metabolite, orthologs = None, None, None
 
+            # check if interactor A has uniprot or refseq id
             if 'uniprotkb' in row['interactor_A']:
                 uniprot_A = row['interactor_A'].split('uniprotkb:')[1].split('|')[0]
             if 'refseq' in row['interactor_A']:
                 refseq_A = row['interactor_A'].split('refseq:')[1].split('|')[0]
 
+            # if uniprot id was found, look for orthologs matching that id
             if uniprot_A is not None:
                 orthologs_A = session.query(OrthologEcoli).filter_by(ortholog_uniprot = uniprot_A).all()
+            # if no orthologs were found but a refseq id was found, try to find ortholog based on refseq
             if (orthologs_A is None) and (refseq_A is not None):
                 orthologs_A = session.query(OrthologEcoli).filter_by(ortholog_refseq = refseq_A).all()
+            # if no orthologs were found for interactor A, but a uniprot or refseq does exist,
+            # that means the ecoli interactor A is a protein without orthologs, so continue to next interaction
             if (orthologs_A is None) & ((uniprot_A is not None) | (refseq_A is not None)): continue
 
+            # same as for interactor A above
             if 'uniprotkb' in row['interactor_B']:
                 uniprot_B = row['interactor_B'].split('uniprotkb:')[1].split('|')[0]
             if 'refseq' in row['interactor_B']:
@@ -54,8 +64,12 @@ def parse_psimi(session, file, source):
                 orthologs_B = session.query(OrthologEcoli).filter_by(ortholog_refseq = refseq_B).all()
             if (orthologs_B is None) & ((uniprot_B is not None) | (refseq_B is not None)): continue
 
+            # if both orthologs_A and orthologs_B are None, then there are no protein interactors for this
+            # interaction, so move on to the next interaction
             if (orthologs_A is None) and (orthologs_B is None): continue
 
+            # if there were no orthologs for interactor A (and no refseq or uniprot was found),
+            # search the file for pubchem or chebi ids for interactor A (as it may be a metabolite)
             if orthologs_A is None:
                 if 'chebi' in row['interactor_A']:
                     chebi = row['interactor_A'].split('CHEBI:')[1].split('|')[0][:-1]
@@ -63,8 +77,13 @@ def parse_psimi(session, file, source):
                     pubchem = row['altID_A'].split('pubchem:')[1].split('|')[0]
                 if (chebi is None) & ('chebi' in row['altID_A']):
                     chebi = row['altID_A'].split('CHEBI:')[1].split('|')[0][:-1]
+                # if no metabolite ids were found in the interaction row, then move on to the next interaction
+                # because no interactor_A was identified
                 if (chebi is None) & (pubchem is None): continue
+                # if a pubchem or chebi id was found, then this interaction will be a p-m interaction, so
+                # set the protein interactors(orthologs) to orthologs_B
                 orthologs = orthologs_B
+            # other case where orthologs_B were not identified so need to check if interactor B has metabolite ids
             elif orthologs_B is None:
                 if 'chebi' in row['interactor_B']:
                     chebi = row['interactor_B'].split('CHEBI:')[1].split('|')[0][:-1]
@@ -75,83 +94,100 @@ def parse_psimi(session, file, source):
                 if (chebi is None) & (pubchem is None): continue
                 orthologs = orthologs_A
 
+            # if one of the interactors was identified to be a metabolite, search for the metabolite and set metabolite
+            # variable to that value. if the metabolite doesnt exist create it
+            # Note: if this point was reached, it means one of the interactors had protein orthologs,
+            # so we can safely create a new metabolite knowing it will have a protein interaction partner
             if (chebi is not None) | (pubchem is not None):
                 id = None
+                # preferentially set id for new metabolites to be chebi
                 if chebi is not None:
                     id = chebi
                     metabolite = session.query(Metabolite).filter_by(chebi = chebi).first()
+                # if no metabolite with chebi was found, but pubchem id exists, try to find
+                # metabolite with that pubchem
                 if (metabolite is None) & (pubchem is not None):
                     id = pubchem
                     metabolite = session.query(Metabolite).filter_by(pubchem = pubchem).first()
+                # if no metabolite was found with pubchem or chebi id, create new metabolite
                 if metabolite is None:
                     metabolite = Metabolite(id = id, chebi=chebi, pubchem=pubchem)
                     session.add(metabolite)
+                # if a metabolite was found, update its chebi and pubchem if it has none
+                else:
+                    if metabolite.pubchem is None:
+                        metabolite.pubchem = pubchem
+                    if metabolite.chebi is None:
+                        metabolite.chebi = chebi
 
+            # list of interactor pairs for interaction
             interactors = []
+            # if no metabolite was found for interaction, it is a p-p interaction, so iterate through
+            # orthologs to create interactor pairs
             if metabolite is None:
                 for ortholog_A in orthologs_A:
                     for ortholog_B in orthologs_B:
                         if (ortholog_A is not None) and (ortholog_B is not None):
+                            # only add the interactor pair if the protein strains match
                             if ortholog_A.strain_protein == ortholog_B.strain_protein:
                                 interactors.append([[ortholog_A.protein, ortholog_A.ortholog_id],
                                                     [ortholog_B.protein, ortholog_B.ortholog_id]])
             else:
+                # if a metabolite was found, add pairs of all orthologs with metabolite to interactor pairs
                 for ortholog in orthologs:
                     interactors.append([[metabolite, metabolite.id], [ortholog.protein, ortholog.ortholog_id]])
 
+            # for each interactor pair, create interaction if it doesnt exist, otherwise update attributes
             for interactor_pair in interactors:
                 homogenous = (interactor_pair[0][0] == interactor_pair[1][0])
                 interaction = session.query(Interaction).filter(Interaction.interactors.contains(interactor_pair[0][0]),
                                                                 Interaction.interactors.contains(interactor_pair[1][0]),
                                                                 Interaction.homogenous == homogenous).first()
                 if interaction is None:
+                    # since one of the interactors may be a metabolite, set strain to match strain of protein
                     strain = None
                     if interactor_pair[0][0].type == 'p':
                         strain = interactor_pair[0][0].strain
                     else:
                         strain = interactor_pair[1][0].strain
+                    # if interaction did not exist, set it to Ecoli ortholog derived
                     interaction = Interaction(strain=strain,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]],
                                               type=(interactor_pair[0][0].type + '-' + interactor_pair[1][0].type),
                                               ortholog_derived='Ecoli')
                     session.add(interaction), session.commit()
 
+                # dict to hold all fields for references
                 ref_fields = {'detections': [], 'types': [], 'dbs': [], 'confidences': [], 'authors': [], 'dates': [],
-                              'pmids': [], 'psimi_detections': [], 'psimi_types': [], 'psimi_dbs': []}
+                              'pmids': []}
 
-                if 'MI' in row['detection']:
-                    for psimi_detection in row['detection'].split('MI:')[1:]:
-                        if psimi_detection == '': continue
-                        ref_fields['psimi_detections'].append(psimi_detection[:4])
-                if 'MI' in row['type']:
-                    for psimi_type in row['type'].split('MI:')[1:]:
-                        if psimi_type == '': continue
-                        ref_fields['psimi_types'].append(psimi_type[:4])
-                if 'MI' in row['source_db']:
-                    for psimi_db in row['source_db'].split('MI:')[1:]:
-                        if psimi_db == '': continue
-                        ref_fields['psimi_dbs'].append(psimi_db[:4])
-
+                # collect detection method(s), publication info, interaction type(s), source db(s)
                 for detection in row['detection'].split('|'):
                     if (detection == '-') | (detection == ''): continue
-                    ref_fields['detections'].append(detection.split('(')[1][:-1])
+                    ref_fields['detections'].append(detection)
                 for pub in row['publication'].split('|'):
                     if (pub == '-') | (pub == ''): continue
+                    # default separators for reference of form Zhang et al. (2014)
+                    # reference
                     seps = [' ', '(']
                     author = ''
+                    # if a '-' is in the reference and there are no spaces, the reference is of form Zhang_li-2014-1
                     if ('-' in pub) and (' ' not in pub):
                         seps = ['-', '-']
                     if '_' in pub:
+                        # '_' separates combined last names in references using '-' sep
                         author = pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0].split('_')[0][1:] + '-' + \
                                  pub.split(seps[0])[0].split('_')[1]
                     else:
                         author = pub.split(seps[0])[0][0].upper() + pub.split(seps[0])[0][1:]
                     ref_fields['authors'].append(author)
+                    # add date based on sep
                     if seps[1] == '-':
                         ref_fields['dates'].append(pub.split(seps[1])[1])
                     elif '(' in pub:
                         ref_fields['dates'].append(pub.split(seps[1])[1][:-1])
                 for id in row['publication_ID'].split('|'):
+                    # only care about pubmed ids
                     if ('pubmed' not in id) | (id == '-') | (id == '') | ('DIP' in id): continue
                     ref_fields['pmids'].append(id.split('pubmed:')[1])
                 for type in row['type'].split('|'):
@@ -159,29 +195,17 @@ def parse_psimi(session, file, source):
                     ref_fields['types'].append(type.split('(')[1][:-1])
                 for db in row['source_db'].split('|'):
                     if (db == '-') | (db == ''): continue
-                    ref_fields['dbs'].append(db.split('(')[1][:-1])
+                    ref_fields['dbs'].append(db)
                 for confidence in row['confidence'].split('|'):
                     if (confidence == '-') | (confidence == ''): continue
+                    # don't care about these confidence types
                     if (confidence.split(':')[0] == 'core') | (confidence.split(':')[0] == 'ist'): continue
                     ref_fields['confidences'].append(confidence)
 
+                # if no value(s) were found for field, set first item of field list in ref_fields to None
                 for field in ref_fields:
                     if len(ref_fields[field]) == 0:
                         ref_fields[field].append(None)
-
-                if (ref_fields['psimi_detections'][0] is None) and (ref_fields['detections'][0] is not None):
-                    for i in range(1, len(ref_fields['detections'])):
-                        ref_fields['psimi_detections'].append(None)
-                if (ref_fields['psimi_types'][0] is None) and (ref_fields['types'][0] is not None):
-                    for i in range(1, len(ref_fields['types'])):
-                        ref_fields['psimi_types'].append(None)
-                if (ref_fields['psimi_dbs'][0] is None) and (ref_fields['dbs'][0] is not None):
-                    for i in range(1, len(ref_fields['dbs'])):
-                        ref_fields['psimi_dbs'].append(None)
-
-                detections_full = list(zip(ref_fields['psimi_detections'], ref_fields['detections']))
-                types_full = list(zip(ref_fields['psimi_types'], ref_fields['types']))
-                dbs_full = list(zip(ref_fields['psimi_dbs'], ref_fields['dbs']))
 
                 if (ref_fields['dates'][0] is None) and (ref_fields['authors'][0] is not None):
                     for i in range(1, len(ref_fields['authors'])):
@@ -209,16 +233,16 @@ def parse_psimi(session, file, source):
                 if (len(ref_fields['authors']) == len(ref_fields['dates'])) and \
                         (len(ref_fields['authors']) == len(ref_fields['pmids'])):
                     pub_full = list(zip(ref_fields['authors'], ref_fields['dates'], ref_fields['pmids']))
-                if (len(list(detections_full)) > 1) & (len(list(pub_full)) == 1) & (len(list(types_full)) == 1):
-                    for i in range(1, len(detections_full)):
+                if (len(ref_fields['detections']) > 1) & (len(pub_full) == 1) & (len(ref_fields['types']) == 1):
+                    for i in range(1, len(ref_fields['detections'])):
                         pub_full.append(pub_full[0])
-                        types_full.append(types_full[0])
+                        ref_fields['type'].append(ref_fields['type'][0])
 
-                ref_full = list(zip(detections_full, pub_full, types_full))
+                ref_full = list(zip(ref_fields['detection'], pub_full, ref_fields['types']))
 
                 ref_parameter_list = []
 
-                for comb in itertools.product(ref_full, dbs_full, ref_fields['confidences']):
+                for comb in itertools.product(ref_full, ref_fields['dbs'], ref_fields['confidences']):
                     ref_parameters = [comb[0][0][0], comb[0][0][1], comb[0][1][0], comb[0][1][1], comb[0][1][2],
                                       comb[0][2][0], comb[0][2][1], comb[1][0], comb[1][1], comb[2]]
                     if all(parameter is None for parameter in ref_parameters): continue

@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionXref, InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionXref, InteractionSource
+from Main import is_experimental_psimi
 
 def parse_intact(session):
     parse_intact('PAO1/PSICQUIC/IntAct.txt', 'PAO1', 'taxid:208964(pseae)', session)

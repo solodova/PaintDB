@@ -5,10 +5,9 @@ from flask import (
 from . import Session, removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from Schema1 import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, ProteinXref, \
-InteractionSource
-import re
-import csv
+from Schema import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, ProteinXref, \
+InteractionSource, Base
+import re, csv
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')

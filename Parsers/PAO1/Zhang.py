@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, Interaction, InteractionReference, InteractionSource
 
 def parse(session):
     with open('Data/PAO1/Zhang.csv') as csvfile:

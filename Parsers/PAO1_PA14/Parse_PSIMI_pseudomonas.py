@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
-from Schema1 import is_experimental_psimi
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
+from Schema import is_experimental_psimi
 
 import itertools
 

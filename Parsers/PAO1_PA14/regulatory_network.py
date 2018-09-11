@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
 def parse(session):
     source_PAO1 = InteractionSource(data_source = 'Galan-Vasquez(PAO1)', is_experimental=2)

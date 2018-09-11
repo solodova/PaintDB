@@ -1,5 +1,5 @@
 import csv
-from Schema1 import Interactor, OrthologPseudomonas, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, OrthologPseudomonas, Interaction, InteractionReference, InteractionSource
 
 inparalogs = {}
 

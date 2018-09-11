@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
-from Parsers.Parser import is_experimental_psimi
+from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
+from Main import is_experimental_psimi
 
 def parse_irefindex(session):
     parse_irefindex('PAO1/PSICQUIC/iRefIndex.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)', session)

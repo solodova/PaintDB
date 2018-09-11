@@ -1,6 +1,6 @@
 import csv
-from Schema1 import OrthologEcoli, Interactor, Interaction, InteractionReference, Metabolite, InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema import OrthologEcoli, Interaction, InteractionReference, Metabolite, InteractionSource
+from Main import is_experimental_psimi
 
 def parse_ecoli_uniprot(session):
     with open('Ecoli/PSICQUIC/UniProt.txt') as csvfile:

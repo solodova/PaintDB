@@ -1,21 +1,12 @@
-from Schema1 import Base, Interactor, Metabolite, Protein, OrthologPseudomonas, \
-    OrthologEcoli, GeneOntology, Localization, InteractionReference, Interaction, InteractionSource
-from sqlalchemy import create_engine, or_, not_, and_
-from sqlalchemy.orm import sessionmaker
-import csv, datetime
-
-# ('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
-engine = create_engine('sqlite:////Users/olga/Desktop/PaIntDB.db')
-# Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-from sqlalchemy import func
+from Schema import Metabolite, Protein, Interaction, InteractionSource
+import csv
+from sqlalchemy import func, or_
 
 
-def newfunc(strain):
-    session = Session()
+def get_db_stats_interactors(strain, session):
     # new_file = open('PaIntDB_PAO1_stats', mode='x')
     header = ['Statistic', 'Value']
-    file_name = 'PaIntDB_' + strain + '_Protein.csv'
+    file_name = 'PaIntDB_' + strain + '_Interactors.csv'
     file_writer = csv.DictWriter(open(file_name, mode='x', newline=''), fieldnames=header)
     file_writer.writeheader()
     file_writer.writerow(
@@ -98,8 +89,7 @@ def newfunc(strain):
     #                       filter(Interaction.type.in_(['p-m', 'm-p'])).
     #                      group_by(Protein).having(func.count(Protein.interactions) > 0).count()}))
 
-def get_db_stats(strain):
-    session = Session()
+def get_db_stats_interactions(strain, session):
     header = ['Statistic', 'Total', 'Total P-P', 'Total P-M', 'Experimental', 'Experimental P-P',
               'Experimental P-M', 'Non-experimental', 'Non-experimental P-P', 'Non-experimental P-M',
               'Unknown detection', 'Unknown detection P-P', 'Unknown detection P-M']

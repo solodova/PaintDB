@@ -1,6 +1,6 @@
 import csv
-from Schema1 import Interactor, Interaction, OrthologEcoli, InteractionReference, InteractionSource
-from Parsers.Parser import is_experimental_psimi
+from Schema import Interaction, OrthologEcoli, InteractionReference, InteractionSource
+from Main import is_experimental_psimi
 
 def parse_ecoli_dip(session):
     with open('Ecoli/DIP.txt') as csvfile:
