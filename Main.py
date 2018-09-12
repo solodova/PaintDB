@@ -6,8 +6,8 @@ if __name__ == '__main__':
     from Parsers.Parser import parse_all
     from DB_Statistics.DB_Statistics import get_db_stats_interactors, get_db_stats_interactions
 
-    # ('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
-    # 'sqlite:////Users/olga/Desktop/PaIntDB.db'
+    #('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
+    #'sqlite:////Users/olga/Desktop/PaIntDB.db'
     engine = create_engine('sqlite:///C:\\Users\\olgas\\Desktop\\PaIntDB.db')
     # if db is already created, next line can be commented out (tables do not have to be created again
     # to connect to the db)
@@ -17,10 +17,10 @@ if __name__ == '__main__':
 
     # comment out whatever processes are unnecessary
     parse_all(session)
-    get_db_stats_interactors(session)
-    get_db_stats_interactions(session)
-
-
+    #get_db_stats_interactors(session)
+    #get_db_stats_interactions(session)
+    #from test import parse
+    #parse()
     # i1 = Interaction(type = '1')
     # i2 = Interaction(type='2')
     # i3 = Interaction(type='3')

@@ -246,7 +246,7 @@ def parse_ecocyc(strain, session):
                         if reference is None:
                             reference = InteractionReference(pmid=pmid, source_db='ecocyc', comment = comment,
                                                            interactor_a=interactor_a, interactor_b=interactor_b)
-                            reference.interactions.append(interaction)
+                            interaction.references.append(reference)
                             reference.sources.append(source)
                         # if reference does exist, add interaction to its interactions and source to its sources
                         # (if it doesn't have them already)

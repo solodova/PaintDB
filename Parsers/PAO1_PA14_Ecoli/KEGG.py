@@ -16,7 +16,7 @@ def parse_pseudomonas(session):
 def parse_ecoli(session):
     if not kegg_compounds:
         get_kegg_compounds()
-    #update_metabolite_info(session)
+    update_metabolite_info_kegg(session)
     source = InteractionSource(data_source='KEGG(Ecoli)', is_experimental=2)
     session.add(source), session.commit()
     parse_kegg('eco', 'PAO1', 'KEGG(Ecoli)', session)
@@ -142,7 +142,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
             for interactor1 in interactors[0]:
                 for id in new_metabolites[1]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).get(id)
+                    metabolite = session.query(Metabolite).filter_by(kegg = id)
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -151,7 +151,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
             for interactor1 in interactors[1]:
                 for id in new_metabolites[0]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).get(id)
+                    metabolite = session.query(Metabolite).filter_by(kegg = id)
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -190,13 +190,17 @@ def parse_kegg(org_id, strain, sourcedb, session):
                                                                 Interaction.interactors.contains(interactor_pair[1][0]),
                                                                 Interaction.homogenous == homogenous).first()
 
+                source = session.query(InteractionSource).filter_by(data_source=sourcedb).first()
                 if interaction is None:
                     interaction = Interaction(type=interactor_pair[0][0].type + '-' + interactor_pair[1][0].type,
                                               strain=strain, homogenous=homogenous,
                                               interactors=[interactor_pair[0][0], interactor_pair[1][0]])
+                    interaction.sources.append(source)
                     if org_id == 'eco':
                         interaction.ortholog_derived = 'Ecoli'
                     session.add(interaction), session.commit()
+                elif source not in interaction.sources:
+                    interaction.sources.append(source)
 
                 interactor_a, interactor_b = None, None
                 if org_id == 'eco':
@@ -206,10 +210,6 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     else:
                         interactor_b = interactor_pair[0][1]
                         interactor_a = interactor_pair[1][1]
-
-                source = session.query(InteractionSource).filter_by(data_source=sourcedb).first()
-                if source not in interaction.sources:
-                    interaction.sources.append(source)
 
                 reference = session.query(InteractionReference).filter_by(source_db='kegg',
                                                                           comment='in ' + path_name + ' path',

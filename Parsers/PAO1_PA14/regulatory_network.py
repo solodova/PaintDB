@@ -51,13 +51,13 @@ def parse(session):
                     for type in row['evidence'].split(', '):
                         detections.append(type)
                 for detection in detections:
-                    reference = InteractionReference(detection_method=row['evidence'], pmid=row['pmid'],
+                    reference = InteractionReference(detection_method=detection, pmid=row['pmid'],
                                                      interaction_type='TF/sigma-binding site (' + row['mode'] +
                                                                       'regulation)',
                                                      source_db=source_db,
                                                      comment=interactor_A.id + ' regulates(' +
                                                                            row['mode'] + ') ' + interactor_B.id)
-                    reference.interactions.append(interaction)
+                    interaction.references.append(reference)
                     reference.sources.append(source)
 
     session.commit()

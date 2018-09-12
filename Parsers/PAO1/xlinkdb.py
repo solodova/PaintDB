@@ -31,12 +31,14 @@ def parse(session):
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous, type='p-p',
                                           interactors=[interactor_A, interactor_B])
-                session.add(interaction), session.commit()
-
-            if reference not in interaction.references:
                 interaction.references.append(reference)
-            if source not in interaction.sources:
                 interaction.sources.append(source)
+                session.add(interaction), session.commit()
+            else:
+                if reference not in interaction.references:
+                    interaction.references.append(reference)
+                if source not in interaction.sources:
+                    interaction.sources.append(source)
 
     session.commit()
     print('xlinkdb', session.query(Interaction).count())

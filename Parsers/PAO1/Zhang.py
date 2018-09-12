@@ -24,7 +24,10 @@ def parse(session):
             if interaction is None:
                 interaction = Interaction(strain='PAO1', homogenous=homogenous, type='p-p',
                                           interactors=[interactor_A, interactor_B])
+                interaction.sources.append(source)
                 session.add(interaction), session.commit()
+            elif source not in interaction.sources:
+                interaction.sources.append(source)
 
             reference = session.query(InteractionReference).filter_by(detection_method = 'computational prediction',
                                                                       pmid = '22848443', interaction_type = 'predicted',
@@ -42,8 +45,5 @@ def parse(session):
                     interaction.references.append(reference)
                 if source not in reference.sources:
                     reference.sources.append(source)
-
-            if source not in interaction.sources:
-                interaction.sources.append(source)
     session.commit()
     print('zhang', session.query(Interaction).count())
