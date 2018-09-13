@@ -1,6 +1,5 @@
 import csv
-from Schema import Interactor, Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionXref, \
-    InteractionSource
+from Schema import Metabolite, Interaction, InteractionReference, OrthologEcoli, InteractionSource
 from Parsing_Helpers import get_psimi_ref_list, is_experimental_interaction
 
 # universal column names to be used for all file parsing

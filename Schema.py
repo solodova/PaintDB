@@ -87,27 +87,7 @@ class Protein(Interactor):
     localizations = relationship("Localization", secondary=protein_localizations, backref="proteins")
     pseudomonas_orthologs = relationship("OrthologPseudomonas", backref ="protein")
     ecoli_orthologs = relationship("OrthologEcoli", backref = "protein")
-    xrefs = relationship("ProteinXref", backref='protein')
     ontologies = relationship("GeneOntology", backref = 'protein')
-
-
-class ProteinXref(Base):
-    # note that some PAO1 proteins will have multiple xrefs from the same source
-    __tablename__ = 'interactor_xref'
-
-    protein_id = Column(String, ForeignKey("interactor.id"), primary_key=True)
-    # currently added:
-    #   - RefSeq Accession: NP_254184.1
-    #   - UniProtKB Accession: Q9HT76
-    # could also include these:
-    #   - UniProtKB ID: Q9HT76_PSEAE
-    #   - GI Number: 15600690
-    #   - Uniparc: UPI00000C6038
-    #   - UniRef100 ID: UniRef100_Q9HT76
-    #   - UniRef90 ID: UniRef90_A6VEX4
-    #   - UniRef50 ID: UniRef50_U2E6Q5
-    accession = Column(String, primary_key=True)
-    source = Column(String)
 
 
 class GeneOntology(Base):

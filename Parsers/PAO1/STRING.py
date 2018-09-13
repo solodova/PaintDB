@@ -1,5 +1,6 @@
 import csv
-from Schema import Interactor, Interaction, InteractionReference, InteractionSource, is_experimental_psimi
+from Schema import Interactor, Interaction, InteractionReference, InteractionSource
+from Parsing_Helpers import is_experimental_psimi
 
 def find_type(psi_code):
     return {
