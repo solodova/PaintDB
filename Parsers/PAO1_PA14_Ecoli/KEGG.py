@@ -141,7 +141,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                             interactors[num].append([interactor, None])
                     # if it doesnt exist, it's not a valid protein, so check if it is a valid compound
                     elif kegg_id is not None:
-                        interactor = session.query(Metabolite).filter_by(kegg = kegg_id)
+                        interactor = session.query(Metabolite).filter_by(kegg = kegg_id).first()
                         # if metabolite with id was not found, append the kegg_id to new_metabolites to create
                         if interactor is None:
                             new_metabolites[num].append(kegg_id)
@@ -169,7 +169,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     # ignore interactor pairs which would result in m-m interactions
                     if interactor1[0].type == 'm': continue
                     # Note: can query metabolite with kegg only because we updated the metabolite info first
-                    metabolite = session.query(Metabolite).filter_by(kegg = id)
+                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -178,7 +178,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
             for interactor1 in interactors[1]:
                 for id in new_metabolites[0]:
                     if interactor1[0].type == 'm': continue
-                    metabolite = session.query(Metabolite).filter_by(kegg = id)
+                    metabolite = session.query(Metabolite).filter_by(kegg = id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id = id, kegg = id, pubchem = kegg_compounds[id]['pubchem'],
                                                 chebi = kegg_compounds[id]['chebi'])
@@ -199,7 +199,7 @@ def parse_kegg(org_id, strain, sourcedb, session):
                     if int(compound_node_id) not in compound_ids: continue
                     # if compound id is valid, either add existing matching metabolite or create new one and add
                     kegg_id = compound_ids[int(compound_node_id)]
-                    metabolite = session.query(Metabolite).filter_by(kegg = kegg_id)
+                    metabolite = session.query(Metabolite).filter_by(kegg = kegg_id).first()
                     if metabolite is None:
                         metabolite = Metabolite(id=kegg_id, name=kegg_compounds[kegg_id]['name'],
                                                 pubchem=kegg_compounds[kegg_id]['pubchem'],

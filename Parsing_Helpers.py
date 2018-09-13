@@ -36,8 +36,8 @@ def is_experimental_psimi(psi_code):
 def is_experimental_interaction(row):
     # go through all psimi detection codes (if there are any) and determine if they are experimental
     is_experimental, not_experimental, experimental = 2, 2, 2
-    if 'MI' in row['detections']:
-        for psimi_detection in row['detections'].split('MI:')[1:]:
+    if 'MI' in row['detection']:
+        for psimi_detection in row['detection'].split('MI:')[1:]:
             if psimi_detection == '': continue
             if is_experimental_psimi(psimi_detection[:4]):
                 experimental = 1
