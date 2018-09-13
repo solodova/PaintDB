@@ -74,27 +74,35 @@ def get_xrefs(file, strain, session):
     print('xrefs')
 
 
+# function to collect all protein localizations from file
 def get_localizations(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             interactor = session.query(Interactor).get(row['Locus Tag'])
+            # only add localization if the interactor exists in the database
             if interactor is not None:
+                # check if localization already exists
                 localization = session.query(Localization).filter_by(localization=row['Subcellular Localization'],
                                                                      confidence=row['Confidence']).first()
+                # create localization and add it to interactor localization list if it doesnt exist yet
                 if localization is None:
                     interactor.localizations.append(Localization(localization=row['Subcellular Localization'],
                                                                  confidence=row['Confidence']))
+                # if the localization already exists, check if it's listed in the interactors localizations,
+                # if not, add it
                 elif localization not in interactor.localizations:
                     interactor.localizations.append(localization)
     session.commit()
     print('localizations')
 
+# function to get all ontologies for proteins from file
 def get_ontology(file, session):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         ontologies = []
         for row in reader:
+            # only create ontology if interactor exists in the database
             if session.query(Interactor).get(row['Locus Tag']) is not None:
                 pmid, evidence_code, eco_code = None, None, None
                 if row['PMID'] != '':

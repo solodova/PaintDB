@@ -1,5 +1,5 @@
 import csv
-from Schema import Interactor, OrthologPseudomonas, Interaction, InteractionReference, InteractionSource
+from Schema import Interactor, OrthologPseudomonas, Interaction, InteractionReference
 
 # dicts of form {strain 1 id: [strain 2 inparalogs]}
 inparalogs = {}

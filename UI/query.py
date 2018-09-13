@@ -74,11 +74,7 @@ def upload():
 @bp.route('uploaded', methods=['GET', 'POST'])
 def uploaded():
     if request.method =='POST':
-        for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
-            for file in files:
-                filename = os.path.splitext(file)[0]
-                if (filename == 'proteins') | (filename == 'metabolites'):
-                    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file))
+        removeFiles()
         return redirect(url_for('query.upload'))
     return render_template('query/uploaded.html')
 
@@ -142,17 +138,41 @@ def filter():
         if len(type) == 1:
             interactions = interactions.filter_by(type = type[0])
 
+        interactions = interactions.join(Interaction.sources)
+        if sources[0] != 'All':
+            interactions = interactions.filter(InteractionSource.data_source.in_(sources))
+
         verifications = []
         for ver in filters_all['verification']:
             if ver in filters['verification']:
                 verifications.append(filters['verification'])
 
-        interactions = interactions.join(Interaction.sources)
-        if sources[0] != 'All':
-            interactions = interactions.filter(InteractionSource.data_source.in_(sources))
-
         if (len(verifications) == 1) | (len(verifications) == 2):
             interactions = interactions.filter(InteractionSource.is_experimental.in_(verifications))
+
+        metabolite_file, protein_file = None, None
+        for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
+            for file in files:
+                filename = os.path.splitext(file)[0]
+                if (filename == 'proteins'):
+                    protein_file = file
+                elif (filename == 'metabolites'):
+                    metabolite_file = file
+
+
+        if protein_file is not None:
+            proteins = []
+            with open(protein_file) as csvfile:
+                delimiter = '\t'
+                if protein_file.os.path.splitext(file)[1] == 'csv':
+                    delimiter = ','
+                reader = csv.DictReader(protein_file, fieldnames=['ID'], delimiter = delimiter)
+                for row in reader:
+                    if row['ID'] != '':
+                        proteins.append(row['ID'])
+
+            interactions = interactions.join('interactors').filter(Interaction.interactors.in_(proteins))
+
 
         interactions = interactions.join(Interaction.references)
         interactions = interactions.join(Interaction.xrefs)
@@ -241,20 +261,13 @@ def filter():
                     'confidence': [], 'annotations A': [], 'annotations B': []}
             #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
             for reference in interaction.references:
-                refs['detection'].append([reference.detection, reference.psimi_detection])
+                refs['detection'].append(reference.detection)
                 refs['author'].append([reference.author_ln, reference.pub_date])
-                refs['type'].append([reference.interaction_type, reference.psimi_type])
-                refs['db'].append([reference.source_db, reference.psimi_db])
+                refs['type'].append(reference.interaction_type)
+                refs['db'].append(reference.source_db)
                 refs['confidence'].append(reference.confidence)
                 refs['annotations A'].append(reference.interactor_a)
                 refs['annotations B'].append(reference.interactor_b)
-
-            for col in [refs['detection'], refs['type'], refs['db']]:
-                for field in col:
-                    if (field[0] is not None) & (field[1] is not None):
-                        field = 'psi-mi:"MI:' + field[1] + '"' + '(' + field[0] + ')'
-                    else:
-                        field = field[0]
 
             for author_info in refs['author']:
                 if author_info[0] is not None:
