@@ -25,47 +25,23 @@ def allowed_file(filename):
 def upload():
     if request.method == 'POST':
         # if no files were added before submit, flash error
-        if ('proteinFile' not in request.files) & ('metaboliteFile' not in request.files):
-            flash('Error: No files selected.')
+        if 'proteinFile' not in request.files:
+            flash('Error: No file selected.')
             return redirect(request.url)
 
-        protein_file, metabolite_file, metabolite_id = None, None, ''
-        file_error = ''
-        # if a metabolite file was included but no id was selected, flash error
-        if 'metaboliteFile' in request.files:
-            if 'metabolite_id' not in request.form:
-                flash('Error: No ID type selected for metabolite interactor file.')
-                return redirect(request.url)
-            metabolite_file = request.files['metaboliteFile']
-            metabolite_id = request.form['metabolite_id']
-            if metabolite_file.filename == '':
-                flash('Error: No files selected.')
-                return redirect(request.url)
-            if not allowed_file(metabolite_file.filename):
-                file_error += metabolite_file.filename + ' '
-
-        if 'proteinFile' in request.files:
-            protein_file = request.files['proteinFile']
-            if protein_file.filename == '':
-                flash('Error: No files selected.')
-                return redirect(request.url)
-            if not allowed_file(protein_file.filename):
-                file_error += protein_file.filename + ' '
-
-        if len(file_error) != 0:
-            flash('Error: Incompatible file type for: ' + file_error)
+        protein_file = request.files['proteinFile']
+        if protein_file.filename == '':
+            flash('Error: No file selected.')
+            return redirect(request.url)
+        if not allowed_file(protein_file.filename):
+            flash('Error: Incompatible file type for ' + protein_file.filename)
             return redirect(request.url)
 
-        if metabolite_file is not None:
-            mfile = secure_filename(('metabolites.' + metabolite_file.filename.rsplit('.', 1)[1].lower()))
-            metabolite_file.save(os.path.join(app.config['UPLOAD_FOLDER'], mfile))
-            flash(metabolite_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         if protein_file is not None:
-            #pfile = secure_filename(('proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()))
-            pfile = 'proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()
+            pfile = secure_filename(('proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()))
+            #pfile = 'proteins.' + protein_file.filename.rsplit('.', 1)[1].lower()
             parts = re.split(r'/', pfile)
             protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], *parts))
-            #protein_file.save('UI\\user_upload\\' + pfile)
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
     removeFiles()
@@ -81,8 +57,8 @@ def uploaded():
 @bp.route('filter', methods=['GET', 'POST'])
 def filter():
     if request.method == 'POST':
-        filters = {'strain': [], 'interaction_type': [], 'ortholog_mapping': [], 'Ecoli_sources': [],
-                   'PAO1_sources': [], 'PA14_sources': [], 'verification': []}
+        filters = {'strain': [], 'interaction_type': [], 'Ecoli_sources': [], 'PAO1_sources': [], 'PA14_sources': [],
+                   'verification': []}
         sources_Ecoli = ['EcoCyc', 'RegulonDB(Ecoli)', 'IMEx(Ecoli)', 'BindingDB(Ecoli)', 'EBI-GOA-nonIntAct(Ecoli)',
                          'IntAct(Ecoli)', 'iRefIndex(Ecoli)', 'mentha(Ecoli)', 'MINT(Ecoli)', 'MPIDB(Ecoli)',
                          'UniProt(Ecoli)', 'DIP(Ecoli)', 'KEGG(Ecoli)']
@@ -91,10 +67,11 @@ def filter():
         sources_PA14 = ['IMEx(PA14)', 'IntAct(PA14)', 'iRefIndex(PA14)', 'mentha(PA14)', 'MINT(PA14)', 'KEGG(PA14)',
                         'Galan-Vasquez(PA14)']
         filters_all ={'strain': ['PAO1', 'PA14'], 'interaction_type': ['p-p', 'p-m', 'p-bs'],
-                      'ortholog_mapping': ['PAO1/PA14', 'PAO1/Ecoli', 'PA14/Ecoli'], 'Ecoli_sources': sources_Ecoli,
-                      'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14, 'verification': ['0', '1', '2']}
+                      'Ecoli_sources': sources_Ecoli, 'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14,
+                      'verification': ['0', '1', '2']}
         sources = []
-        session = Session()
+        tfbs_sources = ['RegulonDB(Ecoli)', 'Galan-Vasquez(PAO1)']
+
 
         for filter in filters:
             if filter in request.form:
@@ -106,24 +83,22 @@ def filter():
             elif 'All' in filter:
                 filters[filter]=filters_all[filter]
 
-        if ('PAO1' in filters['strain']) | ('PAO1/PA14' in filters['ortholog_mapping']):
-            if filters['PAO1_sources'][0] != 'None':
-                sources.append(filters['PAO1_sources'])
-        if ('PA14' in filters['strain']) | ('PAO1/PA14' in filters['ortholog_mapping']):
-            if filters['PA14_sources'][0] != 'None':
-                sources.append(filters['PA14_sources'])
-        if ('PAO1/Ecoli' in filters['ortholog_mapping']) | ('PA14/Ecoli' in filters['ortholog_mapping']):
-            if filters['ortholog_mapping'][0] != 'None':
-                sources.append(filters['Ecoli_sources'])
+        if filters['PAO1_sources'][0] != 'None':
+            sources.append(filters['PAO1_sources'])
+        if filters['PA14_sources'][0] != 'None':
+            sources.append(filters['PA14_sources'])
+        if filters['Ecoli_sources'][0] != 'None':
+            sources.append(filters['Ecoli_sources'])
         if len(sources) == (len(filters_all['PAO1_sources']) + len(filters_all['PA14_sources']) +
                             len(filters_all['Ecoli_sources'])):
             sources = ['All']
         if len(sources) == 0:
-            'return, no sources selected!'
+            flash('Error: Please select sources from which to obtain interactions.')
+            return redirect(request.url)
         session = Session()
 
         interactions = None
-        if ('PAO1' in filters['strain']) and ('PA14' in filters['strain']):
+        if len(filters['strain'] == 2):
             interactions = session.query(Interaction)
         elif 'PAO1' in filters['strain']:
             interactions = session.query(Interaction).filter_by(strain = 'PAO1')
@@ -131,34 +106,37 @@ def filter():
             interactions = session.query(Interaction).filter_by(strain = 'PA14')
 
         type = []
-        if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
-            type.append('p-p')
-        elif 'p-m' in filters['interaction_type']:
-            type.append('p-m')
-        if len(type) == 1:
-            interactions = interactions.filter_by(type = type[0])
+        if (len(filters['interaction_type']) == 1) & (filters['interaction_type'][0] == 'bs'):
+            selected_tfbs = []
+            if tfbs_sources[0] in sources:
+                selected_tfbs.append(tfbs_sources[0])
+            if tfbs_sources[1] in sources:
+                selected_tfbs.append(tfbs_sources[1])
+            if len(selected_tfbs) > 0:
+                interactions = interactions.join(InteractionSource).\
+                    group_by(Interaction).filter(InteractionSource.data_source.in_(selected_tfbs))
+        else:
+            if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
+                type.append('p-p')
+            if 'p-m' in filters['interaction_type']:
+                type.append('p-m')
+                type.append('m-p')
+            if len(type) < 3:
+                interactions = interactions.filter(Interaction.type.in_(type))
 
-        interactions = interactions.join(Interaction.sources)
-        if sources[0] != 'All':
-            interactions = interactions.filter(InteractionSource.data_source.in_(sources))
+            interactions = interactions.join(Interaction.sources).group_by(Interaction)
+            if sources[0] != 'All':
+                interactions = interactions.filter(InteractionSource.data_source.in_(sources))
 
-        verifications = []
-        for ver in filters_all['verification']:
-            if ver in filters['verification']:
-                verifications.append(filters['verification'])
+        if len(filters['verification']) < 3:
+            interactions = interactions.filter(InteractionSource.is_experimental.in_(filters['verification']))
 
-        if (len(verifications) == 1) | (len(verifications) == 2):
-            interactions = interactions.filter(InteractionSource.is_experimental.in_(verifications))
-
-        metabolite_file, protein_file = None, None
+        protein_file = None
         for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
             for file in files:
                 filename = os.path.splitext(file)[0]
                 if (filename == 'proteins'):
                     protein_file = file
-                elif (filename == 'metabolites'):
-                    metabolite_file = file
-
 
         if protein_file is not None:
             proteins = []
@@ -274,16 +252,16 @@ def filter():
                     author_info[0] += 'et al.'
                     if author_info[1] is not None:
                         author_info[0] += ' (' + author_info[1] + ')'
-                author_info = author_info[0]
+                refs['author'][author_info] = author_info[0]
 
             for xref in interaction.xrefs:
                 if xref is None: continue
                 refs['xrefs'].append(xref.data_source + ':' + xref.accession)
             for ref in refs:
-                ref = ['-' if field is None else field for field in ref]
-                if ref.count(ref[0]) == len(ref):
-                    ref = [ref[0]]
-                ref = '|'.join(ref)
+                refs[ref] = ['-' if field is None else field for field in refs[ref]]
+                if refs[ref].count(refs[ref][0]) == len(refs[ref]):
+                    refs[ref] = [refs[ref][0]]
+                refs[ref] = '|'.join(refs[ref])
 
             file_writer.writerow({psimi_fields[0]: interactor_ids[0], psimi_fields[1]: interactor_ids[1],
                                   psimi_fields[2]: alt_ids[0], psimi_fields[3]: alt_ids[1],

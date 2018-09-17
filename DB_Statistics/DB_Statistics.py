@@ -77,6 +77,7 @@ def get_db_stats_interactors(strain, session):
                           'Value': session.query(Protein).filter(Protein.strain == strain).join(
                               Protein.ecoli_orthologs).
                          group_by(Protein).having(func.count(Protein.ecoli_orthologs) > 1).count()})
+    session.query(func.count(Protein.id)).filter(func.count(Protein.interactions) > 0)
     # file_writer.writerow({'Statistic': 'Num p, pc with interactions',
     #                       'Value': session.query(Protein).filter(Protein.strain == 'PAO1').join(Protein.interactions).
     #                      group_by(Protein).having(func.count(Protein.interactions) > 0).count()}))
@@ -93,7 +94,7 @@ def get_db_stats_interactions(strain, session):
     header = ['Statistic', 'Total', 'Total P-P', 'Total P-M', 'Experimental', 'Experimental P-P',
               'Experimental P-M', 'Non-experimental', 'Non-experimental P-P', 'Non-experimental P-M',
               'Unknown detection', 'Unknown detection P-P', 'Unknown detection P-M']
-    file_name = 'PaIntDB_' + strain + '_Interaction.csv'
+    file_name = 'PaIntDB_' + strain + '_Interactions.csv'
     file_writer = csv.DictWriter(open(file_name, mode='x', newline=''), fieldnames=header)
     file_writer.writeheader()
     file_writer.writerow(
@@ -141,6 +142,42 @@ def get_db_stats_interactions(strain, session):
                     'Galan-Vasquez(PA14)']
     sources_PAO1 = ['Geoff', 'XLinkDB', 'Zhang', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
                     'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)', 'Galan-Vasquez(PAO1)', 'KEGG(PAO1)']
+
+    ortholog_derived = []
+    if strain == 'PAO1':
+        ortholog_derived.append('PA14')
+    else:
+        ortholog_derived.append('PAO1')
+    ortholog_derived.append('Ecoli')
+
+    for ortholog in ortholog_derived:
+        file_writer.writerow(
+            {'Statistic': 'Num interactions derived from ' + ortholog,
+             'Total':
+                 session.query(Interaction).filter_by(strain=strain, ortholog_derived=ortholog).count(),
+             'Total P-P':
+                 session.query(Interaction).filter_by(strain=strain, ortholog_derived=ortholog, type='p-p').count(),
+             'Total P-M':
+                 session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p',
+                                                   Interaction.ortholog_derived == ortholog).count(),
+             'Experimental':
+                 '-',
+             'Experimental P-P':
+                 '-',
+             'Experimental P-M':
+                 '-',
+             'Non-experimental':
+                 '-',
+             'Non-experimental P-P':
+                 '-',
+             'Non-experimental P-M':
+                 '-',
+             'Unknown detection':
+                 '-',
+             'Unknown detection P-P':
+                 '-',
+             'Unknown detection P-M':
+                 '-'})
 
     for source in [['PAO1', sources_PAO1], ['PA14', sources_PA14], ['Ecoli', sources_Ecoli]]:
         file_writer.writerow(
@@ -241,98 +278,3 @@ def get_db_stats_interactions(strain, session):
                  session.query(InteractionSource).filter_by(data_source=source, is_experimental=2).
                      join('interactions').filter(Interaction.strain == strain,
                                                  Interaction.type != 'p-p').count()})
-    print('done2')
-    p_sources = sources_PAO1
-    p_ortholog_sources = sources_PA14
-    if strain == 'PA14':
-        p_sources = sources_PA14
-    p_ortholog_sources = sources_PAO1
-
-    # for source in [['Pseudomonas', p_ortholog_sources, p_sources],
-    #                ['Ecoli', sources_Ecoli, sources_PAO1 + sources_PA14]]:
-    #     file_writer.writerow(
-    #         {'Statistic': 'Num interactions in ' + strain + ' from ' + source[0] + ' orthology',
-    #          'Total':
-    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
-    #                  filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Total P-P':
-    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
-    #         join('sources').group_by(Interaction).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Total P-M':
-    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
-    #         join('sources').group_by(Interaction).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Experimental':
-    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
-    #         filter(InteractionSource.is_experimental == 1).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Experimental P-P':
-    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 1).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Experimental P-M':
-    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 1).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Non-experimental':
-    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
-    #         filter(InteractionSource.is_experimental == 0).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Non-experimental P-P':
-    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 0).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Non-experimental P-M':
-    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 0).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Unknown detection':
-    #              session.query(Interaction).filter_by(strain=strain).join('sources').group_by(Interaction).
-    #         filter(InteractionSource.is_experimental == 2).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Unknown detection P-P':
-    #              session.query(Interaction).filter_by(strain=strain, type='p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 2).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count(),
-    #          'Unknown detection P-M':
-    #              session.query(Interaction).filter(Interaction.strain == strain, Interaction.type != 'p-p').
-    #         join('sources').group_by(Interaction).filter(InteractionSource.is_experimental == 2).
-    #         filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #         filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2])))).count()})
-
-
-    # for source in [['Pseudomonas', p_ortholog_sources, p_sources],
-    #                ['Ecoli', sources_Ecoli, sources_PAO1 + sources_PA14]]:
-    #     file_writer.writerow(
-    #         {'Statistic': 'Num interactions in ' + strain + ' from ' + source[0] + ' orthology',
-    #          'Total':
-    #              session.query(Interaction)
-    #                  .filter_by(strain=strain)
-    #                  .join('sources')
-    #                  .group_by(Interaction)
-    #                  .filter(Interaction.sources.any(InteractionSource.data_source.in_(source[1]))).
-    #                  filter(~(Interaction.sources.any(InteractionSource.data_source.in_(source[2]))))
-    #                  .count(),
-    #          'Total P-P':'-',
-    #          'Total P-M':'-',
-    #          'Experimental':'-',
-    #          'Experimental P-P':'-',
-    #          'Experimental P-M':'-',
-    #          'Non-experimental':'-',
-    #          'Non-experimental P-P':'-',
-    #          'Non-experimental P-M':'-',
-    #          'Unknown detection':'-',
-    #          'Unknown detection P-P':'-',
-    #          'Unknown detection P-M': '-'})
