@@ -2,7 +2,8 @@ import functools, os, glob
 from flask import (
     Flask, Blueprint, flash, g, redirect, render_template, request, url_for, send_file
 )
-from app import Session, removeFiles
+from . import Session
+from helpers import removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
 from Schema import Interactor, Interaction, InteractionSource
@@ -10,7 +11,7 @@ import re, csv
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
-app.register_blueprint(bp)
+#app.register_blueprint(bp)
 psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interactor A', 'Alt. ID(s) interactor B',
                 'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
                 'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
