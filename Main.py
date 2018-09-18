@@ -145,7 +145,7 @@ if __name__ == '__main__':
                     'Interaction type(s)', 'Source database(s)', 'Interaction identifier(s)', 'Confidence value(s)',
                     'Annotation(s) interactor A', 'Annotation(s) interactor B']
 
-    filters = {'strain': ['PAO1'], 'interaction_type': ['p-p'], 'Ecoli_sources': ['None'], 'PAO1_sources':
+    filters = {'strain': ['PAO1'], 'type': ['p-p'], 'Ecoli_sources': ['None'], 'PAO1_sources':
         ['Geoff', 'XLinkDB', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
                     'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)'], 'PA14_sources': ['None'],
                'verification': ['All']}
@@ -159,14 +159,16 @@ if __name__ == '__main__':
     filters_all = {'strain': ['PAO1', 'PA14'], 'interaction_type': ['p-p', 'p-m', 'p-bs'],
                    'Ecoli_sources': sources_Ecoli, 'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14,
                    'verification': [0,1,2]}
-    sources = []
+
+    sources = ['XLinkDB', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
+                    'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)', 'Galan-Vasquez(PAO1)']
     tfbs_sources = ['RegulonDB(Ecoli)', 'Galan-Vasquez(PAO1)']
 
 
     for filter in filters:
-        if 'None' in filter:
+        if 'None' in filters[filter]:
             filters[filter] = ['None']
-        elif 'All' in filter:
+        elif 'All' in filters[filter]:
             filters[filter] = filters_all[filter]
 
     if filters['PAO1_sources'][0] != 'None':
@@ -180,57 +182,47 @@ if __name__ == '__main__':
         sources = ['All']
     if len(sources) == 0:
         print("no sources selected")
+
     session = Session()
     print(sources)
-    interactions = None
-    if len(filters['strain']) ==2:
-        interactions = session.query(Interaction)
-    elif 'PAO1' in filters['strain']:
-        interactions = session.query(Interaction).filter_by(strain='PAO1')
-    elif 'PA14' in filters['strain']:
-        interactions = session.query(Interaction).filter_by(strain='PA14')
-    #
-    # type = []
-    #
-    # if (len(filters['interaction_type']) == 1) & (filters['interaction_type'][0] == 'p-bs'):
-    #     selected_tfbs = []
-    #     if tfbs_sources[0] in sources:
-    #         selected_tfbs.append(tfbs_sources[0])
-    #     if tfbs_sources[1] in sources:
-    #         selected_tfbs.append(tfbs_sources[1])
-    #     if len(selected_tfbs) > 0:
-    #         interactions = interactions.join(Interaction.sources).filter(InteractionSource.data_source.in_(selected_tfbs))
-    # else:
-    #     if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
-    #         type.append('p-p')
-    #     if 'p-m' in filters['interaction_type']:
-    #         type.append('p-m')
-    #         type.append('m-p')
-    #     if len(type) < 3:
-    #         interactions = interactions.filter(Interaction.type.in_(type))
-    #
-    #     interactions = interactions.join(Interaction.sources)
-    #     if sources[0] != 'All':
-    #         interactions = interactions.filter(InteractionSource.data_source.in_(sources))
-    #
-    #
-    # if len(filters['verification']) < 3:
-    #     interactions = interactions.filter(InteractionSource.is_experimental.in_(filters['verification']))
-    #
-    #
-    # interactions = interactions.join(Interaction.references)
-    # interactions = interactions.join(Interaction.xrefs)
 
-    file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields)
+    interactions = None
+    if (len(filters['interaction_type']) == 1) & (filters['interaction_type'][0] == 'p-bs'):
+        selected_tfbs = []
+        if tfbs_sources[0] in sources:
+            selected_tfbs.append(tfbs_sources[0])
+        if tfbs_sources[1] in sources:
+            selected_tfbs.append(tfbs_sources[1])
+        if len(selected_tfbs) > 0:
+            interactions = session.query(Interaction).filter(Interaction.strain.in_(filters['strain'])).\
+                join(Interaction.sources).filter(InteractionSource.data_source.in_(selected_tfbs),
+                                                 InteractionSource.is_experimental.in_(filters_all['verification'])).all()
+    else:
+        type = []
+        if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
+            type.append('p-p')
+        if 'p-m' in filters['interaction_type']:
+            type.append('p-m')
+            type.append('m-p')
+        interactions = session.query(Interaction).filter(
+            Interaction.strain.in_(filters['strain']), Interaction.type.in_(filters['type'])).\
+            join('sources').filter(InteractionSource.data_source.in_(['XLinkDB']),
+                                                         InteractionSource.is_experimental.in_(filters['verification'])).all()
+
+
+    print(filters['strain'], filters['type'], filters['verification'])
+
+    file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields, quoting = csv.QUOTE_NONE,
+                                 delimiter = '\t', quotechar=None)
     file_writer.writeheader()
-    for interaction in interactions.all():
+    for interaction in interactions:
         if interaction is None: continue
         interactor_ids, alt_ids, aliases = [], [], []
         is_protein = []
 
         for interactor in interaction.interactors:
             if interactor.name is None:
-                aliases.append('')
+                aliases.append('-')
             else:
                 aliases.append(interactor.name)
 
@@ -238,15 +230,18 @@ if __name__ == '__main__':
                 is_protein.append(1)
                 if interactor.uniprotkb == 'pc':
                     interactor_ids.append('uniprotkb:' + interactor.id)
-                    alt_ids.append('')
+                    alt_ids.append('-')
                 else:
-                    interactor_ids.append('gene/locus_link:' + interactor.id)
+                    interactor_ids.append('entrez_gene/locuslink:' + interactor.id)
                     alt_id = ''
-                    # for xref in interactor.xrefs:
-                    #     alt_id += xref.source + ':' + xref.accession + '|'
-                    # if len(alt_id) != 0:
-                    #     alt_id = alt_id[:-1]
-                    alt_ids.append(alt_id)
+                    if interactor.uniprotkb is not None:
+                        alt_id+='uniprotkb:' + interactor.uniprotkb + '|'
+                    if interactor.ncbi_acc is not None:
+                        alt_id+='refseq:' + interactor.ncbi_acc + '|'
+                    if len(alt_id) > 0:
+                        alt_ids.append(alt_id[:-1])
+                    else:
+                        alt_ids.append('-')
 
             else:
                 is_protein.append(0)
@@ -279,10 +274,10 @@ if __name__ == '__main__':
                     else:
                         alt_id += ecocyc + '|'
 
-                if len(alt_id) != 0:
-                    alt_id = alt_id[:-1]
-
-                alt_ids.append(alt_id)
+                if len(alt_id) > 0:
+                    alt_ids.append(alt_id[:-1])
+                else:
+                    alt_ids.append('-')
 
         if len(interactor_ids) == 1:
             interactor_ids.append(interactor_ids[0])
@@ -301,40 +296,48 @@ if __name__ == '__main__':
             taxid_B = taxid
 
         # 0064 ortholog interaction (interologs mapping)
-        refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'xrefs': [],
-                'confidence': [], 'annotations A': [], 'annotations B': []}
-        author = []
-        # sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
+        refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'xrefs': [], 'confidence': [],
+                'annotations A': [], 'annotations B': []}
+        author_temp = []
         for reference in interaction.references:
             refs['detection'].append(reference.detection_method)
-            author.append([reference.author_ln, reference.pub_date])
+            author_temp.append([reference.author_ln, reference.pub_date])
+            refs['pmid'].append(reference.pmid)
             refs['type'].append(reference.interaction_type)
             refs['db'].append(reference.source_db)
             refs['confidence'].append(reference.confidence)
             refs['annotations A'].append(reference.interactor_a)
             refs['annotations B'].append(reference.interactor_b)
 
-        for author_info in author:
+        for author_info in author_temp:
+            author_full = ''
             if author_info[0] is not None:
-                author_info[0] += 'et al.'
+                author_full = author_info[0] + ' et al.'
                 if author_info[1] is not None:
-                    author_info[0] += ' (' + author_info[1] + ')'
-            refs['author'].append(author_info[0])
+                    author_full += ' (' + author_info[1] + ')'
+                refs['author'].append(author_full)
+            else:
+                refs['author'].append(None)
 
         for xref in interaction.xrefs:
-            if xref is None: continue
-            refs['xrefs'].append(xref.data_source + ':' + xref.accession)
+            if xref is not None:
+                refs['xrefs'].append(xref.data_source + ':' + xref.accession)
+            else:
+                refs['xrefs'].append(xref)
         for ref in refs:
             refs[ref] = ['-' if field is None else field for field in refs[ref]]
+            if len(refs[ref]) == 0:
+                refs[ref] = '-'
+                continue
             if refs[ref].count(refs[ref][0]) == len(refs[ref]):
                 refs[ref] = [refs[ref][0]]
-            refs[ref] = ['|'.join(refs[ref])]
+            refs[ref] = '|'.join(refs[ref])
 
         file_writer.writerow({psimi_fields[0]: interactor_ids[0], psimi_fields[1]: interactor_ids[1],
                               psimi_fields[2]: alt_ids[0], psimi_fields[3]: alt_ids[1],
                               psimi_fields[4]: aliases[0], psimi_fields[5]: aliases[1],
-                              psimi_fields[6]: refs['detection'][0], psimi_fields[7]: refs['author'][0],
-                              psimi_fields[8]: refs['pmid'][0], psimi_fields[9]: taxid_A, psimi_fields[10]: taxid_B,
-                              psimi_fields[11]: refs['type'][0], psimi_fields[12]: refs['db'][0],
-                              psimi_fields[13]: refs['xrefs'][0], psimi_fields[14]: refs['confidence'][0],
+                              psimi_fields[6]: refs['detection'], psimi_fields[7]: refs['author'],
+                              psimi_fields[8]: refs['pmid'], psimi_fields[9]: taxid_A, psimi_fields[10]: taxid_B,
+                              psimi_fields[11]: refs['type'], psimi_fields[12]: refs['db'],
+                              psimi_fields[13]: refs['xrefs'], psimi_fields[14]: refs['confidence'],
                               psimi_fields[15]: refs['annotations A'], psimi_fields[15]: refs['annotations B']})

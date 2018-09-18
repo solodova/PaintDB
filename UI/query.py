@@ -1,17 +1,16 @@
 import functools, os, glob
 from flask import (
-    Flask, Blueprint, flash, g, redirect, render_template, request, url_for
+    Flask, Blueprint, flash, g, redirect, render_template, request, url_for, send_file
 )
-from . import Session, removeFiles
+from app import Session, removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from Schema import Interactor, Interaction, Protein, Metabolite, InteractionReference, InteractionXref, ProteinXref, \
-InteractionSource, Base
+from Schema import Interactor, Interaction, InteractionSource
 import re, csv
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
-
+app.register_blueprint(bp)
 psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interactor A', 'Alt. ID(s) interactor B',
                 'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
                 'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
@@ -57,16 +56,16 @@ def uploaded():
 @bp.route('filter', methods=['GET', 'POST'])
 def filter():
     if request.method == 'POST':
-        filters = {'strain': [], 'interaction_type': [], 'Ecoli_sources': [], 'PAO1_sources': [], 'PA14_sources': [],
+        filters = {'strain': [], 'type': [], 'Ecoli_sources': [], 'PAO1_sources': [], 'PA14_sources': [],
                    'verification': []}
         sources_Ecoli = ['EcoCyc', 'RegulonDB(Ecoli)', 'IMEx(Ecoli)', 'BindingDB(Ecoli)', 'EBI-GOA-nonIntAct(Ecoli)',
                          'IntAct(Ecoli)', 'iRefIndex(Ecoli)', 'mentha(Ecoli)', 'MINT(Ecoli)', 'MPIDB(Ecoli)',
                          'UniProt(Ecoli)', 'DIP(Ecoli)', 'KEGG(Ecoli)']
         sources_PAO1 = ['Geoff', 'XLinkDB', 'Zhang', 'ADIPInteractomes(PAO1)', 'IMEx(PAO1)', 'IntAct(PAO1)',
                         'iRefIndex(PAO1)', 'mentha(PAO1)', 'MINT(PAO1)', 'Galan-Vasquez(PAO1)', 'KEGG(PAO1)']
-        sources_PA14 = ['IMEx(PA14)', 'IntAct(PA14)', 'iRefIndex(PA14)', 'mentha(PA14)', 'MINT(PA14)', 'KEGG(PA14)',
+        sources_PA14 = ['IMEx(PA14)', 'IntAct(PA14)', 'iRefIndex(PA14)', 'mentha(PA14)', 'KEGG(PA14)',
                         'Galan-Vasquez(PA14)']
-        filters_all ={'strain': ['PAO1', 'PA14'], 'interaction_type': ['p-p', 'p-m', 'p-bs'],
+        filters_all ={'strain': ['PAO1', 'PA14'], 'type': ['p-p', 'p-m', 'p-bs'],
                       'Ecoli_sources': sources_Ecoli, 'PAO1_sources': sources_PAO1, 'PA14_sources': sources_PA14,
                       'verification': ['0', '1', '2']}
         sources = []
@@ -76,60 +75,19 @@ def filter():
         for filter in filters:
             if filter in request.form:
                 filters[filter] = request.form.getlist(filter)
+                if 'None' in filters[filter]:
+                    filters[filter] = ['None']
+                elif 'All' in filters[filter]:
+                    filters[filter] = filters_all[filter]
 
-        for filter in filters:
-            if 'None' in filter:
-                filters[filter]=['None']
-            elif 'All' in filter:
-                filters[filter]=filters_all[filter]
-
-        if filters['PAO1_sources'][0] != 'None':
-            sources.append(filters['PAO1_sources'])
-        if filters['PA14_sources'][0] != 'None':
-            sources.append(filters['PA14_sources'])
-        if filters['Ecoli_sources'][0] != 'None':
-            sources.append(filters['Ecoli_sources'])
-        if len(sources) == (len(filters_all['PAO1_sources']) + len(filters_all['PA14_sources']) +
-                            len(filters_all['Ecoli_sources'])):
-            sources = ['All']
+        for source in ['PAO1_sources', 'PA14_sources', 'Ecoli_sources']:
+            if filters[source][0] != 'None':
+                sources.extend(filters[source])
         if len(sources) == 0:
             flash('Error: Please select sources from which to obtain interactions.')
             return redirect(request.url)
-        session = Session()
 
-        interactions = None
-        if len(filters['strain'] == 2):
-            interactions = session.query(Interaction)
-        elif 'PAO1' in filters['strain']:
-            interactions = session.query(Interaction).filter_by(strain = 'PAO1')
-        elif 'PA14' in filters['strain']:
-            interactions = session.query(Interaction).filter_by(strain = 'PA14')
-
-        type = []
-        if (len(filters['interaction_type']) == 1) & (filters['interaction_type'][0] == 'bs'):
-            selected_tfbs = []
-            if tfbs_sources[0] in sources:
-                selected_tfbs.append(tfbs_sources[0])
-            if tfbs_sources[1] in sources:
-                selected_tfbs.append(tfbs_sources[1])
-            if len(selected_tfbs) > 0:
-                interactions = interactions.join(InteractionSource).\
-                    group_by(Interaction).filter(InteractionSource.data_source.in_(selected_tfbs))
-        else:
-            if ('p-p' in filters['interaction_type']) | ('p-bs' in filters['interaction_type']):
-                type.append('p-p')
-            if 'p-m' in filters['interaction_type']:
-                type.append('p-m')
-                type.append('m-p')
-            if len(type) < 3:
-                interactions = interactions.filter(Interaction.type.in_(type))
-
-            interactions = interactions.join(Interaction.sources).group_by(Interaction)
-            if sources[0] != 'All':
-                interactions = interactions.filter(InteractionSource.data_source.in_(sources))
-
-        if len(filters['verification']) < 3:
-            interactions = interactions.filter(InteractionSource.is_experimental.in_(filters['verification']))
+        filters['verification'] = [int(i) for i in filters['verification']]
 
         protein_file = None
         for root, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
@@ -138,33 +96,70 @@ def filter():
                 if (filename == 'proteins'):
                     protein_file = file
 
+        input_proteins = []
         if protein_file is not None:
-            proteins = []
             with open(protein_file) as csvfile:
                 delimiter = '\t'
-                if protein_file.os.path.splitext(file)[1] == 'csv':
+                if protein_file.os.path.splitext(protein_file)[1] == 'csv':
                     delimiter = ','
-                reader = csv.DictReader(protein_file, fieldnames=['ID'], delimiter = delimiter)
+                reader = csv.DictReader(csvfile, fieldnames=['ID'], delimiter = delimiter)
                 for row in reader:
                     if row['ID'] != '':
-                        proteins.append(row['ID'])
+                        input_proteins.append(row['ID'])
 
-            interactions = interactions.join('interactors').filter(Interaction.interactors.in_(proteins))
+        session = Session()
+        interactions = None
+        if (len(filters['type']) == 1) & (filters['type'][0] == 'p-bs'):
+            selected_tfbs = []
+            if tfbs_sources[0] in sources:
+                selected_tfbs.append(tfbs_sources[0])
+            if tfbs_sources[1] in sources:
+                selected_tfbs.append(tfbs_sources[1])
+            if len(selected_tfbs) > 0:
+                if len(input_proteins) == 0:
+                    interactions = session.query(Interaction).filter(Interaction.strain.in_(filters['strain'])). \
+                        join(Interaction.sources).filter(InteractionSource.data_source.in_(selected_tfbs),
+                                                         InteractionSource.is_experimental.in_(
+                                                             filters_all['verification'])).all()
+                else:
+                    interactions = session.query(Interaction).filter(Interaction.strain.in_(filters['strain'])). \
+                        join(Interaction.sources, Interaction.interactors).\
+                        filter(InteractionSource.data_source.in_(selected_tfbs),
+                               InteractionSource.is_experimental.in_(filters_all['verification']),
+                               Interactor.id.in_(input_proteins)).all()
+        else:
+            type = []
+            if ('p-p' in filters['type']) | ('p-bs' in filters['type']):
+                type.append('p-p')
+            if 'p-m' in filters['type']:
+                type.append('p-m')
+                type.append('m-p')
+            if len(input_proteins) == 0:
+                interactions = session.query(Interaction).filter(
+                    Interaction.strain.in_(filters['strain']), Interaction.type.in_(filters['type'])). \
+                    join(Interaction.sources).filter(
+                    InteractionSource.data_source.in_(sources),
+                    InteractionSource.is_experimental.in_(filters['verification'])).all()
+            else:
+                interactions = session.query(Interaction).filter(
+                    Interaction.strain.in_(filters['strain']), Interaction.type.in_(filters['type'])). \
+                    join(Interaction.sources, Interaction.interactors).filter(
+                    InteractionSource.data_source.in_(sources),
+                    InteractionSource.is_experimental.in_(filters['verification']),
+                    Interactor.id.in_(input_proteins)).all()
 
-
-        interactions = interactions.join(Interaction.references)
-        interactions = interactions.join(Interaction.xrefs)
-
-        file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields)
+        file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields,
+                                     quoting=csv.QUOTE_NONE,
+                                     delimiter='\t', quotechar=None)
         file_writer.writeheader()
-        for interaction in interactions.all():
+        for interaction in interactions:
             if interaction is None: continue
-            interactor_ids, alt_ids, aliases  = [], [], []
+            interactor_ids, alt_ids, aliases = [], [], []
             is_protein = []
 
             for interactor in interaction.interactors:
                 if interactor.name is None:
-                    aliases.append('')
+                    aliases.append('-')
                 else:
                     aliases.append(interactor.name)
 
@@ -172,15 +167,18 @@ def filter():
                     is_protein.append(1)
                     if interactor.uniprotkb == 'pc':
                         interactor_ids.append('uniprotkb:' + interactor.id)
-                        alt_ids.append('')
+                        alt_ids.append('-')
                     else:
-                        interactor_ids.append('gene/locus_link:' + interactor.id)
+                        interactor_ids.append('entrez_gene/locuslink:' + interactor.id)
                         alt_id = ''
-                        for xref in interactor.xrefs:
-                            alt_id += xref.source + ':' + xref.accession + '|'
-                        if len(alt_id) != 0:
-                            alt_id = alt_id[:-1]
-                        alt_ids.append(alt_id)
+                        if interactor.uniprotkb is not None:
+                            alt_id += 'uniprotkb:' + interactor.uniprotkb + '|'
+                        if interactor.ncbi_acc is not None:
+                            alt_id += 'refseq:' + interactor.ncbi_acc + '|'
+                        if len(alt_id) > 0:
+                            alt_ids.append(alt_id[:-1])
+                        else:
+                            alt_ids.append('-')
 
                 else:
                     is_protein.append(0)
@@ -213,10 +211,10 @@ def filter():
                         else:
                             alt_id += ecocyc + '|'
 
-                    if len(alt_id) != 0:
-                        alt_id = alt_id[:-1]
-
-                    alt_ids.append(alt_id)
+                    if len(alt_id) > 0:
+                        alt_ids.append(alt_id[:-1])
+                    else:
+                        alt_ids.append('-')
 
             if len(interactor_ids) == 1:
                 interactor_ids.append(interactor_ids[0])
@@ -235,30 +233,39 @@ def filter():
                 taxid_B = taxid
 
             # 0064 ortholog interaction (interologs mapping)
-            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'xrefs': [],
-                    'confidence': [], 'annotations A': [], 'annotations B': []}
-            #sorted(list_with_none, key=lambda k: (k[col] is not None, k[col] != "", k[col]), reverse=True)
+            refs = {'detection': [], 'author': [], 'pmid': [], 'type': [], 'db': [], 'xrefs': [], 'confidence': [],
+                    'annotations A': [], 'annotations B': []}
+            author_temp = []
             for reference in interaction.references:
-                refs['detection'].append(reference.detection)
-                refs['author'].append([reference.author_ln, reference.pub_date])
+                refs['detection'].append(reference.detection_method)
+                author_temp.append([reference.author_ln, reference.pub_date])
+                refs['pmid'].append(reference.pmid)
                 refs['type'].append(reference.interaction_type)
                 refs['db'].append(reference.source_db)
                 refs['confidence'].append(reference.confidence)
                 refs['annotations A'].append(reference.interactor_a)
                 refs['annotations B'].append(reference.interactor_b)
 
-            for author_info in refs['author']:
+            for author_info in author_temp:
+                author_full = ''
                 if author_info[0] is not None:
-                    author_info[0] += 'et al.'
+                    author_full = author_info[0] + ' et al.'
                     if author_info[1] is not None:
-                        author_info[0] += ' (' + author_info[1] + ')'
-                refs['author'][author_info] = author_info[0]
+                        author_full += ' (' + author_info[1] + ')'
+                    refs['author'].append(author_full)
+                else:
+                    refs['author'].append(None)
 
             for xref in interaction.xrefs:
-                if xref is None: continue
-                refs['xrefs'].append(xref.data_source + ':' + xref.accession)
+                if xref is not None:
+                    refs['xrefs'].append(xref.data_source + ':' + xref.accession)
+                else:
+                    refs['xrefs'].append(xref)
             for ref in refs:
                 refs[ref] = ['-' if field is None else field for field in refs[ref]]
+                if len(refs[ref]) == 0:
+                    refs[ref] = '-'
+                    continue
                 if refs[ref].count(refs[ref][0]) == len(refs[ref]):
                     refs[ref] = [refs[ref][0]]
                 refs[ref] = '|'.join(refs[ref])
@@ -272,7 +279,14 @@ def filter():
                                   psimi_fields[13]: refs['xrefs'], psimi_fields[14]: refs['confidence'],
                                   psimi_fields[15]: refs['annotations A'], psimi_fields[15]: refs['annotations B']})
 
-        return render_template('query/results.html', filters=str(filters))
+        return render_template('query/download.html', filters=str(filters))
     return render_template('query/filter.html')
+
+@bp.route('download')
+def download():
+    try:
+        return send_file('output.csv', attachment_filename="interactions.csv")
+    except Exception as e:
+        return str(e)
 
 

@@ -27,20 +27,11 @@
         <option value="PA14">PA14</option>
     </select>
     <h4>Interaction Type(s)</h4>
-    <select name="interaction_type" id="interaction_type" multiple required>
+    <select name="type" id="type" multiple required>
         <option value="All" selected>All</option>
-        <option value="prot">protein-protein</option>
-        <option value="protmet">protein-metabolite</option>
-        <option value="tfbs">transcription factor-binding site</option>
-    </select>
-    <h4>Ortholog Mapping</h4>
-    <p>Note that ortholog mapping will be done based on what data sources are selected for the corresponding
-    ortholog species/strain in the next section.</p>
-    <select name="ortholog_mapping" id="ortholog_mapping" multiple required>
-        <option value="All" selected>All</option>
-        <option value="PAO1/PA14">PAO1/PA14</option>
-        <option value="PAO1/Ecoli">PAO1/Ecoli</option>
-        <option value="PA14/Ecoli">PA14/Ecoli</option>
+        <option value="p-p">protein-protein</option>
+        <option value="p-m">protein-metabolite</option>
+        <option value="p-bs">transcription factor-binding site</option>
     </select>
     <h4>Data Sources</h4>
     <label for="Ecoli_sources" >E. coli K12 substr. MG1655</label><br>
@@ -48,54 +39,53 @@
         <option value="All" selected>All</option>
         <option value="None">None</option>
         <option value="EcoCyc">EcoCyc</option>
-        <option value="KEGG">KEGG</option>
-        <option value="BindingDB">BindingDB</option>
-        <option value="ChEMBL">ChEMBL</option>
-        <option value="DIP">DIP</option>
-        <option value="EBI-GOA-nonIntAct">EBI-GOA-nonIntAct</option>
-        <option value="IMEx">IMEx</option>
-        <option value="IntAct">IntAct</option>
-        <option value="iRefIndex">iRefIndex</option>
-        <option value="mentha">mentha</option>
-        <option value="MINT">MINT</option>
-        <option value="MPIDB">MPIDB</option>
-        <option value="RegulonDB">RegulonDB</option>
-        <option value="UniProt">UniProt</option>
+        <option value="KEGG(Ecoli)">KEGG</option>
+        <option value="BindingDB(Ecoli)">BindingDB</option>
+        <option value="ChEMBL(Ecoli)">ChEMBL</option>
+        <option value="DIP(Ecoli)">DIP</option>
+        <option value="EBI-GOA-nonIntAct(Ecoli)">EBI-GOA-nonIntAct</option>
+        <option value="IMEx(Ecoli)">IMEx</option>
+        <option value="IntAct(Ecoli)">IntAct</option>
+        <option value="iRefIndex(Ecoli)">iRefIndex</option>
+        <option value="mentha(Ecoli)">mentha</option>
+        <option value="MINT(Ecoli)">MINT</option>
+        <option value="MPIDB(Ecoli)">MPIDB</option>
+        <option value="RegulonDB(Ecoli)">RegulonDB</option>
+        <option value="UniProt(Ecoli)">UniProt</option>
     </select><br><br>
     <label for="PAO1_sources">PAO1</label><br>
     <select name="PAO1_sources" id="PAO1_sources" size="6" multiple required>
         <option value="All" selected>All</option>
         <option value="None">None</option>
-        <option value="KEGG">KEGG</option>
-        <option value="IMEx">IMEx</option>
-        <option value="iRefIndex">iRefIndex</option>
-        <option value="mentha">mentha</option>
-        <option value="MINT">MINT</option>
-        <option value="MPIDB">MPIDB</option>
-        <option value="IntAct">IntAct</option>
-        <option value="ADIPInteractomes">ADIP Interactomes</option>
-        <option value="STRING">STRING</option>
-        <option value="xlinkDB">xlinkDB*</option>
-        <option value="regulatory network">Regulatory Network*</option>
-        <option value="predicted interactome">Predicted Interactome*</option>
+        <option value="KEGG(PAO1)">KEGG</option>
+        <option value="IMEx(PAO1)">IMEx</option>
+        <option value="iRefIndex(PAO1)">iRefIndex</option>
+        <option value="mentha(PAO1)">mentha</option>
+        <option value="MINT(PAO1)">MINT</option>
+        <option value="MPIDB(PAO1)">MPIDB</option>
+        <option value="IntAct(PAO1)">IntAct</option>
+        <option value="ADIPInteractomes(PAO1)">ADIP Interactomes</option>
+        <option value="XLinkDB">XLinkDB*</option>
+        <option value="Galan-Vasquez(PAO1)">Galan-Vasquez*</option>
+        <option value="Zhang">Zhang*</option>
         <option value="Geoff">Geoff Winsor and Raymond Lo*</option>
     </select><br><br>
     <label for="PA14_sources">PA14</label><br>
     <select name="PA14_sources" id="PA14_sources" size="7" multiple required>
         <option value="All" selected>All</option>
         <option value="None">None</option>
-        <option value="KEGG">KEGG</option>
-        <option value="IMEx">IMEx</option>
-        <option value="iRefIndex">iRefIndex</option>
-        <option value="mentha">mentha</option>
-        <option value="MINT">MINT</option>
-        <option value="regulatory network">Regulatory Network*</option>
+        <option value="KEGG(PA14)">KEGG</option>
+        <option value="IMEx(PA14)">IMEx</option>
+        <option value="iRefIndex(PA14)">iRefIndex</option>
+        <option value="mentha(PA14)">mentha</option>
+        <option value="Galan-Vasquez(PA14)">Galan-Vasquez*</option>
     </select>
     <h4>Interaction Verification</h4>
     <select name="verification" id="verification" size="3" multiple required>
         <option value="All" selected>All</option>
-        <option value="experimental">Experimental</option>
-        <option value="predicted">Predicted</option>
+        <option value="1">Experimental</option>
+        <option value="0">Predicted</option>
+        <option value="2">Undetermined detection</option>
     </select><br><br>
     <input type=submit value="Apply Filters">
 </form>
