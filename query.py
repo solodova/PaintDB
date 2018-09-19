@@ -2,16 +2,20 @@ import functools, os, glob
 from flask import (
     Flask, Blueprint, flash, g, redirect, render_template, request, url_for, send_file
 )
-from . import Session
 from helpers import removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
 from Schema import Interactor, Interaction, InteractionSource
 import re, csv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('sqlite:////Users/olga/Desktop/PaIntDB.db', echo=True)
+Session = sessionmaker(bind=engine)
 
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'tsv'])
 bp = Blueprint('query', __name__, url_prefix='/query')
-#app.register_blueprint(bp)
+
 psimi_fields = ['ID(s) interactor A', 'ID(s) interactor B', 'Alt. ID(s) interactor A', 'Alt. ID(s) interactor B',
                 'Alias(es) interactor A', 'Alias(es) interactor B',	'Interaction detection method(s)',
                 'Publication 1st author(s)', 'Publication identifier(s)', 'Taxid interactor A', 'Taxid interactor B',
@@ -44,13 +48,13 @@ def upload():
             protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], *parts))
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
-    removeFiles()
+    removeFiles(app)
     return render_template('query/upload.html')
 
 @bp.route('uploaded', methods=['GET', 'POST'])
 def uploaded():
     if request.method =='POST':
-        removeFiles()
+        removeFiles(app)
         return redirect(url_for('query.upload'))
     return render_template('query/uploaded.html')
 
