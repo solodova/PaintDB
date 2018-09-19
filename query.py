@@ -287,7 +287,8 @@ def filter():
 @bp.route('download')
 def download():
     try:
-        return send_file('output.csv', attachment_filename="interactions.csv")
+        return send_file(os.path.join(app.config['UPLOAD_FOLDER'], "output.csv"),
+                         attachment_filename="interactions.csv")
     except Exception as e:
         return str(e)
 
