@@ -1,6 +1,6 @@
 import csv
-from Schema import OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
-from Main import is_experimental_psimi
+from DB_schema import OrthologEcoli, Interaction, InteractionReference, InteractionSource, Metabolite
+from DB_build import is_experimental_psimi
 
 def parse_ecoli_mint(session):
     with open('Ecoli/PSICQUIC/MINT.txt') as csvfile:

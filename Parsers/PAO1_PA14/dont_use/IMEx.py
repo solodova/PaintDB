@@ -1,6 +1,6 @@
 import csv
-from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
-from Main import is_experimental_psimi
+from DB_schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
+from DB_build import is_experimental_psimi
 
 def parse_imex(session):
     parse_imex('Data/PAO1/PSICQUIC/IMEx.txt', 'PAO1', 'taxid:208964(pseae)', session)

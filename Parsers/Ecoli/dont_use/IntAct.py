@@ -1,6 +1,6 @@
 import csv
-from Schema import OrthologEcoli, Interaction, InteractionReference, Metabolite, InteractionSource
-from Main import is_experimental_psimi
+from DB_schema import OrthologEcoli, Interaction, InteractionReference, Metabolite, InteractionSource
+from DB_build import is_experimental_psimi
 
 def parse_ecoli_intact(session):
     parse_ecoli_intact('Ecoli/IntAct.txt', session)

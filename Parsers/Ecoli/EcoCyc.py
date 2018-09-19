@@ -1,5 +1,5 @@
 import csv
-from Schema import Metabolite, Interaction, OrthologEcoli, InteractionReference, InteractionSource
+from DB_schema import Metabolite, Interaction, OrthologEcoli, InteractionReference, InteractionSource
 from os.path import exists
 
 # list of ecocyc paths

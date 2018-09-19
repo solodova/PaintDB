@@ -5,7 +5,7 @@ from Parsers.PAO1_PA14_Ecoli import KEGG
 from Parsers.Ecoli import EcoCyc, RegulonDB, ortholuge_ecoli, Parse_PSIMI_ecoli
 
 # the top level function to parse all interactor info and interaction sources (ie. fill the database)
-# this function is called from Main.py
+# this function is called from DB_build.py
 def parse_all(session):
     # first obtain all info for pseudomonas proteins, then parse all interaction sources
     # pseudomonas_db.parse(session)

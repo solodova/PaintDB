@@ -1,6 +1,6 @@
 import csv
-from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
-from Parsing_Helpers import get_psimi_ref_list, is_experimental_interaction
+from DB_schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource, InteractionXref
+from DB_parsing_helpers import get_psimi_ref_list, is_experimental_interaction
 
 cols = ['interactor_A', 'interactor_B', 'altID_A', 'altID_B', 'alias_A', 'alias_B', 'detection', 'publication',
         'publication_ID', 'taxid_A', 'taxid_B', 'type', 'source_db', 'identifier', 'confidence']

@@ -1,6 +1,6 @@
 import csv
-from Schema import Interactor, Interaction, Protein, InteractionReference, InteractionXref, InteractionSource
-from Main import is_experimental_psimi
+from DB_schema import Interactor, Interaction, Protein, InteractionReference, InteractionXref, InteractionSource
+from DB_build import is_experimental_psimi
 
 def parse_mentha(session):
     parse_mentha('PAO1/PSICQUIC/mentha.txt', 'PAO1', 'taxid:208964(Pseudomonas aeruginosa PAO1)', session)

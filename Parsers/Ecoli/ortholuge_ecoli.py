@@ -1,5 +1,5 @@
 import csv
-from Schema import Interactor, OrthologEcoli
+from DB_schema import Interactor, OrthologEcoli
 
 # dicts for each strain of form:
 # {strain 1 id: [strain 2 inparalogs]}

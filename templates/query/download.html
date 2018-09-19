@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <title>Query - Results</title>
 </head>
+<h1>PaIntDB (<i><b>P</b>seudomonas <b>a</b>eruginosa</i> <b>Int</b>eraction <b>D</b>ata<b>b</b>ase)</h1>
+<nav>
+    <ul>
+        <li><a href = " {{url_for('home') }}">Home</a></li>
+        <li><a href = " {{url_for('info.data_sources') }}">Data Sources</a></li>
+        <li><a href = " {{url_for('query.upload') }}">Query</a></li>
+    </ul>
+</nav>
+<h2><u>Query - Download Interaction Results</u></h2>
 <body>
    <div class="container" align="left">
-		<button><a href="{{url_for('query.download')}}">Download Results</a></button>
+		<button><a href="{{url_for('query.download')}}">Download</a></button>
    </div>
 </body>
 </html>

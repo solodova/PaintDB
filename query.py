@@ -1,11 +1,9 @@
-import functools, os, glob
-from flask import (
-    Flask, Blueprint, flash, g, redirect, render_template, request, url_for, send_file
-)
-from helpers import removeFiles
+import os
+from flask import Flask, Blueprint, flash, g, redirect, render_template, request, url_for, send_file
+from .helpers import removeFiles
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-from Schema import Interactor, Interaction, InteractionSource
+from .DB_schema import Interactor, Interaction, InteractionSource
 import re, csv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -48,13 +46,13 @@ def upload():
             protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], *parts))
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
-    removeFiles(app)
+    #removeFiles(app)
     return render_template('query/upload.html')
 
 @bp.route('uploaded', methods=['GET', 'POST'])
 def uploaded():
     if request.method =='POST':
-        removeFiles(app)
+        #removeFiles(app)
         return redirect(url_for('query.upload'))
     return render_template('query/uploaded.html')
 
@@ -75,7 +73,6 @@ def filter():
                       'verification': ['0', '1', '2']}
         sources = []
         tfbs_sources = ['RegulonDB(Ecoli)', 'Galan-Vasquez(PAO1)']
-
 
         for filter in filters:
             if filter in request.form:
@@ -99,13 +96,13 @@ def filter():
             for file in files:
                 filename = os.path.splitext(file)[0]
                 if (filename == 'proteins'):
-                    protein_file = file
+                    protein_file = os.path.join(app.config['UPLOAD_FOLDER'], file)
 
         input_proteins = []
         if protein_file is not None:
             with open(protein_file) as csvfile:
                 delimiter = '\t'
-                if protein_file.os.path.splitext(protein_file)[1] == 'csv':
+                if protein_file.split('.')[-1] == 'csv':
                     delimiter = ','
                 reader = csv.DictReader(csvfile, fieldnames=['ID'], delimiter = delimiter)
                 for row in reader:
@@ -153,9 +150,9 @@ def filter():
                     InteractionSource.is_experimental.in_(filters['verification']),
                     Interactor.id.in_(input_proteins)).all()
 
-        file_writer = csv.DictWriter(open('output.csv', mode='x', newline=''), fieldnames=psimi_fields,
-                                     quoting=csv.QUOTE_NONE,
-                                     delimiter='\t', quotechar=None)
+        file_writer = csv.DictWriter(open(
+            (os.path.join(app.config['UPLOAD_FOLDER'], "output.csv")), mode='x', newline=''),
+            fieldnames=psimi_fields, quoting=csv.QUOTE_NONE, delimiter='\t', quotechar=None)
         file_writer.writeheader()
         for interaction in interactions:
             if interaction is None: continue

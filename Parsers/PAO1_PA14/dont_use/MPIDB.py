@@ -1,6 +1,6 @@
 import csv
-from Schema import Interactor, Protein, Interaction, InteractionSource, InteractionReference, InteractionXref
-from Main import is_experimental_psimi
+from DB_schema import Interactor, Protein, Interaction, InteractionSource, InteractionReference, InteractionXref
+from DB_build import is_experimental_psimi
 
 def parse_mpidb(session):
     with open('PAO1/PSICQUIC/MPIDB.txt') as csvfile:

@@ -1,4 +1,4 @@
-from Schema import Metabolite, Protein, Interaction, InteractionSource
+from DB_schema import Metabolite, Protein, Interaction, InteractionSource
 import csv
 from sqlalchemy import func, or_
 

@@ -1,8 +1,7 @@
-from helpers import removeFiles
-from flask import (
-    Blueprint, render_template
-)
+#from helpers import removeFiles
+from flask import Blueprint, render_template
 from flask import current_app as app
+from .helpers import removeFiles
 
 bp = Blueprint('info', __name__, url_prefix='/info')
 

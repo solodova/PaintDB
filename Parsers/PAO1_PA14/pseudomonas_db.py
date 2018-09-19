@@ -1,5 +1,5 @@
 import csv
-from Schema import Protein, Interactor, Localization, GeneOntology
+from DB_schema import Protein, Interactor, Localization, GeneOntology
 
 def parse(session):
     get_gene_info('Data/PAO1/Gene_Info/pseudomonas_db_info.csv', 'PAO1', session)

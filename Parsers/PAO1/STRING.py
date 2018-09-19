@@ -73,7 +73,7 @@
 #         session.commit()
 
 import csv
-from Schema import Interactor, Interaction
+from DB_schema import Interactor, Interaction
 
 def parse(session):
     STRING_unique = 0

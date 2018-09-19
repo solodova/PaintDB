@@ -1,13 +1,9 @@
 import os
 from flask import Flask
 from flask import render_template, redirect, url_for, request, flash
-from werkzeug.utils import secure_filename
-from sqlalchemy import create_engine
-from flask import current_app
-from sqlalchemy.orm import sessionmaker
-from info import bp as bp_info
-from query import bp as bp_query
-from helpers import removeFiles
+from .info import bp as bp_info
+from .query import bp as bp_query
+from .helpers import removeFiles
 
 def create_app(test_config=None):
     # create and configure the app

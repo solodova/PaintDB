@@ -1,6 +1,6 @@
 from Bio.KEGG.REST import kegg_list, kegg_get, kegg_conv
 from Bio.KEGG.KGML.KGML_parser import read
-from Schema import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionReference, InteractionSource
+from DB_schema import Interactor, Metabolite, OrthologEcoli, Interaction, InteractionReference, InteractionSource
 
 kegg_compounds = {}
 

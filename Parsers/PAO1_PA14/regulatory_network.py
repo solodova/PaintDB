@@ -1,5 +1,5 @@
 import csv
-from Schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource
+from DB_schema import Interactor, Protein, Interaction, InteractionReference, InteractionSource
 
 def parse(session):
     # create and add sources for the interactions (do this before since they all use the same source)
