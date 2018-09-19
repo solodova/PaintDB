@@ -46,13 +46,13 @@ def upload():
             protein_file.save(os.path.join(app.config['UPLOAD_FOLDER'], *parts))
             flash(protein_file.filename + ' was successfully uploaded! Click below to move on to the next step.')
         return redirect(url_for('query.uploaded'))
-    #removeFiles(app)
+    removeFiles(app)
     return render_template('query/upload.html')
 
 @bp.route('uploaded', methods=['GET', 'POST'])
 def uploaded():
     if request.method =='POST':
-        #removeFiles(app)
+        removeFiles(app)
         return redirect(url_for('query.upload'))
     return render_template('query/uploaded.html')
 
