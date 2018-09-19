@@ -11,14 +11,13 @@ make sure to delete/rename existing files (eg. for DB_statistics operations, del
 DB_statistics/PaIntDB_stats, to rebuild the whole database, delete/rename the current database file you have saved).
 
 - The route to the PaIntDB.db file may need to be changed to match the route on your computer. The two places in the project where this route is specified are: DB_build.py (line 11) and query.py (line 11). If rebuilding the database or getting statistics, fix the route in DB_build.py, to use the web app, fix the route in query.py. NOTE: PaIntDB is an SQLite database, so use the approproate configuration. Refer to the sqlalchemy documentation on engine configuration (http://docs.sqlalchemy.org/en/latest/core/engines.html, relevant section is copied below) for the OS you are operating on.
-
-relevant section for engine configuration:
-#Unix/Mac - 4 initial slashes in total
-engine = create_engine('sqlite:////absolute/path/to/foo.db')
-#Windows
-engine = create_engine('sqlite:///C:\\path\\to\\foo.db')
-#Windows alternative using raw string
-engine = create_engine(r'sqlite:///C:\path\to\foo.db')
+    - relevant section for engine configuration:
+        - Unix/Mac - 4 initial slashes in total
+            - engine = create_engine('sqlite:////absolute/path/to/foo.db')
+        - Windows
+            - engine = create_engine('sqlite:///C:\\path\\to\\foo.db')
+        - Windows alternative using raw string
+            - engine = create_engine(r'sqlite:///C:\path\to\foo.db')
 
 - to use the web app:
     - from terminal, cd to the project directory.
