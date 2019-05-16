@@ -1,5 +1,7 @@
 # PaintDB
 
+PaintDB is a database for molecular interactions found in Pseudomonas aeruginosa (PAO1 and PA14) involving proteins, in particular protein-protein, protein-metabolite and protein-DNA binding site interactions. Interactions were parsed from various existing sources including KEGG, IntAct, STRING and others (for a full list, run the web app as described below). Due to few experimentally verified interactions available for P. aeruginosa, additional interactions were included, mapped from orthologous proteins from E. coli K12. All interactions have detailed descriptions, following the standard information included using PSI-MI format. 
+
 Note to new users:
 
 - PaIntDB was built using sqlalchemy, and the web app was created using Flask. Sqlalchemy and Flask are python packages.
